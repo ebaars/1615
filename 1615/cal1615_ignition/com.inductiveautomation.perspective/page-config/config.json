@@ -1,0 +1,927 @@
+{
+  "pages": {
+    "/overview": {
+      "title": "1615 Overview",
+      "viewPath": "Main/Overview",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "main"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/oven-control": {
+      "title": "1615 Oven Control",
+      "viewPath": "Main/Oven Control",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "main"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/active-recipe": {
+      "title": "1615 Active Recipe",
+      "viewPath": "Main/Active Recipe",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "main"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/recipe-editor": {
+      "title": "1615 Recipe Editor",
+      "viewPath": "Main/Recipe Editor",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "main"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/emergency-stops": {
+      "title": "1615 Emergency Stops",
+      "viewPath": "Main/Emergency Stops",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "main"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/zone-1": {
+      "title": "1615 Zone 1",
+      "viewPath": "Oven/Zone 1",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "oven"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/zone-2": {
+      "title": "1615 Zone 2",
+      "viewPath": "Oven/Zone 2",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "oven"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/zone-3": {
+      "title": "1615 Zone 3",
+      "viewPath": "Oven/Zone 3",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "oven"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/advanced-cooling": {
+      "title": "1615 Advanced Cooling",
+      "viewPath": "Oven/Advanced Cooling",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "oven"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/letoff-splice": {
+      "title": "1615 Let-Off / Splice",
+      "viewPath": "Line/Letoff Splice",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "line"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/accumulator-ts1": {
+      "title": "1615 Accumulator / Tension Stand 1",
+      "viewPath": "Line/Accumulator TS1",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "line"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/ts2-poly-windup": {
+      "title": "1615 Tension Stand 2 / Poly / Windup",
+      "viewPath": "Line/TS2 Poly Windup",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "line"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/io": {
+      "title": "1615 I/O",
+      "viewPath": "Maintenance/IO",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "maint"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/zone-setup": {
+      "title": "1615 Zone Setup",
+      "viewPath": "Maintenance/Zone Setup",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "maint"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/vfd-drives": {
+      "title": "1615 VFD Drives",
+      "viewPath": "Maintenance/VFD Drives",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "maint"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/servo-drives": {
+      "title": "1615 Servo Drives",
+      "viewPath": "Maintenance/Servo Drives",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "maint"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/pm-schedule": {
+      "title": "1615 PM Schedule",
+      "viewPath": "Maintenance/PM Schedule",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "maint"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/oven-trend": {
+      "title": "1615 Oven Trend",
+      "viewPath": "Trends/Oven Trend",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "trend"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/trend": {
+      "title": "1615 Trend",
+      "viewPath": "Trends/Trend",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "trend"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/alarms": {
+      "title": "1615 Alarms",
+      "viewPath": "Alarms/Alarms",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "alarms"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/warnings": {
+      "title": "1615 Warnings",
+      "viewPath": "Alarms/Warnings",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "alarms"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/alarm-history": {
+      "title": "1615 History",
+      "viewPath": "Alarms/History",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "alarms"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    },
+    "/": {
+      "title": "1615 Overview",
+      "viewPath": "Main/Overview",
+      "docks": {
+        "top": [
+          {
+            "id": "header",
+            "viewPath": "Framework/Header",
+            "size": 96,
+            "show": "visible",
+            "content": "push",
+            "anchor": "fixed",
+            "autoBreakpoint": 0,
+            "handle": "hide",
+            "modal": false,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {
+              "section": "main"
+            }
+          }
+        ],
+        "left": [
+          {
+            "id": "nav",
+            "viewPath": "Framework/Nav Menu",
+            "size": 280,
+            "show": "onDemand",
+            "content": "cover",
+            "anchor": "fixed",
+            "autoBreakpoint": 900,
+            "handle": "hide",
+            "modal": true,
+            "resizable": false,
+            "iconUrl": "",
+            "viewParams": {}
+          }
+        ]
+      }
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom"
+  }
+}

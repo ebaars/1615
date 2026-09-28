@@ -1,0 +1,41 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {},
+  "root": {
+    "type": "ia.container.breakpt",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1200
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "small"
+        },
+        "position": {},
+        "props": {
+          "path": "Oven/Zone 1 - Small",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "Oven/Zone 1 - Large",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

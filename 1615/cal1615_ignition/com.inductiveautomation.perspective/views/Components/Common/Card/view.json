@@ -1,0 +1,107 @@
+{
+  "custom": {},
+  "params": {
+    "title": "",
+    "rows": []
+  },
+  "propConfig": {
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.rows": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 240,
+      "height": 140
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.title"
+              }
+            }
+          },
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.title}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.flex-repeater",
+        "meta": {
+          "name": "rows"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "useDefaultViewWidth": false,
+          "useDefaultViewHeight": false,
+          "path": "Components/Common/Row",
+          "direction": "column",
+          "elementPosition": {
+            "grow": 0,
+            "shrink": 0,
+            "basis": "26px"
+          },
+          "instances": [],
+          "style": {
+            "paddingTop": "4px"
+          }
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.rows"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

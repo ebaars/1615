@@ -1,0 +1,2715 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 2400
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "4px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "recipeBanner"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "path": "Components/Common/Recipe Banner",
+          "params": {},
+          "style": {
+            "height": "40px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineControl"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Line Control",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Line",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_4",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Line",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_5",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Line Status",
+                "tag": "[cal1615]p01r13_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Initiate Start",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Pre-Run Warning",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Ramp to Slow Speed",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Accel to SP (Stretch)",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Switch to Tension",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Run",
+                    "color": "#00E000"
+                  },
+                  "8": {
+                    "text": "Normal Stop",
+                    "color": "#FFB060"
+                  },
+                  "9": {
+                    "text": "Cycle Complete",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Run Time",
+                "tag": "[cal1615]p01r02_batch_run_time_hrs",
+                "writeTag": "",
+                "units": "HRS",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "128px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineSpeed"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Line Speed",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Line Speed",
+                "tag": "[cal1615]p01r12_master_ramped_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Setpoint",
+                "tag": "[cal1615]p01_recipe_active/line_speed_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/line_speed_sp",
+                "units": "FPM",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Jog Speed",
+                "tag": "[cal1615]p01_param_master_jog_speed",
+                "writeTag": "[cal1615]p02_real_from_hmi/global_1_",
+                "units": "FPM",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ovenControl"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Oven Control",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Oven",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_10",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Oven",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_11",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 1 Status",
+                "tag": "[cal1615]p11r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirc Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to SP",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to SP",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 2 Status",
+                "tag": "[cal1615]p12r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirc Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to SP",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to SP",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 3 Status",
+                "tag": "[cal1615]p13r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirc",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Control to SP",
+                    "color": "#00E000"
+                  },
+                  "6": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "154px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 1",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p11_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature SP",
+                "tag": "[cal1615]p11r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Level",
+                "tag": "[cal1615]p11_ai_lfl",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Pressure",
+                "tag": "[cal1615]p11_ai_prs",
+                "writeTag": "",
+                "units": "\"wc",
+                "kind": "value",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p11r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirc Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to SP",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to SP",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "164px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 2",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p12_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature SP",
+                "tag": "[cal1615]p12r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_2/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Level",
+                "tag": "[cal1615]p12_ai_lfl",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Pressure",
+                "tag": "[cal1615]p12_ai_prs",
+                "writeTag": "",
+                "units": "\"wc",
+                "kind": "value",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p12r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirc Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to SP",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to SP",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "164px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 3",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p13_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature SP",
+                "tag": "[cal1615]p13r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_3/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p13r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirc",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Control to SP",
+                    "color": "#00E000"
+                  },
+                  "6": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoff"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p20r06_ave_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension SP",
+                "tag": "[cal1615]p01_recipe_active/letoff_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/letoff_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Active Let-Off",
+                "tag": "[cal1615]p20_di_loa_active",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {
+                  "0": {
+                    "text": "B",
+                    "color": "#FFFFFF"
+                  },
+                  "1": {
+                    "text": "A",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoffFootage"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off Footage",
+            "rows": [
+              {
+                "compact": false,
+                "label": "A",
+                "tag": "[cal1615]p20r13_ai_loa_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "B",
+                "tag": "[cal1615]p20r13_ai_lob_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "86px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "splicePress"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Splice Press",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p21_ai_splice_platen_temp",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature SP",
+                "tag": "[cal1615]p01_recipe_active/platen_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/platen_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cure Time Remaining",
+                "tag": "[cal1615]p21r10_remaining_cure_time_sec",
+                "writeTag": "",
+                "units": "Sec",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cure Time SP",
+                "tag": "[cal1615]p01_recipe_active/cure_time_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/cure_time_sp",
+                "units": "Sec",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Sequencer",
+                "tag": "[cal1615]p21r10_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {
+                  "1": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Enable Sequence",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Close Exit Clamp",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Close Inlet Clamp",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Closing Platen",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Cure in Progress",
+                    "color": "#00E000"
+                  },
+                  "7": {
+                    "text": "Cure Done",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Platen Open",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Inlet Clamp Open",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Exit Clamp Open",
+                    "color": "#FFFF80"
+                  },
+                  "11": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "184px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "entryAccumulator"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Entry Accumulator",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Position",
+                "tag": "[cal1615]p20r13_ai_acc_pct",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Time Until Empty",
+                "tag": "[cal1615]p20_acc_fill_time_sec",
+                "writeTag": "",
+                "units": "Sec",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Fill Mode",
+                "tag": "[cal1615]p20r09_accumulator_auto",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  },
+                  "1": {
+                    "text": "Auto",
+                    "color": "#00E000"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Sequencer",
+                "tag": "[cal1615]p20r13_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Control to Low",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Fill Request",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Ramp Tension Prs",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Fill to Full",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Control to Top",
+                    "color": "#00E000"
+                  },
+                  "6": {
+                    "text": "Payout Request",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Payout to Empty",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Lower Limit",
+                    "color": "#FFB060"
+                  },
+                  "9": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "10": {
+                    "text": "Position Fill Req",
+                    "color": "#FFFF80"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Toggle Mode",
+                    "tag": "[cal1615]p02_dint_from_hmi/letoff_0_/bit_8",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "180px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tensionStand1"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Tension Stand 1",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p22r06_ave_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension SP",
+                "tag": "[cal1615]p01_recipe_active/ts1_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/ts1_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Mode",
+                "tag": "[cal1615]p22_dint_to_hmi_7_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {
+                  "0": {
+                    "text": "---",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Jog",
+                    "color": "#FFFF80"
+                  },
+                  "2": {
+                    "text": "Run",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Thread",
+                    "color": "#FFFF80"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "impregnation"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Impregnation",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Speed",
+                "tag": "[cal1615]p23_ai_metering_roll_speed_fpm",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Speed SP",
+                "tag": "[cal1615]p23_ao_selected_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tank Level",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Low",
+                    "tag": "[cal1615]p23_di_tank_level_low",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  },
+                  {
+                    "text": "High",
+                    "tag": "[cal1615]p23_di_tank_level_high",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Trough Level",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Low",
+                    "tag": "[cal1615]p23_di_though_level_low",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "218px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "coolingRolls"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Cooling Rolls",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p19_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature SP",
+                "tag": "[cal1615]p01_recipe_active/adv_cooling_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/adv_cooling_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "126px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tensionStand2"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Tension Stand 2",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Speed",
+                "tag": "[cal1615]p25_ai_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Speed SP",
+                "tag": "[cal1615]p25_ao_selected_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Mode",
+                "tag": "[cal1615]p25_dint_to_hmi_7_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {
+                  "0": {
+                    "text": "---",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Jog",
+                    "color": "#FFFF80"
+                  },
+                  "2": {
+                    "text": "Run",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Thread",
+                    "color": "#FFFF80"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "slitter"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Slitter",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Speed",
+                "tag": "[cal1615]p28_ai_slitter_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.00",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Speed SP",
+                "tag": "[cal1615]p01_recipe_active/slitter_speed_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/slitter_speed_sp",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "126px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "upperPoly"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Upper Poly",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Diameter A",
+                "tag": "[cal1615]p26_ao_dia_a",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Diameter B",
+                "tag": "[cal1615]p26_ao_dia_b",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "126px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lowerPoly"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Lower Poly",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Diameter A",
+                "tag": "[cal1615]p27_ao_dia_a",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Diameter B",
+                "tag": "[cal1615]p27_ao_dia_b",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "126px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderAccumulator"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Winder Accumulator",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Position",
+                "tag": "[cal1615]Program_P31_WAC/ai_lpt01_pct",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Stored",
+                "tag": "[cal1615]Program_P31_WAC/acc_length_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]Program_P31_WAC/acc_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Filling",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Paying Out",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Alarm",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Warning",
+                    "color": "#FFB060"
+                  },
+                  "6": {
+                    "text": "Full",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Empty",
+                    "color": "#FFB060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winder"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Winder",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p29r06_ave_wdr_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension SP",
+                "tag": "[cal1615]p01_recipe_active/winder_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/winder_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Active Winder",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "A",
+                    "tag": "[cal1615]p29r15_wdra_active",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  },
+                  {
+                    "text": "B",
+                    "tag": "[cal1615]p29r16_wdrb_active",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderFootage"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Winder Footage",
+            "rows": [
+              {
+                "compact": false,
+                "label": "A",
+                "tag": "[cal1615]p29r13_ai_wa_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "B",
+                "tag": "[cal1615]p29r13_ai_wb_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "86px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "production"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Production",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Comments",
+                    "tag": "",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "/active-recipe",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Reports",
+                    "tag": "",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "/trend",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Shop Order Number",
+                "tag": "[cal1615]HMI/shop_order",
+                "writeTag": "[cal1615]HMI/shop_order",
+                "units": "",
+                "kind": "textentry",
+                "format": "#,##0.0",
+                "stacked": true,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "46px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "122px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineStatus"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Line Status",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Let-Off Turret",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "In Position",
+                    "tag": "[cal1615]p20_di_turret_pos",
+                    "onColor": "#00E000",
+                    "offColor": "#FFFF00",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Splice Platen",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Closed",
+                    "tag": "[cal1615]p21_di_platen_not_closed",
+                    "onColor": "#00E000",
+                    "offColor": "#FFFF00",
+                    "invert": true
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Accumulator",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Full",
+                    "tag": "[cal1615]p20_di_acc_full",
+                    "onColor": "#00E000",
+                    "offColor": "#FFFF00",
+                    "invert": false
+                  },
+                  {
+                    "text": "Empty",
+                    "tag": "[cal1615]p20_di_acc_empty",
+                    "onColor": "#00E000",
+                    "offColor": "#FFFF00",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Nips",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Feed Roll Open",
+                    "tag": "[cal1615]p20_do_close_nip",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": true
+                  },
+                  {
+                    "text": "TS1 Open",
+                    "tag": "[cal1615]p22_do_close_nip_roll",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": true
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Impreg Tank",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Up",
+                    "tag": "[cal1615]p23_di_impreg_tank_up",
+                    "onColor": "#00E000",
+                    "offColor": "#FFFF00",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Winder Turret",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "In Position",
+                    "tag": "[cal1615]turret_in_position",
+                    "onColor": "#00E000",
+                    "offColor": "#FFFF00",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "190px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "safetyPins"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "300px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Safety Pins",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "1",
+                    "tag": "[cal1615]p30_di_pin_1",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "2",
+                    "tag": "[cal1615]p30_di_pin_2",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "3",
+                    "tag": "[cal1615]p30_di_pin_3",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "4",
+                    "tag": "[cal1615]p30_di_pin_4",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "5",
+                    "tag": "[cal1615]p30_di_pin_5",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "6",
+                    "tag": "[cal1615]p30_di_pin_6",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "7",
+                    "tag": "[cal1615]p30_di_pin_7",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "8",
+                    "tag": "[cal1615]p30_di_pin_8",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "60px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "faultReset"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "path": "Components/Common/Command Button",
+          "params": {
+            "text": "Fault Reset",
+            "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_0",
+            "value": 1,
+            "pulse": true,
+            "hold": false,
+            "page": "",
+            "styleClass": "cal1615/btn-stop",
+            "confirm": ""
+          },
+          "style": {
+            "height": "56px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

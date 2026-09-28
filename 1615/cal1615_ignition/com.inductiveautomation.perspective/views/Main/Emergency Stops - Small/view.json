@@ -1,0 +1,288 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 400
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "8px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "estops"
+        },
+        "position": {
+          "basis": "268px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Emergency Stops",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Rope Switch 1",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_1_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 2",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_2_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 3",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_3_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 4",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_4_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 5",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_5_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 6",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_6_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 7",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_7_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Rope Switch 8",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_rope_sw_8_active",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Main OP Station",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Tripped",
+                    "tag": "[cal1615]p01_di_main_hmi_estop",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

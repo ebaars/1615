@@ -1,0 +1,113 @@
+{
+  "custom": {
+    "device": {
+      "barcode": "",
+      "nfc": ""
+    },
+    "canOperate": false,
+    "recipeDraft": {
+      "name": "",
+      "values": {
+        "zone_1__recirc_sp": 0,
+        "zone_1__exhaust_sp": 0,
+        "zone_1__temp_sp": 0,
+        "zone_2__recirc_sp": 0,
+        "zone_2__exhaust_sp": 0,
+        "zone_2__temp_sp": 0,
+        "zone_3__recirc_sp": 0,
+        "zone_3__exhaust_sp": 0,
+        "zone_3__temp_sp": 0,
+        "line_speed_sp": 0,
+        "letoff_tension_sp": 0,
+        "acc_tension_sp": 0,
+        "acc_fill_pressure_sp": 0,
+        "acc_counter_pressure_sp": 0,
+        "cure_time_sp": 0,
+        "platen_temp_sp": 0,
+        "impreg_gap_sp": 0,
+        "impreg_gap_ds_offset_sp": 0,
+        "impreg_gap_os_offset_sp": 0,
+        "impreg_supply_speed_sp": 0,
+        "ts1_mode_sp": 0,
+        "ts1_tension_sp": 0,
+        "ts1_stretch_sp": 0,
+        "slitter_speed_sp": 0,
+        "adv_cooling_temp_sp": 0,
+        "ts2_tension_sp": 0,
+        "lower_poly_tension_sp": 0,
+        "lower_poly_b_tension_sp": 0,
+        "upper_poly_tension_sp": 0,
+        "upper_poly_b_tension_sp": 0,
+        "winder_tension_sp": 0,
+        "winder_mode_sp": 0,
+        "winder_torque_sp": 0,
+        "tension_deviation_sp": 0
+      }
+    }
+  },
+  "propConfig": {
+    "props.auth": {
+      "access": "PRIVATE",
+      "persistent": false
+    },
+    "props.device.accelerometer": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.identifier": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.timezone": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.type": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.userAgent": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.gateway": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.geolocation.data": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.geolocation.permissionGranted": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.host": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.id": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.lastActivity": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "custom.canOperate": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "{session.props.auth.authenticated}"
+        }
+      }
+    }
+  },
+  "props": {
+    "device": {},
+    "geolocation": {},
+    "locale": "en-US",
+    "timeZoneId": "America/New_York",
+    "theme": "light"
+  }
+}

@@ -1,0 +1,617 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "banner"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "path": "Components/Common/Recipe Banner",
+          "params": {},
+          "style": {
+            "height": "40px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "saveAs"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "path": "Components/Recipe/Save As",
+          "params": {},
+          "style": {
+            "height": "48px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineSettings"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "480px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Line Settings",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Line Speed Setpoint",
+                "tag": "[cal1615]p01_recipe_active/line_speed_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/line_speed_sp",
+                "units": "FPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Letoff Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/letoff_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/letoff_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Splice Platen Cure Time Setpoint",
+                "tag": "[cal1615]p01_recipe_active/cure_time_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/cure_time_sp",
+                "units": "Sec",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Splice Platen Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/platen_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/platen_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Accumulator Counter Pressure",
+                "tag": "[cal1615]p01_recipe_active/acc_counter_pressure_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/acc_counter_pressure_sp",
+                "units": "PSI",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Accumulator Fill Pressure Setpoint",
+                "tag": "[cal1615]p01_recipe_active/acc_fill_pressure_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/acc_fill_pressure_sp",
+                "units": "PSI",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Accumulator Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/acc_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/acc_tension_sp",
+                "units": "PSI",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Stand 1 Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/ts1_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/ts1_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Impreg Gap Setpoint",
+                "tag": "[cal1615]p01_recipe_active/impreg_gap_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/impreg_gap_sp",
+                "units": "IN",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Impreg Supply Speed Setpoint",
+                "tag": "[cal1615]p01_recipe_active/impreg_supply_speed_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/impreg_supply_speed_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Slitter Speed Setpoint",
+                "tag": "[cal1615]p01_recipe_active/slitter_speed_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/slitter_speed_sp",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Upper Poly Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/upper_poly_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/upper_poly_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Lower Poly Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/lower_poly_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/lower_poly_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Winder Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/winder_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/winder_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Roll Cooling Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/adv_cooling_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/adv_cooling_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "424px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 1",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Zone 1 Exhaust Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_1/exhaust_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/exhaust_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 1 Recirc Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_1/recirc_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/recirc_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 1 Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_1/temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 2",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Zone 2 Exhaust Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_2/exhaust_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_2/exhaust_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 2 Recirc Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_2/recirc_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_2/recirc_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 2 Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_2/temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_2/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 3",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Zone 3 Exhaust Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_3/exhaust_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_3/exhaust_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 3 Recirc Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_3/recirc_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_3/recirc_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 3 Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_3/temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_3/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

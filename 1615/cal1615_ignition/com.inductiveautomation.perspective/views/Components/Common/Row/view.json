@@ -1,0 +1,205 @@
+{
+  "custom": {},
+  "params": {
+    "compact": false,
+    "label": "",
+    "tag": "",
+    "writeTag": "",
+    "units": "",
+    "kind": "value",
+    "format": "#,##0.0",
+    "stacked": false,
+    "map": {},
+    "leds": [],
+    "buttons": [],
+    "labelWidth": ""
+  },
+  "propConfig": {
+    "params.compact": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.writeTag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.units": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.kind": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.format": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.stacked": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.map": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.leds": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.buttons": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.labelWidth": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 240,
+      "height": 26
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row"
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "row"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "path": "",
+          "params": {}
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "\"Components/Common/Rows/\" + {view.params.kind}"
+              }
+            }
+          },
+          "props.params.compact": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.compact"
+              }
+            }
+          },
+          "props.params.label": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.label"
+              }
+            }
+          },
+          "props.params.tag": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.tag"
+              }
+            }
+          },
+          "props.params.writeTag": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.writeTag"
+              }
+            }
+          },
+          "props.params.units": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.units"
+              }
+            }
+          },
+          "props.params.kind": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.kind"
+              }
+            }
+          },
+          "props.params.format": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.format"
+              }
+            }
+          },
+          "props.params.stacked": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.stacked"
+              }
+            }
+          },
+          "props.params.map": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.map"
+              }
+            }
+          },
+          "props.params.leds": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.leds"
+              }
+            }
+          },
+          "props.params.buttons": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.buttons"
+              }
+            }
+          },
+          "props.params.labelWidth": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.labelWidth"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

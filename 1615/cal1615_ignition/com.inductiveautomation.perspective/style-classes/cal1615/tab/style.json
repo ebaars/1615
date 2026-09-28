@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Arial",
+      "fontSize": "13px",
+      "borderRadius": "0px",
+      "backgroundColor": "var(--neutral-40)",
+      "color": "var(--neutral-100)",
+      "borderStyle": "none",
+      "marginRight": "2px",
+      "whiteSpace": "nowrap"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--neutral-50)"
+      }
+    }
+  ]
+}

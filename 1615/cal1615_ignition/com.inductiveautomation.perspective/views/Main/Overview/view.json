@@ -1,0 +1,44 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {},
+  "root": {
+    "type": "ia.container.breakpt",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1200
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "Overview - Small"
+        },
+        "position": {},
+        "props": {
+          "path": "Main/Overview - Small",
+          "params": {},
+          "style": {
+            "overflowY": "auto"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "Overview - Large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "Main/Overview - Large",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

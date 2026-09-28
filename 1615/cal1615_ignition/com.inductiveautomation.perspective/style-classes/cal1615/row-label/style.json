@@ -1,0 +1,12 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Arial",
+      "fontSize": "13px",
+      "color": "var(--neutral-90)",
+      "whiteSpace": "nowrap",
+      "overflow": "hidden",
+      "textOverflow": "ellipsis"
+    }
+  }
+}

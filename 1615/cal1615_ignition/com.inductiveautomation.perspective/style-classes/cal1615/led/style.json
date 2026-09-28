@@ -1,0 +1,16 @@
+{
+  "base": {
+    "style": {
+      "borderColor": "var(--neutral-70)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderRadius": "10px",
+      "fontFamily": "Arial",
+      "fontSize": "12px",
+      "textAlign": "center",
+      "color": "#000000",
+      "whiteSpace": "nowrap",
+      "overflow": "hidden"
+    }
+  }
+}

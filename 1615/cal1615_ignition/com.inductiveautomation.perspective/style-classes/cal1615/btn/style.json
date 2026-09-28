@@ -1,0 +1,11 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Arial",
+      "fontSize": "13px",
+      "fontWeight": "bold",
+      "borderRadius": "3px",
+      "margin": "3px"
+    }
+  }
+}

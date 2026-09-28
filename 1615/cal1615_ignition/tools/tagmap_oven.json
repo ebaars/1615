@@ -1,0 +1,1446 @@
+{
+ "z1.exh_status": {
+  "tag": "p11_dint_to_hmi[10]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "1": "OK (no fault)",
+   "2": "Running",
+   "3": "Stopped",
+   "4": "Faulted",
+   "5": "Default/unknown"
+  },
+  "note": "p11r05_exh_status copied in R05. Rung order (last true wins): 5 default -> 1 if p11r31.fault=0 -> 2 if VFD running -> 3 if rpm<=p01_param_fan_zero_speed -> 4 if p11r31.fault<>0. 5 effectively unreachable."
+ },
+ "z1.recirc_status": {
+  "tag": "p11_dint_to_hmi[11]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "1": "OK (no fault)",
+   "2": "Running",
+   "3": "Stopped",
+   "4": "Faulted",
+   "5": "Default/unknown"
+  },
+  "note": "p11r05_recirc_status; same logic as exhaust using p11r32."
+ },
+ "z1.heat_status": {
+  "tag": "p11_dint_to_hmi[9]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "0": "None",
+   "1": "Permissive OK / Ready",
+   "2": "Heat Requested",
+   "4": "Not Permissive",
+   "7": "Burner Not in Auto",
+   "8": "Manual"
+  },
+  "note": "p11r05_temp_ctrl_status copied in R05. Branch order (last true wins): 0 -> 1 permissive_run -> 2 request_heat -> 8 r20_state.31 manual -> 4 NOT permissive_run -> 7 NOT di_burner_auto."
+ },
+ "z1.status": {
+  "tag": "p11r20_status",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "0": "(none)",
+   "1": "Off",
+   "2": "Idle",
+   "3": "Start Recirculation Fan",
+   "4": "Start Exhaust Fan",
+   "5": "Wait for Safeties",
+   "6": "Safeties Made",
+   "7": "Purge",
+   "8": "Burner Lit",
+   "9": "Heat to Setpoint",
+   "10": "Control to Setpoint",
+   "11": "Cooldown",
+   "12": "Cooldown Fans",
+   "13": "Complete",
+   "31": "Manual"
+  },
+  "note": "SYS_ENC of p11r20_state: lowest set bit >=1 (bit 0 is the always-set step bit). Texts from p11r20_state bit comments. Also p11_dint_to_hmi[8]."
+ },
+ "z1.temp": {
+  "tag": "p11_real_to_hmi[2]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "= p11r30_pid_temp_pv*0.1 (pid_temp_pv = tc01*10, switches to tc02 on TC1-failure warning). Do NOT use real_to_hmi[72] (PID .PV, x10)."
+ },
+ "z1.temp_sp": {
+  "tag": "p01_recipe_active.zone_1.temp_sp",
+  "write": "p02_recipe_from_hmi.zone_1.temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "note": "P11 R30 MOVs recipe temp_sp -> p11r30_pid_temp_sp every scan (then overridden by p01_param_open_oven_temp while p01r09_open_oven). Effective SP: p11r30_pid_temp_sp."
+ },
+ "z1.tc1": {
+  "tag": "p11_ai_tc01",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC 1 incl. zero offset p11_param_tc01z. Also p11_real_to_hmi[0]."
+ },
+ "z1.tc2": {
+  "tag": "p11_ai_tc02",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC 2 incl. zero offset p11_param_tc02z. Also p11_real_to_hmi[1]."
+ },
+ "z1.pressure": {
+  "tag": "p11_ai_prs",
+  "type": "REAL",
+  "units": "inH2O",
+  "note": "Scaled -0.25..+0.25 \"wc. Also p11_real_to_hmi[6]."
+ },
+ "z1.lfl": {
+  "tag": "p11_ai_lfl",
+  "type": "REAL",
+  "units": "%",
+  "note": "Lower Flash Limit 0-100 %. Also p11_real_to_hmi[7]."
+ },
+ "z1.led_lfl_high_warning": {
+  "tag": "p11_dint_to_hmi[2].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "W04 LFL High Limit = p11r30.warning.4 (lfl >= p11_param_lfl_hl for timer; clears < hl-5)."
+ },
+ "z1.led_lfl_alarm": {
+  "tag": "p11_dint_to_hmi[0].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "A04 LFL High-High = p11r30.fault.4 (lfl >= p11_param_lfl_hhl OR p11_di_sp1). Latched until reset."
+ },
+ "z1.led_zone_faults_ok": {
+  "tag": "p11_dint_to_hmi[4].0",
+  "type": "BOOL",
+  "units": "",
+  "note": "= EQU(p11r30.fault,0) (temperature-control faults only; fan faults p11r31/p11r32 not included)."
+ },
+ "z1.led_vfds_ready": {
+  "tag": "p11r30_vfds_ok",
+  "type": "BOOL",
+  "units": "",
+  "note": "p11r30_vfds_ready (and p11_dint_to_hmi[4].1 which copies it) is NEVER WRITTEN in zones 1/2 -> stale. p11r30_vfds_ok is the live equivalent: p23 impreg exhaust running, no p23r02.fault.1, p11r31/p11r32/p23r13 faults = 0."
+ },
+ "z1.flame_on": {
+  "tag": "p11_di_flame_on",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'Burner is On' (flame relay). Most likely the 'L' (Lit) lamp. Also p11_dint_to_hmi[5].8."
+ },
+ "z1.burner_safeties_ok": {
+  "tag": "p11_di_burner_safeties_ok",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'Burner Safeties Ok'. Most likely the 'S' lamp. Also p11_dint_to_hmi[5].1."
+ },
+ "z1.high_limit_ok": {
+  "tag": "p11_di_high_limit_temp_ok",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'High Limit Temperature OK' (hardware high-limit controller). Most likely the 'H' lamp. Also p11_dint_to_hmi[5].9."
+ },
+ "z1.burner_auto": {
+  "tag": "p11_di_burner_auto",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'Burner Auto' (burner selector in auto). Also p11_dint_to_hmi[5].0."
+ },
+ "z1.cv_output": {
+  "tag": "p11_ao_cv",
+  "type": "REAL",
+  "units": "%",
+  "note": "= p11r30_pid_temp.OUT (0-100 %). Also p11_real_to_hmi[24]."
+ },
+ "z1.cv_manual_sp": {
+  "tag": "p11r30_cv_man_sp",
+  "write": "p02_real_from_hmi.zone_1[68]",
+  "type": "REAL",
+  "units": "%",
+  "note": "Overwritten every scan in R10 from p02_real_from_hmi.zone_1[68] (Limit_Clamp 0-100). Used as PID SO in manual."
+ },
+ "z1.cv_auto": {
+  "tag": "p11_dint_to_hmi[4].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "= NOT p11r30_request_manual."
+ },
+ "z1.pb_cv_auto": {
+  "tag": "p02_dint_from_hmi.zone_1[4].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p11r30_pb_auto (drops request_manual). PLC does not clear it; HMI must pulse."
+ },
+ "z1.pb_cv_manual": {
+  "tag": "p02_dint_from_hmi.zone_1[4].18",
+  "type": "BOOL",
+  "units": "",
+  "note": "-> p11r30_pb_manual; PLC OTUs this bit itself. Sequencer only enters Manual (31) from states 9/10."
+ },
+ "z1.exh_rpm": {
+  "tag": "p11_ai_exh_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(VFD speed feedback). Also p11_real_to_hmi[10]."
+ },
+ "z1.exh_sp": {
+  "tag": "p01_recipe_active.zone_1.exhaust_sp",
+  "write": "p02_recipe_from_hmi.zone_1.exhaust_sp",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "R31 MOVs it to p11_ao_exhaust_selected_speed while request_auto_run (open oven overrides with p01_param_open_oven_exh_sp)."
+ },
+ "z1.recirc_rpm": {
+  "tag": "p11_ai_recirc_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(VFD speed feedback). Also p11_real_to_hmi[14]."
+ },
+ "z1.recirc_sp": {
+  "tag": "p01_recipe_active.zone_1.recirc_sp",
+  "write": "p02_recipe_from_hmi.zone_1.recirc_sp",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "R32 MOVs it to p11_ao_recirc_selected_speed while request_auto_run (open oven overrides with p01_param_open_oven_recirc_sp)."
+ },
+ "z1.pb_start_heat": {
+  "tag": "p02_dint_from_hmi.zone_1[4].16",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p11r30_pb_zone_on (seals request_heat if permissive & burner auto). global[6].10 (Oven Start) does the same."
+ },
+ "z1.pb_stop_heat": {
+  "tag": "p02_dint_from_hmi.zone_1[4].17",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p11r30_pb_zone_off (drops request_heat -> cooldown). global[6].11 (Oven Stop) does the same."
+ },
+ "z1.pb_exh_start": {
+  "tag": "p02_dint_from_hmi.zone_1[4].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: exhaust fan start PB -> p11r31_pb_start."
+ },
+ "z1.pb_exh_stop": {
+  "tag": "p02_dint_from_hmi.zone_1[4].5",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: exhaust fan stop PB -> p11r31_pb_stop."
+ },
+ "z1.pb_recirc_start": {
+  "tag": "p02_dint_from_hmi.zone_1[4].8",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: recirc fan start PB -> p11r32_pb_start."
+ },
+ "z1.pb_recirc_stop": {
+  "tag": "p02_dint_from_hmi.zone_1[4].7",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: recirc fan stop PB -> p11r32_pb_stop."
+ },
+ "z1.tc1_zero": {
+  "tag": "p11_param_tc01z",
+  "write": "p02_real_from_hmi.zone_1[40]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Added to tc01 in R03. Overwritten by R10 from p02_real_from_hmi.zone_1[40]."
+ },
+ "z1.tc2_zero": {
+  "tag": "p11_param_tc02z",
+  "write": "p02_real_from_hmi.zone_1[41]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Added to tc02 in R03. Overwritten by R10 from p02_real_from_hmi.zone_1[41]."
+ },
+ "z1.tc_high_limit": {
+  "tag": "p11_param_tc01_hl",
+  "write": "p02_real_from_hmi.zone_1[52]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Software high limit: A00 when PID PV >= this (reset below hl-5). R10 Limit_Clamp(0..p01_param_process_air_hl=500) then MOV from p02_real_from_hmi.zone_1[52]."
+ },
+ "z1.sp_dev_warning": {
+  "tag": "p11_param_tc01_dev",
+  "write": "p02_real_from_hmi.zone_1[54]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "W00 temperature deviation band (|SP-PV| > this once SP was reached). R10 clamps p02_real_from_hmi.zone_1[54] 0..50 then MOVs."
+ },
+ "z1.lfl_warning": {
+  "tag": "p11_param_lfl_hl",
+  "write": "p02_real_from_hmi.zone_1[55]",
+  "type": "REAL",
+  "units": "%",
+  "note": "W04 LFL High Limit threshold. R10 MOV from p02_real_from_hmi.zone_1[55]."
+ },
+ "z1.lfl_alarm": {
+  "tag": "p11_param_lfl_hhl",
+  "write": "p02_real_from_hmi.zone_1[56]",
+  "type": "REAL",
+  "units": "%",
+  "note": "A04 LFL High-High threshold (fault; blocks zone 1&2 permissive). R10 MOV from p02_real_from_hmi.zone_1[56]."
+ },
+ "z1.low_prs_warning": {
+  "tag": "p11_param_zone_pressure",
+  "write": "p02_real_from_hmi.zone_1[58]",
+  "type": "REAL",
+  "units": "inH2O",
+  "note": "Tag description says 'High Pressure Limit' but p11r02 sets W15 'Low Pressure' when p11_ai_prs < this. R10 MOV from p02_real_from_hmi.zone_1[58]."
+ },
+ "z1.fast_to_soak": {
+  "tag": "p11_param_fast_to_soak",
+  "write": "p02_real_from_hmi.zone_1[59]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Latch Soak (pid2) gains when PID .ERR (SP-PV) < this. R10 MOV from p02_real_from_hmi.zone_1[59]."
+ },
+ "z1.soak_to_fast": {
+  "tag": "p11_param_soak_to_fast",
+  "write": "p02_real_from_hmi.zone_1[60]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Back to Fast (pid1) gains when PID .ERR > this. R10 MOV from p02_real_from_hmi.zone_1[60]."
+ },
+ "z1.shutdown_temp": {
+  "tag": "p11_param_shutdown_temp",
+  "write": "p02_real_from_hmi.zone_1[57]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Safe temp for cooldown: both TCs below this for timer -> p11r02_shutdown_temp (sequence complete / fans auto-stop). R10 MOV from p02_real_from_hmi.zone_1[57]."
+ },
+ "z1.pid1_kp": {
+  "tag": "p11_param_pid1_kp",
+  "write": "p02_real_from_hmi.zone_1[44]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .KP. R10 MOV from p02_real_from_hmi.zone_1[44]."
+ },
+ "z1.pid1_ki": {
+  "tag": "p11_param_pid1_ki",
+  "write": "p02_real_from_hmi.zone_1[45]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .KI. R10 MOV from p02_real_from_hmi.zone_1[45]."
+ },
+ "z1.pid1_kd": {
+  "tag": "p11_param_pid1_kd",
+  "write": "p02_real_from_hmi.zone_1[46]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .KD. R10 MOV from p02_real_from_hmi.zone_1[46]."
+ },
+ "z1.pid1_bias": {
+  "tag": "p11_param_pid1_ff",
+  "write": "p02_real_from_hmi.zone_1[47]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .BIAS. R10 MOV from p02_real_from_hmi.zone_1[47]."
+ },
+ "z1.pid2_kp": {
+  "tag": "p11_param_pid2_kp",
+  "write": "p02_real_from_hmi.zone_1[48]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .KP. R10 MOV from p02_real_from_hmi.zone_1[48]."
+ },
+ "z1.pid2_ki": {
+  "tag": "p11_param_pid2_ki",
+  "write": "p02_real_from_hmi.zone_1[49]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .KI. R10 MOV from p02_real_from_hmi.zone_1[49]."
+ },
+ "z1.pid2_kd": {
+  "tag": "p11_param_pid2_kd",
+  "write": "p02_real_from_hmi.zone_1[50]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .KD. R10 MOV from p02_real_from_hmi.zone_1[50]."
+ },
+ "z1.pid2_bias": {
+  "tag": "p11_param_pid2_ff",
+  "write": "p02_real_from_hmi.zone_1[51]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .BIAS. R10 MOV from p02_real_from_hmi.zone_1[51]."
+ },
+ "z2.exh_status": {
+  "tag": "p12_dint_to_hmi[10]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "1": "OK (no fault)",
+   "2": "Running",
+   "3": "Stopped",
+   "4": "Faulted",
+   "5": "Default/unknown"
+  },
+  "note": "p12r05_exh_status copied in R05. Rung order (last true wins): 5 default -> 1 if p12r31.fault=0 -> 2 if VFD running -> 3 if rpm<=p01_param_fan_zero_speed -> 4 if p12r31.fault<>0. 5 effectively unreachable."
+ },
+ "z2.recirc_status": {
+  "tag": "p12_dint_to_hmi[11]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "1": "OK (no fault)",
+   "2": "Running",
+   "3": "Stopped",
+   "4": "Faulted",
+   "5": "Default/unknown"
+  },
+  "note": "p12r05_recirc_status; same logic as exhaust using p12r32."
+ },
+ "z2.heat_status": {
+  "tag": "p12_dint_to_hmi[9]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "0": "None",
+   "1": "Permissive OK / Ready",
+   "2": "Heat Requested",
+   "4": "Not Permissive",
+   "7": "Burner Not in Auto",
+   "8": "Manual"
+  },
+  "note": "p12r05_Temp_ctl_status copied in R05. Branch order (last true wins): 0 -> 1 permissive_run -> 2 request_heat -> 8 r20_state.31 manual -> 4 NOT permissive_run -> 7 NOT di_burner_auto."
+ },
+ "z2.status": {
+  "tag": "p12r20_status",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "0": "(none)",
+   "1": "Off",
+   "2": "Idle",
+   "3": "Start Recirculation Fan",
+   "4": "Start Exhaust Fan",
+   "5": "Wait for Safeties",
+   "6": "Safeties Made",
+   "7": "Purge",
+   "8": "Burner Lit",
+   "9": "Heat to Setpoint",
+   "10": "Control to Setpoint",
+   "11": "Cooldown",
+   "12": "Cooldown Fans",
+   "13": "Complete",
+   "31": "Manual"
+  },
+  "note": "SYS_ENC of p12r20_state: lowest set bit >=1 (bit 0 is the always-set step bit). Texts from p12r20_state bit comments. Also p12_dint_to_hmi[8]."
+ },
+ "z2.temp": {
+  "tag": "p12_real_to_hmi[2]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "= p12r30_pid_temp_pv*0.1 (pid_temp_pv = tc01*10, switches to tc02 on TC1-failure warning). Do NOT use real_to_hmi[72] (PID .PV, x10)."
+ },
+ "z2.temp_sp": {
+  "tag": "p01_recipe_active.zone_2.temp_sp",
+  "write": "p02_recipe_from_hmi.zone_2.temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "note": "P12 R30 MOVs recipe temp_sp -> p12r30_pid_temp_sp every scan (then overridden by p01_param_open_oven_temp while p01r09_open_oven). Effective SP: p12r30_pid_temp_sp."
+ },
+ "z2.tc1": {
+  "tag": "p12_ai_tc01",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC 1 incl. zero offset p12_param_tc01z. Also p12_real_to_hmi[0]."
+ },
+ "z2.tc2": {
+  "tag": "p12_ai_tc02",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC 2 incl. zero offset p12_param_tc02z. Also p12_real_to_hmi[1]."
+ },
+ "z2.pressure": {
+  "tag": "p12_ai_prs",
+  "type": "REAL",
+  "units": "inH2O",
+  "note": "Scaled -0.25..+0.25 \"wc. Also p12_real_to_hmi[6]."
+ },
+ "z2.lfl": {
+  "tag": "p12_ai_lfl",
+  "type": "REAL",
+  "units": "%",
+  "note": "Lower Flash Limit 0-100 %. Also p12_real_to_hmi[7]."
+ },
+ "z2.led_lfl_high_warning": {
+  "tag": "p12_dint_to_hmi[2].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "W04 LFL High Limit = p12r30.warning.4 (lfl >= p12_param_lfl_hl for timer; clears < hl-5)."
+ },
+ "z2.led_lfl_alarm": {
+  "tag": "p12_dint_to_hmi[0].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "A04 LFL High-High = p12r30.fault.4 (lfl >= p12_param_lfl_hhl OR p12_di_sp00 - described 'Combustion Blower Pressure OK'; zone 1 uses sp1 here (asymmetry)). Latched until reset."
+ },
+ "z2.led_zone_faults_ok": {
+  "tag": "p12_dint_to_hmi[4].0",
+  "type": "BOOL",
+  "units": "",
+  "note": "= EQU(p12r30.fault,0) (temperature-control faults only; fan faults p12r31/p12r32 not included)."
+ },
+ "z2.led_vfds_ready": {
+  "tag": "p12r30_vfds_ok",
+  "type": "BOOL",
+  "units": "",
+  "note": "p12r30_vfds_ready (and p12_dint_to_hmi[4].1 which copies it) is NEVER WRITTEN in zones 1/2 -> stale. p12r30_vfds_ok is the live equivalent: p23 impreg exhaust running, no p23r02.fault.1, p12r31/p12r32/p23r13 faults = 0."
+ },
+ "z2.flame_on": {
+  "tag": "p12_di_flame_on",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'Burner is On' (flame relay). Most likely the 'L' (Lit) lamp. Also p12_dint_to_hmi[5].8."
+ },
+ "z2.burner_safeties_ok": {
+  "tag": "p12_di_burner_safeties_ok",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'Burner Safeties Ok'. Most likely the 'S' lamp. Also p12_dint_to_hmi[5].1."
+ },
+ "z2.high_limit_ok": {
+  "tag": "p12_di_high_limit_temp_ok",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'High Limit Temperature OK' (hardware high-limit controller). Most likely the 'H' lamp. Also p12_dint_to_hmi[5].9."
+ },
+ "z2.burner_auto": {
+  "tag": "p12_di_burner_auto",
+  "type": "BOOL",
+  "units": "",
+  "note": "DI 'Burner Auto' (burner selector in auto). Also p12_dint_to_hmi[5].0."
+ },
+ "z2.cv_output": {
+  "tag": "p12_ao_cv",
+  "type": "REAL",
+  "units": "%",
+  "note": "= p12r30_pid_temp.OUT (0-100 %). Also p12_real_to_hmi[24]."
+ },
+ "z2.cv_manual_sp": {
+  "tag": "p12r30_cv_man_sp",
+  "write": "p02_real_from_hmi.zone_2[68]",
+  "type": "REAL",
+  "units": "%",
+  "note": "Overwritten every scan in R10 from p02_real_from_hmi.zone_2[68] (Limit_Clamp 0-100). Used as PID SO in manual."
+ },
+ "z2.cv_auto": {
+  "tag": "p12_dint_to_hmi[4].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "= NOT p12r30_request_manual."
+ },
+ "z2.pb_cv_auto": {
+  "tag": "p02_dint_from_hmi.zone_2[4].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p12r30_pb_auto (drops request_manual). PLC does not clear it; HMI must pulse."
+ },
+ "z2.pb_cv_manual": {
+  "tag": "p02_dint_from_hmi.zone_2[4].18",
+  "type": "BOOL",
+  "units": "",
+  "note": "-> p12r30_pb_manual; PLC OTUs this bit itself. Sequencer only enters Manual (31) from states 9/10."
+ },
+ "z2.exh_rpm": {
+  "tag": "p12_ai_exhaust_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(VFD speed feedback). Also p12_real_to_hmi[10]."
+ },
+ "z2.exh_sp": {
+  "tag": "p01_recipe_active.zone_2.exhaust_sp",
+  "write": "p02_recipe_from_hmi.zone_2.exhaust_sp",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "R31 MOVs it to p12_ao_exhaust_selected_speed while request_auto_run (open oven overrides with p01_param_open_oven_exh_sp)."
+ },
+ "z2.recirc_rpm": {
+  "tag": "p12_ai_recirc_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(VFD speed feedback). Also p12_real_to_hmi[14]."
+ },
+ "z2.recirc_sp": {
+  "tag": "p01_recipe_active.zone_2.recirc_sp",
+  "write": "p02_recipe_from_hmi.zone_2.recirc_sp",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "R32 MOVs it to p12_ao_recirc_selected_speed while request_auto_run (open oven overrides with p01_param_open_oven_recirc_sp)."
+ },
+ "z2.pb_start_heat": {
+  "tag": "p02_dint_from_hmi.zone_2[4].16",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p12r30_pb_zone_on (seals request_heat if permissive & burner auto). global[6].10 (Oven Start) does the same."
+ },
+ "z2.pb_stop_heat": {
+  "tag": "p02_dint_from_hmi.zone_2[4].17",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p12r30_pb_zone_off (drops request_heat -> cooldown). global[6].11 (Oven Stop) does the same."
+ },
+ "z2.pb_exh_start": {
+  "tag": "p02_dint_from_hmi.zone_2[4].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: exhaust fan start PB -> p12r31_pb_start."
+ },
+ "z2.pb_exh_stop": {
+  "tag": "p02_dint_from_hmi.zone_2[4].5",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: exhaust fan stop PB -> p12r31_pb_stop."
+ },
+ "z2.pb_recirc_start": {
+  "tag": "p02_dint_from_hmi.zone_2[4].8",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: recirc fan start PB -> p12r32_pb_start."
+ },
+ "z2.pb_recirc_stop": {
+  "tag": "p02_dint_from_hmi.zone_2[4].7",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: recirc fan stop PB -> p12r32_pb_stop."
+ },
+ "z2.tc1_zero": {
+  "tag": "p12_param_tc01z",
+  "write": "p02_real_from_hmi.zone_2[40]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Added to tc01 in R03. Overwritten by R10 from p02_real_from_hmi.zone_2[40]."
+ },
+ "z2.tc2_zero": {
+  "tag": "p12_param_tc02z",
+  "write": "p02_real_from_hmi.zone_2[41]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Added to tc02 in R03. Overwritten by R10 from p02_real_from_hmi.zone_2[41]."
+ },
+ "z2.tc_high_limit": {
+  "tag": "p12_param_tc01_hl",
+  "write": "p02_real_from_hmi.zone_2[52]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Software high limit: A00 when PID PV >= this (reset below hl-5). R10 Limit_Clamp(0..p01_param_process_air_hl=500) then MOV from p02_real_from_hmi.zone_2[52]."
+ },
+ "z2.sp_dev_warning": {
+  "tag": "p12_param_tc01_dev",
+  "write": "p02_real_from_hmi.zone_2[54]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "W00 temperature deviation band (|SP-PV| > this once SP was reached). R10 clamps p02_real_from_hmi.zone_2[54] 0..50 then MOVs."
+ },
+ "z2.lfl_warning": {
+  "tag": "p12_param_lfl_hl",
+  "write": "p02_real_from_hmi.zone_2[55]",
+  "type": "REAL",
+  "units": "%",
+  "note": "W04 LFL High Limit threshold. R10 MOV from p02_real_from_hmi.zone_2[55]."
+ },
+ "z2.lfl_alarm": {
+  "tag": "p12_param_lfl_hhl",
+  "write": "p02_real_from_hmi.zone_2[56]",
+  "type": "REAL",
+  "units": "%",
+  "note": "A04 LFL High-High threshold (fault; blocks zone 1&2 permissive). R10 MOV from p02_real_from_hmi.zone_2[56]."
+ },
+ "z2.low_prs_warning": {
+  "tag": "p12_param_zone_pressure",
+  "write": "p02_real_from_hmi.zone_2[58]",
+  "type": "REAL",
+  "units": "inH2O",
+  "note": "Tag description says 'High Pressure Limit' but p12r02 sets W15 'Low Pressure' when p12_ai_prs < this. R10 MOV from p02_real_from_hmi.zone_2[58]."
+ },
+ "z2.fast_to_soak": {
+  "tag": "p12_param_fast_to_soak",
+  "write": "p02_real_from_hmi.zone_2[59]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Latch Soak (pid2) gains when PID .ERR (SP-PV) < this. R10 MOV from p02_real_from_hmi.zone_2[59]."
+ },
+ "z2.soak_to_fast": {
+  "tag": "p12_param_soak_to_fast",
+  "write": "p02_real_from_hmi.zone_2[60]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Back to Fast (pid1) gains when PID .ERR > this. R10 MOV from p02_real_from_hmi.zone_2[60]."
+ },
+ "z2.shutdown_temp": {
+  "tag": "p12_param_shutdown_temp",
+  "write": "p02_real_from_hmi.zone_2[57]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Safe temp for cooldown: both TCs below this for timer -> p12r02_shutdown_temp (sequence complete / fans auto-stop). R10 MOV from p02_real_from_hmi.zone_2[57]."
+ },
+ "z2.pid1_kp": {
+  "tag": "p12_param_pid1_kp",
+  "write": "p02_real_from_hmi.zone_2[44]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .KP. R10 MOV from p02_real_from_hmi.zone_2[44]."
+ },
+ "z2.pid1_ki": {
+  "tag": "p12_param_pid1_ki",
+  "write": "p02_real_from_hmi.zone_2[45]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .KI. R10 MOV from p02_real_from_hmi.zone_2[45]."
+ },
+ "z2.pid1_kd": {
+  "tag": "p12_param_pid1_kd",
+  "write": "p02_real_from_hmi.zone_2[46]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .KD. R10 MOV from p02_real_from_hmi.zone_2[46]."
+ },
+ "z2.pid1_bias": {
+  "tag": "p12_param_pid1_ff",
+  "write": "p02_real_from_hmi.zone_2[47]",
+  "type": "REAL",
+  "units": "",
+  "note": "Fast PID (pid1) gains, active when not in soak. -> PID .BIAS. R10 MOV from p02_real_from_hmi.zone_2[47]."
+ },
+ "z2.pid2_kp": {
+  "tag": "p12_param_pid2_kp",
+  "write": "p02_real_from_hmi.zone_2[48]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .KP. R10 MOV from p02_real_from_hmi.zone_2[48]."
+ },
+ "z2.pid2_ki": {
+  "tag": "p12_param_pid2_ki",
+  "write": "p02_real_from_hmi.zone_2[49]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .KI. R10 MOV from p02_real_from_hmi.zone_2[49]."
+ },
+ "z2.pid2_kd": {
+  "tag": "p12_param_pid2_kd",
+  "write": "p02_real_from_hmi.zone_2[50]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .KD. R10 MOV from p02_real_from_hmi.zone_2[50]."
+ },
+ "z2.pid2_bias": {
+  "tag": "p12_param_pid2_ff",
+  "write": "p02_real_from_hmi.zone_2[51]",
+  "type": "REAL",
+  "units": "",
+  "note": "Soak PID (pid2, tag desc 'Auto PID') gains, active when request_soak_control. -> PID .BIAS. R10 MOV from p02_real_from_hmi.zone_2[51]."
+ },
+ "z3.exh_status": {
+  "tag": "p13_dint_to_hmi[10]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "1": "OK (no fault)",
+   "2": "Running",
+   "3": "Stopped",
+   "4": "Faulted",
+   "5": "Default/unknown"
+  },
+  "note": "p13r05_exh_status copied in R05. Rung order (last true wins): 5 default -> 1 if p13r31.fault=0 -> 2 if VFD running -> 3 if rpm<=p01_param_fan_zero_speed -> 4 if p13r31.fault<>0. 5 effectively unreachable. Zone 3: running = running_fwd only."
+ },
+ "z3.recirc_status": {
+  "tag": "p13_dint_to_hmi[11]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "1": "OK (no fault)",
+   "2": "Running",
+   "3": "Stopped",
+   "4": "Faulted",
+   "5": "Default/unknown"
+  },
+  "note": "p13r05_recirc_status; same logic as exhaust using p13r32."
+ },
+ "z3.heat_status": {
+  "tag": "p13_dint_to_hmi[9]",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "0": "None",
+   "1": "Permissive OK / Ready",
+   "2": "Cooling Requested",
+   "4": "Not Permissive",
+   "8": "Manual"
+  },
+  "note": "Zone 3 is a COOLING zone (p13r30_request_cool, no burner). R05 order: 0 -> 1 permissive_run -> 2 request_cool -> 8 state.31 manual -> 4 NOT permissive. No code 7."
+ },
+ "z3.status": {
+  "tag": "p13r20_status",
+  "type": "DINT",
+  "units": "",
+  "enum": {
+   "0": "(none)",
+   "1": "Off",
+   "2": "Idle",
+   "3": "Start Recirculation Fan",
+   "4": "Start Exhaust Fan",
+   "5": "Control to Setpoint",
+   "6": "Complete",
+   "31": "Manual"
+  },
+  "note": "SYS_ENC of p13r20_state (lowest set bit >=1). Zone 3 has its own short sequence (states 1-6, 31). Also p13_dint_to_hmi[8]."
+ },
+ "z3.temp": {
+  "tag": "p13_real_to_hmi[2]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "= p13r30_pid_temp_pv (tc01, or tc02 when TC1-failure warning; x1 scaling in zone 3)."
+ },
+ "z3.temp_sp": {
+  "tag": "p01_recipe_active.zone_3.temp_sp",
+  "write": "p02_recipe_from_hmi.zone_3.temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "note": "P13 R30 MOVs recipe temp_sp -> p13r30_pid_temp_sp every scan (then overridden by p01_param_open_oven_temp while p01r09_open_oven). Effective SP: p13r30_pid_temp_sp."
+ },
+ "z3.tc1": {
+  "tag": "p13_ai_tc01",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC 1 incl. zero offset p13_param_tc01z. Also p13_real_to_hmi[0]."
+ },
+ "z3.tc2": {
+  "tag": "p13_ai_tc02",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC 2 incl. zero offset p13_param_tc02z. Also p13_real_to_hmi[1]."
+ },
+ "z3.pressure": {
+  "tag": null,
+  "type": "REAL",
+  "units": "inH2O",
+  "note": "Zone 3 has no pressure input (p13_real_to_hmi[6] forced 0)."
+ },
+ "z3.lfl": {
+  "tag": null,
+  "type": "REAL",
+  "units": "%",
+  "note": "Zone 3 has no LFL input (p13_real_to_hmi[7] forced 0)."
+ },
+ "z3.led_lfl_high_warning": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "No LFL in zone 3 (p13r30.warning.4 never set)."
+ },
+ "z3.led_lfl_alarm": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "No LFL in zone 3 (A04 hard-wired to placeholder)."
+ },
+ "z3.led_zone_faults_ok": {
+  "tag": "p13_dint_to_hmi[4].0",
+  "type": "BOOL",
+  "units": "",
+  "note": "= EQU(p13r30.fault,0) (temperature-control faults only; fan faults p13r31/p13r32 not included)."
+ },
+ "z3.led_vfds_ready": {
+  "tag": "p13r30_vfds_ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "= p13_di_recirc.ready AND p13_di_exh.ready (also p13_dint_to_hmi[4].1)."
+ },
+ "z3.flame_on": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "Zone 3 has no burner (cooling zone)."
+ },
+ "z3.burner_safeties_ok": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "Zone 3 has no burner (cooling zone)."
+ },
+ "z3.high_limit_ok": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "Zone 3 has no burner (cooling zone)."
+ },
+ "z3.burner_auto": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "Zone 3 has no burner (cooling zone)."
+ },
+ "z3.cv_output": {
+  "tag": "p13_ao_cv",
+  "type": "REAL",
+  "units": "%",
+  "note": "= p13r30_temp_pid_ctrl.OUT (0-100 %). Also p13_real_to_hmi[24]."
+ },
+ "z3.cv_manual_sp": {
+  "tag": "p13r30_cv_man_sp",
+  "write": "p02_real_from_hmi.zone_3[68]",
+  "type": "REAL",
+  "units": "%",
+  "note": "Overwritten every scan in R10 from p02_real_from_hmi.zone_3[68] (Limit_Clamp 0-100). Used as PID SO in manual."
+ },
+ "z3.cv_auto": {
+  "tag": "p13_dint_to_hmi[4].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "= NOT p13r30_request_manual."
+ },
+ "z3.pb_cv_auto": {
+  "tag": "p02_dint_from_hmi.zone_3[4].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p13r30_pb_auto (drops request_manual). PLC does not clear it; HMI must pulse."
+ },
+ "z3.pb_cv_manual": {
+  "tag": "p02_dint_from_hmi.zone_3[4].18",
+  "type": "BOOL",
+  "units": "",
+  "note": "-> p13r30_pb_manual; PLC OTUs this bit itself. Sequencer only enters Manual (31) from state 5."
+ },
+ "z3.exh_rpm": {
+  "tag": "p13_ai_exhaust_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(VFD speed feedback). Also p13_real_to_hmi[10]."
+ },
+ "z3.exh_sp": {
+  "tag": "p01_recipe_active.zone_3.exhaust_sp",
+  "write": "p02_recipe_from_hmi.zone_3.exhaust_sp",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "R31 MOVs it to p13_ao_exhaust_selected_speed while request_auto_run (open oven overrides with p01_param_open_oven_exh_sp)."
+ },
+ "z3.recirc_rpm": {
+  "tag": "p13_ai_recirc_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(VFD speed feedback). Also p13_real_to_hmi[14]."
+ },
+ "z3.recirc_sp": {
+  "tag": "p01_recipe_active.zone_3.recirc_sp",
+  "write": "p02_recipe_from_hmi.zone_3.recirc_sp",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "R32 MOVs it to p13_ao_recirc_selected_speed while request_auto_run (open oven overrides with p01_param_open_oven_recirc_sp)."
+ },
+ "z3.pb_start_heat": {
+  "tag": "p02_dint_from_hmi.zone_3[4].16",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p13r30_pb_zone_on (start zone cooling). Same bit also drives p19r30_pb_zone_on (Advanced/Roll Cooling). global[6].10 also starts."
+ },
+ "z3.pb_stop_heat": {
+  "tag": "p02_dint_from_hmi.zone_3[4].17",
+  "type": "BOOL",
+  "units": "",
+  "note": "Momentary -> p13r30_pb_zone_off; same bit also stops P19. global[6].11 does NOT stop zone 3; it auto-stops (oneshot) when zones 1&2 are at shutdown temp and no LFL warnings."
+ },
+ "z3.pb_exh_start": {
+  "tag": "p02_dint_from_hmi.zone_3[4].4",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: exhaust fan start PB -> p13r31_pb_start."
+ },
+ "z3.pb_exh_stop": {
+  "tag": "p02_dint_from_hmi.zone_3[4].5",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: exhaust fan stop PB -> p13r31_pb_stop."
+ },
+ "z3.pb_recirc_start": {
+  "tag": "p02_dint_from_hmi.zone_3[4].8",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: recirc fan start PB -> p13r32_pb_start."
+ },
+ "z3.pb_recirc_stop": {
+  "tag": "p02_dint_from_hmi.zone_3[4].7",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: recirc fan stop PB -> p13r32_pb_stop."
+ },
+ "z3.tc1_zero": {
+  "tag": "p13_param_tc01z",
+  "write": "p02_real_from_hmi.zone_3[40]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Added to tc01 in R03. Overwritten by R10 from p02_real_from_hmi.zone_3[40]."
+ },
+ "z3.tc2_zero": {
+  "tag": "p13_param_tc02z",
+  "write": "p02_real_from_hmi.zone_3[41]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Added to tc02 in R03. Overwritten by R10 from p02_real_from_hmi.zone_3[41]."
+ },
+ "z3.tc_high_limit": {
+  "tag": "p13_param_tc01_hl",
+  "write": "p02_real_from_hmi.zone_3[52]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Loaded but NOT USED in zone 3 logic. R10 Limit_Clamp(0..p01_param_process_air_hl=500) then MOV from p02_real_from_hmi.zone_3[52]."
+ },
+ "z3.sp_dev_warning": {
+  "tag": "p13_param_tc01_dev",
+  "write": "p02_real_from_hmi.zone_3[54]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "W00 temperature deviation band (|SP-PV| > this once SP was reached). R10 clamps p02_real_from_hmi.zone_3[54] 0..50 then MOVs."
+ },
+ "z3.lfl_warning": {
+  "tag": "p13_param_lfl_hl",
+  "write": "p02_real_from_hmi.zone_3[55]",
+  "type": "REAL",
+  "units": "%",
+  "note": "Loaded from [55] but unused (no LFL in zone 3)."
+ },
+ "z3.lfl_alarm": {
+  "tag": "p13_param_lfl_hhl",
+  "write": "p02_real_from_hmi.zone_3[56]",
+  "type": "REAL",
+  "units": "%",
+  "note": "Loaded from [56] but unused (no LFL in zone 3)."
+ },
+ "z3.low_prs_warning": {
+  "tag": "p13_param_zone_pressure",
+  "write": "p02_real_from_hmi.zone_3[58]",
+  "type": "REAL",
+  "units": "inH2O",
+  "note": "Loaded from [58] but unused (no pressure input in zone 3)."
+ },
+ "z3.fast_to_soak": {
+  "tag": "p13_param_fast_to_soak",
+  "write": "p02_real_from_hmi.zone_3[59]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Loaded from [59] but unused (zone 3 PID has one gain set)."
+ },
+ "z3.soak_to_fast": {
+  "tag": "p13_param_soak_to_fast",
+  "write": "p02_real_from_hmi.zone_3[60]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Loaded from [60] but unused in zone 3."
+ },
+ "z3.shutdown_temp": {
+  "tag": "p13_param_shutdown_temp",
+  "write": "p02_real_from_hmi.zone_3[57]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Safe temp for cooldown: both TCs below this for timer -> p13r02_shutdown_temp (sequence complete / fans auto-stop). R10 MOV from p02_real_from_hmi.zone_3[57]."
+ },
+ "z3.pid1_kp": {
+  "tag": "p13_param_pid1_kp",
+  "write": "p02_real_from_hmi.zone_3[44]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded but NOT USED in zone 3 (PID always uses pid2 gains). -> PID .KP. R10 MOV from p02_real_from_hmi.zone_3[44]."
+ },
+ "z3.pid1_ki": {
+  "tag": "p13_param_pid1_ki",
+  "write": "p02_real_from_hmi.zone_3[45]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded but NOT USED in zone 3 (PID always uses pid2 gains). -> PID .KI. R10 MOV from p02_real_from_hmi.zone_3[45]."
+ },
+ "z3.pid1_kd": {
+  "tag": "p13_param_pid1_kd",
+  "write": "p02_real_from_hmi.zone_3[46]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded but NOT USED in zone 3 (PID always uses pid2 gains). -> PID .KD. R10 MOV from p02_real_from_hmi.zone_3[46]."
+ },
+ "z3.pid1_bias": {
+  "tag": "p13_param_pid1_ff",
+  "write": "p02_real_from_hmi.zone_3[47]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded but NOT USED in zone 3 (PID always uses pid2 gains). -> PID .BIAS. R10 MOV from p02_real_from_hmi.zone_3[47]."
+ },
+ "z3.pid2_kp": {
+  "tag": "p13_param_pid2_kp",
+  "write": "p02_real_from_hmi.zone_3[48]",
+  "type": "REAL",
+  "units": "",
+  "note": "Zone 3 PID p13r30_temp_pid_ctrl always uses pid2 gains. -> PID .KP. R10 MOV from p02_real_from_hmi.zone_3[48]."
+ },
+ "z3.pid2_ki": {
+  "tag": "p13_param_pid2_ki",
+  "write": "p02_real_from_hmi.zone_3[49]",
+  "type": "REAL",
+  "units": "",
+  "note": "Zone 3 PID p13r30_temp_pid_ctrl always uses pid2 gains. -> PID .KI. R10 MOV from p02_real_from_hmi.zone_3[49]."
+ },
+ "z3.pid2_kd": {
+  "tag": "p13_param_pid2_kd",
+  "write": "p02_real_from_hmi.zone_3[50]",
+  "type": "REAL",
+  "units": "",
+  "note": "Zone 3 PID p13r30_temp_pid_ctrl always uses pid2 gains. -> PID .KD. R10 MOV from p02_real_from_hmi.zone_3[50]."
+ },
+ "z3.pid2_bias": {
+  "tag": "p13_param_pid2_ff",
+  "write": "p02_real_from_hmi.zone_3[51]",
+  "type": "REAL",
+  "units": "",
+  "note": "Zone 3 PID p13r30_temp_pid_ctrl always uses pid2 gains. -> PID .BIAS. R10 MOV from p02_real_from_hmi.zone_3[51]."
+ },
+ "cool.exh_status": {
+  "tag": null,
+  "type": "DINT",
+  "units": "",
+  "note": "No fans in P19 (p19_dint_to_hmi[10] forced 0)."
+ },
+ "cool.recirc_status": {
+  "tag": null,
+  "type": "DINT",
+  "units": "",
+  "note": "No fans in P19 (p19_dint_to_hmi[11] forced 0)."
+ },
+ "cool.heat_status": {
+  "tag": "p19_dint_to_hmi[0].16",
+  "type": "BOOL",
+  "units": "",
+  "note": "No status enum in P19 (p19_dint_to_hmi[9] forced 0). Use p19r30_request_cool ([0].16) as 'cooling on'."
+ },
+ "cool.status": {
+  "tag": null,
+  "type": "DINT",
+  "units": "",
+  "note": "P19 has no sequencer (no p19r20)."
+ },
+ "cool.temp": {
+  "tag": "p19_ai_tc01",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Control TC. p19_real_to_hmi[2] = p19r30_pid_temp_pv (DINT, x10)*0.1 = same value. Note p19_real_to_hmi is NOT copied into p02_real_to_hmi."
+ },
+ "cool.temp_sp": {
+  "tag": "p01_recipe_active.adv_cooling_temp_sp",
+  "write": "p02_recipe_from_hmi.adv_cooling_temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "note": "P19 R30 MOVs it -> p19r30_pid_temp_sp (DINT, truncates) every scan."
+ },
+ "cool.tc1": {
+  "tag": "p19_ai_tc01",
+  "type": "REAL",
+  "units": "degF",
+  "note": "Includes p19_param_tc01z. Also p19_real_to_hmi[0]."
+ },
+ "cool.tc2": {
+  "tag": null,
+  "type": "REAL",
+  "units": "degF",
+  "note": "P19 reads no TC2 value (only the Ch1 overrange bit p19_di_tc02_bo)."
+ },
+ "cool.pressure": {
+  "tag": "p19_ai_prs",
+  "type": "REAL",
+  "units": "PSI",
+  "note": "Cooling pump pressure (scaled 0-50 then -6 offset). Also p19_real_to_hmi[6]."
+ },
+ "cool.lfl": {
+  "tag": null,
+  "type": "REAL",
+  "units": "%",
+  "note": "N/A"
+ },
+ "cool.led_lfl_high_warning": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A"
+ },
+ "cool.led_lfl_alarm": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A"
+ },
+ "cool.led_zone_faults_ok": {
+  "tag": "p19r02_fault_exists",
+  "type": "BOOL",
+  "units": "",
+  "invert": true,
+  "note": "= p19_dint_to_hmi[2] (P19 alarm word) <> 0; show inverted as 'Faults OK'."
+ },
+ "cool.led_vfds_ready": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A (pump only)."
+ },
+ "cool.flame_on": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A"
+ },
+ "cool.burner_safeties_ok": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A"
+ },
+ "cool.high_limit_ok": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A"
+ },
+ "cool.burner_auto": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "N/A"
+ },
+ "cool.cv_output": {
+  "tag": "p19_ao_cv",
+  "type": "REAL",
+  "units": "%",
+  "note": "= p19r30_pid_temp.OUT (roll-cooling flow valve). Also p19_real_to_hmi[24]."
+ },
+ "cool.cv_manual_sp": {
+  "tag": "p19r30_cv_man_sp",
+  "write": "p02_real_from_hmi.adv_cooling[68]",
+  "type": "REAL",
+  "units": "%",
+  "note": "Overwritten every scan in P19 R10 from adv_cooling[68] (clamped 0-100)."
+ },
+ "cool.cv_auto": {
+  "tag": "p19_dint_to_hmi[0].19",
+  "type": "BOOL",
+  "units": "",
+  "note": "= NOT p19r30_request_manual."
+ },
+ "cool.pb_cv_auto": {
+  "tag": "p02_dint_from_hmi.adv_cooling[4].17",
+  "type": "BOOL",
+  "units": "",
+  "note": "NOTE bit .17 (zones use .19) -> p19r30_pb_auto."
+ },
+ "cool.pb_cv_manual": {
+  "tag": "p02_dint_from_hmi.adv_cooling[4].18",
+  "type": "BOOL",
+  "units": "",
+  "note": "-> p19r30_pb_manual; PLC OTUs this bit."
+ },
+ "cool.exh_rpm": {
+  "tag": null,
+  "type": "REAL",
+  "units": "RPM",
+  "note": "N/A (no fans in P19)."
+ },
+ "cool.exh_sp": {
+  "tag": null,
+  "type": "REAL",
+  "units": "RPM",
+  "note": "N/A (no fans in P19)."
+ },
+ "cool.recirc_rpm": {
+  "tag": null,
+  "type": "REAL",
+  "units": "RPM",
+  "note": "N/A (no fans in P19)."
+ },
+ "cool.recirc_sp": {
+  "tag": null,
+  "type": "REAL",
+  "units": "RPM",
+  "note": "N/A (no fans in P19)."
+ },
+ "cool.pb_start_heat": {
+  "tag": "p02_dint_from_hmi.zone_3[4].16",
+  "type": "BOOL",
+  "units": "",
+  "note": "P19 has no own on/off bit: p19r30_pb_zone_on = zone_3[4].16 OR global[6].10 (shared with Zone 3 start)."
+ },
+ "cool.pb_stop_heat": {
+  "tag": "p02_dint_from_hmi.zone_3[4].17",
+  "type": "BOOL",
+  "units": "",
+  "note": "p19r30_pb_zone_off = zone_3[4].17 OR global[6].11 (shared with Zone 3 stop)."
+ },
+ "cool.tc1_zero": {
+  "tag": "p19_param_tc01z",
+  "write": "p02_real_from_hmi.adv_cooling[40]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "R10 MOV from adv_cooling[40]."
+ },
+ "cool.tc2_zero": {
+  "tag": "p19_param_tc02z",
+  "write": "p02_real_from_hmi.adv_cooling[41]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "R10 MOV from adv_cooling[41]; unused (no TC2)."
+ },
+ "cool.tc_high_limit": {
+  "tag": null,
+  "type": "REAL",
+  "units": "degF",
+  "note": "Not implemented in P19 (adv_cooling[52] not loaded)."
+ },
+ "cool.sp_dev_warning": {
+  "tag": "p19_param_tc01_dev",
+  "write": "p02_real_from_hmi.adv_cooling[54]",
+  "type": "REAL",
+  "units": "degF",
+  "note": "W00 when PID .ERR > this (while cooling). R10 clamps adv_cooling[54] 0..50 then MOVs."
+ },
+ "cool.lfl_warning": {
+  "tag": null,
+  "type": "REAL",
+  "units": "%",
+  "note": "N/A"
+ },
+ "cool.lfl_alarm": {
+  "tag": null,
+  "type": "REAL",
+  "units": "%",
+  "note": "N/A"
+ },
+ "cool.shutdown_temp": {
+  "tag": null,
+  "type": "REAL",
+  "units": "degF",
+  "note": "N/A"
+ },
+ "cool.low_prs_warning": {
+  "tag": "p19_param_zone_pressure",
+  "write": "p02_real_from_hmi.adv_cooling[58]",
+  "type": "REAL",
+  "units": "PSI",
+  "note": "'Minimum Pressure': pump on and p19_ai_prs < this -> FAULT A16 Low Pump Pressure (p19r31.fault.0), not a warning. R10 MOV from adv_cooling[58]."
+ },
+ "cool.fast_to_soak": {
+  "tag": null,
+  "type": "REAL",
+  "units": "degF",
+  "note": "N/A (single gain set)."
+ },
+ "cool.soak_to_fast": {
+  "tag": null,
+  "type": "REAL",
+  "units": "degF",
+  "note": "N/A"
+ },
+ "cool.pid1_kp": {
+  "tag": "p19_param_pid1_kp",
+  "write": "p02_real_from_hmi.adv_cooling[44]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded from adv_cooling[44] but NOT USED (P19 PID uses pid2 only)."
+ },
+ "cool.pid1_ki": {
+  "tag": "p19_param_pid1_ki",
+  "write": "p02_real_from_hmi.adv_cooling[45]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded from adv_cooling[45] but NOT USED (P19 PID uses pid2 only)."
+ },
+ "cool.pid1_kd": {
+  "tag": "p19_param_pid1_kd",
+  "write": "p02_real_from_hmi.adv_cooling[46]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded from adv_cooling[46] but NOT USED (P19 PID uses pid2 only)."
+ },
+ "cool.pid1_bias": {
+  "tag": "p19_param_pid1_ff",
+  "write": "p02_real_from_hmi.adv_cooling[47]",
+  "type": "REAL",
+  "units": "",
+  "note": "Loaded from adv_cooling[47] but NOT USED (P19 PID uses pid2 only)."
+ },
+ "cool.pid2_kp": {
+  "tag": "p19_param_pid2_kp",
+  "write": "p02_real_from_hmi.adv_cooling[48]",
+  "type": "REAL",
+  "units": "",
+  "note": "-> p19r30_pid_temp.KP. R10 MOV from adv_cooling[48]."
+ },
+ "cool.pid2_ki": {
+  "tag": "p19_param_pid2_ki",
+  "write": "p02_real_from_hmi.adv_cooling[49]",
+  "type": "REAL",
+  "units": "",
+  "note": "-> p19r30_pid_temp.KI. R10 MOV from adv_cooling[49]."
+ },
+ "cool.pid2_kd": {
+  "tag": "p19_param_pid2_kd",
+  "write": "p02_real_from_hmi.adv_cooling[50]",
+  "type": "REAL",
+  "units": "",
+  "note": "-> p19r30_pid_temp.KD. R10 MOV from adv_cooling[50]."
+ },
+ "cool.pid2_bias": {
+  "tag": "p19_param_pid2_ff",
+  "write": "p02_real_from_hmi.adv_cooling[51]",
+  "type": "REAL",
+  "units": "",
+  "note": "-> p19r30_pid_temp.BIAS. R10 MOV from adv_cooling[51]."
+ },
+ "cool.pump_on": {
+  "tag": "p19_do_pump",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: pump output (on when zone 3 or P19 request_cool, or manual run)."
+ },
+ "cool.pb_pump_start": {
+  "tag": "p02_dint_from_hmi.adv_cooling[4].0",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: manual pump start -> p19r31_pb_start."
+ },
+ "cool.pb_pump_stop": {
+  "tag": "p02_dint_from_hmi.adv_cooling[4].1",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: manual pump stop -> p19r31_pb_stop."
+ },
+ "cool.prs_sp": {
+  "tag": "p02_real_from_hmi.adv_cooling[66]",
+  "type": "REAL",
+  "units": "PSI",
+  "note": "Extra: P19 R32 pressure-PID SP is read straight from adv_cooling[66] into p19r32_pid_prs_sp."
+ },
+ "oven.pb_stop_all_fans": {
+  "tag": "p02_dint_from_hmi.global[6].7",
+  "type": "BOOL",
+  "units": "",
+  "note": "'PB: Stop All Fans' -> r31/r32 pb_stop in zones 1-3 and P23 impreg fans. Momentary."
+ },
+ "oven.pb_start_all": {
+  "tag": "p02_dint_from_hmi.global[6].10",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: 'Oven Start' -> pb_zone_on in P11/P12/P13/P19 plus P23 fan starts."
+ },
+ "oven.pb_stop_all": {
+  "tag": "p02_dint_from_hmi.global[6].11",
+  "type": "BOOL",
+  "units": "",
+  "note": "Extra: 'Oven Stop' -> pb_zone_off in P11/P12/P19 (NOT P13)."
+ },
+ "oven.pb_open_oven": {
+  "tag": "p02_dint_from_hmi.global[6].8",
+  "type": "BOOL",
+  "units": "",
+  "note": "Toggle PB: P01 R09 SYS_Toggle(p01r09_open_oven_toggle, global[6].8, p01r09_open_oven). Pulse it."
+ },
+ "oven.open_oven": {
+  "tag": "p01r09_open_oven",
+  "type": "BOOL",
+  "units": "",
+  "note": "Open-oven mode active (also p01_dint_to_hmi[6].9). Forces zone temp SP = p01_param_open_oven_temp (80) and fan SPs = p01_param_open_oven_exh_sp / _recirc_sp (300); those params are not loaded from the HMI."
+ }
+}

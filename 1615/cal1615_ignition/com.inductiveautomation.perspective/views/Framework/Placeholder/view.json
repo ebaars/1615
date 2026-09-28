@@ -1,0 +1,88 @@
+{
+  "custom": {},
+  "params": {
+    "title": "",
+    "screenPrint": ""
+  },
+  "propConfig": {
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.screenPrint": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "justify": "center",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/placeholder",
+            "fontSize": "24px",
+            "fontWeight": "bold"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.title"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "msg"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/placeholder"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "\"Not built yet. Content reference: 1615/SCREEN PRINTS/\" + {view.params.screenPrint} + \".bmp\""
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "custom": {},
+  "params": {
+    "compact": false,
+    "label": "",
+    "tag": "",
+    "writeTag": "",
+    "units": "",
+    "kind": "value",
+    "format": "#,##0.0",
+    "stacked": false,
+    "map": {},
+    "leds": [],
+    "buttons": [],
+    "labelWidth": ""
+  },
+  "propConfig": {
+    "params.compact": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.writeTag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.units": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.kind": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.format": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.stacked": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.map": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.leds": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.buttons": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.labelWidth": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 240,
+      "height": 42
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "style": {
+        "paddingLeft": "4px",
+        "paddingRight": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.flex-repeater",
+        "meta": {
+          "name": "buttons"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "useDefaultViewWidth": false,
+          "useDefaultViewHeight": false,
+          "path": "Components/Common/Command Button",
+          "direction": "row",
+          "justify": "center",
+          "elementPosition": {
+            "grow": 1,
+            "shrink": 1,
+            "basis": "0"
+          },
+          "instances": []
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.buttons"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "#D32F2F",
+      "color": "#FFFFFF",
+      "borderColor": "#8E0000",
+      "fontFamily": "Arial",
+      "fontSize": "13px",
+      "fontWeight": "bold",
+      "borderRadius": "3px",
+      "margin": "3px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "#B71C1C"
+      }
+    },
+    {
+      "pseudo": "disabled",
+      "style": {
+        "opacity": 0.45,
+        "cursor": "not-allowed"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3380 @@
+{
+  "custom": {
+    "names": [],
+    "newName": ""
+  },
+  "params": {},
+  "propConfig": {
+    "custom.names": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[cal1615]HMI/recipes"
+        }
+      },
+      "transforms": [
+        {
+          "type": "script",
+          "code": "\ttry:\n\t\treturn sorted(system.util.jsonDecode(value).keys()) if value else []\n\texcept:\n\t\treturn []"
+        }
+      ]
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "toolbar"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "wrap": "wrap",
+          "style": {
+            "classes": "cal1615/card",
+            "gap": "8px",
+            "padding": "6px",
+            "margin": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "lbl"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Recipe:",
+              "style": {
+                "fontWeight": "bold",
+                "fontSize": "18px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.dropdown",
+            "meta": {
+              "name": "select"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "220px"
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select recipe"
+              }
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.names}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "script",
+                      "code": "\treturn [{'label': n, 'value': n} for n in (value or [])]"
+                    }
+                  ]
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "session.custom.recipeDraft.name",
+                    "bidirectional": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "load"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Select Recipe",
+              "style": {
+                "classes": "cal1615/btn"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({session.custom.recipeDraft.name}) > 0"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\td = self.session.custom.recipeDraft\n\tvals = cal1615.recipes.get(d.name)\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "fromActive"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Copy Running",
+              "style": {
+                "classes": "cal1615/btn"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "true"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\td = self.session.custom.recipeDraft\n\tvals = cal1615.recipes.readActive()\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "actions"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "wrap": "wrap",
+          "style": {
+            "classes": "cal1615/card",
+            "gap": "8px",
+            "padding": "6px",
+            "margin": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.input.text-field",
+            "meta": {
+              "name": "newName"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "200px"
+            },
+            "props": {
+              "placeholder": "new recipe name"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.custom.newName",
+                    "bidirectional": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "create"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Create Recipe",
+              "style": {
+                "classes": "cal1615/btn"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.custom.canOperate} && len(trim({view.custom.newName})) > 0"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tname = self.view.custom.newName.strip()\n\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(name, cal1615.recipes.fromDraft(d.values))\n\td.name = name\n\tself.view.custom.newName = ''\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "save"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Save Recipe",
+              "style": {
+                "classes": "cal1615/btn"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.custom.canOperate} && len({session.custom.recipeDraft.name}) > 0"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(d.name, cal1615.recipes.fromDraft(d.values))\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "delete"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Delete Recipe",
+              "style": {
+                "classes": "cal1615/btn-stop"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.custom.canOperate} && len({session.custom.recipeDraft.name}) > 0"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.delete(d.name)\n\td.name = ''\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "download"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Download to PLC",
+              "style": {
+                "classes": "cal1615/btn-start"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.custom.canOperate} && len({session.custom.recipeDraft.name}) > 0"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.download(d.name, cal1615.recipes.fromDraft(d.values))\n"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "lineSettings"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "480px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "cal1615/card",
+            "margin": "4px",
+            "paddingBottom": "6px",
+            "gap": "2px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Line Settings",
+              "style": {
+                "classes": "cal1615/card-header"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_line_speed_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Line Speed Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.line_speed_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "FPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_letoff_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Letoff Tension Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.letoff_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_cure_time_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Splice Platen Cure Time Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.cure_time_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Sec",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_platen_temp_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Splice Platen Temperature Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.platen_temp_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "F",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_acc_counter_pressure_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Accumulator Counter Pressure",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.acc_counter_pressure_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PSI",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_acc_fill_pressure_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Accumulator Fill Pressure Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.acc_fill_pressure_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PSI",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_acc_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Accumulator Tension Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.acc_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PSI",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_ts1_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Tension Stand 1 Tension Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.ts1_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_impreg_gap_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Impreg Gap Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.impreg_gap_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "IN",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_impreg_supply_speed_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Impreg Supply Speed Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.impreg_supply_speed_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_slitter_speed_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Slitter Speed Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.slitter_speed_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "%",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_upper_poly_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Upper Poly Tension Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.upper_poly_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_lower_poly_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Lower Poly Tension Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.lower_poly_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_winder_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Winder Tension Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.winder_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_adv_cooling_temp_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Roll Cooling Temperature Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.adv_cooling_temp_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "F",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "cal1615/card",
+            "margin": "4px",
+            "paddingBottom": "6px",
+            "gap": "2px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 1",
+              "style": {
+                "classes": "cal1615/card-header"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_1__exhaust_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 1 Exhaust Fan Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_1__exhaust_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_1__recirc_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 1 Recirc Fan Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_1__recirc_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_1__temp_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 1 Temperature Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_1__temp_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "F",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "cal1615/card",
+            "margin": "4px",
+            "paddingBottom": "6px",
+            "gap": "2px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 2",
+              "style": {
+                "classes": "cal1615/card-header"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_2__exhaust_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 2 Exhaust Fan Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_2__exhaust_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_2__recirc_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 2 Recirc Fan Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_2__recirc_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_2__temp_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 2 Temperature Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_2__temp_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "F",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "cal1615/card",
+            "margin": "4px",
+            "paddingBottom": "6px",
+            "gap": "2px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 3",
+              "style": {
+                "classes": "cal1615/card-header"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_3__exhaust_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 3 Exhaust Fan Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_3__exhaust_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_3__recirc_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 3 Recirc Fan Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_3__recirc_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "RPM",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_zone_3__temp_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Zone 3 Temperature Setpoint",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.zone_3__temp_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "F",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "other"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "cal1615/card",
+            "margin": "4px",
+            "paddingBottom": "6px",
+            "gap": "2px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Other Recipe Values",
+              "style": {
+                "classes": "cal1615/card-header"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_impreg_gap_ds_offset_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Impreg Gap DS Offset",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.impreg_gap_ds_offset_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "IN",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_impreg_gap_os_offset_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Impreg Gap OS Offset",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.impreg_gap_os_offset_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "IN",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_ts1_mode_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "TS1 Mode (0=Tension, 1=Stretch)",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.ts1_mode_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_ts1_stretch_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "TS1 Stretch",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.ts1_stretch_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "%",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_ts2_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "TS2 Tension",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.ts2_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_lower_poly_b_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Lower Poly B Tension",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.lower_poly_b_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_upper_poly_b_tension_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Upper Poly B Tension",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.upper_poly_b_tension_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_winder_mode_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Winder Mode (0=Tension, 1=Torque)",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.winder_mode_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_winder_torque_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Winder Torque",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.winder_torque_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "f_tension_deviation_sp"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "paddingLeft": "6px",
+                "paddingRight": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "l"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Tension Deviation Band",
+                  "style": {
+                    "classes": "cal1615/row-label"
+                  }
+                }
+              },
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "v"
+                },
+                "position": {
+                  "basis": "90px",
+                  "shrink": 0
+                },
+                "props": {
+                  "format": "#,##0.000",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "session.custom.recipeDraft.values.tension_deviation_sp",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "u"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

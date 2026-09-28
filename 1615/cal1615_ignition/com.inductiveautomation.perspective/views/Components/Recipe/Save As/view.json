@@ -1,0 +1,108 @@
+{
+  "custom": {
+    "name": ""
+  },
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 600,
+      "height": 48
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "alignItems": "center",
+      "style": {
+        "classes": "cal1615/card",
+        "gap": "8px",
+        "padding": "6px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "lbl"
+        },
+        "position": {
+          "basis": "200px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Save running recipe as:",
+          "style": {
+            "fontWeight": "bold"
+          }
+        }
+      },
+      {
+        "type": "ia.input.text-field",
+        "meta": {
+          "name": "name"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "200px"
+        },
+        "props": {
+          "placeholder": "recipe name"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.custom.name",
+                "bidirectional": true
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "save"
+        },
+        "position": {
+          "basis": "140px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Save As...",
+          "style": {
+            "classes": "cal1615/btn"
+          }
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "{session.custom.canOperate} && len(trim({view.custom.name})) > 0"
+              }
+            }
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tname = self.view.custom.name.strip()\n\tcal1615.recipes.save(name, cal1615.recipes.readActive())\n\tself.view.custom.name = ''\n"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

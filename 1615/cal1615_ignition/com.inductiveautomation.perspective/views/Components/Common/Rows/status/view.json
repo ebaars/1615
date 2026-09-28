@@ -1,0 +1,265 @@
+{
+  "custom": {
+    "v": null
+  },
+  "params": {
+    "compact": false,
+    "label": "",
+    "tag": "",
+    "writeTag": "",
+    "units": "",
+    "kind": "value",
+    "format": "#,##0.0",
+    "stacked": false,
+    "map": {},
+    "leds": [],
+    "buttons": [],
+    "labelWidth": ""
+  },
+  "propConfig": {
+    "params.compact": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.writeTag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.units": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.kind": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.format": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.stacked": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.map": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.leds": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.buttons": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.labelWidth": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "custom.v": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "bidirectional": false,
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.params.tag}"
+          },
+          "tagPath": "{0}"
+        }
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 240,
+      "height": 26
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "alignItems": "center",
+      "style": {
+        "paddingLeft": "4px",
+        "paddingRight": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "lbl"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 1,
+          "basis": "0"
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/row-label"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.label"
+              }
+            }
+          },
+          "props.style.textAlign": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({view.params.stacked}, \"center\", \"left\")"
+              }
+            }
+          },
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.label}) > 0"
+              }
+            }
+          },
+          "position.basis": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({view.params.stacked}, \"18px\", if(len({view.params.labelWidth}) > 0, {view.params.labelWidth}, \"0\"))"
+              }
+            }
+          },
+          "position.grow": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({view.params.stacked} || len({view.params.labelWidth}) > 0, 0, 1)"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "val"
+        },
+        "position": {
+          "grow": 0,
+          "shrink": 0,
+          "basis": "auto"
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "alignItems": "center"
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "status"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "90px"
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.custom.v"
+                  },
+                  "transforms": [
+                    {
+                      "type": "script",
+                      "code": "\tm = self.view.params.map\n\ttry:\n\t\tk = str(int(value))\n\texcept:\n\t\tk = str(value)\n\ttry:\n\t\te = m[k]\n\texcept:\n\t\te = None\n\tif e is None:\n\t\treturn '---' if value is None else k\n\ttry:\n\t\treturn e['text']\n\texcept:\n\t\treturn str(e)\n"
+                    }
+                  ]
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.custom.v"
+                  },
+                  "transforms": [
+                    {
+                      "type": "script",
+                      "code": "\tm = self.view.params.map\n\ttry:\n\t\tk = str(int(value))\n\texcept:\n\t\tk = str(value)\n\ttry:\n\t\te = m[k]\n\texcept:\n\t\te = None\n\tif e is None:\n\t\treturn '#FFFFFF'\n\ttry:\n\t\treturn e['color']\n\texcept:\n\t\treturn '#FFFFFF'\n"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.basis": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({view.params.stacked}, \"22px\", if({view.params.compact}, \"34px\", if({view.params.kind} = \"value\" || {view.params.kind} = \"entry\", \"auto\", \"55%\")))"
+              }
+            }
+          },
+          "position.grow": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if(!{view.params.stacked} && len({view.params.label}) = 0, 1, 0)"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "propConfig": {
+      "props.direction": {
+        "binding": {
+          "type": "expr",
+          "config": {
+            "expression": "if({view.params.stacked}, \"column\", \"row\")"
+          }
+        }
+      },
+      "props.alignItems": {
+        "binding": {
+          "type": "expr",
+          "config": {
+            "expression": "if({view.params.stacked}, \"stretch\", \"center\")"
+          }
+        }
+      }
+    }
+  }
+}

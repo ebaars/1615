@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Arial",
+      "fontSize": "12px",
+      "color": "var(--neutral-70)",
+      "paddingLeft": "3px"
+    }
+  }
+}

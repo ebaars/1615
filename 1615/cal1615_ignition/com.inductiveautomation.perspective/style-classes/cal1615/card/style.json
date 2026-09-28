@@ -1,0 +1,13 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--neutral-20)",
+      "borderColor": "var(--neutral-50)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderRadius": "4px",
+      "overflow": "hidden",
+      "boxShadow": "0 1px 3px rgba(0,0,0,0.25)"
+    }
+  }
+}

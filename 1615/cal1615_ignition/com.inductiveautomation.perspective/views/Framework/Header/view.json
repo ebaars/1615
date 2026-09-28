@@ -1,0 +1,95 @@
+{
+  "custom": {},
+  "params": {
+    "section": "main"
+  },
+  "propConfig": {
+    "params.section": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 96
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column"
+    },
+    "children": [
+      {
+        "type": "ia.container.breakpt",
+        "meta": {
+          "name": "bar"
+        },
+        "position": {
+          "basis": "56px",
+          "shrink": 0
+        },
+        "props": {
+          "breakpoint": 900
+        },
+        "children": [
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "small"
+            },
+            "position": {},
+            "props": {
+              "path": "Framework/Header Small",
+              "params": {}
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "large"
+            },
+            "position": {
+              "size": "large"
+            },
+            "props": {
+              "path": "Framework/Header Large",
+              "params": {}
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tabs"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Framework/Section Tabs",
+          "params": {
+            "section": "main"
+          }
+        },
+        "propConfig": {
+          "props.params.section": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.section"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "title": "cal1615_ignition",
+  "description": "Park cal1615 prepreg treater HMI (Perspective). Framework from cal2016, content from the RSView screens.",
+  "parent": "",
+  "enabled": true,
+  "inheritable": false
+}

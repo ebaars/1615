@@ -1,0 +1,900 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1512,
+      "height": 920
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "percent",
+      "aspectRatio": "1512:920",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 0.30159,
+          "y": 0.00652,
+          "width": 0.39683,
+          "height": 0.04348
+        },
+        "props": {
+          "text": "Tension Stand 2 & Polys & Windup",
+          "style": {
+            "fontFamily": "Arial",
+            "fontSize": "26px",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        }
+      },
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 0.01323,
+          "y": 0.06522,
+          "width": 0.61839,
+          "height": 0.47283
+        },
+        "props": {
+          "source": "data:image/png;base64,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",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "upper"
+        },
+        "position": {
+          "x": 0.2791,
+          "y": 0.07065,
+          "width": 0.15212,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Upper Poly Unwind",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Diameter A",
+                "tag": "[cal1615]p26_ao_dia_a",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Diameter B",
+                "tag": "[cal1615]p26_ao_dia_b",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/upper_poly_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/upper_poly_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "slitter"
+        },
+        "position": {
+          "x": 0.12235,
+          "y": 0.14891,
+          "width": 0.15212,
+          "height": 0.09348
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Slitter",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Speed",
+                "tag": "[cal1615]p28_ai_slitter_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Speed Setpoint (% of Line)",
+                "tag": "[cal1615]p01_recipe_active/slitter_speed_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/slitter_speed_sp",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "wfoot"
+        },
+        "position": {
+          "x": 0.50595,
+          "y": 0.12935,
+          "width": 0.08466,
+          "height": 0.09348
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Winder Footage",
+            "rows": [
+              {
+                "compact": false,
+                "label": "A",
+                "tag": "[cal1615]p29r13_ai_wa_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "B",
+                "tag": "[cal1615]p29r13_ai_wb_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "turret"
+        },
+        "position": {
+          "x": 0.45238,
+          "y": 0.25,
+          "width": 0.17725,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Turret in Position Proximity Switch",
+            "tag": "[cal1615]turret_in_position",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "x": 0.01455,
+          "y": 0.35652,
+          "width": 0.16071,
+          "height": 0.09348
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Roll Cooling",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p19_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/adv_cooling_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/adv_cooling_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "x": 0.63492,
+          "y": 0.06522,
+          "width": 0.35714,
+          "height": 0.47826
+        },
+        "props": {
+          "title": {
+            "text": "Winder Tension"
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p29r06_ave_wdr_lc"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Winder Tension",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/winder_tension_sp"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Tension Setpoint",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ],
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts2"
+        },
+        "position": {
+          "x": 0.03968,
+          "y": 0.56522,
+          "width": 0.17857,
+          "height": 0.17826
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Tension Stand 2",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Speed",
+                "tag": "[cal1615]p25_ai_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Speed Setpoint",
+                "tag": "[cal1615]p25_ao_selected_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p25r06_ave_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/ts2_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/ts2_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Mode",
+                "tag": "[cal1615]p25_dint_to_hmi_7_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "---",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Jog",
+                    "color": "#FFFF80"
+                  },
+                  "2": {
+                    "text": "Run",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Thread",
+                    "color": "#FFFF80"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lower"
+        },
+        "position": {
+          "x": 0.23148,
+          "y": 0.56522,
+          "width": 0.16534,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Lower Poly Unwind",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Diameter A",
+                "tag": "[cal1615]p27_ao_dia_a",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Diameter B",
+                "tag": "[cal1615]p27_ao_dia_b",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/lower_poly_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/lower_poly_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winder"
+        },
+        "position": {
+          "x": 0.41005,
+          "y": 0.56522,
+          "width": 0.17857,
+          "height": 0.15
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Winder",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p29r06_ave_wdr_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/winder_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/winder_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Diameter",
+                "tag": "[cal1615]p29r17_winder_a_avg_diam_inch",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Active Winder",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "A",
+                    "tag": "[cal1615]p29r15_wdra_active",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  },
+                  {
+                    "text": "B",
+                    "tag": "[cal1615]p29r16_wdrb_active",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "x": 0.72751,
+          "y": 0.56522,
+          "width": 0.17196,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Winder PID",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Kp",
+                "tag": "[cal1615]p29r10_pid_psn/KP",
+                "writeTag": "[cal1615]p02_real_from_hmi/wdr_40_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Ki",
+                "tag": "[cal1615]p29r10_pid_psn/KI",
+                "writeTag": "[cal1615]p02_real_from_hmi/wdr_41_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Kd",
+                "tag": "[cal1615]p29r10_pid_psn/KD",
+                "writeTag": "[cal1615]p02_real_from_hmi/wdr_42_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

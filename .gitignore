@@ -1,3 +1,10 @@
 # Studio 5000 lock files
 *.Sem
 *.Wrk
+
+# Windows thumbnail cache
+Thumbs.db
+
+# cal1615_ignition generator output that is not project source
+1615/cal1615_ignition/tools/shots/
+1615/cal1615_ignition/tools/.deploy/

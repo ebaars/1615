@@ -1,0 +1,1064 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 1",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Exhaust",
+                "tag": "[cal1615]p11_dint_to_hmi_10_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Recirc",
+                "tag": "[cal1615]p11_dint_to_hmi_11_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Heat",
+                "tag": "[cal1615]p11_dint_to_hmi_9_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "None",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Permissive OK / Ready",
+                    "color": "#00E000"
+                  },
+                  "2": {
+                    "text": "Heat Requested",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Not Permissive",
+                    "color": "#FF6060"
+                  },
+                  "7": {
+                    "text": "Burner Not in Auto",
+                    "color": "#FF6060"
+                  },
+                  "8": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p11r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "(none)",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirculation Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to Setpoint",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to Setpoint",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Setpoint",
+                "tag": "[cal1615]p11r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p11_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_1_4_/bit_16",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_1_4_/bit_17",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "232px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 2",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Exhaust",
+                "tag": "[cal1615]p12_dint_to_hmi_10_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Recirc",
+                "tag": "[cal1615]p12_dint_to_hmi_11_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Heat",
+                "tag": "[cal1615]p12_dint_to_hmi_9_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "None",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Permissive OK / Ready",
+                    "color": "#00E000"
+                  },
+                  "2": {
+                    "text": "Heat Requested",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Not Permissive",
+                    "color": "#FF6060"
+                  },
+                  "7": {
+                    "text": "Burner Not in Auto",
+                    "color": "#FF6060"
+                  },
+                  "8": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p12r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "(none)",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirculation Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to Setpoint",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to Setpoint",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Setpoint",
+                "tag": "[cal1615]p12r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_2/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p12_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_2_4_/bit_16",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_2_4_/bit_17",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "232px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 3",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Exhaust",
+                "tag": "[cal1615]p13_dint_to_hmi_10_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Recirc",
+                "tag": "[cal1615]p13_dint_to_hmi_11_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cooling",
+                "tag": "[cal1615]p13_dint_to_hmi_9_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "None",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Permissive OK / Ready",
+                    "color": "#00E000"
+                  },
+                  "2": {
+                    "text": "Cooling Requested",
+                    "color": "#9FD8FF"
+                  },
+                  "4": {
+                    "text": "Not Permissive",
+                    "color": "#FF6060"
+                  },
+                  "8": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p13r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "(none)",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirculation Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Control to Setpoint",
+                    "color": "#00E000"
+                  },
+                  "6": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Setpoint",
+                "tag": "[cal1615]p13r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_3/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p13_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_3_4_/bit_16",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_3_4_/bit_17",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "232px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "oven"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Oven",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Oven",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_10",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Oven",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_11",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Stop All Fans",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_7",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Open Oven",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Active",
+                    "tag": "[cal1615]p01r09_open_oven",
+                    "onColor": "#FFA000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Open Oven On/Off",
+                    "tag": "[cal1615]p02_dint_from_hmi/global_6_/bit_8",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "186px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

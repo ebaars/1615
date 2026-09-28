@@ -1,0 +1,83 @@
+{
+  "custom": {},
+  "params": {
+    "text": "",
+    "page": ""
+  },
+  "propConfig": {
+    "params.text": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.page": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 150,
+      "height": 37
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "style": {
+        "minWidth": "120px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "tab"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/tab"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.text"
+              }
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = {view.params.page} || ({view.params.page} = \"/overview\" && {page.props.path} = \"/\"), \"cal1615/tab-selected\", \"cal1615/tab\")"
+              }
+            }
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tsystem.perspective.navigate(page=self.view.params.page)"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

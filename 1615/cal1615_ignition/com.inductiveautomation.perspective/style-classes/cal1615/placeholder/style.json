@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "Arial",
+      "fontSize": "16px",
+      "color": "var(--neutral-70)",
+      "textAlign": "center"
+    }
+  }
+}

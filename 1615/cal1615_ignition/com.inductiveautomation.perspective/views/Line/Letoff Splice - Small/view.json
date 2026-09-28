@@ -1,0 +1,531 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 1600
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoff"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p20r06_ave_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/letoff_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/letoff_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Active Let-Off",
+                "tag": "[cal1615]p20_di_loa_active",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "B",
+                    "color": "#FFFFFF"
+                  },
+                  "1": {
+                    "text": "A",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "footage"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off Footage",
+            "rows": [
+              {
+                "compact": false,
+                "label": "A",
+                "tag": "[cal1615]p20r13_ai_loa_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "B",
+                "tag": "[cal1615]p20r13_ai_lob_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "86px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "splice"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Splice Press",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p21_ai_splice_platen_temp",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/platen_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/platen_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cure Time Remaining",
+                "tag": "[cal1615]p21r10_remaining_cure_time_sec",
+                "writeTag": "",
+                "units": "Sec",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cure Time Setpoint",
+                "tag": "[cal1615]p01_recipe_active/cure_time_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/cure_time_sp",
+                "units": "Sec",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Sequencer",
+                "tag": "[cal1615]p21r10_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Enable Sequence",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Close Exit Clamp",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Close Inlet Clamp",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Closing Platen",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Cure in Progress",
+                    "color": "#00E000"
+                  },
+                  "7": {
+                    "text": "Cure Done",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Platen Open",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Inlet Clamp Open",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Exit Clamp Open",
+                    "color": "#FFFF80"
+                  },
+                  "11": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Reset",
+                    "tag": "[cal1615]p02_dint_from_hmi/splice_0_/bit_0",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "206px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off PID",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Kp",
+                "tag": "[cal1615]p20r10_pid_tens/KP",
+                "writeTag": "[cal1615]p02_real_from_hmi/letoff_40_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Ki",
+                "tag": "[cal1615]p20r10_pid_tens/KI",
+                "writeTag": "[cal1615]p02_real_from_hmi/letoff_41_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Kd",
+                "tag": "[cal1615]p20r10_pid_tens/KD",
+                "writeTag": "[cal1615]p02_real_from_hmi/letoff_42_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "112px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "status"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Status",
+            "rows": [
+              {
+                "compact": true,
+                "label": "Turret in Position",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p20_di_turret_pos",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Platen Closed",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p21_di_platen_not_closed",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": true
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "86px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

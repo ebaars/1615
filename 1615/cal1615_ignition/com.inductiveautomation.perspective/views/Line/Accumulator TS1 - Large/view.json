@@ -1,0 +1,911 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1512,
+      "height": 920
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "percent",
+      "aspectRatio": "1512:920",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 0.30159,
+          "y": 0.00652,
+          "width": 0.39683,
+          "height": 0.04348
+        },
+        "props": {
+          "text": "Accumulator & Tension Stand 1",
+          "style": {
+            "fontFamily": "Arial",
+            "fontSize": "26px",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        }
+      },
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 0.01323,
+          "y": 0.06522,
+          "width": 0.61508,
+          "height": 0.65761
+        },
+        "props": {
+          "source": "data:image/png;base64,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",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "acc"
+        },
+        "position": {
+          "x": 0.32407,
+          "y": 0.07935,
+          "width": 0.21825,
+          "height": 0.28043
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Entry Accumulator",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Position",
+                "tag": "[cal1615]p20r13_ai_acc_pct",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Time Until Empty",
+                "tag": "[cal1615]p20_acc_fill_time_sec",
+                "writeTag": "",
+                "units": "Sec",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/acc_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/acc_tension_sp",
+                "units": "PSI",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Fill Pressure Setpoint",
+                "tag": "[cal1615]p01_recipe_active/acc_fill_pressure_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/acc_fill_pressure_sp",
+                "units": "PSI",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Counter Pressure Setpoint",
+                "tag": "[cal1615]p01_recipe_active/acc_counter_pressure_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/acc_counter_pressure_sp",
+                "units": "PSI",
+                "kind": "entry",
+                "format": "#,##0.00",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Sequencer",
+                "tag": "[cal1615]p20r13_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Control to Low",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Fill Request",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Ramp Tension Prs",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Fill to Full",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Control to Top",
+                    "color": "#00E000"
+                  },
+                  "6": {
+                    "text": "Payout Request",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Payout to Empty",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Lower Limit",
+                    "color": "#FFB060"
+                  },
+                  "9": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "10": {
+                    "text": "Position Fill Req",
+                    "color": "#FFFF80"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Fill Mode",
+                "tag": "[cal1615]p20r09_accumulator_auto",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  },
+                  "1": {
+                    "text": "Auto",
+                    "color": "#00E000"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Reset",
+                    "tag": "[cal1615]p02_dint_from_hmi/letoff_0_/bit_9",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Toggle Mode",
+                    "tag": "[cal1615]p02_dint_from_hmi/letoff_0_/bit_8",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "fullLS"
+        },
+        "position": {
+          "x": 0.05159,
+          "y": 0.18804,
+          "width": 0.16138,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Accumulator Full Limit Switch",
+            "tag": "[cal1615]p20_di_acc_full",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "emptyLS"
+        },
+        "position": {
+          "x": 0.05159,
+          "y": 0.58696,
+          "width": 0.16138,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Accumulator Empty Limit Switch",
+            "tag": "[cal1615]p20_di_acc_empty",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "nipL"
+        },
+        "position": {
+          "x": 0.09127,
+          "y": 0.47609,
+          "width": 0.06878,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tag": "[cal1615]p20_do_close_nip",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "nipR"
+        },
+        "position": {
+          "x": 0.35847,
+          "y": 0.47609,
+          "width": 0.06878,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tag": "[cal1615]p22_do_close_nip_roll",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tankUp"
+        },
+        "position": {
+          "x": 0.50661,
+          "y": 0.63913,
+          "width": 0.06614,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Tank Up",
+            "tag": "[cal1615]p23_di_impreg_tank_up",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "x": 0.63492,
+          "y": 0.06522,
+          "width": 0.35714,
+          "height": 0.47826
+        },
+        "props": {
+          "title": {
+            "text": "Tension Stand 1 Tension"
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p22r06_ave_lc"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "TS1 Tension",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/ts1_tension_sp"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Tension Setpoint",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ],
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts1"
+        },
+        "position": {
+          "x": 0.25132,
+          "y": 0.73913,
+          "width": 0.17857,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Tension Stand 1",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p22r06_ave_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/ts1_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/ts1_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Mode",
+                "tag": "[cal1615]p22_dint_to_hmi_7_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "---",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Jog",
+                    "color": "#FFFF80"
+                  },
+                  "2": {
+                    "text": "Run",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Thread",
+                    "color": "#FFFF80"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "impreg"
+        },
+        "position": {
+          "x": 0.44312,
+          "y": 0.73913,
+          "width": 0.18519,
+          "height": 0.20652
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Impregnation",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Speed",
+                "tag": "[cal1615]p23_ai_metering_roll_speed_fpm",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Speed Setpoint",
+                "tag": "[cal1615]p23_ao_selected_speed",
+                "writeTag": "",
+                "units": "FPM",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Gap Setpoint",
+                "tag": "[cal1615]p01_recipe_active/impreg_gap_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/impreg_gap_sp",
+                "units": "IN",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Gap Actual (DS)",
+                "tag": "[cal1615]p23_ai_ds_masked_gap",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tank Level",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Low",
+                    "tag": "[cal1615]p23_di_tank_level_low",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  },
+                  {
+                    "text": "High",
+                    "tag": "[cal1615]p23_di_tank_level_high",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Trough Level",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Low",
+                    "tag": "[cal1615]p23_di_though_level_low",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "x": 0.72751,
+          "y": 0.56522,
+          "width": 0.17196,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Tension Stand 1 PID",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Kp",
+                "tag": "[cal1615]p22r10_pid_psn/KP",
+                "writeTag": "[cal1615]p02_real_from_hmi/ts1_40_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Ki",
+                "tag": "[cal1615]p22r10_pid_psn/KI",
+                "writeTag": "[cal1615]p02_real_from_hmi/ts1_41_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Kd",
+                "tag": "[cal1615]p22r10_pid_psn/KD",
+                "writeTag": "[cal1615]p02_real_from_hmi/ts1_42_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

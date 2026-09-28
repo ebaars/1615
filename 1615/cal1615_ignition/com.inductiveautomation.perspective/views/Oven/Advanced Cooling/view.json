@@ -1,0 +1,589 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Roll Cooling",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p19_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/adv_cooling_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/adv_cooling_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Pressure",
+                "tag": "[cal1615]p19_ai_prs",
+                "writeTag": "",
+                "units": "\"wc",
+                "kind": "value",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cooling",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Requested",
+                    "tag": "[cal1615]p19_dint_to_hmi_0_/bit_16",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Faults",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "OK",
+                    "tag": "[cal1615]p19r02_fault_exists",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": true
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_3_4_/bit_16",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_3_4_/bit_17",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "206px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pump"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Pump",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Pump",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Running",
+                    "tag": "[cal1615]p19_do_pump",
+                    "onColor": "#00E000",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Pump",
+                    "tag": "[cal1615]p02_dint_from_hmi/adv_cooling_4_/bit_0",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Pump",
+                    "tag": "[cal1615]p02_dint_from_hmi/adv_cooling_4_/bit_1",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "102px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "valve"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Control Valve",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Output",
+                "tag": "[cal1615]p19_ao_cv",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Manual Setpoint",
+                "tag": "[cal1615]p19r30_cv_man_sp",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_68_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Mode",
+                "tag": "[cal1615]p19_dint_to_hmi_0_/bit_19",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  },
+                  "1": {
+                    "text": "Auto",
+                    "color": "#00E000"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Auto",
+                    "tag": "[cal1615]p02_dint_from_hmi/adv_cooling_4_/bit_17",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Manual",
+                    "tag": "[cal1615]p02_dint_from_hmi/adv_cooling_4_/bit_18",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "154px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "100%"
+        },
+        "props": {
+          "title": {
+            "text": "Roll Cooling"
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p19_ai_tc01"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Roll Cooling Temp",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/adv_cooling_temp_sp"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Setpoint",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ],
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          },
+          "style": {
+            "height": "420px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "chart"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "400px"
+        },
+        "props": {
+          "title": {
+            "text": "Trend"
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p01r12_master_ramped_speed"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Line Speed",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p20r06_ave_lc"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Let-Off Tension",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p22r06_ave_lc"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "TS1 Tension",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p25_ai_speed"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "TS2 Speed",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p29r06_ave_wdr_lc"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Winder Tension",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ],
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

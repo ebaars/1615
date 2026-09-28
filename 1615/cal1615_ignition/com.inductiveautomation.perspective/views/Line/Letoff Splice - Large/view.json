@@ -1,0 +1,685 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1512,
+      "height": 920
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "percent",
+      "aspectRatio": "1512:920",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 0.30159,
+          "y": 0.00652,
+          "width": 0.39683,
+          "height": 0.04348
+        },
+        "props": {
+          "text": "Let-Off & Splice Press",
+          "style": {
+            "fontFamily": "Arial",
+            "fontSize": "26px",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        }
+      },
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 0.01323,
+          "y": 0.08696,
+          "width": 0.60185,
+          "height": 0.44022
+        },
+        "props": {
+          "source": "data:image/png;base64,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",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "footage"
+        },
+        "position": {
+          "x": 0.11574,
+          "y": 0.10326,
+          "width": 0.08466,
+          "height": 0.09348
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off Footage",
+            "rows": [
+              {
+                "compact": false,
+                "label": "A",
+                "tag": "[cal1615]p20r13_ai_loa_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "B",
+                "tag": "[cal1615]p20r13_ai_lob_footage_ft",
+                "writeTag": "",
+                "units": "FT",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "18px",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "turret"
+        },
+        "position": {
+          "x": 0.04894,
+          "y": 0.21413,
+          "width": 0.17725,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Turret in Position Proximity Switch",
+            "tag": "[cal1615]p20_di_turret_pos",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "platen"
+        },
+        "position": {
+          "x": 0.3082,
+          "y": 0.16848,
+          "width": 0.15873,
+          "height": 0.03478
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Platen Closed Limit Switch",
+            "tag": "[cal1615]p21_di_platen_not_closed",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "x": 0.63492,
+          "y": 0.06522,
+          "width": 0.35714,
+          "height": 0.47826
+        },
+        "props": {
+          "title": {
+            "text": "Let-Off Tension"
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p20r06_ave_lc"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Let-Off Tension",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:mySQL:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/letoff_tension_sp"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Tension Setpoint",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ],
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoff"
+        },
+        "position": {
+          "x": 0.06614,
+          "y": 0.56522,
+          "width": 0.17857,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Tension",
+                "tag": "[cal1615]p20r06_ave_lc",
+                "writeTag": "",
+                "units": "LBS",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Tension Setpoint",
+                "tag": "[cal1615]p01_recipe_active/letoff_tension_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/letoff_tension_sp",
+                "units": "LBS",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Active Let-Off",
+                "tag": "[cal1615]p20_di_loa_active",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "B",
+                    "color": "#FFFFFF"
+                  },
+                  "1": {
+                    "text": "A",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "splice"
+        },
+        "position": {
+          "x": 0.26455,
+          "y": 0.56522,
+          "width": 0.21164,
+          "height": 0.22391
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Splice Press",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Temperature",
+                "tag": "[cal1615]p21_ai_splice_platen_temp",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature Setpoint",
+                "tag": "[cal1615]p01_recipe_active/platen_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/platen_temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cure Time Remaining",
+                "tag": "[cal1615]p21r10_remaining_cure_time_sec",
+                "writeTag": "",
+                "units": "Sec",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Cure Time Setpoint",
+                "tag": "[cal1615]p01_recipe_active/cure_time_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/cure_time_sp",
+                "units": "Sec",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Sequencer",
+                "tag": "[cal1615]p21r10_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "2": {
+                    "text": "Enable Sequence",
+                    "color": "#FFFF80"
+                  },
+                  "3": {
+                    "text": "Close Exit Clamp",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Close Inlet Clamp",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Closing Platen",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Cure in Progress",
+                    "color": "#00E000"
+                  },
+                  "7": {
+                    "text": "Cure Done",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Platen Open",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Inlet Clamp Open",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Exit Clamp Open",
+                    "color": "#FFFF80"
+                  },
+                  "11": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Reset",
+                    "tag": "[cal1615]p02_dint_from_hmi/splice_0_/bit_0",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "x": 0.72751,
+          "y": 0.56522,
+          "width": 0.17196,
+          "height": 0.12174
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Let-Off PID",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Kp",
+                "tag": "[cal1615]p20r10_pid_tens/KP",
+                "writeTag": "[cal1615]p02_real_from_hmi/letoff_40_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Ki",
+                "tag": "[cal1615]p20r10_pid_tens/KI",
+                "writeTag": "[cal1615]p02_real_from_hmi/letoff_41_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Kd",
+                "tag": "[cal1615]p20r10_pid_tens/KD",
+                "writeTag": "[cal1615]p02_real_from_hmi/letoff_42_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

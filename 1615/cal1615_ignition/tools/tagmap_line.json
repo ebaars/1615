@@ -1,0 +1,647 @@
+{
+ "letoff.pid_kp": {
+  "tag": "p20r10_pid_tens.KP",
+  "write": "p02_real_from_hmi.letoff[40]",
+  "type": "REAL",
+  "units": "",
+  "label": "Let-Off PID Kp",
+  "note": "P20 R10: MOV(p02_real_from_hmi.letoff[40],p20r10_pid_tens.KP) every scan; overridden by p20_param_high_kp while accumulator seq p20r13_state.8. Operator entry: read p02_real_from_hmi.letoff[40]."
+ },
+ "letoff.pid_ki": {
+  "tag": "p20r10_pid_tens.KI",
+  "write": "p02_real_from_hmi.letoff[41]",
+  "type": "REAL",
+  "units": "",
+  "label": "Let-Off PID Ki",
+  "note": "MOV(letoff[41]->KI) every scan; overridden by p20_param_high_ki in p20r13_state.8."
+ },
+ "letoff.pid_kd": {
+  "tag": "p20r10_pid_tens.KD",
+  "write": "p02_real_from_hmi.letoff[42]",
+  "type": "REAL",
+  "units": "",
+  "label": "Let-Off PID Kd",
+  "note": "MOV(letoff[42]->KD) every scan. This is the tension (speed-trim) PID; p20r10_pid_psn (accumulator position PID) gains are not HMI-driven."
+ },
+ "letoff.pid_upd": {
+  "tag": "p20r10_pid_tens.UPD",
+  "write": "p02_real_from_hmi.letoff[43]",
+  "type": "REAL",
+  "units": "s",
+  "label": "Let-Off PID Update Time",
+  "note": "MOV(letoff[43]->UPD) every scan; overridden by p20_param_high_upd in state 8. Must stay non-zero or the PID faults."
+ },
+ "splice.pb_reset": {
+  "tag": "p02_dint_from_hmi.splice[0].0",
+  "type": "BOOL",
+  "units": "",
+  "label": "Splice Sequencer Reset",
+  "note": "P21 R10: XIC(splice[0].0) -> MOV(0,p21r10_state) OTL(p21r10_state.1). Not unlatched by logic: use a momentary button."
+ },
+ "acc.tension_sp": {
+  "tag": "p01_recipe_active.acc_tension_sp",
+  "write": "p02_recipe_from_hmi.acc_tension_sp",
+  "type": "REAL",
+  "units": "psi",
+  "label": "Accumulator Tension",
+  "note": "Recipe. P20: CPT(p20_acc_tens_prs, 38+acc_tension_sp*0.318)."
+ },
+ "acc.fill_prs_sp": {
+  "tag": "p01_recipe_active.acc_fill_pressure_sp",
+  "write": "p02_recipe_from_hmi.acc_fill_pressure_sp",
+  "type": "REAL",
+  "units": "psi",
+  "label": "Accumulator Fill Pressure",
+  "note": "Recipe -> p20_param_acc_high_prs (x1) every scan."
+ },
+ "acc.counter_prs_sp": {
+  "tag": "p01_recipe_active.acc_counter_pressure_sp",
+  "write": "p02_recipe_from_hmi.acc_counter_pressure_sp",
+  "type": "REAL",
+  "units": "psi",
+  "label": "Accumulator Counter Pressure",
+  "note": "Recipe -> p20_param_acc_ctr_prs (x1) every scan."
+ },
+ "acc.pb_seq_reset": {
+  "tag": "p02_dint_from_hmi.letoff[0].9",
+  "type": "BOOL",
+  "units": "",
+  "label": "Accumulator Sequencer Reset",
+  "note": "P20 R13 fill sequence: XIC(letoff[0].9) -> MOV(0,p20r13_state) OTL(p20r13_state.1) (restarts the fill sequence). Not unlatched by logic: momentary."
+ },
+ "ts1.pid_kp": {
+  "tag": "p22r10_pid_psn.KP",
+  "write": "p02_real_from_hmi.ts1[40]",
+  "type": "REAL",
+  "units": "",
+  "label": "TS1 PID Kp",
+  "note": "P22 R10: MOV(p02_real_from_hmi.ts1[40],KP) every scan."
+ },
+ "ts1.pid_ki": {
+  "tag": "p22r10_pid_psn.KI",
+  "write": "p02_real_from_hmi.ts1[41]",
+  "type": "REAL",
+  "units": "",
+  "label": "TS1 PID Ki",
+  "note": "MOV(ts1[41],KI) every scan."
+ },
+ "ts1.pid_kd": {
+  "tag": "p22r10_pid_psn.KD",
+  "write": "p02_real_from_hmi.ts1[42]",
+  "type": "REAL",
+  "units": "",
+  "label": "TS1 PID Kd",
+  "note": "MOV(ts1[42],KD) every scan."
+ },
+ "impreg.gap_sp": {
+  "tag": "p01_recipe_active.impreg_gap_sp",
+  "write": "p02_recipe_from_hmi.impreg_gap_sp",
+  "type": "REAL",
+  "units": "in",
+  "label": "Impreg Gap",
+  "note": "Recipe. OS target = gap_sp+impreg_gap_os_offset_sp (p23r11_impreg_gap_os); DS = gap_sp+ds_offset (p23r12_impreg_gap_ds). Typical ~0.008."
+ },
+ "impreg.gap_actual": {
+  "tag": "p23_ai_ds_masked_gap",
+  "type": "REAL",
+  "units": "in",
+  "label": "Impreg Gap Actual (DS)",
+  "tag_os": "p23_ai_os_masked_gap",
+  "note": "Servo DS actual position truncated to 4 decimals. OS side: p23_ai_os_masked_gap. Offset-corrected positions also at p02_real_to_hmi.impreg[60] (DS) and [61] (OS)."
+ },
+ "ts1.tension_sp_note": {
+  "tag": "p01_recipe_active.ts1_tension_sp",
+  "write": "p02_recipe_from_hmi.ts1_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "TS1 Tension SP",
+  "note": "TS1 SP is recipe ts1_tension_sp -> p22r10_pid_psn.SP every scan (no separate param). Also drives the impreg deadband and the +/- tension_deviation_sp window. Mode from ts1_mode_sp (1=stretch)."
+ },
+ "slitter.speed_sp": {
+  "tag": "p01_recipe_active.slitter_speed_sp",
+  "write": "p02_recipe_from_hmi.slitter_speed_sp",
+  "type": "REAL",
+  "units": "%",
+  "label": "Slitter Speed Trim",
+  "note": "Recipe: slitter speed = master_ramped + master_ramped/100*slitter_speed_sp (percent over line speed) while line running."
+ },
+ "upper_poly.tension_sp": {
+  "tag": "p01_recipe_active.upper_poly_tension_sp",
+  "write": "p02_recipe_from_hmi.upper_poly_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Upper Poly A Tension",
+  "note": "Recipe -> p26r10_ula_selected_tension when p26r03_upper_A_tension_on."
+ },
+ "upper_poly.tension_sp_b": {
+  "tag": "p01_recipe_active.upper_poly_b_tension_sp",
+  "write": "p02_recipe_from_hmi.upper_poly_b_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Upper Poly B Tension",
+  "note": "Recipe -> p26r10_ulb_selected_tension when p26r03_upper_B_tension_on."
+ },
+ "lower_poly.tension_sp": {
+  "tag": "p01_recipe_active.lower_poly_tension_sp",
+  "write": "p02_recipe_from_hmi.lower_poly_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Lower Poly A Tension",
+  "note": "Recipe -> p27r10_lla_selected_tension when p27r03_lower_A_tension_on."
+ },
+ "lower_poly.tension_sp_b": {
+  "tag": "p01_recipe_active.lower_poly_b_tension_sp",
+  "write": "p02_recipe_from_hmi.lower_poly_b_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Lower Poly B Tension",
+  "note": "Recipe -> p27r10_llb_selected_tension when p27r03_lower_B_tension_on."
+ },
+ "roll_cooling.temp_sp": {
+  "tag": "p01_recipe_active.adv_cooling_temp_sp",
+  "write": "p02_recipe_from_hmi.adv_cooling_temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "label": "Roll Cooling Temp",
+  "note": "Recipe -> p19r30_pid_temp_sp (DINT, so rounded) every scan."
+ },
+ "winder.diameter": {
+  "tag": "p29r17_winder_a_avg_diam_inch",
+  "type": "REAL",
+  "units": "in",
+  "label": "Winder A Diameter",
+  "tag_b": "p29r18_winder_b_avg_diam_inch",
+  "note": "Calculated (line speed / winder RPM) average diameter; also p02_real_to_hmi.wdr[3]. Winder B: p29r18_winder_b_avg_diam_inch (wdr[4]). p29_ai_wdr_dia_in is forced to 0 (sensor removed, rev a39): do not use."
+ },
+ "winder.pid_kp": {
+  "tag": "p29r10_pid_psn.KP",
+  "write": "p02_real_from_hmi.wdr[40]",
+  "type": "REAL",
+  "units": "",
+  "label": "Winder PID Kp",
+  "tag_b": "p29r11_pid_psn.KP",
+  "note": "P29: MOV(p02_real_from_hmi.wdr[40]) into BOTH p29r10_pid_psn.KP (A) and p29r11_pid_psn.KP (B) every scan. It runs after the index-gain rung (p21r10/11_index_kp while p29_di_wdr_index_fwd), so the index gains are effectively overwritten before the PID executes."
+ },
+ "winder.pid_ki": {
+  "tag": "p29r10_pid_psn.KI",
+  "write": "p02_real_from_hmi.wdr[41]",
+  "type": "REAL",
+  "units": "",
+  "label": "Winder PID Ki",
+  "tag_b": "p29r11_pid_psn.KI",
+  "note": "wdr[41] -> p29r10_pid_psn.KI and p29r11_pid_psn.KI every scan."
+ },
+ "winder.pid_kd": {
+  "tag": "p29r10_pid_psn.KD",
+  "write": "p02_real_from_hmi.wdr[42]",
+  "type": "REAL",
+  "units": "",
+  "label": "Winder PID Kd",
+  "tag_b": "p29r11_pid_psn.KD",
+  "note": "wdr[42] -> p29r10_pid_psn.KD and p29r11_pid_psn.KD every scan. Torque PIDs p29r10/11_pid_tq gains are not HMI-driven."
+ },
+ "ts2.tension": {
+  "tag": "p25r06_ave_lc",
+  "type": "REAL",
+  "units": "lb",
+  "label": "TS2 Tension",
+  "note": "20-sample average of p25_ai_ts2_lc; also p02_real_to_hmi.ts2[0]."
+ },
+ "ts2.tension_sp": {
+  "tag": "p01_recipe_active.ts2_tension_sp",
+  "write": "p02_recipe_from_hmi.ts2_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "TS2 Tension SP",
+  "note": "Recipe -> p25r10_pid_psn.SP every scan."
+ },
+ "ts2.pid_kp": {
+  "tag": "p25r10_pid_psn.KP",
+  "write": "p02_real_from_hmi.ts2[40]",
+  "type": "REAL",
+  "units": "",
+  "label": "TS2 PID Kp",
+  "note": "Extra: MOV(ts2[40]) every scan."
+ },
+ "ts2.pid_ki": {
+  "tag": "p25r10_pid_psn.KI",
+  "write": "p02_real_from_hmi.ts2[41]",
+  "type": "REAL",
+  "units": "",
+  "label": "TS2 PID Ki",
+  "note": "Extra: MOV(ts2[41]) every scan."
+ },
+ "ts2.pid_kd": {
+  "tag": "p25r10_pid_psn.KD",
+  "write": "p02_real_from_hmi.ts2[42]",
+  "type": "REAL",
+  "units": "",
+  "label": "TS2 PID Kd",
+  "note": "Extra: MOV(ts2[42]) every scan."
+ },
+ "rcp.name": {
+  "tag": "p01_recipe_active.name",
+  "write": "p02_recipe_from_hmi.name",
+  "type": "STRING",
+  "units": "",
+  "label": "Recipe Name",
+  "used": false,
+  "note": "Recipe file name (e.g. 20210820_rcp.csv); not referenced in logic. Logix STRING (.LEN/.DATA[82])."
+ },
+ "rcp.comments": {
+  "tag": "p01_recipe_active.comments",
+  "write": "p02_recipe_from_hmi.comments",
+  "type": "STRING",
+  "units": "",
+  "label": "Comments",
+  "used": false,
+  "note": "Not referenced in logic. Logix STRING (.LEN/.DATA[82])."
+ },
+ "rcp.master_line_speed": {
+  "tag": "p01_recipe_active.master_line_speed",
+  "write": "p02_recipe_from_hmi.master_line_speed",
+  "type": "REAL",
+  "units": "fpm",
+  "label": "Master Line Speed",
+  "used": false,
+  "note": "Not referenced; line_speed_sp is the one used."
+ },
+ "rcp.zone_1.recirc_sp": {
+  "tag": "p01_recipe_active.zone_1.recirc_sp",
+  "write": "p02_recipe_from_hmi.zone_1.recirc_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Zone 1 Recirc Fan Speed",
+  "used": true,
+  "note": "-> p11_ao_recirc_selected_speed when p11r32_request_auto_run."
+ },
+ "rcp.zone_1.exhaust_sp": {
+  "tag": "p01_recipe_active.zone_1.exhaust_sp",
+  "write": "p02_recipe_from_hmi.zone_1.exhaust_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Zone 1 Exhaust Fan Speed",
+  "used": true,
+  "note": "-> p11_ao_exhaust_selected_speed when p11r31_request_auto_run."
+ },
+ "rcp.zone_1.temp_sp": {
+  "tag": "p01_recipe_active.zone_1.temp_sp",
+  "write": "p02_recipe_from_hmi.zone_1.temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "label": "Zone 1 Temp",
+  "used": true,
+  "note": "-> p11r30_pid_temp_sp every scan."
+ },
+ "rcp.zone_2.recirc_sp": {
+  "tag": "p01_recipe_active.zone_2.recirc_sp",
+  "write": "p02_recipe_from_hmi.zone_2.recirc_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Zone 2 Recirc Fan Speed",
+  "used": true,
+  "note": "-> p12_ao_recirc_selected_speed (auto)."
+ },
+ "rcp.zone_2.exhaust_sp": {
+  "tag": "p01_recipe_active.zone_2.exhaust_sp",
+  "write": "p02_recipe_from_hmi.zone_2.exhaust_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Zone 2 Exhaust Fan Speed",
+  "used": true,
+  "note": "-> p12_ao_exhaust_selected_speed (auto)."
+ },
+ "rcp.zone_2.temp_sp": {
+  "tag": "p01_recipe_active.zone_2.temp_sp",
+  "write": "p02_recipe_from_hmi.zone_2.temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "label": "Zone 2 Temp",
+  "used": true,
+  "note": "-> p12r30_pid_temp_sp."
+ },
+ "rcp.zone_3.recirc_sp": {
+  "tag": "p01_recipe_active.zone_3.recirc_sp",
+  "write": "p02_recipe_from_hmi.zone_3.recirc_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Zone 3 Recirc Fan Speed",
+  "used": true,
+  "note": "-> p13_ao_recirc_selected_speed (auto)."
+ },
+ "rcp.zone_3.exhaust_sp": {
+  "tag": "p01_recipe_active.zone_3.exhaust_sp",
+  "write": "p02_recipe_from_hmi.zone_3.exhaust_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Zone 3 Exhaust Fan Speed",
+  "used": true,
+  "note": "-> p13_ao_exhaust_selected_speed (auto)."
+ },
+ "rcp.zone_3.temp_sp": {
+  "tag": "p01_recipe_active.zone_3.temp_sp",
+  "write": "p02_recipe_from_hmi.zone_3.temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "label": "Zone 3 Temp",
+  "used": true,
+  "note": "-> p13r30_pid_temp_sp."
+ },
+ "rcp.line_speed_sp": {
+  "tag": "p01_recipe_active.line_speed_sp",
+  "write": "p02_recipe_from_hmi.line_speed_sp",
+  "type": "REAL",
+  "units": "fpm",
+  "label": "Line Speed",
+  "used": true,
+  "note": "-> p01r12_selected_line_speed in run mode; also turret speed select (<=10 / >10) in P29."
+ },
+ "rcp.letoff_tension_sp": {
+  "tag": "p01_recipe_active.letoff_tension_sp",
+  "write": "p02_recipe_from_hmi.letoff_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Let-Off Tension",
+  "used": true,
+  "note": "-> p20r10_pid_tens.SP."
+ },
+ "rcp.acc_tension_sp": {
+  "tag": "p01_recipe_active.acc_tension_sp",
+  "write": "p02_recipe_from_hmi.acc_tension_sp",
+  "type": "REAL",
+  "units": "psi",
+  "label": "Accumulator Tension",
+  "used": true,
+  "note": "p20_acc_tens_prs = 38 + sp*0.318."
+ },
+ "rcp.acc_fill_pressure_sp": {
+  "tag": "p01_recipe_active.acc_fill_pressure_sp",
+  "write": "p02_recipe_from_hmi.acc_fill_pressure_sp",
+  "type": "REAL",
+  "units": "psi",
+  "label": "Accumulator Fill Pressure",
+  "used": true,
+  "note": "-> p20_param_acc_high_prs."
+ },
+ "rcp.acc_counter_pressure_sp": {
+  "tag": "p01_recipe_active.acc_counter_pressure_sp",
+  "write": "p02_recipe_from_hmi.acc_counter_pressure_sp",
+  "type": "REAL",
+  "units": "psi",
+  "label": "Accumulator Counter Pressure",
+  "used": true,
+  "note": "-> p20_param_acc_ctr_prs."
+ },
+ "rcp.cure_time_sp": {
+  "tag": "p01_recipe_active.cure_time_sp",
+  "write": "p02_recipe_from_hmi.cure_time_sp",
+  "type": "REAL",
+  "units": "s",
+  "label": "Splice Cure Time",
+  "used": true,
+  "note": "x1000 -> p21r10_timer_press_cure.PRE."
+ },
+ "rcp.platen_temp_sp": {
+  "tag": "p01_recipe_active.platen_temp_sp",
+  "write": "p02_recipe_from_hmi.platen_temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "label": "Splice Platen Temp",
+  "used": true,
+  "note": "-> p21_pid_splice_press_temp.SP when heat requested."
+ },
+ "rcp.impreg_gap_sp": {
+  "tag": "p01_recipe_active.impreg_gap_sp",
+  "write": "p02_recipe_from_hmi.impreg_gap_sp",
+  "type": "REAL",
+  "units": "in",
+  "label": "Impreg Gap",
+  "used": true,
+  "note": "Base gap for OS/DS servo targets and open position (sp-0.005)."
+ },
+ "rcp.impreg_gap_ds_offset_sp": {
+  "tag": "p01_recipe_active.impreg_gap_ds_offset_sp",
+  "write": "p02_recipe_from_hmi.impreg_gap_ds_offset_sp",
+  "type": "REAL",
+  "units": "in",
+  "label": "Impreg Gap DS Offset",
+  "used": true,
+  "note": "Added to gap_sp -> p23r12_impreg_gap_ds."
+ },
+ "rcp.impreg_gap_os_offset_sp": {
+  "tag": "p01_recipe_active.impreg_gap_os_offset_sp",
+  "write": "p02_recipe_from_hmi.impreg_gap_os_offset_sp",
+  "type": "REAL",
+  "units": "in",
+  "label": "Impreg Gap OS Offset",
+  "used": true,
+  "note": "Added to gap_sp -> p23r11_impreg_gap_os."
+ },
+ "rcp.impreg_supply_speed_sp": {
+  "tag": "p01_recipe_active.impreg_supply_speed_sp",
+  "write": "p02_recipe_from_hmi.impreg_supply_speed_sp",
+  "type": "REAL",
+  "units": "rpm",
+  "label": "Impreg Supply Speed",
+  "used": true,
+  "note": "-> p23_ao_supply_selected_speed when p23r13_request_auto_run."
+ },
+ "rcp.impreg_roll_speed_sp": {
+  "tag": "p01_recipe_active.impreg_roll_speed_sp",
+  "write": "p02_recipe_from_hmi.impreg_roll_speed_sp",
+  "type": "REAL",
+  "units": "fpm",
+  "label": "Impreg Roll Speed",
+  "used": false,
+  "note": "Not referenced in logic."
+ },
+ "rcp.ts1_mode_sp": {
+  "tag": "p01_recipe_active.ts1_mode_sp",
+  "write": "p02_recipe_from_hmi.ts1_mode_sp",
+  "type": "REAL",
+  "units": "",
+  "label": "TS1 Mode (0=Tension, 1=Stretch)",
+  "used": true,
+  "note": "EQU 1 -> OTL p01r09_stretch_mode; EQU 0 -> OTU."
+ },
+ "rcp.ts1_tension_sp": {
+  "tag": "p01_recipe_active.ts1_tension_sp",
+  "write": "p02_recipe_from_hmi.ts1_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "TS1 Tension",
+  "used": true,
+  "note": "-> p22r10_pid_psn.SP; deviation window; impreg deadband."
+ },
+ "rcp.ts1_stretch_sp": {
+  "tag": "p01_recipe_active.ts1_stretch_sp",
+  "write": "p02_recipe_from_hmi.ts1_stretch_sp",
+  "type": "REAL",
+  "units": "%",
+  "label": "TS1 Stretch",
+  "used": true,
+  "note": "Stretch mode: TS1 speed = master + master/100*sp."
+ },
+ "rcp.liner_winder_brake_sp": {
+  "tag": "p01_recipe_active.liner_winder_brake_sp",
+  "write": "p02_recipe_from_hmi.liner_winder_brake_sp",
+  "type": "REAL",
+  "units": "",
+  "label": "Liner Winder Brake",
+  "used": false,
+  "note": "Not referenced in logic."
+ },
+ "rcp.slitter_speed_sp": {
+  "tag": "p01_recipe_active.slitter_speed_sp",
+  "write": "p02_recipe_from_hmi.slitter_speed_sp",
+  "type": "REAL",
+  "units": "%",
+  "label": "Slitter Speed Trim",
+  "used": true,
+  "note": "Slitter speed = master*(1+sp/100) while line running."
+ },
+ "rcp.adv_cooling_temp_sp": {
+  "tag": "p01_recipe_active.adv_cooling_temp_sp",
+  "write": "p02_recipe_from_hmi.adv_cooling_temp_sp",
+  "type": "REAL",
+  "units": "degF",
+  "label": "Roll Cooling Temp",
+  "used": true,
+  "note": "-> p19r30_pid_temp_sp (DINT)."
+ },
+ "rcp.ts2_tension_sp": {
+  "tag": "p01_recipe_active.ts2_tension_sp",
+  "write": "p02_recipe_from_hmi.ts2_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "TS2 Tension",
+  "used": true,
+  "note": "-> p25r10_pid_psn.SP; deviation window."
+ },
+ "rcp.lower_poly_tension_sp": {
+  "tag": "p01_recipe_active.lower_poly_tension_sp",
+  "write": "p02_recipe_from_hmi.lower_poly_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Lower Poly A Tension",
+  "used": true,
+  "note": "-> p27r10_lla_selected_tension."
+ },
+ "rcp.lower_poly_b_tension_sp": {
+  "tag": "p01_recipe_active.lower_poly_b_tension_sp",
+  "write": "p02_recipe_from_hmi.lower_poly_b_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Lower Poly B Tension",
+  "used": true,
+  "note": "-> p27r10_llb_selected_tension."
+ },
+ "rcp.upper_poly_tension_sp": {
+  "tag": "p01_recipe_active.upper_poly_tension_sp",
+  "write": "p02_recipe_from_hmi.upper_poly_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Upper Poly A Tension",
+  "used": true,
+  "note": "-> p26r10_ula_selected_tension."
+ },
+ "rcp.upper_poly_b_tension_sp": {
+  "tag": "p01_recipe_active.upper_poly_b_tension_sp",
+  "write": "p02_recipe_from_hmi.upper_poly_b_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Upper Poly B Tension",
+  "used": true,
+  "note": "-> p26r10_ulb_selected_tension."
+ },
+ "rcp.winder_tension_sp": {
+  "tag": "p01_recipe_active.winder_tension_sp",
+  "write": "p02_recipe_from_hmi.winder_tension_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Winder Tension",
+  "used": true,
+  "note": "Winder A/B PID SPs, torque refs, soak/tension-ok checks, cutover (P29, ~25 refs)."
+ },
+ "rcp.winder_mode_sp": {
+  "tag": "p01_recipe_active.winder_mode_sp",
+  "write": "p02_recipe_from_hmi.winder_mode_sp",
+  "type": "REAL",
+  "units": "",
+  "label": "Winder Mode (0=Tension, 1=Torque)",
+  "used": true,
+  "note": "EQU 0 -> p29r09_tension_mode; EQU 1 -> p29r09_torque_mode."
+ },
+ "rcp.winder_torque_sp": {
+  "tag": "p01_recipe_active.winder_torque_sp",
+  "write": "p02_recipe_from_hmi.winder_torque_sp",
+  "type": "REAL",
+  "units": "",
+  "label": "Winder Torque",
+  "used": true,
+  "note": "p29r02_wa/wb_calc_torque_ref = sp/3*avg diameter."
+ },
+ "rcp.tension_deviation_sp": {
+  "tag": "p01_recipe_active.tension_deviation_sp",
+  "write": "p02_recipe_from_hmi.tension_deviation_sp",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Tension Deviation Band",
+  "used": true,
+  "note": "+/- window for TS1, TS2 and winder tension dev min/max."
+ },
+ "rcp.winder_tension_sp_max": {
+  "tag": "p01_recipe_active.winder_tension_sp_max",
+  "write": "p02_recipe_from_hmi.winder_tension_sp_max",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Winder Tension Max",
+  "used": false,
+  "note": "Not referenced in logic."
+ },
+ "rcp.winder_tension_sp_min": {
+  "tag": "p01_recipe_active.winder_tension_sp_min",
+  "write": "p02_recipe_from_hmi.winder_tension_sp_min",
+  "type": "REAL",
+  "units": "lb",
+  "label": "Winder Tension Min",
+  "used": false,
+  "note": "Not referenced in logic."
+ },
+ "rcp.pb_download": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "label": "Recipe Download",
+  "note": "No trigger bit exists. P02 R04 unconditionally COP(p02_recipe_from_hmi -> p01_recipe_active,1) then COP(p01_recipe_active -> p02_recipe_to_hmi,1) every scan; any write to from_hmi is live next scan. Recipe file load/save was HMI-side (CSV); to load a recipe, write every member to p02_recipe_from_hmi."
+ },
+ "rcp.readback": {
+  "tag": "p02_recipe_to_hmi",
+  "type": "STRING",
+  "units": "",
+  "label": "Recipe Echo (UDT)",
+  "note": "Whole-UDT copy of p01_recipe_active each scan; equivalent read source. An unused alias recipe_tension OF p02_recipe_from_hmi.winder_tension_sp exists in a later program."
+ },
+ "pm.run_time": {
+  "tag": "p01r02_batch_run_time_hrs",
+  "type": "DINT",
+  "units": "h",
+  "label": "Run Time (Batch Hours)",
+  "note": "P01 R02: 60 s timer p01r02_timer_batch runs while p01r13_line_running; minutes p01r02_batch_run_time roll into hrs at 60. Also p02_dint_to_hmi.global[14]. No reset in logic; the only logic write is ADD 1, so the HMI can write 0 to the DINT directly."
+ },
+ "pm.run_time_min": {
+  "tag": "p01r02_batch_run_time",
+  "type": "DINT",
+  "units": "min",
+  "label": "Run Time Minutes",
+  "note": "Minute accumulator, cleared at 60."
+ },
+ "pm.hour_flag": {
+  "tag": "p02_dint_to_hmi.global[6].2",
+  "write": "p02_dint_from_hmi.global[6].3",
+  "type": "BOOL",
+  "units": "",
+  "label": "Hour Elapsed Flag",
+  "note": "p01_dint_to_hmi[6].2 latched at each new hour; acknowledge via p02_dint_from_hmi.global[6].3 (logic unlatches both)."
+ }
+}

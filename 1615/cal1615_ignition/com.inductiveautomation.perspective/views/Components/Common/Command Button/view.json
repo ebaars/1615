@@ -1,0 +1,155 @@
+{
+  "custom": {},
+  "params": {
+    "text": "",
+    "tag": "",
+    "value": 1,
+    "pulse": true,
+    "hold": false,
+    "page": "",
+    "styleClass": "cal1615/btn",
+    "confirm": ""
+  },
+  "propConfig": {
+    "params.text": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tag": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pulse": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.hold": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.page": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.styleClass": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.confirm": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 110,
+      "height": 36
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row"
+    },
+    "children": [
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "btn"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/btn"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.text"
+              }
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.styleClass"
+              }
+            }
+          },
+          "props.enabled": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.page}) > 0 || (len({view.params.tag}) > 0 && {session.custom.canOperate})"
+              }
+            }
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tp = self.view.params\n\tif p.page:\n\t\tsystem.perspective.navigate(page=p.page)\n\t\treturn\n\tif not p.tag or p.hold:\n\t\treturn\n\ttag = p.tag\n\tsystem.tag.writeBlocking([tag], [p.value])\n\tif p.pulse:\n\t\tdef release(tag=tag):\n\t\t\timport time\n\t\t\ttime.sleep(0.5)\n\t\t\tsystem.tag.writeBlocking([tag], [0])\n\t\tsystem.util.invokeAsynchronous(release)\n"
+              }
+            }
+          },
+          "dom": {
+            "onMouseDown": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tp = self.view.params\n\tif p.hold and p.tag and self.view.session.custom.canOperate:\n\t\tsystem.tag.writeBlocking([p.tag], [1])\n"
+              }
+            },
+            "onTouchStart": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tp = self.view.params\n\tif p.hold and p.tag and self.view.session.custom.canOperate:\n\t\tsystem.tag.writeBlocking([p.tag], [1])\n"
+              }
+            },
+            "onMouseUp": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tp = self.view.params\n\tif p.hold and p.tag and self.view.session.custom.canOperate:\n\t\tsystem.tag.writeBlocking([p.tag], [0])\n"
+              }
+            },
+            "onMouseLeave": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tp = self.view.params\n\tif p.hold and p.tag and self.view.session.custom.canOperate:\n\t\tsystem.tag.writeBlocking([p.tag], [0])\n"
+              }
+            },
+            "onTouchEnd": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tp = self.view.params\n\tif p.hold and p.tag and self.view.session.custom.canOperate:\n\t\tsystem.tag.writeBlocking([p.tag], [0])\n"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

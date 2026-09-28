@@ -1,0 +1,32 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {},
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.alarmjournaltable",
+        "meta": {
+          "name": "history"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "400px"
+        },
+        "props": {}
+      }
+    ]
+  }
+}

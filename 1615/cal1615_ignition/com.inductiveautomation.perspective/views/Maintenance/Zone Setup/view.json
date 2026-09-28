@@ -1,0 +1,1358 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 1",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Process Control TC1 Zero Offset",
+                "tag": "[cal1615]p11_param_tc01z",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_40_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC2 Zero Offset",
+                "tag": "[cal1615]p11_param_tc02z",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_41_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC High Limit",
+                "tag": "[cal1615]p11_param_tc01_hl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_52_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Control SP Deviation Warning",
+                "tag": "[cal1615]p11_param_tc01_dev",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_54_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Warning Level",
+                "tag": "[cal1615]p11_param_lfl_hl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_55_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Alarm Level",
+                "tag": "[cal1615]p11_param_lfl_hhl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_56_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Shutdown Temperature",
+                "tag": "[cal1615]p11_param_shutdown_temp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_57_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Low Pressure Warning Level",
+                "tag": "[cal1615]p11_param_zone_pressure",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_58_",
+                "units": "WC",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Fast to Soak Deviation",
+                "tag": "[cal1615]p11_param_fast_to_soak",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_59_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Soak to Fast Deviation",
+                "tag": "[cal1615]p11_param_soak_to_fast",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_60_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 (Fast) Gain Kp",
+                "tag": "[cal1615]p11_param_pid1_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_44_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Integral Ki",
+                "tag": "[cal1615]p11_param_pid1_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_45_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Derivative Kd",
+                "tag": "[cal1615]p11_param_pid1_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_46_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Bias",
+                "tag": "[cal1615]p11_param_pid1_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_47_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 (Soak) Gain Kp",
+                "tag": "[cal1615]p11_param_pid2_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_48_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Integral Ki",
+                "tag": "[cal1615]p11_param_pid2_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_49_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Derivative Kd",
+                "tag": "[cal1615]p11_param_pid2_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_50_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Bias",
+                "tag": "[cal1615]p11_param_pid2_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_51_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "502px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 2",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Process Control TC1 Zero Offset",
+                "tag": "[cal1615]p12_param_tc01z",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_40_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC2 Zero Offset",
+                "tag": "[cal1615]p12_param_tc02z",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_41_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC High Limit",
+                "tag": "[cal1615]p12_param_tc01_hl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_52_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Control SP Deviation Warning",
+                "tag": "[cal1615]p12_param_tc01_dev",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_54_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Warning Level",
+                "tag": "[cal1615]p12_param_lfl_hl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_55_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Alarm Level",
+                "tag": "[cal1615]p12_param_lfl_hhl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_56_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Shutdown Temperature",
+                "tag": "[cal1615]p12_param_shutdown_temp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_57_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Low Pressure Warning Level",
+                "tag": "[cal1615]p12_param_zone_pressure",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_58_",
+                "units": "WC",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Fast to Soak Deviation",
+                "tag": "[cal1615]p12_param_fast_to_soak",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_59_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Soak to Fast Deviation",
+                "tag": "[cal1615]p12_param_soak_to_fast",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_60_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 (Fast) Gain Kp",
+                "tag": "[cal1615]p12_param_pid1_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_44_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Integral Ki",
+                "tag": "[cal1615]p12_param_pid1_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_45_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Derivative Kd",
+                "tag": "[cal1615]p12_param_pid1_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_46_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Bias",
+                "tag": "[cal1615]p12_param_pid1_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_47_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 (Soak) Gain Kp",
+                "tag": "[cal1615]p12_param_pid2_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_48_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Integral Ki",
+                "tag": "[cal1615]p12_param_pid2_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_49_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Derivative Kd",
+                "tag": "[cal1615]p12_param_pid2_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_50_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Bias",
+                "tag": "[cal1615]p12_param_pid2_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_2_51_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "502px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 3",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Process Control TC1 Zero Offset",
+                "tag": "[cal1615]p13_param_tc01z",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_40_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC2 Zero Offset",
+                "tag": "[cal1615]p13_param_tc02z",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_41_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC High Limit",
+                "tag": "[cal1615]p13_param_tc01_hl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_52_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Control SP Deviation Warning",
+                "tag": "[cal1615]p13_param_tc01_dev",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_54_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Warning Level",
+                "tag": "[cal1615]p13_param_lfl_hl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_55_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "LFL Alarm Level",
+                "tag": "[cal1615]p13_param_lfl_hhl",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_56_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Shutdown Temperature",
+                "tag": "[cal1615]p13_param_shutdown_temp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_57_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Low Pressure Warning Level",
+                "tag": "[cal1615]p13_param_zone_pressure",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_58_",
+                "units": "WC",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Fast to Soak Deviation",
+                "tag": "[cal1615]p13_param_fast_to_soak",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_59_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Soak to Fast Deviation",
+                "tag": "[cal1615]p13_param_soak_to_fast",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_60_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 (Fast) Gain Kp",
+                "tag": "[cal1615]p13_param_pid1_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_44_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Integral Ki",
+                "tag": "[cal1615]p13_param_pid1_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_45_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Derivative Kd",
+                "tag": "[cal1615]p13_param_pid1_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_46_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Bias",
+                "tag": "[cal1615]p13_param_pid1_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_47_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 (Soak) Gain Kp",
+                "tag": "[cal1615]p13_param_pid2_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_48_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Integral Ki",
+                "tag": "[cal1615]p13_param_pid2_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_49_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Derivative Kd",
+                "tag": "[cal1615]p13_param_pid2_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_50_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Bias",
+                "tag": "[cal1615]p13_param_pid2_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_3_51_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "502px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Roll Cooling",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Process Control TC1 Zero Offset",
+                "tag": "[cal1615]p19_param_tc01z",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_40_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control TC2 Zero Offset",
+                "tag": "[cal1615]p19_param_tc02z",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_41_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Control SP Deviation Warning",
+                "tag": "[cal1615]p19_param_tc01_dev",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_54_",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 (Fast) Gain Kp",
+                "tag": "[cal1615]p19_param_pid1_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_44_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Integral Ki",
+                "tag": "[cal1615]p19_param_pid1_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_45_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Derivative Kd",
+                "tag": "[cal1615]p19_param_pid1_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_46_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID1 Bias",
+                "tag": "[cal1615]p19_param_pid1_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_47_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 (Soak) Gain Kp",
+                "tag": "[cal1615]p19_param_pid2_kp",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_48_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Integral Ki",
+                "tag": "[cal1615]p19_param_pid2_ki",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_49_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Derivative Kd",
+                "tag": "[cal1615]p19_param_pid2_kd",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_50_",
+                "units": "",
+                "kind": "entry",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "PID2 Bias",
+                "tag": "[cal1615]p19_param_pid2_ff",
+                "writeTag": "[cal1615]p02_real_from_hmi/adv_cooling_51_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "320px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

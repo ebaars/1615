@@ -1,0 +1,858 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 1600
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Zone 1",
+            "rows": [
+              {
+                "compact": true,
+                "label": "Lower Flash Limit High Warning",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p11_dint_to_hmi_2_/bit_4",
+                    "onColor": "#FFFF00",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Lower Flash Limit Alarm",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p11_dint_to_hmi_0_/bit_4",
+                    "onColor": "#FF2020",
+                    "offColor": "#00E000",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Zone Faults OK",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p11_dint_to_hmi_4_/bit_0",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "VFDs Ready",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p11r30_vfds_ok",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Heat",
+                "tag": "[cal1615]p11_dint_to_hmi_9_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "None",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Permissive OK / Ready",
+                    "color": "#00E000"
+                  },
+                  "2": {
+                    "text": "Heat Requested",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Not Permissive",
+                    "color": "#FF6060"
+                  },
+                  "7": {
+                    "text": "Burner Not in Auto",
+                    "color": "#FF6060"
+                  },
+                  "8": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_1_4_/bit_16",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop Heat",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_1_4_/bit_17",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "206px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "temps"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Temperature Data",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Control Temperature",
+                "tag": "[cal1615]p11_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Temperature Setpoint",
+                "tag": "[cal1615]p11r30_pid_temp_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/temp_sp",
+                "units": "F",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control Temp 1",
+                "tag": "[cal1615]p11_ai_tc01",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Process Control Temp 2",
+                "tag": "[cal1615]p11_ai_tc02",
+                "writeTag": "",
+                "units": "F",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "138px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "chamber"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Chamber Data",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Zone Pressure",
+                "tag": "[cal1615]p11_ai_prs",
+                "writeTag": "",
+                "units": "\"wc",
+                "kind": "value",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Lower Flash Limit",
+                "tag": "[cal1615]p11_ai_lfl",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "86px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "burner"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Burner / Fans",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Exhaust Fan",
+                "tag": "[cal1615]p11_dint_to_hmi_10_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Recirc Fan",
+                "tag": "[cal1615]p11_dint_to_hmi_11_",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "1": {
+                    "text": "OK (no fault)",
+                    "color": "#FF6060"
+                  },
+                  "2": {
+                    "text": "Running",
+                    "color": "#00E000"
+                  },
+                  "3": {
+                    "text": "Stopped",
+                    "color": "#D0D0D0"
+                  },
+                  "4": {
+                    "text": "Faulted",
+                    "color": "#FF6060"
+                  },
+                  "5": {
+                    "text": "Default/unknown",
+                    "color": "#FF6060"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Status",
+                "tag": "[cal1615]p11r20_status",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "(none)",
+                    "color": "#D0D0D0"
+                  },
+                  "1": {
+                    "text": "Off",
+                    "color": "#D0D0D0"
+                  },
+                  "2": {
+                    "text": "Idle",
+                    "color": "#FFFFFF"
+                  },
+                  "3": {
+                    "text": "Start Recirculation Fan",
+                    "color": "#FFFF80"
+                  },
+                  "4": {
+                    "text": "Start Exhaust Fan",
+                    "color": "#FFFF80"
+                  },
+                  "5": {
+                    "text": "Wait for Safeties",
+                    "color": "#FFFF80"
+                  },
+                  "6": {
+                    "text": "Safeties Made",
+                    "color": "#FFFF80"
+                  },
+                  "7": {
+                    "text": "Purge",
+                    "color": "#FFFF80"
+                  },
+                  "8": {
+                    "text": "Burner Lit",
+                    "color": "#FFFF80"
+                  },
+                  "9": {
+                    "text": "Heat to Setpoint",
+                    "color": "#FFFF80"
+                  },
+                  "10": {
+                    "text": "Control to Setpoint",
+                    "color": "#00E000"
+                  },
+                  "11": {
+                    "text": "Cooldown",
+                    "color": "#9FD8FF"
+                  },
+                  "12": {
+                    "text": "Cooldown Fans",
+                    "color": "#9FD8FF"
+                  },
+                  "13": {
+                    "text": "Complete",
+                    "color": "#FFFFFF"
+                  },
+                  "31": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Burner",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "Flame",
+                    "tag": "[cal1615]p11_di_flame_on",
+                    "onColor": "#FF9800",
+                    "offColor": "#D0D0D0",
+                    "invert": false
+                  },
+                  {
+                    "text": "Safeties",
+                    "tag": "[cal1615]p11_di_burner_safeties_ok",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  },
+                  {
+                    "text": "Hi Limit",
+                    "tag": "[cal1615]p11_di_high_limit_temp_ok",
+                    "onColor": "#00E000",
+                    "offColor": "#FF2020",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "138px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "valve"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Control Valve",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Output",
+                "tag": "[cal1615]p11_ao_cv",
+                "writeTag": "",
+                "units": "%",
+                "kind": "value",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Manual Setpoint",
+                "tag": "[cal1615]p11r30_cv_man_sp",
+                "writeTag": "[cal1615]p02_real_from_hmi/zone_1_68_",
+                "units": "%",
+                "kind": "entry",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Mode",
+                "tag": "[cal1615]p11_dint_to_hmi_4_/bit_19",
+                "writeTag": "",
+                "units": "",
+                "kind": "status",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {
+                  "0": {
+                    "text": "Manual",
+                    "color": "#FFA040"
+                  },
+                  "1": {
+                    "text": "Auto",
+                    "color": "#00E000"
+                  }
+                },
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Auto",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_1_4_/bit_19",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Manual",
+                    "tag": "[cal1615]p02_dint_from_hmi/zone_1_4_/bit_18",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "154px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "motors"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "320px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Motor Data",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Exhaust Fan",
+                "tag": "[cal1615]p11_ai_exh_rpm",
+                "writeTag": "",
+                "units": "RPM",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 1 Exhaust Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_1/exhaust_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/exhaust_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Recirculation Fan",
+                "tag": "[cal1615]p11_ai_recirc_rpm",
+                "writeTag": "",
+                "units": "RPM",
+                "kind": "value",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zone 1 Recirc Fan Setpoint",
+                "tag": "[cal1615]p01_recipe_active/zone_1/recirc_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/zone_1/recirc_sp",
+                "units": "RPM",
+                "kind": "entry",
+                "format": "#,##0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "138px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

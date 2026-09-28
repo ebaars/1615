@@ -1,0 +1,16 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--neutral-20)",
+      "borderColor": "var(--neutral-50)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderRadius": "4px",
+      "fontFamily": "Arial",
+      "fontSize": "20px",
+      "fontWeight": "bold",
+      "paddingLeft": "10px",
+      "paddingRight": "10px"
+    }
+  }
+}

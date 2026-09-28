@@ -1,0 +1,657 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 280,
+      "height": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "var(--neutral-20)"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.navigation.menutree",
+        "meta": {
+          "name": "menu"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "300px"
+        },
+        "props": {
+          "items": [
+            {
+              "label": {
+                "text": "Main",
+                "icon": {
+                  "path": "material/home"
+                }
+              },
+              "navIcon": {
+                "path": "material/chevron_right"
+              },
+              "target": "",
+              "enabled": true,
+              "visible": true,
+              "showHeader": true,
+              "style": {
+                "classes": "cal1615/nav-header"
+              },
+              "items": [
+                {
+                  "label": {
+                    "text": "Overview",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/overview",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Oven Control",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/oven-control",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Active Recipe",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/active-recipe",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Recipe Editor",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/recipe-editor",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Emergency Stops",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/emergency-stops",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ]
+            },
+            {
+              "label": {
+                "text": "Oven Zones",
+                "icon": {
+                  "path": "material/whatshot"
+                }
+              },
+              "navIcon": {
+                "path": "material/chevron_right"
+              },
+              "target": "",
+              "enabled": true,
+              "visible": true,
+              "showHeader": true,
+              "style": {
+                "classes": "cal1615/nav-header"
+              },
+              "items": [
+                {
+                  "label": {
+                    "text": "Zone 1",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/zone-1",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Zone 2",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/zone-2",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Zone 3",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/zone-3",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Advanced Cooling",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/advanced-cooling",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ]
+            },
+            {
+              "label": {
+                "text": "Line Drives",
+                "icon": {
+                  "path": "material/settings_input_component"
+                }
+              },
+              "navIcon": {
+                "path": "material/chevron_right"
+              },
+              "target": "",
+              "enabled": true,
+              "visible": true,
+              "showHeader": true,
+              "style": {
+                "classes": "cal1615/nav-header"
+              },
+              "items": [
+                {
+                  "label": {
+                    "text": "Let-Off / Splice",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/letoff-splice",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Accumulator / Tension Stand 1",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/accumulator-ts1",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Tension Stand 2 / Poly / Windup",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/ts2-poly-windup",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ]
+            },
+            {
+              "label": {
+                "text": "Maintenance",
+                "icon": {
+                  "path": "material/build"
+                }
+              },
+              "navIcon": {
+                "path": "material/chevron_right"
+              },
+              "target": "",
+              "enabled": true,
+              "visible": true,
+              "showHeader": true,
+              "style": {
+                "classes": "cal1615/nav-header"
+              },
+              "items": [
+                {
+                  "label": {
+                    "text": "I/O",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/io",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Zone Setup",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/zone-setup",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "VFD Drives",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/vfd-drives",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Servo Drives",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/servo-drives",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "PM Schedule",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/pm-schedule",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ]
+            },
+            {
+              "label": {
+                "text": "Trends",
+                "icon": {
+                  "path": "material/show_chart"
+                }
+              },
+              "navIcon": {
+                "path": "material/chevron_right"
+              },
+              "target": "",
+              "enabled": true,
+              "visible": true,
+              "showHeader": true,
+              "style": {
+                "classes": "cal1615/nav-header"
+              },
+              "items": [
+                {
+                  "label": {
+                    "text": "Oven Trend",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/oven-trend",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Trend",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/trend",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ]
+            },
+            {
+              "label": {
+                "text": "Alarms",
+                "icon": {
+                  "path": "material/notifications"
+                }
+              },
+              "navIcon": {
+                "path": "material/chevron_right"
+              },
+              "target": "",
+              "enabled": true,
+              "visible": true,
+              "showHeader": true,
+              "style": {
+                "classes": "cal1615/nav-header"
+              },
+              "items": [
+                {
+                  "label": {
+                    "text": "Alarms",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/alarms",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "Warnings",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/warnings",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "label": {
+                    "text": "History",
+                    "icon": {
+                      "path": ""
+                    }
+                  },
+                  "navIcon": {
+                    "path": ""
+                  },
+                  "target": "/alarm-history",
+                  "enabled": true,
+                  "visible": true,
+                  "showHeader": true,
+                  "items": [],
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ]
+            }
+          ],
+          "itemStyle": {
+            "classes": "cal1615/nav-item"
+          },
+          "headerStyle": {
+            "classes": "cal1615/nav-header"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "theme"
+        },
+        "position": {
+          "basis": "52px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "padding": "8px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "lbl"
+            },
+            "position": {
+              "basis": "60px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Theme"
+            }
+          },
+          {
+            "type": "ia.input.dropdown",
+            "meta": {
+              "name": "theme"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Light",
+                  "value": "light"
+                },
+                {
+                  "label": "Dark",
+                  "value": "dark"
+                },
+                {
+                  "label": "Light (Cool)",
+                  "value": "light-cool"
+                },
+                {
+                  "label": "Dark (Cool)",
+                  "value": "dark-cool"
+                }
+              ]
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "session.props.theme",
+                    "bidirectional": true
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2741 @@
+{
+ "vfd.loa.speed": {
+  "tag": "p20_ai_loa_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p00_vfd_loa:I.Data[1], gear ratio, letoff dia ft)"
+ },
+ "vfd.loa.amps": {
+  "tag": "p20_loa_ai_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_loa:I.Data[2]*0.1"
+ },
+ "vfd.loa.hz": {
+  "tag": "p20_loa_ai_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SYS_SCP(p00_vfd_loa:I.Data[1], 0..3500 -> 0..60) - inconsistent with rpm=Data[1]*0.1; verify"
+ },
+ "vfd.loa.rpm": {
+  "tag": "p20_loa_ai_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "p00_vfd_loa:I.Data[1]*0.1"
+ },
+ "vfd.loa.faulted": {
+  "tag": "p20_vfd_di_loa.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.warning": {
+  "tag": "p20_vfd_di_loa.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.run_fwd": {
+  "tag": "p20_vfd_di_loa.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.run_rev": {
+  "tag": "p20_vfd_di_loa.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.ready": {
+  "tag": "p20_vfd_di_loa.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.ctrl_net": {
+  "tag": "p20_vfd_di_loa.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.ref_net": {
+  "tag": "p20_vfd_di_loa.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.loa.at_ref": {
+  "tag": "p20_vfd_di_loa.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_loa:I.Data[0] bit"
+ },
+ "vfd.lob.speed": {
+  "tag": "p20_ai_lob_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p00_vfd_lob:I.Data[1], gear ratio, letoff dia ft)"
+ },
+ "vfd.lob.amps": {
+  "tag": "p20_lob_ai_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_lob:I.Data[2]*0.1"
+ },
+ "vfd.lob.hz": {
+  "tag": "p20_lob_ai_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SYS_SCP(p00_vfd_lob:I.Data[1], 0..1800 -> 0..60) - inconsistent with rpm=Data[1]*0.1; verify"
+ },
+ "vfd.lob.rpm": {
+  "tag": "p20_lob_ai_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "p00_vfd_lob:I.Data[1]*0.1"
+ },
+ "vfd.lob.faulted": {
+  "tag": "p20_vfd_di_lob.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.warning": {
+  "tag": "p20_vfd_di_lob.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.run_fwd": {
+  "tag": "p20_vfd_di_lob.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.run_rev": {
+  "tag": "p20_vfd_di_lob.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.ready": {
+  "tag": "p20_vfd_di_lob.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.ctrl_net": {
+  "tag": "p20_vfd_di_lob.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.ref_net": {
+  "tag": "p20_vfd_di_lob.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lob.at_ref": {
+  "tag": "p20_vfd_di_lob.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lob:I.Data[0] bit"
+ },
+ "vfd.lot.speed": {
+  "tag": "p20_ai_lo_turret_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p00_vfd_lo_turret:I.Data[1], turret gear, p01_param_turret_dia_ft)"
+ },
+ "vfd.lot.amps": {
+  "tag": "p20_ai_lo_turret_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "Data[2]*0.1"
+ },
+ "vfd.lot.hz": {
+  "tag": "p20_ai_lo_turret_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1800 -> 0..60"
+ },
+ "vfd.lot.rpm": {
+  "tag": "p00_vfd_lo_turret:I.Data[1]",
+  "type": "INT",
+  "units": "RPM raw",
+  "note": "no scaled rpm tag; raw feedback word (LOA/LOB scale this *0.1)"
+ },
+ "vfd.lot.faulted": {
+  "tag": "p20_di_lo_turret.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.warning": {
+  "tag": "p20_di_lo_turret.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.run_fwd": {
+  "tag": "p20_di_lo_turret.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.run_rev": {
+  "tag": "p20_di_lo_turret.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.ready": {
+  "tag": "p20_di_lo_turret.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.ctrl_net": {
+  "tag": "p20_di_lo_turret.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.ref_net": {
+  "tag": "p20_di_lo_turret.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.lot.at_ref": {
+  "tag": "p20_di_lo_turret.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_lo_turret:I.Data[0] bit"
+ },
+ "vfd.ts1.speed": {
+  "tag": "p22_ai_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p22r03_scaled_vfd_in)"
+ },
+ "vfd.ts1.amps": {
+  "tag": "p22_ai_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_ts1:I.Data[2]*0.1"
+ },
+ "vfd.ts1.hz": {
+  "tag": "p22_ai_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP(I.Data[1], 0..2000 -> 0..60) but Data[1] is rpm*10 (in-scaling -20000..20000 -> -2000..2000), so this saturates at 60 above ~200 rpm; suspect"
+ },
+ "vfd.ts1.rpm": {
+  "tag": "p22r03_scaled_vfd_in",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "SYS_SCP(I.Data[1], +-20000 -> +-2000)"
+ },
+ "vfd.ts1.faulted": {
+  "tag": "p22_status_word.3",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 3 TRIPPED; same as p22_ts1_vfd.OUT_FAULT"
+ },
+ "vfd.ts1.warning": {
+  "tag": "p22_status_word.7",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 7 ALARM; same as p22_ts1_vfd.OUT_ALARM"
+ },
+ "vfd.ts1.run_fwd": {
+  "tag": "p22_status_word.2",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 2 RDY_REF (operation enabled/running); ABB Drives profile has no direction bit"
+ },
+ "vfd.ts1.ready": {
+  "tag": "p22_status_word.0",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 0 RDY_ON; logic uses XIO(.0) as drive-not-ready fault"
+ },
+ "vfd.ts1.ctrl_net": {
+  "tag": "p22_status_word.9",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 9 REMOTE; logic faults on .1 AND NOT .9"
+ },
+ "vfd.ts1.ref_net": {
+  "tag": "p22_status_word.11",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 11 EXT_CTRL_LOC (EXT2 selected) - closest proxy, drive has no explicit ref-from-net bit"
+ },
+ "vfd.ts1.at_ref": {
+  "tag": "p22_status_word.8",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts1:I.Data[0]) bit 8 AT_SETPOINT"
+ },
+ "vfd.ts1.run_rev": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word has no reverse/direction bit"
+ },
+ "vfd.impreg.speed": {
+  "tag": "p23_ai_metering_roll_speed_fpm",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p00_vfd_mtr:I.Data[1])"
+ },
+ "vfd.impreg.amps": {
+  "tag": "p23_ai_metering_roll_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "Data[2]*0.1"
+ },
+ "vfd.impreg.hz": {
+  "tag": "p23_ai_metering_roll_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..60"
+ },
+ "vfd.impreg.rpm": {
+  "tag": "p00_vfd_mtr:I.Data[1]",
+  "type": "INT",
+  "units": "RPM raw",
+  "note": "no scaled rpm tag"
+ },
+ "vfd.impreg.faulted": {
+  "tag": "p23_di_metering_roll.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.warning": {
+  "tag": "p23_di_metering_roll.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.run_fwd": {
+  "tag": "p23_di_metering_roll.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.run_rev": {
+  "tag": "p23_di_metering_roll.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.ready": {
+  "tag": "p23_di_metering_roll.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.ctrl_net": {
+  "tag": "p23_di_metering_roll.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.ref_net": {
+  "tag": "p23_di_metering_roll.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.impreg.at_ref": {
+  "tag": "p23_di_metering_roll.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_mtr:I.Data[0] bit"
+ },
+ "vfd.spring.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "FPM",
+  "note": "no feedback speed tag; command only (p23r17_adjusted_speed -> SYS_SPEED_TO_VFD -> p00_vfd_sprng:O.Data[1])"
+ },
+ "vfd.spring.amps": {
+  "tag": "p00_vfd_sprng:I.Data[2]",
+  "type": "INT",
+  "units": "A x10",
+  "note": "raw; logic never scales spring feedback"
+ },
+ "vfd.spring.hz": {
+  "tag": null,
+  "type": "REAL",
+  "units": "Hz",
+  "note": "not computed"
+ },
+ "vfd.spring.rpm": {
+  "tag": "p00_vfd_sprng:I.Data[1]",
+  "type": "INT",
+  "units": "RPM raw",
+  "note": "raw"
+ },
+ "vfd.spring.faulted": {
+  "tag": "p23_di_spring.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.warning": {
+  "tag": "p23_di_spring.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.run_fwd": {
+  "tag": "p23_di_spring.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.run_rev": {
+  "tag": "p23_di_spring.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.ready": {
+  "tag": "p23_di_spring.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.ctrl_net": {
+  "tag": "p23_di_spring.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.ref_net": {
+  "tag": "p23_di_spring.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.spring.at_ref": {
+  "tag": "p23_di_spring.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_sprng:I.Data[0] bit"
+ },
+ "vfd.ts2.speed": {
+  "tag": "p25_ai_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p25r03_scaled_vfd_in); tag desc says [fpm]"
+ },
+ "vfd.ts2.amps": {
+  "tag": "p25_ai_amps",
+  "type": "DINT",
+  "units": "A",
+  "note": "Data[2]*0.1 into a DINT - rounded to whole amps"
+ },
+ "vfd.ts2.hz": {
+  "tag": "p25_ai_hz",
+  "type": "DINT",
+  "units": "Hz",
+  "note": "DINT; SCP 0..2000->0..60 on rpm*10 word, saturates at 60 (same issue as TS1)"
+ },
+ "vfd.ts2.rpm": {
+  "tag": "p25r03_scaled_vfd_in",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "p25_ai_rpm exists but is never written (always 0) - use scaled_vfd_in"
+ },
+ "vfd.ts2.faulted": {
+  "tag": "p25_status_word.3",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 3 TRIPPED; same as p25_ts2_vfd.OUT_FAULT"
+ },
+ "vfd.ts2.warning": {
+  "tag": "p25_status_word.7",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 7 ALARM; same as p25_ts2_vfd.OUT_ALARM"
+ },
+ "vfd.ts2.run_fwd": {
+  "tag": "p25_status_word.2",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 2 RDY_REF (operation enabled/running); ABB Drives profile has no direction bit"
+ },
+ "vfd.ts2.ready": {
+  "tag": "p25_status_word.0",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 0 RDY_ON; logic uses XIO(.0) as drive-not-ready fault"
+ },
+ "vfd.ts2.ctrl_net": {
+  "tag": "p25_status_word.9",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 9 REMOTE; logic faults on .1 AND NOT .9"
+ },
+ "vfd.ts2.ref_net": {
+  "tag": "p25_status_word.11",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 11 EXT_CTRL_LOC (EXT2 selected) - closest proxy, drive has no explicit ref-from-net bit"
+ },
+ "vfd.ts2.at_ref": {
+  "tag": "p25_status_word.8",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_ts2:I.Data[0]) bit 8 AT_SETPOINT"
+ },
+ "vfd.ts2.run_rev": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word has no reverse/direction bit"
+ },
+ "vfd.slitter.speed": {
+  "tag": "p28_ai_slitter_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p00_vfd_slitter:I.Data[1]); p28_ai_sltr_speed is an unused look-alike"
+ },
+ "vfd.slitter.amps": {
+  "tag": "p28_ai_slitter_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "Data[2]*0.1"
+ },
+ "vfd.slitter.hz": {
+  "tag": "p28_ai_slitter_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1800 -> 0..60"
+ },
+ "vfd.slitter.rpm": {
+  "tag": "p00_vfd_slitter:I.Data[1]",
+  "type": "INT",
+  "units": "RPM raw",
+  "note": "no scaled rpm tag"
+ },
+ "vfd.slitter.faulted": {
+  "tag": "p28_di_slitter.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.warning": {
+  "tag": "p28_di_slitter.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.run_fwd": {
+  "tag": "p28_di_slitter.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.run_rev": {
+  "tag": "p28_di_slitter.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.ready": {
+  "tag": "p28_di_slitter.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.ctrl_net": {
+  "tag": "p28_di_slitter.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.ref_net": {
+  "tag": "p28_di_slitter.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.slitter.at_ref": {
+  "tag": "p28_di_slitter.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_slitter:I.Data[0] bit"
+ },
+ "vfd.wa.speed": {
+  "tag": "p29_ai_wa_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "SYS_RPM_TO_SPEED(p29r03_wa_scaled_vfd_in, gear, p29_ai_wa_dia_ft)"
+ },
+ "vfd.wa.amps": {
+  "tag": "p29_ai_wa_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_wda:I.Data[2]*0.1"
+ },
+ "vfd.wa.hz": {
+  "tag": "p29_ai_wa_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP 0..2000->0..60 on rpm*10 word; saturates (same issue as TS1)"
+ },
+ "vfd.wa.rpm": {
+  "tag": "p29_ai_wa_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "p29r03_wa_scaled_vfd_in*1"
+ },
+ "vfd.wa.faulted": {
+  "tag": "p29_wda_status_word.3",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 3 TRIPPED; same as p29_wda_vfd.OUT_FAULT"
+ },
+ "vfd.wa.warning": {
+  "tag": "p29_wda_status_word.7",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 7 ALARM; same as p29_wda_vfd.OUT_ALARM"
+ },
+ "vfd.wa.run_fwd": {
+  "tag": "p29_wda_status_word.2",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 2 RDY_REF (operation enabled/running); ABB Drives profile has no direction bit"
+ },
+ "vfd.wa.ready": {
+  "tag": "p29_wda_status_word.0",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 0 RDY_ON; logic uses XIO(.0) as drive-not-ready fault"
+ },
+ "vfd.wa.ctrl_net": {
+  "tag": "p29_wda_status_word.9",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 9 REMOTE; logic faults on .1 AND NOT .9"
+ },
+ "vfd.wa.ref_net": {
+  "tag": "p29_wda_status_word.11",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 11 EXT_CTRL_LOC (EXT2 selected) - closest proxy, drive has no explicit ref-from-net bit"
+ },
+ "vfd.wa.at_ref": {
+  "tag": "p29_wda_status_word.8",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wda:I.Data[0]) bit 8 AT_SETPOINT"
+ },
+ "vfd.wa.run_rev": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word has no reverse/direction bit"
+ },
+ "vfd.wb.speed": {
+  "tag": "p29_ai_wb_speed",
+  "type": "REAL",
+  "units": "FPM",
+  "note": "sys_ACS880_inputs Out_Speed = rpm/gear*pi*dia_ft"
+ },
+ "vfd.wb.amps": {
+  "tag": "p29_ai_wb_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "In_OutputCurrent*1 (FENA current word; check if drive sends 0.1 A units)"
+ },
+ "vfd.wb.hz": {
+  "tag": "p29_ai_wb_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "AOI: (Data[7]*Data[8]/20000)*0.1"
+ },
+ "vfd.wb.rpm": {
+  "tag": "p29_ai_wb_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "AOI: Data[1]*Data[3]/20000"
+ },
+ "vfd.wb.faulted": {
+  "tag": "p29_wdb_status_word.3",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 3 TRIPPED; also Program:P29_Winder.vfd_wdb.In_DriveStatus_TRIPPED and p29_wdb_vfd.OUT_FAULT (sys_ACS_FENA21)"
+ },
+ "vfd.wb.warning": {
+  "tag": "p29_wdb_status_word.7",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 7 ALARM; also Program:P29_Winder.vfd_wdb.In_DriveStatus_ALARM / p29_wdb_vfd.OUT_ALARM"
+ },
+ "vfd.wb.run_fwd": {
+  "tag": "p29_wdb_status_word.2",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 2 RDY_REF (operation enabled/running); ABB Drives profile has no direction bit"
+ },
+ "vfd.wb.ready": {
+  "tag": "p29_wdb_status_word.0",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 0 RDY_ON; logic uses XIO(.0) as drive-not-ready fault; decoded BOOLs available at Program:P29_Winder.vfd_wdb.In_DriveStatus_RDY_ON etc. (program scope)"
+ },
+ "vfd.wb.ctrl_net": {
+  "tag": "p29_wdb_status_word.9",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 9 REMOTE; logic faults on .1 AND NOT .9"
+ },
+ "vfd.wb.ref_net": {
+  "tag": "p29_wdb_status_word.11",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 11 EXT_CTRL_LOC (EXT2 selected) - closest proxy, drive has no explicit ref-from-net bit"
+ },
+ "vfd.wb.at_ref": {
+  "tag": "p29_wdb_status_word.8",
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word (INT, copy of p00_vfd_wdb:I.Data[0]) bit 8 AT_SETPOINT"
+ },
+ "vfd.wb.run_rev": {
+  "tag": null,
+  "type": "BOOL",
+  "units": "",
+  "note": "ABB Drives profile status word has no reverse/direction bit"
+ },
+ "vfd.wt.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "FPM",
+  "note": "no surface-speed feedback; p29_ai_wdr_turret_speed is raw Data[1] (rpm word), mapped to rpm"
+ },
+ "vfd.wt.amps": {
+  "tag": "p29_ai_wdr_turret_amps",
+  "type": "REAL",
+  "units": "A x10?",
+  "note": "Data[2]*1 - unscaled (other ACS800s use *0.1)"
+ },
+ "vfd.wt.hz": {
+  "tag": "p29_ai_wdr_turret_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..2000 -> 0..60"
+ },
+ "vfd.wt.rpm": {
+  "tag": "p29_ai_wdr_turret_speed",
+  "type": "REAL",
+  "units": "RPM raw",
+  "note": "CPT(p00_vfd_wdr_turret:I.Data[1]*1) - misnamed speed"
+ },
+ "vfd.wt.faulted": {
+  "tag": "p29_di_wdr_turret.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.warning": {
+  "tag": "p29_di_wdr_turret.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.run_fwd": {
+  "tag": "p29_di_wdr_turret.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.run_rev": {
+  "tag": "p29_di_wdr_turret.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.ready": {
+  "tag": "p29_di_wdr_turret.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.ctrl_net": {
+  "tag": "p29_di_wdr_turret.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.ref_net": {
+  "tag": "p29_di_wdr_turret.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.wt.at_ref": {
+  "tag": "p29_di_wdr_turret.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_wdr_turret:I.Data[0] bit"
+ },
+ "vfd.supply.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed"
+ },
+ "vfd.supply.amps": {
+  "tag": "p23_ai_supply_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_imp_supply:I.Data[2]*0.1"
+ },
+ "vfd.supply.hz": {
+  "tag": null,
+  "type": "REAL",
+  "units": "Hz",
+  "note": "p23_ai_supply_hz exists but logic writes a constant CPT(60*1) - not real feedback; no true Hz available"
+ },
+ "vfd.supply.rpm": {
+  "tag": "p23_ai_supply_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "Data[1]*1"
+ },
+ "vfd.supply.faulted": {
+  "tag": "p23_di_supply.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.warning": {
+  "tag": "p23_di_supply.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.run_fwd": {
+  "tag": "p23_di_supply.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.run_rev": {
+  "tag": "p23_di_supply.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.ready": {
+  "tag": "p23_di_supply.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.ctrl_net": {
+  "tag": "p23_di_supply.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.ref_net": {
+  "tag": "p23_di_supply.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.supply.at_ref": {
+  "tag": "p23_di_supply.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_imp_supply:I.Data[0] bit"
+ },
+ "vfd.z1r.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed (commanded % via p11_ao_recirc_selected_speed)"
+ },
+ "vfd.z1r.amps": {
+  "tag": "p11_ai_recirc_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_z1_recirc:I.Data[2]*0.1"
+ },
+ "vfd.z1r.hz": {
+  "tag": "p11_ai_recirc_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..p11_ai_recirc_hz_max (Data[4]*0.1)"
+ },
+ "vfd.z1r.rpm": {
+  "tag": "p11_ai_recirc_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(Data[1])*1"
+ },
+ "vfd.z1r.faulted": {
+  "tag": "p11_di_recirc.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.warning": {
+  "tag": "p11_di_recirc.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.run_fwd": {
+  "tag": "p11_di_recirc.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.run_rev": {
+  "tag": "p11_di_recirc.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.ready": {
+  "tag": "p11_di_recirc.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.ctrl_net": {
+  "tag": "p11_di_recirc.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.ref_net": {
+  "tag": "p11_di_recirc.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1r.at_ref": {
+  "tag": "p11_di_recirc.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_recirc:I.Data[0] bit"
+ },
+ "vfd.z1e.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed (commanded % via p11_ao_exhaust_selected_speed)"
+ },
+ "vfd.z1e.amps": {
+  "tag": "p11_ai_exh_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_z1_exhaust:I.Data[2]*0.1"
+ },
+ "vfd.z1e.hz": {
+  "tag": "p11_ai_exh_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..p11_ai_exh_hz_max (Data[4]*0.1)"
+ },
+ "vfd.z1e.rpm": {
+  "tag": "p11_ai_exh_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(Data[1])*1"
+ },
+ "vfd.z1e.faulted": {
+  "tag": "p11_di_exh.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.warning": {
+  "tag": "p11_di_exh.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.run_fwd": {
+  "tag": "p11_di_exh.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.run_rev": {
+  "tag": "p11_di_exh.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.ready": {
+  "tag": "p11_di_exh.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.ctrl_net": {
+  "tag": "p11_di_exh.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.ref_net": {
+  "tag": "p11_di_exh.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z1e.at_ref": {
+  "tag": "p11_di_exh.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z1_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2r.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed (commanded % via p12_ao_recirc_selected_speed)"
+ },
+ "vfd.z2r.amps": {
+  "tag": "p12_ai_recirc_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_z2_recirc:I.Data[2]*0.1"
+ },
+ "vfd.z2r.hz": {
+  "tag": "p12_ai_recirc_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..p12_ai_recirc_hz_max (Data[4]*0.1)"
+ },
+ "vfd.z2r.rpm": {
+  "tag": "p12_ai_recirc_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(Data[1])*1"
+ },
+ "vfd.z2r.faulted": {
+  "tag": "p12_di_recirc.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2r.warning": {
+  "tag": "p12_di_recirc.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2r.run_fwd": {
+  "tag": "p12_di_recirc.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2r.run_rev": {
+  "tag": "p12_di_recirc.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2r.ready": {
+  "tag": "p12_di_recirc.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2r.ctrl_net": {
+  "tag": "p12_di_recirc.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2r.ref_net": {
+  "tag": "p00_vfd_z2_recirc:I.Data[0].6",
+  "type": "BOOL",
+  "units": "",
+  "note": "PLC BUG: p12_di_recirc.ref_from_net is fed from p00_vfd_z3_recirc:I.Data[0].6 (P12 R03); use the raw module bit instead"
+ },
+ "vfd.z2r.at_ref": {
+  "tag": "p12_di_recirc.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_recirc:I.Data[0] bit"
+ },
+ "vfd.z2e.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed (commanded % via p12_ao_exhaust_selected_speed)"
+ },
+ "vfd.z2e.amps": {
+  "tag": "p12_ai_exhaust_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_z2_exhaust:I.Data[2]*0.1"
+ },
+ "vfd.z2e.hz": {
+  "tag": "p12_ai_exhaust_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..p12_ai_exhaust_hz_max (Data[4]*0.1)"
+ },
+ "vfd.z2e.rpm": {
+  "tag": "p12_ai_exhaust_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "ABS(Data[1])*1"
+ },
+ "vfd.z2e.faulted": {
+  "tag": "p12_di_exh.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.warning": {
+  "tag": "p12_di_exh.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.run_fwd": {
+  "tag": "p12_di_exh.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.run_rev": {
+  "tag": "p12_di_exh.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.ready": {
+  "tag": "p12_di_exh.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.ctrl_net": {
+  "tag": "p12_di_exh.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.ref_net": {
+  "tag": "p12_di_exh.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z2e.at_ref": {
+  "tag": "p12_di_exh.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z2_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3r.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed (commanded % via p13_ao_recirc_selected_speed)"
+ },
+ "vfd.z3r.amps": {
+  "tag": "p13_ai_recirc_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_z3_recirc:I.Data[2]*0.1"
+ },
+ "vfd.z3r.hz": {
+  "tag": "p13_ai_recirc_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..p13_ai_recirc_hz_max (Data[4]*0.1)"
+ },
+ "vfd.z3r.rpm": {
+  "tag": "p13_ai_recirc_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "Data[1]*1"
+ },
+ "vfd.z3r.faulted": {
+  "tag": "p13_di_recirc.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.warning": {
+  "tag": "p13_di_recirc.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.run_fwd": {
+  "tag": "p13_di_recirc.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.run_rev": {
+  "tag": "p13_di_recirc.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.ready": {
+  "tag": "p13_di_recirc.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.ctrl_net": {
+  "tag": "p13_di_recirc.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.ref_net": {
+  "tag": "p13_di_recirc.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3r.at_ref": {
+  "tag": "p13_di_recirc.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_recirc:I.Data[0] bit"
+ },
+ "vfd.z3e.speed": {
+  "tag": null,
+  "type": "REAL",
+  "units": "",
+  "note": "fan - no surface speed (commanded % via p13_ao_exhaust_selected_speed)"
+ },
+ "vfd.z3e.amps": {
+  "tag": "p13_ai_exhaust_amps",
+  "type": "REAL",
+  "units": "A",
+  "note": "p00_vfd_z3_exhaust:I.Data[2]*0.1"
+ },
+ "vfd.z3e.hz": {
+  "tag": "p13_ai_exhaust_hz",
+  "type": "REAL",
+  "units": "Hz",
+  "note": "SCP Data[1] 0..1750 -> 0..p13_ai_exhaust_hz_max (Data[4]*0.1)"
+ },
+ "vfd.z3e.rpm": {
+  "tag": "p13_ai_exhaust_rpm",
+  "type": "REAL",
+  "units": "RPM",
+  "note": "Data[1]*1"
+ },
+ "vfd.z3e.faulted": {
+  "tag": "p13_di_exh.faulted",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.warning": {
+  "tag": "p13_di_exh.warning",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.run_fwd": {
+  "tag": "p13_di_exh.running_fwd",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.run_rev": {
+  "tag": "p13_di_exh.running_rev",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.ready": {
+  "tag": "p13_di_exh.ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.ctrl_net": {
+  "tag": "p13_di_exh.ctrl_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.ref_net": {
+  "tag": "p13_di_exh.ref_from_net",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "vfd.z3e.at_ref": {
+  "tag": "p13_di_exh.at_reference",
+  "type": "BOOL",
+  "units": "",
+  "note": "acs800_di_normal; mapped from p00_vfd_z3_exhaust:I.Data[0] bit"
+ },
+ "servo.os.not_ready": {
+  "tag": "p23r11_servo_not_ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "p00_srv_mtr_os:I.Data[0] bits14/15 = 00"
+ },
+ "servo.os.bb": {
+  "tag": "p23r11_servo_status_bb",
+  "type": "BOOL",
+  "units": "",
+  "note": "bits14/15 = 01 (bb, ready for power on)"
+ },
+ "servo.os.ab": {
+  "tag": "p23r11_servo_status_ab",
+  "type": "BOOL",
+  "units": "",
+  "note": "bits14/15 = 10 (Ab, control+power ready)"
+ },
+ "servo.os.af": {
+  "tag": "p23r11_servo_status_af",
+  "type": "BOOL",
+  "units": "",
+  "note": "bits14/15 = 11 (AF, in operation). Combined 0-3 state also in p23_dint_to_hmi[5]"
+ },
+ "servo.os.param_mode": {
+  "tag": "p23_dint_to_hmi[3].20",
+  "type": "BOOL",
+  "units": "",
+  "note": "= XIO(p23_di_servo_os.mode_bit_1) XIO(p23_di_servo_os.mode_bit_0) (I.Data[0] bits 0/1 both off); only derived tag"
+ },
+ "servo.os.homed": {
+  "tag": "p23_di_servo_os.homed",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].2"
+ },
+ "servo.os.at_target": {
+  "tag": "p23_di_servo_os.at_target_pos",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].4"
+ },
+ "servo.os.standstill": {
+  "tag": "p23_di_servo_os.stand_still",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].3"
+ },
+ "servo.os.op_mode_error": {
+  "tag": "p23_di_servo_os.operator_mode_error",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].6; latches p23r11.fault.0"
+ },
+ "servo.os.drive_error": {
+  "tag": "p23_di_servo_os.class_1_diagnostic",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].13 (C1D error; latches p23r11.fault.1). Error code: p23_dint_to_hmi[11] (SYS_ENC_WITH_ZERO_BIT of p00_srv_mtr_os:I.Data[4])"
+ },
+ "servo.os.drive_warning": {
+  "tag": "p23_di_servo_os.class_2_diagnostic",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].12 (C2D warning). Warning code: p23_dint_to_hmi[13] (from I.Data[5])"
+ },
+ "servo.os.actual_position": {
+  "tag": "p23_real_to_hmi[61]",
+  "type": "REAL",
+  "units": "IN",
+  "note": "= p23_ai_servo_os_position - p23r11_pos_offset (0.0005); raw p23_ai_servo_os_position = I.Data[2]/20000. Same frame as gap setpoint"
+ },
+ "servo.os.zero_offset": {
+  "tag": "p02_real_from_hmi.impreg[1]",
+  "type": "REAL",
+  "units": "IN",
+  "note": "not overwritten; applied only while pb_zero held: p23_ao_servo_os_zero_offset := impreg[1]*2 (sent as *10000 to O.Data[4]). Echo p23_real_to_hmi[1]"
+ },
+ "servo.os.pb_start": {
+  "tag": "p02_dint_from_hmi.impreg[1].20",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; seals p23r11_request_start (needs permissive = no p23r11 faults)"
+ },
+ "servo.os.pb_stop": {
+  "tag": "p02_dint_from_hmi.impreg[1].21",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; XIO breaks p23r11_request_start seal"
+ },
+ "servo.os.pb_reset": {
+  "tag": "p02_dint_from_hmi.impreg[1].22",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; drive fault_reset + acks p23r11.fault"
+ },
+ "servo.os.pb_zero": {
+  "tag": "p02_dint_from_hmi.impreg[1].7",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; p23r11_request_zero -> latch zero offset, drops enable, sets ready_for_operation bits 16/17"
+ },
+ "servo.os.pb_jog_fwd": {
+  "tag": "p02_dint_from_hmi.impreg[1].5",
+  "type": "BOOL",
+  "units": "",
+  "note": "hold-to-jog (OTE, no seal)"
+ },
+ "servo.os.pb_jog_rev": {
+  "tag": "p02_dint_from_hmi.impreg[1].6",
+  "type": "BOOL",
+  "units": "",
+  "note": "hold-to-jog (OTE, no seal)"
+ },
+ "servo.ds.not_ready": {
+  "tag": "p23r12_servo_not_ready",
+  "type": "BOOL",
+  "units": "",
+  "note": "p00_srv_mtr_ds:I.Data[0] bits14/15 = 00"
+ },
+ "servo.ds.bb": {
+  "tag": "p23r12_servo_status_bb",
+  "type": "BOOL",
+  "units": "",
+  "note": "bits14/15 = 01 (bb, ready for power on)"
+ },
+ "servo.ds.ab": {
+  "tag": "p23r12_servo_status_ab",
+  "type": "BOOL",
+  "units": "",
+  "note": "bits14/15 = 10 (Ab, control+power ready)"
+ },
+ "servo.ds.af": {
+  "tag": "p23r12_servo_status_af",
+  "type": "BOOL",
+  "units": "",
+  "note": "bits14/15 = 11 (AF, in operation). Combined 0-3 state also in p23_dint_to_hmi[6]"
+ },
+ "servo.ds.param_mode": {
+  "tag": "p23_dint_to_hmi[3].8",
+  "type": "BOOL",
+  "units": "",
+  "note": "= XIO(p23_di_servo_ds.mode_bit_1) XIO(p23_di_servo_ds.mode_bit_0) (I.Data[0] bits 0/1 both off); only derived tag"
+ },
+ "servo.ds.homed": {
+  "tag": "p23_di_servo_ds.homed",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].2"
+ },
+ "servo.ds.at_target": {
+  "tag": "p23_di_servo_ds.at_target_pos",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].4"
+ },
+ "servo.ds.standstill": {
+  "tag": "p23_di_servo_ds.stand_still",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].3"
+ },
+ "servo.ds.op_mode_error": {
+  "tag": "p23_di_servo_ds.operator_mode_error",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].6; latches p23r12.fault.0"
+ },
+ "servo.ds.drive_error": {
+  "tag": "p23_di_servo_ds.class_1_diagnostic",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].13 (C1D error; latches p23r12.fault.1). Error code: p23_dint_to_hmi[10] (SYS_ENC_WITH_ZERO_BIT of p00_srv_mtr_ds:I.Data[4])"
+ },
+ "servo.ds.drive_warning": {
+  "tag": "p23_di_servo_ds.class_2_diagnostic",
+  "type": "BOOL",
+  "units": "",
+  "note": "I.Data[0].12 (C2D warning). Warning code: p23_dint_to_hmi[12] (from I.Data[5])"
+ },
+ "servo.ds.actual_position": {
+  "tag": "p23_real_to_hmi[60]",
+  "type": "REAL",
+  "units": "IN",
+  "note": "= p23_ai_servo_ds_position - p23r12_pos_offset (0.0); raw p23_ai_servo_ds_position = I.Data[2]/20000. Same frame as gap setpoint"
+ },
+ "servo.ds.zero_offset": {
+  "tag": "p02_real_from_hmi.impreg[0]",
+  "type": "REAL",
+  "units": "IN",
+  "note": "not overwritten; applied only while pb_zero held: p23_ao_servo_ds_zero_offset := impreg[0]*2 (sent as *10000 to O.Data[4]). Echo p23_real_to_hmi[0]"
+ },
+ "servo.ds.pb_start": {
+  "tag": "p02_dint_from_hmi.impreg[1].12",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; seals p23r12_request_start (needs permissive = no p23r12 faults)"
+ },
+ "servo.ds.pb_stop": {
+  "tag": "p02_dint_from_hmi.impreg[1].13",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; XIO breaks p23r12_request_start seal"
+ },
+ "servo.ds.pb_reset": {
+  "tag": "p02_dint_from_hmi.impreg[1].14",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; drive fault_reset + acks p23r12.fault"
+ },
+ "servo.ds.pb_zero": {
+  "tag": "p02_dint_from_hmi.impreg[1].2",
+  "type": "BOOL",
+  "units": "",
+  "note": "momentary; p23r12_request_zero -> latch zero offset, drops enable, sets ready_for_operation bits 16/17"
+ },
+ "servo.ds.pb_jog_fwd": {
+  "tag": "p02_dint_from_hmi.impreg[1].0",
+  "type": "BOOL",
+  "units": "",
+  "note": "hold-to-jog (OTE, no seal)"
+ },
+ "servo.ds.pb_jog_rev": {
+  "tag": "p02_dint_from_hmi.impreg[1].1",
+  "type": "BOOL",
+  "units": "",
+  "note": "hold-to-jog (OTE, no seal)"
+ },
+ "servo.jog_velocity": {
+  "tag": "p02_real_from_hmi.impreg[2]",
+  "type": "REAL",
+  "units": "IN/SEC",
+  "note": "shared by both sides; p23_ao_servo_xx_jog_vel_cmd := +/- impreg[2] while jogging (x10000 to O.Data[3]); not overwritten; echo p23_real_to_hmi[2]"
+ },
+ "servo.pos_velocity": {
+  "tag": "p02_real_from_hmi.impreg[3]",
+  "type": "REAL",
+  "units": "IN/SEC",
+  "note": "MOV every scan into p23_ao_servo_os/ds_velocity_cmd (x10000 to O.Data[1]); not overwritten; echo p23_real_to_hmi[3]"
+ },
+ "servo.gap_position": {
+  "tag": "p01_recipe_active.impreg_gap_sp",
+  "type": "REAL",
+  "units": "IN",
+  "note": "P02 R04 does COP(p02_recipe_from_hmi -> p01_recipe_active) every scan, so write the from_hmi copy. Per-side target = gap + impreg_gap_os_offset_sp / impreg_gap_ds_offset_sp",
+  "write": "p02_recipe_from_hmi.impreg_gap_sp"
+ },
+ "servo.pb_move_to_position": {
+  "tag": "p02_dint_from_hmi.impreg[1].10",
+  "type": "BOOL",
+  "units": "",
+  "note": "shared OS+DS; requires stand_still, permissive, not jogging; line stopped -> runs open-then-close gap sequence"
+ },
+ "io.modules": [
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 0,
+   "name": "Local",
+   "catalog": "1756-L62",
+   "kind": "CPU",
+   "points": null,
+   "data_base": null,
+   "point_pattern": null,
+   "fault_tag": null,
+   "note": "Controller 1756-L62 (fw 20.19)"
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 1,
+   "name": "Enet_A",
+   "catalog": "1756-ENBT/A",
+   "kind": "comm",
+   "points": null,
+   "data_base": null,
+   "point_pattern": null,
+   "fault_tag": null,
+   "note": "EtherNet/IP bridge 10.0.0.1; no module status tag (would need GSV MODULE EntryStatus)"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_io_letoff",
+   "catalog": "1794-AENT",
+   "kind": "comm",
+   "points": 8,
+   "data_base": "p00_io_letoff:I.Data",
+   "point_pattern": "p00_io_letoff:I.Data[{slot}]",
+   "fault_tag": "p00_io_letoff:I.SlotStatusBits",
+   "note": "FLEX adapter 10.0.0.10, rack-optimized. SlotStatusBits bit n = slot n status (0 in snapshot = OK; verify polarity). No adapter connection-fault tag in logic (no GSV)."
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 0,
+   "name": "p00_io_letoff_ao_01",
+   "catalog": "1794-OE4/B",
+   "kind": "AO",
+   "points": 4,
+   "data_base": "p00_io_letoff:0:O",
+   "point_pattern": "p00_io_letoff:0:O.Ch{n}Data",
+   "fault_tag": "p00_io_letoff:0:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault inferred, verify",
+   "labels": {
+    "0": "Letoff Accumulator / Counter Pressure",
+    "1": "Letoff Accumulator / Tension Pressure",
+    "2": "Letoff Accumulator / Fill Pressure",
+    "3": "Letoff / Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 1,
+   "name": "p00_io_letoff_ai_01",
+   "catalog": "1794-IE8/B",
+   "kind": "AI",
+   "points": 8,
+   "data_base": "p00_io_letoff:1:I",
+   "point_pattern": "p00_io_letoff:1:I.Ch{n}Data",
+   "fault_tag": "p00_io_letoff:1:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault member name inferred from 1794 direct-connect tag layout (first InputData element), verify",
+   "labels": {
+    "0": "Letoff Roll Diameter",
+    "1": "Letoff Accumulator Position",
+    "2": "Impreg Enclosure / LEL Level",
+    "3": "Impreg Enclosure / Static Pressure",
+    "4": "Impreg Enclosure / to Zone 1 Differential Pressure",
+    "5": "Spare",
+    "6": "Spare",
+    "7": "Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 2,
+   "name": "p00_io_letoff_tc_01",
+   "catalog": "1794-IT8/A",
+   "kind": "AI-TC",
+   "points": 8,
+   "data_base": "p00_io_letoff:2:I",
+   "point_pattern": "p00_io_letoff:2:I.Ch{n}Data",
+   "fault_tag": "p00_io_letoff:2:I.Fault",
+   "note": "direct connection, INT raw counts; open-wire bits p00_io_letoff:2:I.Ch{n}OverrangeAlarm; .Fault member name inferred from 1794 direct-connect tag layout (first InputData element), verify",
+   "labels": {
+    "0": "Splicer Platen Temperature",
+    "1": "Spare",
+    "2": "Spare",
+    "3": "Spare",
+    "4": "Spare",
+    "5": "Spare",
+    "6": "Spare",
+    "7": "Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 3,
+   "name": "p00_io_letoff_do_01",
+   "catalog": "1794-OB16/A",
+   "kind": "DO",
+   "points": 16,
+   "data_base": "p00_io_letoff:3:O",
+   "point_pattern": "p00_io_letoff:3:O.{n}",
+   "fault_tag": "p00_io_letoff:I.SlotStatusBits.3",
+   "note": "rack-optimized; slot tag is INT",
+   "labels": {
+    "0": "Letoff B Selected",
+    "1": "Letoff A Selected",
+    "2": "Letoff Turret in position",
+    "3": "Letoff / Spare",
+    "4": "Splice Press Inlet Clamp Close",
+    "5": "Splice Press Platen Close",
+    "7": "Splice Press Exit Clamp Close",
+    "8": "Letoff Accumulator / Feedroll Clutch On",
+    "9": "Letoff Accumulator / Feedroll Nip Close",
+    "10": "Letoff Accumulator / Tension On",
+    "11": "Letoff Accumulator / Tension High/Low",
+    "12": "Tension Stand 1 / Nip Close",
+    "13": "Spare",
+    "14": "Impreg / Metering Rolls Close",
+    "15": "Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 4,
+   "name": "p00_io_letoff_di_01",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_letoff:4:I",
+   "point_pattern": "p00_io_letoff:4:I.{n}",
+   "fault_tag": "p00_io_letoff:I.SlotStatusBits.4",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_letoff:4:I.3)",
+   "labels": {
+    "0": "Letoff / SS: Letoff A Selected",
+    "1": "Letoff / PB: Letoff A On",
+    "2": "Letoff / PB: Letoff A Off / Off=0",
+    "3": "Letoff / PB: Letoff A Jog FWD",
+    "4": "Letoff / PB: Letoff A Jog REV",
+    "5": "Letoff / PB: Letoff B On",
+    "6": "Letoff / PB: Letoff B Off",
+    "7": "Letoff / PB: Letoff B Jog FWD",
+    "8": "Letoff / PB: Letoff B Jog REV",
+    "9": "Letoff / PB: Turret FWD",
+    "10": "Letoff / PB: Turret REV",
+    "11": "Letoff / PP: Estop Active",
+    "12": "Letoff / Spare",
+    "13": "Letoff / Turret in Position",
+    "14": "Letoff / Spare",
+    "15": "Letoff / Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 5,
+   "name": "p00_io_letoff_di_02",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_letoff:5:I",
+   "point_pattern": "p00_io_letoff:5:I.{n}",
+   "fault_tag": "p00_io_letoff:I.SlotStatusBits.5",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_letoff:5:I.3)",
+   "labels": {
+    "0": "Splice Press / Spare",
+    "1": "Splice Press / Spare",
+    "2": "Splice Press / PB: Open Platen",
+    "3": "Splice Press / PB: Close Inlet Clamp",
+    "4": "Splice Press / PB: Close Exit Clamp",
+    "5": "Splice Press / PB: Feedroll Jog FWD",
+    "6": "Splice Press / PB: Feedroll Jog REV",
+    "7": "Splice Press / PB: Close Feedroll Nip",
+    "8": "Splice Press / PB: Fill Letoff Accumulator",
+    "9": "Splice Press / PP: EStop Active",
+    "10": "Splice Press / Spare",
+    "11": "Accumulator / Door Open",
+    "12": "Splice Press / Spare",
+    "13": "Splice Press / Spare",
+    "14": "Splice Press / LS: Platen Closed",
+    "15": "Splice Press / Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 6,
+   "name": "p00_io_letoff_di_03",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_letoff:6:I",
+   "point_pattern": "p00_io_letoff:6:I.{n}",
+   "fault_tag": "p00_io_letoff:I.SlotStatusBits.6",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_letoff:6:I.3)",
+   "labels": {
+    "0": "Letoff Accumulator / LS: Upper Limit Active",
+    "1": "Letoff Accumulator / LS: Lower Limit Active",
+    "2": "Letoff Accumulator / Spare",
+    "3": "Letoff Accumulator / PB: Tension Stand 1 / Jog FWD",
+    "4": "Letoff Accumulator / PB: Tension Stand 1 / Jog REV",
+    "5": "Letoff Accumulator / SS: Tension Stand 1 / Jog/Thread/Run / Jog",
+    "6": "Letoff Accumulator / SS: Tension Stand 1 / Jog/Thread/Run / Run",
+    "7": "Letoff Accumulator / SS: Tension Stand 1 / Nip Open/Auto/Close / Open",
+    "8": "Letoff Accumulator / SS: Tension Stand 1 / Nip Open/Auto/Close / Close",
+    "9": "Letoff Accumulator / PP: EStop Active",
+    "10": "Letoff Accumulator / Spare",
+    "11": "Letoff Accumulator / Spare",
+    "12": "Letoff Accumulator / Spare",
+    "13": "Letoff Accumulator / Spare",
+    "14": "Letoff Accumulator / Spare",
+    "15": "Letoff Accumulator / Spare"
+   }
+  },
+  {
+   "rack": "Letoff Panel (p00_io_letoff, 1794-AENT 10.0.0.10)",
+   "slot": 7,
+   "name": "p00_io_letoff_di_04",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_letoff:7:I",
+   "point_pattern": "p00_io_letoff:7:I.{n}",
+   "fault_tag": "p00_io_letoff:I.SlotStatusBits.7",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_letoff:7:I.3)",
+   "labels": {
+    "0": "Impreg / PB: Splice Jump",
+    "1": "Impreg / SSS: Metering Rolls Open",
+    "2": "Impreg / SSS: Metering Rolls Close",
+    "3": "Impreg / SSS: Metering Rolls Jog FWD",
+    "4": "Impreg / SSS: Metering Rolls Jog REV",
+    "5": "Impreg / PP: EStop Active",
+    "6": "Impreg / Spare",
+    "7": "Impreg / Spare",
+    "8": "Impreg / PR: Dip Tank Up",
+    "9": "Impreg / PS: Enclosure Supply Filter Dirty",
+    "10": "Impreg / Enclosure Supply Fan / Rotating",
+    "11": "Impreg / Through Tank Level / Low",
+    "12": "Impreg / Tank Level / High",
+    "13": "Impreg / Tank Level / Low",
+    "14": "Impreg / Spare",
+    "15": "Impreg / Spare"
+   }
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_io_oven",
+   "catalog": "1794-AENT",
+   "kind": "comm",
+   "points": 8,
+   "data_base": "p00_io_oven:I.Data",
+   "point_pattern": "p00_io_oven:I.Data[{slot}]",
+   "fault_tag": "p00_io_oven:I.SlotStatusBits",
+   "note": "FLEX adapter 10.0.0.11, rack-optimized. SlotStatusBits bit n = slot n status (0 in snapshot = OK; verify polarity). No adapter connection-fault tag in logic (no GSV)."
+  },
+  {
+   "rack": "Oven Panel (p00_io_oven, 1794-AENT 10.0.0.11)",
+   "slot": 0,
+   "name": "p00_io_oven_ao_01",
+   "catalog": "1794-OE4/B",
+   "kind": "AO",
+   "points": 4,
+   "data_base": "p00_io_oven:0:O",
+   "point_pattern": "p00_io_oven:0:O.Ch{n}Data",
+   "fault_tag": "p00_io_oven:0:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault inferred, verify",
+   "labels": {
+    "0": "Zone 1 / Gas Valve",
+    "1": "Zone 2 / Gas Valve",
+    "2": "Zone 3 / Control Valve",
+    "3": "Spare"
+   }
+  },
+  {
+   "rack": "Oven Panel (p00_io_oven, 1794-AENT 10.0.0.11)",
+   "slot": 1,
+   "name": "p00_io_oven_ai_01",
+   "catalog": "1794-IE8/B",
+   "kind": "AI",
+   "points": 8,
+   "data_base": "p00_io_oven:1:I",
+   "point_pattern": "p00_io_oven:1:I.Ch{n}Data",
+   "fault_tag": "p00_io_oven:1:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault member name inferred from 1794 direct-connect tag layout (first InputData element), verify",
+   "labels": {
+    "0": "Zone 1 / LFL Level",
+    "1": "Zone 2  / LFL Level",
+    "2": "Zone 1 to Zone 2 / Differential Pressure",
+    "3": "Oxidizer Mass Flow Differential Pressure",
+    "4": "Analog Input WindUp Accumulator Linear Position Transducer",
+    "5": "Spare",
+    "6": "Spare",
+    "7": "Spare"
+   }
+  },
+  {
+   "rack": "Oven Panel (p00_io_oven, 1794-AENT 10.0.0.11)",
+   "slot": 2,
+   "name": "p00_io_oven_tc_01",
+   "catalog": "1794-IT8/A",
+   "kind": "AI-TC",
+   "points": 8,
+   "data_base": "p00_io_oven:2:I",
+   "point_pattern": "p00_io_oven:2:I.Ch{n}Data",
+   "fault_tag": "p00_io_oven:2:I.Fault",
+   "note": "direct connection, INT raw counts; open-wire bits p00_io_oven:2:I.Ch{n}OverrangeAlarm; .Fault member name inferred from 1794 direct-connect tag layout (first InputData element), verify",
+   "labels": {
+    "0": "Zone 1 / Control Temperature 1",
+    "1": "Zone 1 / Control Temperature 2",
+    "2": "Zone 2 / Control Temperature 1",
+    "3": "Zone 2 / Control Temperature 2",
+    "4": "Zone 3 / Control Temperature 1",
+    "5": "Zone 3 / Control Temperature 2",
+    "6": "Oxidizer  / Mass Flow Temperature",
+    "7": "Spare"
+   }
+  },
+  {
+   "rack": "Oven Panel (p00_io_oven, 1794-AENT 10.0.0.11)",
+   "slot": 3,
+   "name": "p00_io_oven_di_01",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_oven:3:I",
+   "point_pattern": "p00_io_oven:3:I.{n}",
+   "fault_tag": "p00_io_oven:I.SlotStatusBits.3",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_oven:3:I.3)",
+   "labels": {
+    "0": "Zone 1 / PS: Combustion Blower Pressure Ok",
+    "1": "Zone 1 / PS: Fresh Air Filter Dirty",
+    "2": "Zone 1 / PS: Combustion Blower Air Filter Dirty",
+    "3": "Zone 1 / PS: Recirc Fan Air Filter Dirty",
+    "4": "Zone 1 / LS: Access Door Open",
+    "5": "Zone 1 / Spare",
+    "6": "Zone 1 / Spare",
+    "7": "Zone 1 / Spare",
+    "8": "Zone 2 / PS: Combustion Blower Pressure Ok",
+    "9": "Zone 2 / PS: Filter Dirty",
+    "10": "Zone 2 / PS: Fresh Air Filter Dirty",
+    "11": "Zone 2 / PS: Recirc Fan Air Filter Dirty",
+    "12": "Zone 2 / LS: Access Door Open",
+    "13": "Zone 2 / Spare",
+    "14": "Zone 2 / Spare",
+    "15": "Zone 2 / Spare"
+   }
+  },
+  {
+   "rack": "Oven Panel (p00_io_oven, 1794-AENT 10.0.0.11)",
+   "slot": 4,
+   "name": "p00_io_oven_di_02",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_oven:4:I",
+   "point_pattern": "p00_io_oven:4:I.{n}",
+   "fault_tag": "p00_io_oven:I.SlotStatusBits.4",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_oven:4:I.3)",
+   "labels": {
+    "0": "Zone 3 / LS: Access Door Open",
+    "1": "Zone 3 / Spare",
+    "2": "Zone 3 / Spare",
+    "3": "Retraction Control / SS: Open/Off/Close / Open",
+    "4": "Retraction Control / SS: Open/Off/Close / Close",
+    "5": "Retraction Control / LS: Retraction Unit Up",
+    "6": "Retraction Control / LS: Retraction Unit Down",
+    "7": "Zone 3 / Filter Dirty",
+    "8": "Spare",
+    "9": "Spare",
+    "10": "Spare",
+    "11": "Spare",
+    "12": "Spare",
+    "13": "Spare",
+    "14": "Spare",
+    "15": "Spare"
+   }
+  },
+  {
+   "rack": "Oven Panel (p00_io_oven, 1794-AENT 10.0.0.11)",
+   "slot": 5,
+   "name": "p00_io_oven_di_03",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_oven:5:I",
+   "point_pattern": "p00_io_oven:5:I.{n}",
+   "fault_tag": "p00_io_oven:I.SlotStatusBits.5",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_oven:5:I.3)",
+   "labels": {
+    "0": "LS: Safety Pin 1 / Stowed",
+    "1": "LS: Safety Pin 2 / Stowed",
+    "2": "LS: Safety Pin 3 / Stowed",
+    "3": "LS: Safety Pin 4 / Stowed",
+    "4": "LS: Safety Pin 5 / Stowed",
+    "5": "LS: Safety Pin 6 / Stowed",
+    "6": "LS: Safety Pin 7 / Stowed",
+    "7": "LS: Safety Pin 8 / Stowed",
+    "8": "Spare",
+    "9": "Spare",
+    "10": "Spare",
+    "11": "Spare",
+    "12": "Spare",
+    "13": "Spare",
+    "14": "Spare",
+    "15": "Spare"
+   }
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_io_winder",
+   "catalog": "1794-AENT",
+   "kind": "comm",
+   "points": 8,
+   "data_base": "p00_io_winder:I.Data",
+   "point_pattern": "p00_io_winder:I.Data[{slot}]",
+   "fault_tag": "p00_io_winder:I.SlotStatusBits",
+   "note": "FLEX adapter 10.0.0.12, rack-optimized. SlotStatusBits bit n = slot n status (0 in snapshot = OK; verify polarity). No adapter connection-fault tag in logic (no GSV)."
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 0,
+   "name": "p00_io_winder_ao_01",
+   "catalog": "1794-OE4/B",
+   "kind": "AO",
+   "points": 4,
+   "data_base": "p00_io_winder:0:O",
+   "point_pattern": "p00_io_winder:0:O.Ch{n}Data",
+   "fault_tag": "p00_io_winder:0:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault inferred, verify",
+   "labels": {
+    "0": "Upper Liner / Letoff Brake A",
+    "1": "Upper Liner / Letoff Brake B",
+    "2": "Lower Liner / Letoff Brake A",
+    "3": "Lower Liner / Letoff Brake B"
+   }
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 1,
+   "name": "p00_io_winder_ao_02",
+   "catalog": "1794-OE4/B",
+   "kind": "AO",
+   "points": 4,
+   "data_base": "p00_io_winder:1:O",
+   "point_pattern": "p00_io_winder:1:O.Ch{n}Data",
+   "fault_tag": "p00_io_winder:1:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault inferred, verify",
+   "labels": {
+    "0": "Advanced Roll Cooling Pressure",
+    "1": "Advanced Roll Cooling Control Valve",
+    "2": "Windup Accumulator Tension Control I/P Converter",
+    "3": "Windup Accumulator Carriage Counter Pressure I/P Converter"
+   }
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 2,
+   "name": "p00_io_winder_ai_01",
+   "catalog": "1794-IE8/B",
+   "kind": "AI",
+   "points": 8,
+   "data_base": "p00_io_winder:2:I",
+   "point_pattern": "p00_io_winder:2:I.Ch{n}Data",
+   "fault_tag": "p00_io_winder:2:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault member name inferred from 1794 direct-connect tag layout (first InputData element), verify",
+   "labels": {
+    "0": "Upper Liner / Letoff A Diameter",
+    "1": "Upper Liner / Letoff B Diameter",
+    "2": "Lower Liner / Letoff A Diameter",
+    "3": "Lower Liner / Letoff B Diameter",
+    "4": "Tension Stand 2 / Load Cell",
+    "5": "Accumulator Linear Transducer",
+    "6": "Accumulator Exit Tension",
+    "7": "Advanced Roll Cooling Pressure"
+   }
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 3,
+   "name": "p00_io_winder_tc_01",
+   "catalog": "1794-IT8/A",
+   "kind": "AI-TC",
+   "points": 8,
+   "data_base": "p00_io_winder:3:I",
+   "point_pattern": "p00_io_winder:3:I.Ch{n}Data",
+   "fault_tag": "p00_io_winder:3:I.Fault",
+   "note": "direct connection, INT raw counts; open-wire bits p00_io_winder:3:I.Ch{n}OverrangeAlarm; .Fault member name inferred from 1794 direct-connect tag layout (first InputData element), verify",
+   "labels": {
+    "0": "Advanced Cooling Temperature 1",
+    "1": "Advanced Cooling Temperature 2",
+    "2": "Spare",
+    "3": "Spare",
+    "4": "Spare",
+    "5": "Spare",
+    "6": "Spare",
+    "7": "Spare"
+   }
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 4,
+   "name": "p00_io_winder_do_01",
+   "catalog": "1794-OB16/A",
+   "kind": "DO",
+   "points": 16,
+   "data_base": "p00_io_winder:4:O",
+   "point_pattern": "p00_io_winder:4:O.{n}",
+   "fault_tag": "p00_io_winder:I.SlotStatusBits.4",
+   "note": "rack-optimized; slot tag is INT",
+   "labels": {
+    "0": "Spare",
+    "1": "Spare",
+    "2": "Winder A selected",
+    "3": "Winder B selected",
+    "4": "Turret in position",
+    "5": "Alarm??",
+    "6": "WAC Nip Mode Selector Indicator Light",
+    "7": "WAC Accumulator On",
+    "8": "Digital Output WAC Nip Close",
+    "9": "Spare",
+    "10": "Spare",
+    "11": "Spare",
+    "12": "Spare",
+    "13": "Spare",
+    "14": "Spare",
+    "15": "Spare"
+   }
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 5,
+   "name": "p00_io_winder_di_01",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_winder:5:I",
+   "point_pattern": "p00_io_winder:5:I.{n}",
+   "fault_tag": "p00_io_winder:I.SlotStatusBits.5",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_winder:5:I.3)",
+   "labels": {
+    "0": "Upper poly tension A On",
+    "1": "Upper poly tension B On",
+    "2": "Lower poly tension A On",
+    "3": "Lower poly tension B On",
+    "4": "Edge Control / PP: EStop Active",
+    "5": "Winder Accumulator Empty",
+    "6": "Windup Accumulator Off/On Selector Switch",
+    "7": "Windup Accumulator Line Stop Pushbutton",
+    "8": "Tension Stand 2 / PB: Jog FWD",
+    "9": "Tension Stand 2 / PB: Jog REV",
+    "10": "Tension Stand 2 / SS: Jog/Thread/Run / Jog",
+    "11": "Tension Stand 2 / SS: Jog/Thread/Run / Run",
+    "12": "Tension Stand 2 / PP: EStop Active",
+    "13": "Windup Accumulator SS: Outfeed Nip Auto",
+    "14": "Windup Accumulator SS: Outfeed Nip Close",
+    "15": "Windup Accumulator: OP Station E-Stop"
+   }
+  },
+  {
+   "rack": "Winder Panel (p00_io_winder, 1794-AENT 10.0.0.12)",
+   "slot": 6,
+   "name": "p00_io_winder_di_02",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_winder:6:I",
+   "point_pattern": "p00_io_winder:6:I.{n}",
+   "fault_tag": "p00_io_winder:I.SlotStatusBits.6",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_winder:6:I.3)",
+   "labels": {
+    "0": "Winder / Accumulator Full",
+    "1": "Winder: / SS: Winder A/B / Winder B",
+    "2": "Winder / SS: Winder A Core Size Selector / 3$Q or  6$Q / 6$Q Selected",
+    "3": "Winder / PB: Winder A / Reset Core",
+    "4": "Winder / PB: Winder A Jog FWD",
+    "5": "Winder / PB: Winder A Jog REV",
+    "6": "Winder / SS: Winder B Core Size Selector / 3$Q or  6$Q / 6$Q Selected",
+    "7": "Winder / PB: Winder B / Reset Core",
+    "8": "Winder / PB: Winder B Jog FWD",
+    "9": "Winder / PB: Winder B Jog REV",
+    "10": "Winder / PB: Turret FWD",
+    "11": "Winder / PB: Turret REV",
+    "12": "Winder / PP: EStop Active",
+    "13": "Turret In Position Bit 1",
+    "14": "Turret In Position Bit 2",
+    "15": "Turret In Position Bit 3"
+   }
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_io_line",
+   "catalog": "1794-AENT",
+   "kind": "comm",
+   "points": 8,
+   "data_base": "p00_io_line:I.Data",
+   "point_pattern": "p00_io_line:I.Data[{slot}]",
+   "fault_tag": "p00_io_line:I.SlotStatusBits",
+   "note": "FLEX adapter 10.0.0.13, rack-optimized. SlotStatusBits bit n = slot n status (0 in snapshot = OK; verify polarity). No adapter connection-fault tag in logic (no GSV)."
+  },
+  {
+   "rack": "Line Drive Panel (p00_io_line, 1794-AENT 10.0.0.13)",
+   "slot": 0,
+   "name": "p00_io_line_ao_01",
+   "catalog": "1794-OE4/B",
+   "kind": "AO",
+   "points": 4,
+   "data_base": "p00_io_line:0:O",
+   "point_pattern": "p00_io_line:0:O.Ch{n}Data",
+   "fault_tag": "p00_io_line:0:I.Fault",
+   "note": "direct connection, INT raw counts; .Fault inferred, verify",
+   "labels": {
+    "0": "Line Drive / Splice Platen / IR Heater Control",
+    "1": "Line Drive / Spare",
+    "2": "Line Drive / Spare",
+    "3": "Line Drive / Spare"
+   }
+  },
+  {
+   "rack": "Line Drive Panel (p00_io_line, 1794-AENT 10.0.0.13)",
+   "slot": 1,
+   "name": "p00_io_line_do_01",
+   "catalog": "1794-OB16/A",
+   "kind": "DO",
+   "points": 16,
+   "data_base": "p00_io_line:1:O",
+   "point_pattern": "p00_io_line:1:O.{n}",
+   "fault_tag": "p00_io_line:I.SlotStatusBits.1",
+   "note": "rack-optimized; slot tag is INT",
+   "labels": {
+    "0": "Spare",
+    "1": "Line Drive / Letoff Accumulator / Feed Roll Reverse",
+    "2": "Line Drive / Letoff Accumulator / Feed Roll Forward",
+    "3": "Spare",
+    "4": "Spare",
+    "5": "Spare",
+    "6": "Line Drive / IR Heater Enable",
+    "7": "Spare",
+    "8": "Spare",
+    "9": "Spare",
+    "10": "Spare",
+    "11": "Spare",
+    "12": "Spare",
+    "13": "Spare",
+    "14": "Spare",
+    "15": "Spare"
+   }
+  },
+  {
+   "rack": "Line Drive Panel (p00_io_line, 1794-AENT 10.0.0.13)",
+   "slot": 2,
+   "name": "p00_io_line_di_01",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_line:2:I",
+   "point_pattern": "p00_io_line:2:I.{n}",
+   "fault_tag": "p00_io_line:I.SlotStatusBits.2",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_line:2:I.3)",
+   "labels": {
+    "0": "Line Drive / Letoff A / Motor Thermostat",
+    "1": "Line Drive / Letoff A/B / Brake Thermostat",
+    "2": "Line Drive / Letoff B / Motor Thermostat",
+    "3": "Spare",
+    "4": "Line Drive / Letoff Turret / Motor Thermostat",
+    "5": "Line Drive / Tension Stand 1 / Motor Thermostat",
+    "6": "Line Drive / TS 1& Metering Roll / Brake Thermostat",
+    "7": "Line Drive / Metering Rolls / Motor Thermostat",
+    "8": "Spare",
+    "9": "Line Drive / Metering Rolls / Servo Operator Side Ok",
+    "10": "Line Drive / Metering Rolls / Servo Drive Side Ok",
+    "11": "Line Drive / Tension Stand 2 / Motor Thermostat",
+    "12": "Line Drive / TS2 & Slitter / Brake Thermostat",
+    "13": "Line Drive / Slitter / Motor Thermostat",
+    "14": "Spare",
+    "15": "Line Drive / Winder Turret / Motor Thermostat"
+   }
+  },
+  {
+   "rack": "Line Drive Panel (p00_io_line, 1794-AENT 10.0.0.13)",
+   "slot": 3,
+   "name": "p00_io_line_di_02",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_line:3:I",
+   "point_pattern": "p00_io_line:3:I.{n}",
+   "fault_tag": "p00_io_line:I.SlotStatusBits.3",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_line:3:I.3)",
+   "labels": {
+    "0": "Line Drive / Winder A / Motot Thermostat",
+    "1": "Line Drive / Winder A/B / Brake Thermostat",
+    "2": "Line Drive / Winder B / Motor Thermostat",
+    "3": "Line Drive / Winder B / Brake Thermostat",
+    "4": "Line Drive / Spare",
+    "5": "Line Drive / Spare",
+    "6": "Line Drive / Spare",
+    "7": "Line Drive / Spare",
+    "8": "Line Drive / Spare",
+    "9": "Line Drive / Spare",
+    "10": "Line Drive / Spare",
+    "11": "Line Drive / Spare",
+    "12": "Line Drive / Spare",
+    "13": "Line Drive / Spare",
+    "14": "Line Drive / Spare",
+    "15": "Line Drive / Spare"
+   }
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_io_prc",
+   "catalog": "1794-AENT",
+   "kind": "comm",
+   "points": 8,
+   "data_base": "p00_io_prc:I.Data",
+   "point_pattern": "p00_io_prc:I.Data[{slot}]",
+   "fault_tag": "p00_io_prc:I.SlotStatusBits",
+   "note": "FLEX adapter 10.0.0.14, rack-optimized. SlotStatusBits bit n = slot n status (0 in snapshot = OK; verify polarity). No adapter connection-fault tag in logic (no GSV)."
+  },
+  {
+   "rack": "Process Drive Panel (p00_io_prc, 1794-AENT 10.0.0.14)",
+   "slot": 0,
+   "name": "p00_io_prc_do_01",
+   "catalog": "1794-OB16/A",
+   "kind": "DO",
+   "points": 16,
+   "data_base": "p00_io_prc:0:O",
+   "point_pattern": "p00_io_prc:0:O.{n}",
+   "fault_tag": "p00_io_prc:I.SlotStatusBits.0",
+   "note": "rack-optimized; slot tag is INT",
+   "labels": {
+    "0": "Process Drive / Impreg Enclosure / Exhaust Fan",
+    "1": "Process Drive / Spare",
+    "2": "Process Drive / Spare",
+    "3": "Process Drive / Retraction REV",
+    "4": "Process Drive / Retraction FWD",
+    "5": "Process Drive / Advanced Cooling Pump",
+    "6": "Process Drive / Spare",
+    "7": "Process Drive / Spare",
+    "8": "Process Drive / Spare",
+    "9": "Process Drive / Spare",
+    "10": "Process Drive / Spare",
+    "11": "Process Drive / Spare",
+    "12": "Process Drive / Spare",
+    "13": "Process Drive / Spare",
+    "14": "Process Drive / Spare",
+    "15": "Process Drive / Spare"
+   }
+  },
+  {
+   "rack": "Process Drive Panel (p00_io_prc, 1794-AENT 10.0.0.14)",
+   "slot": 1,
+   "name": "p00_io_prc_di_01",
+   "catalog": "1794-IB16/A",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "p00_io_prc:1:I",
+   "point_pattern": "p00_io_prc:1:I.{n}",
+   "fault_tag": "p00_io_prc:I.SlotStatusBits.1",
+   "note": "rack-optimized; slot tag is INT, bits addressed directly (logic uses e.g. p00_io_prc:1:I.3)",
+   "labels": {
+    "0": "Process Drive / Impreg Enclosure / Supply Fan Motor Thermostat",
+    "1": "Process Drive / Zone 1 / Recirc Fan Motor Thermostat",
+    "2": "Process Drive / Zone 1 / Exhaust Fan Motor Thermostat",
+    "3": "Process Drive / Zone 2 / Recirc Fan Motor Thermostat",
+    "4": "Process Drive / Zone 2 / Exhaust Fan Motor Thermostat",
+    "5": "Process Drive / Zone 3 / Recirc Fan Motor Thermostat",
+    "6": "Process Drive / Zone 3 / Exhaust Fan Motor Thermostat",
+    "7": "Process Drive / Spare",
+    "8": "Process Drive / Spare",
+    "9": "Process Drive / Spare",
+    "10": "Process Drive / Spare",
+    "11": "Process Drive / Spare",
+    "12": "Process Drive / Spare",
+    "13": "Process Drive / Spare",
+    "14": "Process Drive / Spare",
+    "15": "Process Drive / Spare"
+   }
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_imp_supply",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_imp_supply:I.Data",
+   "point_pattern": "p00_vfd_imp_supply:I.Data[{n}]  /  p00_vfd_imp_supply:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.0",
+   "note": "Generic EtherNet/IP 10.0.0.50 - Tension Stand 1 VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.0"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_z1_recirc",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_z1_recirc:I.Data",
+   "point_pattern": "p00_vfd_z1_recirc:I.Data[{n}]  /  p00_vfd_z1_recirc:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.1",
+   "note": "Generic EtherNet/IP 10.0.0.51 - Zone 1 Recirc VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.1"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_z1_exhaust",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_z1_exhaust:I.Data",
+   "point_pattern": "p00_vfd_z1_exhaust:I.Data[{n}]  /  p00_vfd_z1_exhaust:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.2",
+   "note": "Generic EtherNet/IP 10.0.0.52 - Zone 1 Exhaust VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.2"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_z2_recirc",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_z2_recirc:I.Data",
+   "point_pattern": "p00_vfd_z2_recirc:I.Data[{n}]  /  p00_vfd_z2_recirc:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.3",
+   "note": "Generic EtherNet/IP 10.0.0.53 - Zone 2 Recirc VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.3"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_z2_exhaust",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_z2_exhaust:I.Data",
+   "point_pattern": "p00_vfd_z2_exhaust:I.Data[{n}]  /  p00_vfd_z2_exhaust:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.4",
+   "note": "Generic EtherNet/IP 10.0.0.54 - Zone 2 Exhaust VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.4"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_z3_recirc",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_z3_recirc:I.Data",
+   "point_pattern": "p00_vfd_z3_recirc:I.Data[{n}]  /  p00_vfd_z3_recirc:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.5",
+   "note": "Generic EtherNet/IP 10.0.0.55 - Zone 3 Recirc VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.5"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_z3_exhaust",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_z3_exhaust:I.Data",
+   "point_pattern": "p00_vfd_z3_exhaust:I.Data[{n}]  /  p00_vfd_z3_exhaust:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.6",
+   "note": "Generic EtherNet/IP 10.0.0.56 - Zone 3 Exhaust VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.6"
+  },
+  {
+   "rack": "Enet_A network (1756-ENBT slot 1, 10.0.0.x)",
+   "slot": null,
+   "name": "p00_vfd_wdb",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_wdb:I.Data",
+   "point_pattern": "p00_vfd_wdb:I.Data[{n}]  /  p00_vfd_wdb:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.18",
+   "note": "Generic EtherNet/IP 10.0.0.60 - Winder B VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.18"
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 2,
+   "name": "Enet_B",
+   "catalog": "1756-ENBT/A",
+   "kind": "comm",
+   "points": null,
+   "data_base": null,
+   "point_pattern": null,
+   "fault_tag": null,
+   "note": "EtherNet/IP bridge 10.0.1.1; no module status tag (would need GSV MODULE EntryStatus)"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_loa",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_loa:I.Data",
+   "point_pattern": "p00_vfd_loa:I.Data[{n}]  /  p00_vfd_loa:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.7",
+   "note": "Generic EtherNet/IP 10.0.1.10 - Letoff A VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.7"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_lob",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_lob:I.Data",
+   "point_pattern": "p00_vfd_lob:I.Data[{n}]  /  p00_vfd_lob:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.8",
+   "note": "Generic EtherNet/IP 10.0.1.11 - Letoff B VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.8"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_lo_turret",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_lo_turret:I.Data",
+   "point_pattern": "p00_vfd_lo_turret:I.Data[{n}]  /  p00_vfd_lo_turret:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.9",
+   "note": "Generic EtherNet/IP 10.0.1.12 - Letoff Turret VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.9"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_ts1",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_ts1:I.Data",
+   "point_pattern": "p00_vfd_ts1:I.Data[{n}]  /  p00_vfd_ts1:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.10",
+   "note": "Generic EtherNet/IP 10.0.1.13 - Tension Stand 1 VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.10"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_mtr",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_mtr:I.Data",
+   "point_pattern": "p00_vfd_mtr:I.Data[{n}]  /  p00_vfd_mtr:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.11",
+   "note": "Generic EtherNet/IP 10.0.1.14 - Metering Roll VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.11"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_srv_mtr_os",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "servo",
+   "points": null,
+   "data_base": "p00_srv_mtr_os:I.Data",
+   "point_pattern": "p00_srv_mtr_os:I.Data[{n}]  /  p00_srv_mtr_os:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.12",
+   "note": "Generic EtherNet/IP 10.0.1.15 - Mayer Rod Operator Side; DINT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.12"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_srv_mtr_ds",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "servo",
+   "points": null,
+   "data_base": "p00_srv_mtr_ds:I.Data",
+   "point_pattern": "p00_srv_mtr_ds:I.Data[{n}]  /  p00_srv_mtr_ds:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.13",
+   "note": "Generic EtherNet/IP 10.0.1.16 - Mayer Rod Drive Side; DINT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.13"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_ts2",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_ts2:I.Data",
+   "point_pattern": "p00_vfd_ts2:I.Data[{n}]  /  p00_vfd_ts2:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.14",
+   "note": "Generic EtherNet/IP 10.0.1.17 - Tension Stand 2 VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.14"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_slitter",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_slitter:I.Data",
+   "point_pattern": "p00_vfd_slitter:I.Data[{n}]  /  p00_vfd_slitter:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.15",
+   "note": "Generic EtherNet/IP 10.0.1.18 - Slitter VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.15"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_wdr_turret",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_wdr_turret:I.Data",
+   "point_pattern": "p00_vfd_wdr_turret:I.Data[{n}]  /  p00_vfd_wdr_turret:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.16",
+   "note": "Generic EtherNet/IP 10.0.1.19 - Winder Turret VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.16"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_wda",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_wda:I.Data",
+   "point_pattern": "p00_vfd_wda:I.Data[{n}]  /  p00_vfd_wda:O.Data[{n}]",
+   "fault_tag": "p01r02_ethernet_comm.17",
+   "note": "Generic EtherNet/IP 10.0.1.20 - Winder A VFD; INT data; fault_tag is COMM OK (1 = OK, invert for fault lamp); latched fault p01r02.fault.17"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "p00_vfd_sprng",
+   "catalog": "ETHERNET-MODULE",
+   "kind": "vfd",
+   "points": null,
+   "data_base": "p00_vfd_sprng:I.Data",
+   "point_pattern": "p00_vfd_sprng:I.Data[{n}]  /  p00_vfd_sprng:O.Data[{n}]",
+   "fault_tag": null,
+   "note": "Generic EtherNet/IP 10.0.1.22; INT data; no comm-status tag (sprng not in GSV list)"
+  },
+  {
+   "rack": "Enet_B network (1756-ENBT slot 2, 10.0.1.x)",
+   "slot": null,
+   "name": "T000_ENC_Winder",
+   "catalog": "843E-MIPxxBAx/A",
+   "kind": "encoder",
+   "points": 1,
+   "data_base": "T000_ENC_Winder:I.Encoder.Position",
+   "point_pattern": "T000_ENC_Winder:I.Encoder.Position",
+   "fault_tag": null,
+   "note": "Winder turret absolute encoder 10.0.1.23; alias ai_enc_position (controller scope)"
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 3,
+   "name": "p00_ai_01",
+   "catalog": "1756-IF16/A",
+   "kind": "AI",
+   "points": 8,
+   "data_base": "Local:3:I",
+   "point_pattern": "Local:3:I.Ch{n}Data",
+   "fault_tag": "Local:3:I.ChannelFaults",
+   "note": "1756-IF16 in FloatDifferential mode (8 ch, REAL engineering units); per-channel fault Local:3:I.Ch{n}Fault; ChannelFaults member name from standard 1756-IF16 float tag, verify",
+   "labels": {
+    "0": "Tension Stand 1 Load Cell",
+    "1": "Splice Press Load Cell",
+    "2": "Winder Stand Load Cell",
+    "3": "Spare",
+    "4": "Letoff A Yardage",
+    "5": "Letoff B Yardage",
+    "6": "Winder A Yardage",
+    "7": "Winder B Yardage"
+   }
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 4,
+   "name": "p00_di_01",
+   "catalog": "1756-IB16",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "Local:4:I.Data",
+   "point_pattern": "Local:4:I.Data.{n}",
+   "fault_tag": "Local:4:I.Fault",
+   "labels": {
+    "0": "Zone 1 / Burner Auto",
+    "1": "Zone 1 / High Temperature Limit is Ok",
+    "2": "Zone 1 / Burner Safeties Ok",
+    "3": "Zone 1 / Recirculation Fan Rotating",
+    "4": "Zone 1 / Exhaust Fan Rotating",
+    "5": "Zone 1 / Flame Failure",
+    "6": "Zone 1 / Burner is On",
+    "7": "Zone 1 / Spare",
+    "8": "Zone 2 / Burner Auto",
+    "9": "Zone 2 / High Temperature Limit is Ok",
+    "10": "Zone 2 / Burner Safeties Ok",
+    "11": "Zone 2 / Recirculation Fan Rotating",
+    "12": "Zone 2 / Exhaust Fan Rotating",
+    "13": "Zone 2 / Flame Failure",
+    "14": "Zone 2 / Burner is On",
+    "15": "Zone 2 / Spare"
+   }
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 5,
+   "name": "p00_di_02",
+   "catalog": "1756-IB16",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "Local:5:I.Data",
+   "point_pattern": "Local:5:I.Data.{n}",
+   "fault_tag": "Local:5:I.Fault",
+   "labels": {
+    "0": "Zone 3 / Recirculation Fan Rotating",
+    "1": "Zone 3 / Exhaust Fan Rotating",
+    "2": "Zone 3 / Spare",
+    "3": "Zone 3 / Spare",
+    "4": "Zone 3 / Spare",
+    "5": "Zone 3 / Spare",
+    "6": "Zone 3 / Spare",
+    "7": "Zone 3 / Spare",
+    "8": "Rope Switch 1 / Active",
+    "9": "Rope Switch 2 / Active",
+    "10": "Rope Switch 3 / Active",
+    "11": "Rope Switch 4 / Active",
+    "12": "Rope Switch 5 / Active",
+    "13": "Rope Switch 6 / Active",
+    "14": "Rope Switch 7 / Active",
+    "15": "Rope Switch 8 / Active"
+   }
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 6,
+   "name": "p00_di_03",
+   "catalog": "1756-IB16",
+   "kind": "DI",
+   "points": 16,
+   "data_base": "Local:6:I.Data",
+   "point_pattern": "Local:6:I.Data.{n}",
+   "fault_tag": "Local:6:I.Fault",
+   "labels": {
+    "0": "Main HMI / Reset PB",
+    "1": "Main HMI / Estop PB",
+    "2": "Safety Relay 1 / OK",
+    "3": "Safety Relay 2 / OK",
+    "4": "Two Hand Safety Relay",
+    "5": "Splice Plate  / High Temperature",
+    "6": "Spare",
+    "7": "Retraction and Rotation Fault",
+    "8": "Spare",
+    "9": "Spare",
+    "10": "Spare",
+    "11": "Spare",
+    "12": "Spare",
+    "13": "Spare",
+    "14": "Spare",
+    "15": "Spare"
+   }
+  },
+  {
+   "rack": "Local chassis (1756, 10-slot)",
+   "slot": 7,
+   "name": "p00_do_01",
+   "catalog": "1756-OA16I",
+   "kind": "DO",
+   "points": 16,
+   "data_base": "Local:7:O.Data",
+   "point_pattern": "Local:7:O.Data.{n}",
+   "fault_tag": "Local:7:I.Fault",
+   "note": "120VAC isolated output",
+   "labels": {
+    "0": "Zone 1 / Burner Enable",
+    "1": "Zone 1 / Burner Reset",
+    "2": "Zone 2 / Burner Enable",
+    "3": "Zone 2 / Burner Reset",
+    "4": "Retraction System Motion",
+    "5": "Spare",
+    "6": "Spare",
+    "7": "Spare",
+    "8": "Spare",
+    "9": "Spare",
+    "10": "Spare",
+    "11": "Spare",
+    "12": "Spare",
+    "13": "Spare",
+    "14": "Spare",
+    "15": "Spare"
+   }
+  }
+ ]
+}

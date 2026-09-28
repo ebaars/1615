@@ -1,0 +1,41 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {},
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.alarmstatustable",
+        "meta": {
+          "name": "alarms"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "400px"
+        },
+        "props": {
+          "filters": {
+            "active": {
+              "priorities": {
+                "diagnostic": false,
+                "low": false
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

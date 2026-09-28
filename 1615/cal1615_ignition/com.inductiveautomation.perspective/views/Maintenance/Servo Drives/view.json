@@ -1,0 +1,1097 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "classes": "cal1615/page",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "os"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "400px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Operator Side Servo",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_20",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_21",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Reset",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_22",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Not Ready",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r11_servo_not_ready",
+                    "onColor": "#FFA000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "BB (Ready for Power On)",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r11_servo_status_bb",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "AB (Control and Power Ready)",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r11_servo_status_ab",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "AF (In Operation)",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r11_servo_status_af",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Parameter Mode",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_dint_to_hmi_3_/bit_20",
+                    "onColor": "#FFA000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Homed",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_os/homed",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "At Target Position",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_os/at_target_pos",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Stand Still",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_os/stand_still",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Operation Mode Error",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_os/operator_mode_error",
+                    "onColor": "#FF2020",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Drive Error",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_os/class_1_diagnostic",
+                    "onColor": "#FF2020",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Drive Warning",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_os/class_2_diagnostic",
+                    "onColor": "#FFA000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Actual Position",
+                "tag": "[cal1615]p23_real_to_hmi_61_",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zero Offset",
+                "tag": "[cal1615]p02_real_from_hmi/impreg_1_",
+                "writeTag": "[cal1615]p02_real_from_hmi/impreg_1_",
+                "units": "IN",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Zero",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_7",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Jog Forward",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_5",
+                    "value": 1,
+                    "pulse": false,
+                    "hold": true,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Jog Reverse",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_6",
+                    "value": 1,
+                    "pulse": false,
+                    "hold": true,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "498px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ds"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "400px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Drive Side Servo",
+            "rows": [
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Start",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_12",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Stop",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_13",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-stop",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Reset",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_14",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Not Ready",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r12_servo_not_ready",
+                    "onColor": "#FFA000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "BB (Ready for Power On)",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r12_servo_status_bb",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "AB (Control and Power Ready)",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r12_servo_status_ab",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "AF (In Operation)",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23r12_servo_status_af",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Parameter Mode",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_dint_to_hmi_3_/bit_8",
+                    "onColor": "#FFA000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Homed",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_ds/homed",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "At Target Position",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_ds/at_target_pos",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Stand Still",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_ds/stand_still",
+                    "onColor": "#00E000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Operation Mode Error",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_ds/operator_mode_error",
+                    "onColor": "#FF2020",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Drive Error",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_ds/class_1_diagnostic",
+                    "onColor": "#FF2020",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": true,
+                "label": "Drive Warning",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "leds",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [
+                  {
+                    "text": "",
+                    "tag": "[cal1615]p23_di_servo_ds/class_2_diagnostic",
+                    "onColor": "#FFA000",
+                    "offColor": "#E0E0E0",
+                    "invert": false
+                  }
+                ],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Actual Position",
+                "tag": "[cal1615]p23_real_to_hmi_60_",
+                "writeTag": "",
+                "units": "IN",
+                "kind": "value",
+                "format": "#,##0.000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Zero Offset",
+                "tag": "[cal1615]p02_real_from_hmi/impreg_0_",
+                "writeTag": "[cal1615]p02_real_from_hmi/impreg_0_",
+                "units": "IN",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Zero",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_2",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Jog Forward",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_0",
+                    "value": 1,
+                    "pulse": false,
+                    "hold": true,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  },
+                  {
+                    "text": "Jog Reverse",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_1",
+                    "value": 1,
+                    "pulse": false,
+                    "hold": true,
+                    "page": "",
+                    "styleClass": "cal1615/btn",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "498px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "shared"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0,
+          "basis": "400px"
+        },
+        "props": {
+          "path": "Components/Common/Card",
+          "params": {
+            "title": "Positioning",
+            "rows": [
+              {
+                "compact": false,
+                "label": "Jog Velocity",
+                "tag": "[cal1615]p02_real_from_hmi/impreg_2_",
+                "writeTag": "[cal1615]p02_real_from_hmi/impreg_2_",
+                "units": "IN/SEC",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Positioning Velocity",
+                "tag": "[cal1615]p02_real_from_hmi/impreg_3_",
+                "writeTag": "[cal1615]p02_real_from_hmi/impreg_3_",
+                "units": "IN/SEC",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "Gap Position",
+                "tag": "[cal1615]p01_recipe_active/impreg_gap_sp",
+                "writeTag": "[cal1615]p02_recipe_from_hmi/impreg_gap_sp",
+                "units": "IN",
+                "kind": "entry",
+                "format": "#,##0.0000",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "26px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "compact": false,
+                "label": "",
+                "tag": "",
+                "writeTag": "",
+                "units": "",
+                "kind": "buttons",
+                "format": "#,##0.0",
+                "stacked": false,
+                "map": {},
+                "leds": [],
+                "buttons": [
+                  {
+                    "text": "Move to Position",
+                    "tag": "[cal1615]p02_dint_from_hmi/impreg_1_/bit_10",
+                    "value": 1,
+                    "pulse": true,
+                    "hold": false,
+                    "page": "",
+                    "styleClass": "cal1615/btn-start",
+                    "confirm": ""
+                  }
+                ],
+                "labelWidth": "",
+                "instancePosition": {
+                  "basis": "42px",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              }
+            ]
+          },
+          "style": {
+            "height": "154px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}
