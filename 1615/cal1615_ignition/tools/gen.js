@@ -15,7 +15,8 @@ const HISTORY_PROVIDER = "mySQL";
 const GATEWAY_NAME = "ignition-4d950438c38c";
 const IMG = path.join(__dirname, "img");
 const PROVIDER = "cal1615";
-const NOW = new Date().toISOString().replace(/\.\d+Z$/, "Z");
+// Fixed resource timestamp so regenerating only changes files whose content changed.
+const NOW = process.env.GEN_TIMESTAMP || "2026-09-28T00:00:00Z";
 const P = path.join(OUT, "com.inductiveautomation.perspective");
 
 // ---------------------------------------------------------------- helpers
@@ -96,13 +97,13 @@ const ENUM = (id) => (TAGMAP[id] && TAGMAP[id].enum) || {};
 
 // ---------------------------------------------------------------- styles
 const S = {
-  "cal1615/card": { base: { style: { backgroundColor: "var(--neutral-20)", borderColor: "var(--neutral-50)", borderStyle: "solid", borderWidth: "1px", borderRadius: "4px", overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.25)" } } },
+  "cal1615/card": { base: { style: { overflow: "hidden", backgroundColor: "var(--neutral-20)", borderColor: "var(--neutral-50)", borderStyle: "solid", borderWidth: "1px", borderRadius: "4px", overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.25)" } } },
   "cal1615/card-header": { base: { style: { backgroundColor: "var(--callToAction)", color: "#FFFFFF", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "center", lineHeight: "24px" } } },
   "cal1615/row-label": { base: { style: { fontFamily: "Arial", fontSize: "13px", color: "var(--neutral-90)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } } },
-  "cal1615/value": { base: { style: { backgroundColor: "var(--neutral-10)", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "right", paddingRight: "4px", color: "var(--neutral-100)" } } },
-  "cal1615/entry": { base: { style: { backgroundColor: "#B8F4FF", color: "#000000", borderColor: "#0097A7", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "right" } } },
-  "cal1615/status": { base: { style: { borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "center", color: "#000000" } } },
-  "cal1615/units": { base: { style: { fontFamily: "Arial", fontSize: "12px", color: "var(--neutral-70)", paddingLeft: "3px" } } },
+  "cal1615/value": { base: { style: { height: "22px", minHeight: "0", lineHeight: "20px", boxSizing: "border-box", paddingTop: "0", paddingBottom: "0", paddingLeft: "2px", overflow: "hidden", whiteSpace: "nowrap", backgroundColor: "var(--neutral-10)", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "right", paddingRight: "4px", color: "var(--neutral-100)" } } },
+  "cal1615/entry": { base: { style: { height: "22px", minHeight: "0", lineHeight: "20px", boxSizing: "border-box", paddingTop: "0", paddingBottom: "0", paddingLeft: "3px", paddingRight: "3px", textOverflow: "clip", overflow: "hidden", whiteSpace: "nowrap", backgroundColor: "#B8F4FF", color: "#000000", borderColor: "#0097A7", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "right" } } },
+  "cal1615/status": { base: { style: { height: "22px", minHeight: "0", lineHeight: "20px", boxSizing: "border-box", paddingTop: "0", paddingBottom: "0", overflow: "hidden", whiteSpace: "nowrap", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "center", color: "#000000" } } },
+  "cal1615/units": { base: { style: { whiteSpace: "nowrap", minWidth: "26px", fontFamily: "Arial", fontSize: "12px", color: "var(--neutral-70)", paddingLeft: "3px" } } },
   "cal1615/led": { base: { style: { borderColor: "var(--neutral-70)", borderStyle: "solid", borderWidth: "1px", borderRadius: "10px", fontFamily: "Arial", fontSize: "12px", textAlign: "center", color: "#000000", whiteSpace: "nowrap", overflow: "hidden" } } },
   "cal1615/indicator": { base: { style: { backgroundColor: "var(--neutral-10)", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "3px", fontFamily: "Arial", fontSize: "12px", paddingLeft: "4px", paddingRight: "4px", boxShadow: "0 1px 2px rgba(0,0,0,0.2)" } } },
   "cal1615/banner": { base: { style: { backgroundColor: "var(--neutral-20)", borderColor: "var(--neutral-50)", borderStyle: "solid", borderWidth: "1px", borderRadius: "4px", fontFamily: "Arial", fontSize: "20px", fontWeight: "bold", paddingLeft: "10px", paddingRight: "10px" } } },
@@ -110,8 +111,17 @@ const S = {
   "cal1615/btn": { base: { style: { fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", borderRadius: "3px", margin: "3px" } } },
   "cal1615/btn-stop": { base: { style: { backgroundColor: "#D32F2F", color: "#FFFFFF", borderColor: "#8E0000", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", borderRadius: "3px", margin: "3px" } }, variants: [{ pseudo: "hover", style: { backgroundColor: "#B71C1C" } }, { pseudo: "disabled", style: { opacity: 0.45, cursor: "not-allowed" } }] },
   "cal1615/btn-start": { base: { style: { backgroundColor: "#2E7D32", color: "#FFFFFF", borderColor: "#1B5E20", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", borderRadius: "3px", margin: "3px" } }, variants: [{ pseudo: "hover", style: { backgroundColor: "#1B5E20" } }, { pseudo: "disabled", style: { opacity: 0.45, cursor: "not-allowed" } }] },
-  "cal1615/tab": { base: { style: { fontFamily: "Arial", fontSize: "13px", borderRadius: "0px", backgroundColor: "var(--neutral-40)", color: "var(--neutral-100)", borderStyle: "none", marginRight: "2px", whiteSpace: "nowrap" } }, variants: [{ pseudo: "hover", style: { backgroundColor: "var(--neutral-50)" } }] },
-  "cal1615/tab-selected": { base: { style: { fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", borderRadius: "0px", backgroundColor: "var(--callToAction)", color: "#FFFFFF", borderStyle: "none", marginRight: "2px", whiteSpace: "nowrap" } } },
+  "cal1615/tab": { base: { style: { fontFamily: "Arial", fontSize: "13px", borderRadius: "3px", backgroundColor: "var(--neutral-30)", color: "var(--neutral-100)", borderStyle: "none", whiteSpace: "normal", textAlign: "left", paddingLeft: "10px" } }, variants: [{ pseudo: "hover", style: { backgroundColor: "var(--neutral-50)" } }] },
+  "cal1615/tab-selected": { base: { style: { fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", borderRadius: "3px", backgroundColor: "var(--callToAction)", color: "#FFFFFF", borderStyle: "none", whiteSpace: "normal", textAlign: "left", paddingLeft: "10px" } } },
+  "cal1615/nav-top": { base: { style: { fontWeight: "500", textAlign: "start" } } },
+  "cal1615/nav-top-selected": { base: { style: { boxShadow: "inset 0 -3px var(--info)", color: "#1B79EC", fontWeight: "bold", textAlign: "start" } } },
+  "cal1615/sidebar-items": { base: { style: { fontSize: "14px", paddingLeft: "1rem!important", borderBottomColor: "var(--neutral-40)", borderBottomStyle: "solid", borderBottomWidth: "1px" } },
+    variants: [{ pseudo: "hover", style: { backgroundColor: "var(--callToActionHighlight)", color: "var(--neutral-100)", cursor: "pointer" } }] },
+  "cal1615/sidebar-items-selected": { base: { style: { backgroundColor: "var(--neutral-50)", color: "#FFFFFF", fontSize: "14px", fontWeight: "bold", paddingLeft: "1rem!important",
+    boxShadow: "inset 4px 0 var(--info)", borderBottomColor: "var(--neutral-40)", borderBottomStyle: "solid", borderBottomWidth: "1px" } },
+    variants: [{ pseudo: "hover", style: { backgroundColor: "var(--callToActionHighlight)", color: "var(--neutral-100)", cursor: "pointer" } }] },
+  "cal1615/sidebar-heading": { base: { style: { backgroundColor: "var(--neutral-30)", fontSize: "14px", fontWeight: "bold", paddingLeft: "1rem", lineHeight: "40px",
+    borderBottomColor: "var(--neutral-50)", borderBottomStyle: "solid", borderBottomWidth: "1px" } } },
   "cal1615/page": { base: { style: { backgroundColor: "var(--neutral-10)" } } },
   "cal1615/nav-header": { base: { style: { fontWeight: "bold", fontSize: "14px" } } },
   "cal1615/nav-item": { base: { style: { fontSize: "14px", paddingLeft: "1rem!important" } }, variants: [{ pseudo: "hover", style: { backgroundColor: "var(--callToActionHighlight)", cursor: "pointer" } }] },
@@ -123,7 +133,8 @@ const S = {
 
 // ---------------------------------------------------------------- reusable components
 // Row heights used when a Card computes its own height.
-const ROW_H = { flat: 26, stacked: 46, buttons: 42 };
+// Rows get a few px of slack over the 22px boxes so fonts and borders never overflow.
+const ROW_H = { flat: 28, stacked: 48, buttons: 42 };
 const rowHeight = (r) => (r.kind === "buttons" ? ROW_H.buttons : r.stacked ? ROW_H.stacked : ROW_H.flat);
 const HEADER_H = 26;
 const cardHeight = (rows) => HEADER_H + rows.reduce((a, r) => a + rowHeight(r), 0) + 8;
@@ -179,7 +190,7 @@ function buildComponents() {
       "props.alignItems": expr('if({view.params.stacked}, "stretch", "center")'),
     },
   });
-  const unitsLbl = () => label("units", "", { style: { classes: "cal1615/units" } }, { basis: "34px", shrink: 0 }, {
+  const unitsLbl = () => label("units", "", { style: { classes: "cal1615/units" } }, { basis: "auto", shrink: 0 }, {
     // Always present (even when empty) so entry boxes line up down a card.
     propConfig: { "props.text": prop("view.params.units"), "position.display": expr('!{view.params.stacked} || len({view.params.units}) > 0') },
   });
@@ -190,7 +201,7 @@ function buildComponents() {
     custom: { v: null },
     propConfig: { "custom.v": tagIndirect("{view.params.tag}") },
     root: rowRoot([
-      label("value", "", { style: { classes: "cal1615/value" } }, { basis: "66px", shrink: 0 }, {
+      label("value", "", { style: { classes: "cal1615/value" } }, { basis: "74px", shrink: 0 }, {
         propConfig: { "props.text": expr('if(isNull({view.custom.v}), "---", numberFormat({view.custom.v}, {view.params.format}))') },
       }),
       unitsLbl(),
@@ -202,7 +213,7 @@ function buildComponents() {
     size: { width: 240, height: 26 },
     root: rowRoot([
       {
-        type: "ia.input.numeric-entry-field", meta: { name: "entry" }, position: { basis: "66px", shrink: 0 },
+        type: "ia.input.numeric-entry-field", meta: { name: "entry" }, position: { basis: "74px", shrink: 0 },
         props: { value: null, format: "#,##0.0", spinner: { enabled: false }, style: { classes: "cal1615/entry" } },
         propConfig: {
           "props.value": { ...tagIndirect("{view.params.tag}"), onChange: { enabled: null, script: ENTRY_WRITE } },
@@ -536,14 +547,14 @@ function buildZoneTable() {
   ], { direction: "row", alignItems: "center" }, { grow: 1, basis: "0" });
   const clean = (o) => JSON.parse(JSON.stringify(o));
   writeView("Components/Oven/Zone Table", view({
-    size: { width: 366, height: 142 },
+    size: { width: 366, height: 152 },
     root: flex("root", [
       flex("head", [label("h0", "", {}, { basis: "70px", shrink: 0 }), ...[1, 2, 3].map((n) => label(`h${n}`, `Zone ${n}`, { style: { classes: "cal1615/card-header" } }, { grow: 1, basis: "0" }))],
         { direction: "row", style: { backgroundColor: "var(--callToAction)" } }, { basis: HEADER_H + "px", shrink: 0 }),
       ...rows.map(([lbl, key, units, format, entry]) => clean(flex(`r_${key}`, [
         label("l", lbl, { style: { classes: "cal1615/row-label" } }, { basis: "70px", shrink: 0 }),
         ...[1, 2, 3].map((n) => cell(n, key, units, format, entry)),
-      ], { direction: "row", alignItems: "center", style: { paddingLeft: "4px", paddingRight: "4px", gap: "4px" } }, { basis: "26px", shrink: 0 }))),
+      ], { direction: "row", alignItems: "center", style: { paddingLeft: "4px", paddingRight: "4px", gap: "4px" } }, { basis: "28px", shrink: 0 }))),
     ], { direction: "column", style: { classes: "cal1615/card", gap: "2px" } }),
   }));
 }
@@ -574,17 +585,28 @@ function buildRecipeBanner() {
 }
 
 // ---------------------------------------------------------------- main screen
+// Desktop pages are laid out for 1920x1080 minus the header and side nav (1740x1024) in a fixed-mode coordinate
+// container. Positions from the RSView screens are scaled uniformly and centred; cards, lamps and text
+// boxes keep their real content height so nothing is clipped. Drawings scale in both directions.
+const SCREEN_W = 1920, SCREEN_H = 1080, HEADER_H_PX = 56, SIDE_NAV_W = 180;
+const PAGE_W = SCREEN_W - SIDE_NAV_W, PAGE_H = SCREEN_H - HEADER_H_PX, LARGE_BREAKPOINT = 1200;
+function fixedLayout(W, H) {
+  const s = Math.min(PAGE_W / W, PAGE_H / H), ox = (PAGE_W - W * s) / 2, r = Math.round;
+  const pct = (x, y, w, h) => ({ x: r(ox + x * s), y: r(y * s), width: r(w * s), height: r(h) });
+  const img = (x, y, w, h) => ({ x: r(ox + x * s), y: r(y * s), width: r(w * s), height: r(h * s) });
+  return { s, pct, img, size: { width: PAGE_W, height: PAGE_H }, props: { mode: "fixed", style: { classes: "cal1615/page", overflow: "auto" } } };
+}
 const MAIN_W = 1512, MAIN_H = 940;
 function buildMain() {
   const c = mainCards();
-  const pct = (x, y, w, h) => ({ x: +(x / MAIN_W).toFixed(5), y: +(y / MAIN_H).toFixed(5), width: +(w / MAIN_W).toFixed(5), height: +(h / MAIN_H).toFixed(5) });
+  const L = fixedLayout(MAIN_W, MAIN_H), pct = L.pct;
   const cardAt = (name, cd, x, y, w) => embed(name, "Components/Common/Card", cd, pct(x, y, w, cardHeight(cd.rows)));
   const ind = (name, text, id, x, y, w, h = 32, o = {}) =>
     embed(name, "Components/Common/Indicator", { text, tag: T(id), onColor: "#00E000", offColor: "#FFFF00", invert: false, ...o }, pct(x, y, w, h));
 
   // Desktop: coordinate container in percent mode laid out like the RSView Main screen.
   const large = [
-    { type: "ia.display.image", meta: { name: "lineDrawing" }, position: pct(0, 70, 1510, 452),
+    { type: "ia.display.image", meta: { name: "lineDrawing" }, position: L.img(0, 70, 1510, 452),
       props: { source: dataUri("line_overview.png"), fit: { mode: "fill" }, style: { classes: "cal1615/drawing" } } },
     embed("recipeBanner", "Components/Common/Recipe Banner", {}, pct(455, 12, 677, 34)),
     cardAt("entryAccumulator", c.entryAcc, 205, 70, 226),
@@ -594,7 +616,7 @@ function buildMain() {
     cardAt("letoffFootage", c.letoffFootage, 20, 255, 128),
     ind("feedRollNipOpen", "Nip Open", "nip.feedroll_closed", 347, 313, 86, 32, { invert: true, onColor: "#00E000", offColor: "#D0D0D0" }),
     ind("ts1NipOpen", "Nip Open", "nip.ts1_closed", 552, 313, 88, 32, { invert: true, onColor: "#00E000", offColor: "#D0D0D0" }),
-    embed("zoneTable", "Components/Oven/Zone Table", {}, pct(759, 158, 366, 142)),
+    embed("zoneTable", "Components/Oven/Zone Table", {}, pct(759, 158, 366, 152)),
     cardAt("slitter", c.slitter, 1172, 200, 106),
     cardAt("upperPoly", c.upperPoly, 1280, 200, 106),
     cardAt("winderFootage", c.winderFootage, 1387, 255, 124),
@@ -618,8 +640,8 @@ function buildMain() {
     embed("faultReset", "Components/Common/Command Button", btn("Fault Reset", "btn.fault_reset", { styleClass: "cal1615/btn-stop" }), pct(1300, 780, 200, 60)),
   ];
   writeView("Main/Overview - Large", view({
-    size: { width: MAIN_W, height: MAIN_H },
-    root: { type: "ia.container.coord", meta: { name: "root" }, props: { mode: "percent", aspectRatio: `${MAIN_W}:${MAIN_H}`, style: { classes: "cal1615/page" } }, children: large },
+    size: L.size,
+    root: { type: "ia.container.coord", meta: { name: "root" }, props: L.props, children: large },
   }));
 
   // Mobile: the same cards stacked, wrapping to two or three columns on tablets.
@@ -653,10 +675,11 @@ function buildMain() {
   // Breakpoint: coordinate layout on wide screens, stacked cards on phones and small tablets.
   writeView("Main/Overview", view({
     root: {
-      type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: 1200 },
+      type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: LARGE_BREAKPOINT },
       children: [
         embed("Overview - Small", "Main/Overview - Small", {}, {}, { style: { overflowY: "auto" } }),
-        { ...embed("Overview - Large", "Main/Overview - Large", {}), position: { size: "large" } },
+        // Desktop view keeps its designed size (the page scrolls) instead of being squeezed by the breakpoint container.
+        { ...embed("Overview - Large", "Main/Overview - Large", {}, {}, { useDefaultViewWidth: true, useDefaultViewHeight: true }), position: { size: "large" } },
       ],
     },
   }));
@@ -665,11 +688,11 @@ function buildMain() {
 // ---------------------------------------------------------------- emergency stops
 function buildEstops() {
   const W = 1512, H = 940;
-  const pct = (x, y, w, h) => ({ x: +(x / W).toFixed(5), y: +(y / H).toFixed(5), width: +(w / W).toFixed(5), height: +(h / H).toFixed(5) });
+  const L = fixedLayout(W, H), pct = L.pct;
   // Rope switch positions from the RSView Emergency Stops screen (content origin 8,120).
   const sw = [[1, 34, 290], [2, 131, 542], [3, 336, 130], [4, 500, 542], [5, 760, 253], [6, 1124, 290], [7, 1127, 542], [8, 1335, 290]];
   const children = [
-    { type: "ia.display.image", meta: { name: "lineDrawing" }, position: pct(22, 230, 1490, 295),
+    { type: "ia.display.image", meta: { name: "lineDrawing" }, position: L.img(22, 230, 1490, 295),
       props: { source: dataUri("line_estop.png"), fit: { mode: "fill" }, style: { classes: "cal1615/drawing" } } },
     ...sw.map(([n, x, y]) => embed(`ropeSwitch${n}`, "Components/Common/Indicator",
       { text: `Rope Switch ${n}`, tag: T(`estop.rope_${n}`), onColor: "#FF2020", offColor: "#00E000", invert: false }, pct(x, y, 130, 34))),
@@ -677,8 +700,8 @@ function buildEstops() {
       { text: "Main OP Station E-Stop", tag: T("estop.main_op"), onColor: "#FF2020", offColor: "#00E000", invert: false }, pct(690, 660, 190, 34)),
   ];
   writeView("Main/Emergency Stops - Large", view({
-    size: { width: W, height: H },
-    root: { type: "ia.container.coord", meta: { name: "root" }, props: { mode: "percent", aspectRatio: `${W}:${H}`, style: { classes: "cal1615/page" } }, children },
+    size: L.size,
+    root: { type: "ia.container.coord", meta: { name: "root" }, props: L.props, children },
   }));
   const rows = [...sw.map(([n]) => R.leds(`Rope Switch ${n}`, [led("Tripped", `estop.rope_${n}`, { onColor: "#FF2020", offColor: "#00E000" })])),
     R.leds("Main OP Station", [led("Tripped", "estop.main_op", { onColor: "#FF2020", offColor: "#00E000" })])];
@@ -689,9 +712,9 @@ function buildEstops() {
       { direction: "column", style: { classes: "cal1615/page", padding: "8px" } }),
   }));
   writeView("Main/Emergency Stops", view({
-    root: { type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: 1200 }, children: [
+    root: { type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: LARGE_BREAKPOINT }, children: [
       embed("small", "Main/Emergency Stops - Small", {}),
-      { ...embed("large", "Main/Emergency Stops - Large", {}), position: { size: "large" } },
+      { ...embed("large", "Main/Emergency Stops - Large", {}, {}, { useDefaultViewWidth: true, useDefaultViewHeight: true }), position: { size: "large" } },
     ] },
   }));
 }
@@ -751,8 +774,8 @@ function buildFramework() {
         "props.style.classes": expr('if({this.custom.numAlarms} > 0, "cal1615/alarm-active", "")') },
       events: { dom: { onClick: { type: "nav", scope: "C", config: { page: "/alarms" } } } } }),
   ];
-  const hmenuItems = NAV.map((s) => ({ label: s.text, icon: { path: "" }, enabled: true, target: "", style: {},
-    items: s.pages.map(([t, url]) => ({ label: t, target: url, enabled: true, icon: { path: "" }, items: [], style: {} })) }));
+  // Top bar: one tab per section (no dropdowns); the section's pages are in the side nav.
+  const hmenuItems = NAV.map((s) => ({ label: s.text, icon: { path: "" }, enabled: true, target: s.pages[0][1], style: {}, items: [] }));
 
   writeView("Framework/Header Large", view({
     size: { width: 1280, height: 56 },
@@ -760,7 +783,9 @@ function buildFramework() {
       menuBtn,
       { type: "ia.display.image", meta: { name: "parkLogo" }, position: { basis: "190px", shrink: 0 }, props: { source: park, fit: { mode: "contain" } },
         events: { dom: { onClick: { type: "nav", scope: "C", config: { page: "/" } } } } },
-      { type: "ia.navigation.horizontalmenu", meta: { name: "sections" }, position: { grow: 1, basis: "500px" }, props: { items: hmenuItems, style: { border: "none" } } },
+      { type: "ia.navigation.horizontalmenu", meta: { name: "sections" }, position: { grow: 1, basis: "500px" }, props: { items: hmenuItems, style: { border: "none" } },
+        propConfig: Object.fromEntries(NAV.map((s) => [s, s.pages.map(([, u]) => u).concat(s.key === "main" ? ["/"] : [])]).map(([s, urls], i) => [`props.items[${i}].style.classes`,
+          expr(`if(${urls.map((u) => `{page.props.path} = "${u}"`).join(" || ")}, "cal1615/nav-top-selected", "cal1615/nav-top")`)])) },
       icon("user", "material/person", { basis: "28px", shrink: 0 }, { events: loginScript }),
       label("userName", "", { style: { cursor: "pointer", paddingRight: "12px" } }, { shrink: 0 }, {
         propConfig: { "props.text": expr('if({session.props.auth.authenticated}, {session.props.auth.user.userName}, "Login")') }, events: loginScript }),
@@ -773,25 +798,17 @@ function buildFramework() {
     root: flex("root", [
       { type: "ia.display.image", meta: { name: "parkLogo" }, position: { basis: "150px", shrink: 1 }, props: { source: park, fit: { mode: "contain" } },
         events: { dom: { onClick: { type: "nav", scope: "C", config: { page: "/" } } } } },
-      label("spacer", "", {}, { grow: 1, basis: "0" }),
       ...alarms(false),
       icon("user", "material/person", { basis: "28px", shrink: 0 }, { events: loginScript }),
       menuBtn,
     ], { direction: "row", alignItems: "center", style: { classes: "cal1615/header", gap: "8px", paddingLeft: "6px", paddingRight: "6px" } }),
   }));
-  // Header row plus the section tabs (Perspective shows one dock per side, so the tabs live here).
   writeView("Framework/Header", view({
-    params: { section: "main" },
-    size: { width: 1280, height: 96 },
-    root: flex("root", [
-      { type: "ia.container.breakpt", meta: { name: "bar" }, position: { basis: "56px", shrink: 0 }, props: { breakpoint: 900 }, children: [
-        embed("small", "Framework/Header Small", {}),
-        { ...embed("large", "Framework/Header Large", {}), position: { size: "large" } },
-      ] },
-      { type: "ia.display.view", meta: { name: "tabs" }, position: { basis: "40px", shrink: 0 },
-        props: { path: "Framework/Section Tabs", params: { section: "main" } },
-        propConfig: { "props.params.section": prop("view.params.section") } },
-    ], { direction: "column" }),
+    size: { width: 1280, height: HEADER_H_PX },
+    root: { type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: 900 }, children: [
+      embed("small", "Framework/Header Small", {}),
+      { ...embed("large", "Framework/Header Large", {}), position: { size: "large" } },
+    ] },
   }));
 
   // Left dock menu (opened by the Menu button); same tree on desktop and mobile.
@@ -814,29 +831,31 @@ function buildFramework() {
     ], { direction: "column", style: { backgroundColor: "var(--neutral-20)" } }),
   }));
 
-  // Section tabs: the RSView top tab row for the current section.
-  writeView("Framework/Section Tabs", view({
+  // Section side nav (left dock), styled like cal2016's sidebar: a MenuTree of the section's pages with the
+  // current page highlighted. On narrow screens, where the top tabs are hidden, the other sections follow.
+  const navData = { titles: Object.fromEntries(NAV.map((s) => [s.key, s.text])),
+    pages: Object.fromEntries(NAV.map((s) => [s.key, s.pages.map(([t, u]) => [t, u])])),
+    sections: NAV.map((s) => [s.key, s.text, s.pages[0][1]]) };
+  writeView("Framework/Section Nav", view({
     params: { section: "main" },
-    size: { width: 1280, height: 40 },
+    size: { width: SIDE_NAV_W, height: 1000 },
     root: flex("root", [
-      { type: "ia.display.flex-repeater", meta: { name: "tabs" }, position: { grow: 1, basis: "0" },
-        props: { useDefaultViewWidth: false, useDefaultViewHeight: false, path: "Framework/Tab", direction: "row", elementPosition: { grow: 0, shrink: 0, basis: "auto" }, instances: [], style: { overflowX: "auto" } },
-        propConfig: { "props.instances": prop("view.params.section", [scriptT(
-          "\tnav = " + JSON.stringify(Object.fromEntries(NAV.map((s) => [s.key, s.pages.map(([t, u]) => ({ text: t, page: u }))]))) + "\n" +
-          "\treturn nav.get(value, [])")]) } },
-    ], { direction: "row", style: { backgroundColor: "var(--neutral-20)", borderBottomStyle: "solid", borderBottomWidth: "3px", borderBottomColor: "var(--callToAction)" } }),
-  }));
-  writeView("Framework/Tab", view({
-    params: { text: "", page: "" },
-    size: { width: 150, height: 37 },
-    root: flex("root", [
-      { type: "ia.input.button", meta: { name: "tab" }, position: { grow: 1, basis: "0" }, props: { text: "", style: { classes: "cal1615/tab" } },
-        propConfig: {
-          "props.text": prop("view.params.text"),
-          "props.style.classes": expr('if({page.props.path} = {view.params.page} || ({view.params.page} = "/overview" && {page.props.path} = "/"), "cal1615/tab-selected", "cal1615/tab")'),
-        },
-        events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script: "\tsystem.perspective.navigate(page=self.view.params.page)" } } } } },
-    ], { direction: "row", style: { minWidth: "120px" } }),
+      label("title", "", { style: { classes: "cal1615/sidebar-heading" } }, { basis: "40px", shrink: 0 }, {
+        propConfig: { "props.text": prop("view.params.section", [scriptT("\treturn " + JSON.stringify(navData.titles) + ".get(value, '')")]) } }),
+      { type: "ia.navigation.menutree", meta: { name: "menu" }, position: { grow: 1, basis: "0" },
+        props: { items: [], itemStyle: { classes: "cal1615/sidebar-items" } },
+        propConfig: { "props.items": expr('{view.params.section} + "|" + {page.props.path} + "|" + if({page.props.dimensions.viewport.width} < 900, "narrow", "wide")', [scriptT(
+          "\tsection, path, width = value.split('|')\n" +
+          "\tpages = " + JSON.stringify(navData.pages) + "\n" +
+          "\tsections = " + JSON.stringify(navData.sections) + "\n" +
+          "\tdef item(text, target, selected):\n" +
+          "\t\treturn {'label': {'text': text, 'icon': {'path': ''}}, 'navIcon': {'path': ''}, 'target': target, 'enabled': True, 'visible': True,\n" +
+          "\t\t\t'showHeader': True, 'items': [], 'style': {'classes': 'cal1615/sidebar-items-selected' if selected else 'cal1615/sidebar-items'}}\n" +
+          "\tout = [item(t, u, path == u or (path == '/' and u == '/overview')) for t, u in pages.get(section, [])]\n" +
+          "\tif width == 'narrow':\n" +
+          "\t\tout += [item(text, target, key == section) for key, text, target in sections if key != section]\n" +
+          "\treturn out")]) } },
+    ], { direction: "column", style: { backgroundColor: "var(--neutral-20)", borderRightStyle: "solid", borderRightWidth: "1px", borderRightColor: "var(--neutral-50)" } }),
   }));
 
   // Placeholder for screens not built yet: names the RSView screen print to build from.
@@ -853,10 +872,10 @@ function buildFramework() {
 function buildPageConfig() {
   const docks = (section) => ({
     top: [
-      { id: "header", viewPath: "Framework/Header", size: 96, show: "visible", content: "push", anchor: "fixed", autoBreakpoint: 0, handle: "hide", modal: false, resizable: false, iconUrl: "", viewParams: { section } },
+      { id: "header", viewPath: "Framework/Header", size: HEADER_H_PX, show: "visible", content: "push", anchor: "fixed", autoBreakpoint: 0, handle: "hide", modal: false, resizable: false, iconUrl: "", viewParams: {} },
     ],
     left: [
-      { id: "nav", viewPath: "Framework/Nav Menu", size: 280, show: "onDemand", content: "cover", anchor: "fixed", autoBreakpoint: 900, handle: "hide", modal: true, resizable: false, iconUrl: "", viewParams: {} },
+      { id: "nav", viewPath: "Framework/Section Nav", size: SIDE_NAV_W, show: "auto", content: "push", anchor: "fixed", autoBreakpoint: 1000, handle: "hide", modal: false, resizable: false, iconUrl: "", viewParams: { section } },
     ],
   });
   const pages = {};
@@ -932,6 +951,7 @@ buildAlarms();
 Object.assign(SESSION_CUSTOM, require("./pages.js")({
   fs, path, OUT, P, TAGMAP, T, TW, TH, tagFor, penSource, ENUM, E, C, en, R, led, btn, card, withPos, cardHeight,
   ROW_PARAMS, ROW_H, HEADER_H, view, flex, label, embed, expr, prop, tagIndirect, scriptT, writeView, writeScript, dataUri, PROVIDER,
+  fixedLayout, LARGE_BREAKPOINT, NOW,
 }) || {});
 buildFramework();
 buildPageConfig();

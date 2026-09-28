@@ -55,7 +55,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -74,7 +74,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -93,7 +93,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -112,7 +112,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -148,7 +148,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -156,7 +156,7 @@
             ]
           },
           "style": {
-            "height": "164px",
+            "height": "174px",
             "margin": "4px"
           }
         }
@@ -190,7 +190,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -209,7 +209,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -217,7 +217,7 @@
             ]
           },
           "style": {
-            "height": "86px",
+            "height": "90px",
             "margin": "4px"
           }
         }
@@ -251,7 +251,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -270,7 +270,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -289,7 +289,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -297,7 +297,7 @@
             ]
           },
           "style": {
-            "height": "112px",
+            "height": "118px",
             "margin": "4px"
           }
         }
@@ -331,7 +331,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -350,7 +350,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -369,7 +369,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -377,7 +377,7 @@
             ]
           },
           "style": {
-            "height": "112px",
+            "height": "118px",
             "margin": "4px"
           }
         }
@@ -411,7 +411,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -430,7 +430,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -438,7 +438,7 @@
             ]
           },
           "style": {
-            "height": "86px",
+            "height": "90px",
             "margin": "4px"
           }
         }
@@ -472,7 +472,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -491,7 +491,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -510,7 +510,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -544,7 +544,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -552,7 +552,7 @@
             ]
           },
           "style": {
-            "height": "138px",
+            "height": "146px",
             "margin": "4px"
           }
         }
@@ -586,7 +586,7 @@
                 "buttons": [],
                 "labelWidth": "18px",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -605,7 +605,7 @@
                 "buttons": [],
                 "labelWidth": "18px",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -613,7 +613,7 @@
             ]
           },
           "style": {
-            "height": "86px",
+            "height": "90px",
             "margin": "4px"
           }
         }
@@ -647,7 +647,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -666,7 +666,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -685,7 +685,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -693,7 +693,7 @@
             ]
           },
           "style": {
-            "height": "112px",
+            "height": "118px",
             "margin": "4px"
           }
         }

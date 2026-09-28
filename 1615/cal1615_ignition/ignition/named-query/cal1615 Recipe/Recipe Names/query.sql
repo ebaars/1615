@@ -1,0 +1,1 @@
+SELECT name FROM dbo.rcp_cal1615 WHERE name = :name

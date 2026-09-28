@@ -8,7 +8,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -17,25 +17,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "main"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "main"
+            }
           }
         ]
       }
@@ -48,7 +48,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -57,25 +57,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "main"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "main"
+            }
           }
         ]
       }
@@ -88,7 +88,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -97,25 +97,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "main"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "main"
+            }
           }
         ]
       }
@@ -128,7 +128,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -137,25 +137,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "main"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "main"
+            }
           }
         ]
       }
@@ -168,7 +168,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -177,25 +177,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "main"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "main"
+            }
           }
         ]
       }
@@ -208,7 +208,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -217,25 +217,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "oven"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "oven"
+            }
           }
         ]
       }
@@ -248,7 +248,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -257,25 +257,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "oven"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "oven"
+            }
           }
         ]
       }
@@ -288,7 +288,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -297,25 +297,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "oven"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "oven"
+            }
           }
         ]
       }
@@ -328,7 +328,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -337,25 +337,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "oven"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "oven"
+            }
           }
         ]
       }
@@ -368,7 +368,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -377,25 +377,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "line"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "line"
+            }
           }
         ]
       }
@@ -408,7 +408,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -417,25 +417,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "line"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "line"
+            }
           }
         ]
       }
@@ -448,7 +448,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -457,25 +457,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "line"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "line"
+            }
           }
         ]
       }
@@ -488,7 +488,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -497,25 +497,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "maint"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "maint"
+            }
           }
         ]
       }
@@ -528,7 +528,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -537,25 +537,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "maint"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "maint"
+            }
           }
         ]
       }
@@ -568,7 +568,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -577,25 +577,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "maint"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "maint"
+            }
           }
         ]
       }
@@ -608,7 +608,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -617,25 +617,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "maint"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "maint"
+            }
           }
         ]
       }
@@ -648,7 +648,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -657,25 +657,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "maint"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "maint"
+            }
           }
         ]
       }
@@ -688,7 +688,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -697,25 +697,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "trend"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "trend"
+            }
           }
         ]
       }
@@ -728,7 +728,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -737,25 +737,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "trend"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "trend"
+            }
           }
         ]
       }
@@ -768,7 +768,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -777,25 +777,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "alarms"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "alarms"
+            }
           }
         ]
       }
@@ -808,7 +808,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -817,25 +817,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "alarms"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "alarms"
+            }
           }
         ]
       }
@@ -848,7 +848,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -857,25 +857,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "alarms"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "alarms"
+            }
           }
         ]
       }
@@ -888,7 +888,7 @@
           {
             "id": "header",
             "viewPath": "Framework/Header",
-            "size": 96,
+            "size": 56,
             "show": "visible",
             "content": "push",
             "anchor": "fixed",
@@ -897,25 +897,25 @@
             "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {
-              "section": "main"
-            }
+            "viewParams": {}
           }
         ],
         "left": [
           {
             "id": "nav",
-            "viewPath": "Framework/Nav Menu",
-            "size": 280,
-            "show": "onDemand",
-            "content": "cover",
+            "viewPath": "Framework/Section Nav",
+            "size": 180,
+            "show": "auto",
+            "content": "push",
             "anchor": "fixed",
-            "autoBreakpoint": 900,
+            "autoBreakpoint": 1000,
             "handle": "hide",
-            "modal": true,
+            "modal": false,
             "resizable": false,
             "iconUrl": "",
-            "viewParams": {}
+            "viewParams": {
+              "section": "main"
+            }
           }
         ]
       }

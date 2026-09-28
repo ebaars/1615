@@ -21,7 +21,6 @@ The views bind to tags in the `cal1615` tag provider. Values show `---` and lamp
    - **History:** tags used by trends have history enabled on the `mySQL` historian. To use a different historian, change `HISTORY_PROVIDER` in `tools/gen.js`.
    - **Memory tags:**
      - `HMI/shop_order`
-     - `HMI/recipes`: the recipe library, as JSON.
      - `HMI/pm_tasks`: the PM schedule, as JSON, seeded with the three tasks from the old screen.
 
 Setpoint entry and command buttons are enabled only for a logged-in user. The rule is `session.custom.canOperate` in session props.
@@ -30,7 +29,18 @@ Setpoint entry and command buttons are enabled only for a logged-in user. The ru
 
 Every page from the RSView application is built.
 
-- **Pages with a machine drawing** use a breakpoint at 1200px: a `- Large` percent-mode coordinate container over the drawing, and a `- Small` stack of cards for phones. These are Overview, Emergency Stops, Zone 1–3 and the three Line Drives pages.
+- **Navigation:**
+  - The top bar has one tab per section, with no dropdowns.
+  - The left side nav (180px) lists the current section's pages, with links to the other sections below.
+  - Below 1000px wide the side nav hides, and the Menu button opens it.
+- **Standard page size:** 1920×1080 minus the 56px header and the 180px side nav, which leaves 1740×1024 of content. The sizes are set in `tools/gen.js` (`SCREEN_W/H`, `HEADER_H_PX`, `SIDE_NAV_W`).
+- **Pages with a machine drawing** are Overview, Emergency Stops, Zone 1–3 and the three Line Drives pages.
+  - **`- Large`:** a coordinate container in fixed mode.
+    - The RSView layout (drawing, cards, lamps, trend) is scaled uniformly to fit 1740×1024 and centred.
+    - Cards, lamps and text boxes keep their real content height, so nothing is squashed. Drawings scale in both directions.
+  - **Breakpoint:** switches to `- Small` below 1200px of content width.
+    - The desktop child uses `useDefaultViewWidth/Height`, so the breakpoint container never shrinks the layout; a smaller window scrolls instead.
+  - **`- Small`:** a stack of cards for phones and small screens.
 - **Card-only pages** wrap from several columns down to one on a phone.
 
 | Section | Pages |
@@ -47,7 +57,11 @@ Every page from the RSView application is built.
 - **Recipes:** P02 R04 copies `p02_recipe_from_hmi` into `p01_recipe_active` every scan, and there is no trigger bit.
   - Entry fields read `p01_recipe_active.*` and write `p02_recipe_from_hmi.*`.
   - "Download to PLC" writes every recipe member to `from_hmi`.
-  - The recipe library lives in Ignition (script `cal1615.recipes`), as the old HMI kept its CSV files.
+  - **Recipe library:** stored in SQL, as in cal2016.
+    - **Table:** `dbo.rcp_cal1615` on the `mySQL` database connection (SQL Server). It has one FLOAT column per recipe member, plus name, comments and modified.
+    - **Named queries:** `cal1615 Recipe/` holds Create Table, Recipe List, Names, Get, Add, Edit and Delete.
+    - **Table creation:** the table is created automatically on first use. `sql/rcp_cal1615.sql` holds the same script for creating it by hand.
+    - **Scripts:** in `cal1615.recipes`. The Recipe Editor lists recipes from SQL; click one to load it, then Save, Delete, Create or Download to PLC. Active Recipe → Save As stores the running recipe.
 - **Parameters:** PID gains and zone parameters are reloaded from `p02_real_from_hmi.<section>[n]` every scan, so their entry fields write there.
 - **Pushbuttons:** these are bits in `p02_dint_from_hmi`. The HMI writes 1 and resets to 0 after 0.5 s. Jog buttons stay at 1 while held.
 - **Suspected PLC issues found while mapping:**

@@ -36,7 +36,9 @@
         },
         "props": {
           "path": "Main/Overview - Large",
-          "params": {}
+          "params": {},
+          "useDefaultViewWidth": true,
+          "useDefaultViewHeight": true
         }
       }
     ]

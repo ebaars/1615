@@ -166,7 +166,7 @@
               "name": "entry"
             },
             "position": {
-              "basis": "66px",
+              "basis": "74px",
               "shrink": 0
             },
             "props": {
@@ -222,7 +222,7 @@
               "name": "units"
             },
             "position": {
-              "basis": "34px",
+              "basis": "auto",
               "shrink": 0
             },
             "props": {

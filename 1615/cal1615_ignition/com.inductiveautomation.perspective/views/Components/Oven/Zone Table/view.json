@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 366,
-      "height": 142
+      "height": 152
     }
   },
   "root": {
@@ -107,7 +107,7 @@
           "name": "r_temp"
         },
         "position": {
-          "basis": "26px",
+          "basis": "28px",
           "shrink": 0
         },
         "props": {
@@ -342,7 +342,7 @@
           "name": "r_temp_sp"
         },
         "position": {
-          "basis": "26px",
+          "basis": "28px",
           "shrink": 0
         },
         "props": {
@@ -604,7 +604,7 @@
           "name": "r_lfl"
         },
         "position": {
-          "basis": "26px",
+          "basis": "28px",
           "shrink": 0
         },
         "props": {
@@ -822,7 +822,7 @@
           "name": "r_pressure"
         },
         "position": {
-          "basis": "26px",
+          "basis": "28px",
           "shrink": 0
         },
         "props": {

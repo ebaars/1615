@@ -99,60 +99,9 @@
                 "path": ""
               },
               "enabled": true,
-              "target": "",
+              "target": "/overview",
               "style": {},
-              "items": [
-                {
-                  "label": "Overview",
-                  "target": "/overview",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Oven Control",
-                  "target": "/oven-control",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Active Recipe",
-                  "target": "/active-recipe",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Recipe Editor",
-                  "target": "/recipe-editor",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Emergency Stops",
-                  "target": "/emergency-stops",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                }
-              ]
+              "items": []
             },
             {
               "label": "Oven Zones",
@@ -160,50 +109,9 @@
                 "path": ""
               },
               "enabled": true,
-              "target": "",
+              "target": "/zone-1",
               "style": {},
-              "items": [
-                {
-                  "label": "Zone 1",
-                  "target": "/zone-1",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Zone 2",
-                  "target": "/zone-2",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Zone 3",
-                  "target": "/zone-3",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Advanced Cooling",
-                  "target": "/advanced-cooling",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                }
-              ]
+              "items": []
             },
             {
               "label": "Line Drives",
@@ -211,40 +119,9 @@
                 "path": ""
               },
               "enabled": true,
-              "target": "",
+              "target": "/letoff-splice",
               "style": {},
-              "items": [
-                {
-                  "label": "Let-Off / Splice",
-                  "target": "/letoff-splice",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Accumulator / Tension Stand 1",
-                  "target": "/accumulator-ts1",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Tension Stand 2 / Poly / Windup",
-                  "target": "/ts2-poly-windup",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                }
-              ]
+              "items": []
             },
             {
               "label": "Maintenance",
@@ -252,60 +129,9 @@
                 "path": ""
               },
               "enabled": true,
-              "target": "",
+              "target": "/io",
               "style": {},
-              "items": [
-                {
-                  "label": "I/O",
-                  "target": "/io",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Zone Setup",
-                  "target": "/zone-setup",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "VFD Drives",
-                  "target": "/vfd-drives",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Servo Drives",
-                  "target": "/servo-drives",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "PM Schedule",
-                  "target": "/pm-schedule",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                }
-              ]
+              "items": []
             },
             {
               "label": "Trends",
@@ -313,30 +139,9 @@
                 "path": ""
               },
               "enabled": true,
-              "target": "",
+              "target": "/oven-trend",
               "style": {},
-              "items": [
-                {
-                  "label": "Oven Trend",
-                  "target": "/oven-trend",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Trend",
-                  "target": "/trend",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                }
-              ]
+              "items": []
             },
             {
               "label": "Alarms",
@@ -344,44 +149,63 @@
                 "path": ""
               },
               "enabled": true,
-              "target": "",
+              "target": "/alarms",
               "style": {},
-              "items": [
-                {
-                  "label": "Alarms",
-                  "target": "/alarms",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "Warnings",
-                  "target": "/warnings",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                },
-                {
-                  "label": "History",
-                  "target": "/alarm-history",
-                  "enabled": true,
-                  "icon": {
-                    "path": ""
-                  },
-                  "items": [],
-                  "style": {}
-                }
-              ]
+              "items": []
             }
           ],
           "style": {
             "border": "none"
+          }
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/overview\" || {page.props.path} = \"/oven-control\" || {page.props.path} = \"/active-recipe\" || {page.props.path} = \"/recipe-editor\" || {page.props.path} = \"/emergency-stops\" || {page.props.path} = \"/\", \"cal1615/nav-top-selected\", \"cal1615/nav-top\")"
+              }
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/zone-1\" || {page.props.path} = \"/zone-2\" || {page.props.path} = \"/zone-3\" || {page.props.path} = \"/advanced-cooling\", \"cal1615/nav-top-selected\", \"cal1615/nav-top\")"
+              }
+            }
+          },
+          "props.items[2].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/letoff-splice\" || {page.props.path} = \"/accumulator-ts1\" || {page.props.path} = \"/ts2-poly-windup\", \"cal1615/nav-top-selected\", \"cal1615/nav-top\")"
+              }
+            }
+          },
+          "props.items[3].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/io\" || {page.props.path} = \"/zone-setup\" || {page.props.path} = \"/vfd-drives\" || {page.props.path} = \"/servo-drives\" || {page.props.path} = \"/pm-schedule\", \"cal1615/nav-top-selected\", \"cal1615/nav-top\")"
+              }
+            }
+          },
+          "props.items[4].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/oven-trend\" || {page.props.path} = \"/trend\", \"cal1615/nav-top-selected\", \"cal1615/nav-top\")"
+              }
+            }
+          },
+          "props.items[5].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/alarms\" || {page.props.path} = \"/warnings\" || {page.props.path} = \"/alarm-history\", \"cal1615/nav-top-selected\", \"cal1615/nav-top\")"
+              }
+            }
           }
         }
       },

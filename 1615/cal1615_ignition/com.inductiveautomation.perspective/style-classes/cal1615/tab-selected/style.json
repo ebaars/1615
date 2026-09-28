@@ -4,12 +4,13 @@
       "fontFamily": "Arial",
       "fontSize": "13px",
       "fontWeight": "bold",
-      "borderRadius": "0px",
+      "borderRadius": "3px",
       "backgroundColor": "var(--callToAction)",
       "color": "#FFFFFF",
       "borderStyle": "none",
-      "marginRight": "2px",
-      "whiteSpace": "nowrap"
+      "whiteSpace": "normal",
+      "textAlign": "left",
+      "paddingLeft": "10px"
     }
   }
 }

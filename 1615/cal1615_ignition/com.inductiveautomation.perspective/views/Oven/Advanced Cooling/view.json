@@ -55,7 +55,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -74,7 +74,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -93,7 +93,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -120,7 +120,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -147,7 +147,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -195,7 +195,7 @@
             ]
           },
           "style": {
-            "height": "206px",
+            "height": "216px",
             "margin": "4px"
           }
         }
@@ -237,7 +237,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -285,7 +285,7 @@
             ]
           },
           "style": {
-            "height": "102px",
+            "height": "104px",
             "margin": "4px"
           }
         }
@@ -319,7 +319,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -338,7 +338,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -366,7 +366,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -414,7 +414,7 @@
             ]
           },
           "style": {
-            "height": "154px",
+            "height": "160px",
             "margin": "4px"
           }
         }

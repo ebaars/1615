@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "boxShadow": "inset 0 -3px var(--info)",
+      "color": "#1B79EC",
+      "fontWeight": "bold",
+      "textAlign": "start"
+    }
+  }
+}

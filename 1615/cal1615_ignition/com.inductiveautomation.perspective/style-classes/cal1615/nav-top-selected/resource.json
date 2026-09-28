@@ -4,12 +4,12 @@
   "restricted": false,
   "overridable": true,
   "files": [
-    "view.json"
+    "style.json"
   ],
   "attributes": {
     "lastModification": {
       "actor": "claude",
-      "timestamp": "2026-09-28T15:38:56Z"
+      "timestamp": "2026-09-28T00:00:00Z"
     }
   }
 }

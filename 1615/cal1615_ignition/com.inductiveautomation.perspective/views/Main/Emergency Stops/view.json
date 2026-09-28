@@ -33,7 +33,9 @@
         },
         "props": {
           "path": "Main/Emergency Stops - Large",
-          "params": {}
+          "params": {},
+          "useDefaultViewWidth": true,
+          "useDefaultViewHeight": true
         }
       }
     ]

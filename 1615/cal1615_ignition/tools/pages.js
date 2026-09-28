@@ -2,7 +2,7 @@
 // Called from gen.js with its helpers; returns extra session custom props.
 module.exports = (g) => {
   const { TAGMAP, T, TW, TH, tagFor, penSource, E, C, en, R, led, btn, cardHeight, ROW_PARAMS,
-    view, flex, label, embed, expr, prop, tagIndirect, scriptT, writeView, writeScript, dataUri, PROVIDER } = g;
+    view, flex, label, embed, expr, prop, tagIndirect, scriptT, writeView, writeScript, dataUri, PROVIDER, fixedLayout, LARGE_BREAKPOINT } = g;
 
   // Cards on these pages drop rows with no PLC source (e.g. Zone 3 has no burner or LFL).
   const keep = (r) => (r.kind === "buttons" ? r.buttons.some((b) => b.tag || b.page) : r.kind === "leds" ? r.leds.some((l) => l.tag) : !!r.tag);
@@ -10,7 +10,8 @@ module.exports = (g) => {
 
   // ------------------------------------------------------------ layout helpers
   const W = 1512, H = 920;
-  const pct = (x, y, w, h) => ({ x: +(x / W).toFixed(5), y: +(y / H).toFixed(5), width: +(w / W).toFixed(5), height: +(h / H).toFixed(5) });
+  // Fixed 1920x984 layout of the 1512x920 design (see fixedLayout in gen.js).
+  const L = fixedLayout(W, H), pct = L.pct;
   const has = (id) => !!(TAGMAP[id] && TAGMAP[id].tag);
   const enumOf = (id, fallback) => (TAGMAP[id] && TAGMAP[id].enum ? colorEnum(TAGMAP[id].enum) : fallback);
   // Colour an enum from its text so any status list reads the same way.
@@ -30,7 +31,7 @@ module.exports = (g) => {
   const ind = (name, text, id, x, y, w, o = {}) =>
     embed(name, "Components/Common/Indicator", { text, tag: T(id), onColor: "#00E000", offColor: "#FFFF00", invert: !!(TAGMAP[id] && TAGMAP[id].invert), ...o }, pct(x, y, w, 32));
   const title = (text) => label("title", text, { style: { fontFamily: "Arial", fontSize: "26px", fontWeight: "bold", textAlign: "center" } }, pct(456, 6, 600, 40));
-  const image = (file, x, y, w, h) => ({ type: "ia.display.image", meta: { name: "drawing" }, position: pct(x, y, w, h),
+  const image = (file, x, y, w, h) => ({ type: "ia.display.image", meta: { name: "drawing" }, position: L.img(x, y, w, h),
     props: { source: dataUri(file), fit: { mode: "fill" }, style: { classes: "cal1615/drawing" } } });
   const mcard = (name, cd, basis = "320px") => embed(name, "Components/Common/Card", cd, { grow: 1, shrink: 0, basis }, { style: { height: cardHeight(cd.rows) + "px", margin: "4px" } });
   const wrapRoot = (children) => flex("root", children, { direction: "row", wrap: "wrap", alignContent: "flex-start", alignItems: "flex-start", style: { classes: "cal1615/page", padding: "6px", overflowY: "auto" } });
@@ -39,12 +40,12 @@ module.exports = (g) => {
     writeView(vpath, view({ size: { width: 1280, height: 900 }, root: wrapRoot([...head, ...cards.map((c, i) => mcard(c.name || `card${i}`, c.cd, c.basis || basis))]) }));
   // Drawing page: coordinate layout (percent mode) on wide screens, stacked cards below 1200px.
   const drawingPage = (vpath, large, smallCards) => {
-    writeView(vpath + " - Large", view({ size: { width: W, height: H },
-      root: { type: "ia.container.coord", meta: { name: "root" }, props: { mode: "percent", aspectRatio: `${W}:${H}`, style: { classes: "cal1615/page" } }, children: large } }));
+    writeView(vpath + " - Large", view({ size: L.size,
+      root: { type: "ia.container.coord", meta: { name: "root" }, props: L.props, children: large } }));
     writeView(vpath + " - Small", view({ size: { width: 400, height: 1600 }, root: wrapRoot(smallCards.map((c, i) => mcard(c.name || `card${i}`, c.cd))) }));
-    writeView(vpath, view({ root: { type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: 1200 }, children: [
+    writeView(vpath, view({ root: { type: "ia.container.breakpt", meta: { name: "root" }, props: { breakpoint: LARGE_BREAKPOINT }, children: [
       embed("small", vpath + " - Small", {}),
-      { ...embed("large", vpath + " - Large", {}), position: { size: "large" } },
+      { ...embed("large", vpath + " - Large", {}, {}, { useDefaultViewWidth: true, useDefaultViewHeight: true }), position: { size: "large" } },
     ] } }));
   };
   const statusBox = (name, id, x, y, w, stacked = false, labelText = "") => embed(name, "Components/Common/Rows/status",
@@ -134,7 +135,7 @@ module.exports = (g) => {
     { type: "ia.input.numeric-entry-field", meta: { name: "v" }, position: { basis: "90px", shrink: 0 }, props: { format, spinner: { enabled: false }, style: { classes: "cal1615/entry" } },
       propConfig: { "props.value": { binding: { type: "property", config: { path: `session.custom.recipeDraft.values.${key}`, bidirectional: true } } } } },
     label("u", unitsText, { style: { classes: "cal1615/units" } }, { basis: "40px", shrink: 0 }),
-  ], { direction: "row", alignItems: "center", style: { paddingLeft: "6px", paddingRight: "6px" } }, { basis: "26px", shrink: 0 });
+  ], { direction: "row", alignItems: "center", style: { paddingLeft: "6px", paddingRight: "6px" } }, { basis: "28px", shrink: 0 });
   const draftCard = (name, titleText, fields, basis) => flex(name, [
     label("title", titleText, { style: { classes: "cal1615/card-header" } }, { basis: "26px", shrink: 0 }),
     ...fields,
@@ -143,80 +144,93 @@ module.exports = (g) => {
   const ebtn = (name, text, enabled, script, cls = "cal1615/btn") => ({ type: "ia.input.button", meta: { name }, position: { basis: "150px", shrink: 0 },
     props: { text, style: { classes: cls } }, propConfig: { "props.enabled": expr(enabled) }, events: editorScript(script) });
   const DRAFT_VALUES = Object.fromEntries(rcpIds.map((id) => [rcpKey(id), 0]));
+  const RCP = require("./recipe_sql.js")({ fs: g.fs, path: g.path, OUT: g.OUT, NOW: g.NOW, keys: rcpIds.map(rcpKey) });
+  // After a change the recipe list reloads (its binding watches custom.rev).
+  const bump = "\tself.view.custom.rev += 1\n";
+  const loadInto = (nameExpr) => `\td = self.session.custom.recipeDraft\n\td.name = ${nameExpr}\n\tvals = cal1615.recipes.get(d.name)\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n`;
   writeView("Main/Recipe Editor", view({
-    custom: { names: [], newName: "" }, size: { width: 1280, height: 900 },
-    propConfig: { "custom.names": { binding: { type: "tag", config: { fallbackDelay: 2.5, mode: "direct", tagPath: `[${PROVIDER}]HMI/recipes` } },
-      transforms: [scriptT("\ttry:\n\t\treturn sorted(system.util.jsonDecode(value).keys()) if value else []\n\texcept:\n\t\treturn []")] } },
+    custom: { rev: 0, newName: "" }, size: { width: 1280, height: 900 },
     root: wrapRoot([
       flex("toolbar", [
         label("lbl", "Recipe:", { style: { fontWeight: "bold", fontSize: "18px" } }, { basis: "80px", shrink: 0 }),
-        { type: "ia.input.dropdown", meta: { name: "select" }, position: { grow: 1, basis: "220px" }, props: { placeholder: { text: "Select recipe" } },
-          propConfig: { "props.options": expr("{view.custom.names}", [scriptT("\treturn [{'label': n, 'value': n} for n in (value or [])]")]),
-            "props.value": { binding: { type: "property", config: { path: "session.custom.recipeDraft.name", bidirectional: true } } } } },
-        ebtn("load", "Select Recipe", 'len({session.custom.recipeDraft.name}) > 0',
-          "\td = self.session.custom.recipeDraft\n\tvals = cal1615.recipes.get(d.name)\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n"),
+        label("name", "", { style: { fontWeight: "bold", fontSize: "18px", classes: "cal1615/value", textAlign: "left", paddingLeft: "8px" } }, { grow: 1, basis: "200px" },
+          { propConfig: { "props.text": expr('if(len({session.custom.recipeDraft.name}) > 0, {session.custom.recipeDraft.name}, "(none selected)")') } }),
         ebtn("fromActive", "Copy Running", "true",
           "\td = self.session.custom.recipeDraft\n\tvals = cal1615.recipes.readActive()\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n"),
-      ], { direction: "row", alignItems: "center", wrap: "wrap", style: { classes: "cal1615/card", gap: "8px", padding: "6px", margin: "4px" } }, { grow: 1, shrink: 0, basis: "100%" }),
-      flex("actions", [
-        { type: "ia.input.text-field", meta: { name: "newName" }, position: { grow: 1, basis: "200px" }, props: { placeholder: "new recipe name" },
-          propConfig: { "props.text": { binding: { type: "property", config: { path: "view.custom.newName", bidirectional: true } } } } },
-        ebtn("create", "Create Recipe", '{session.custom.canOperate} && len(trim({view.custom.newName})) > 0',
-          "\tname = self.view.custom.newName.strip()\n\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(name, cal1615.recipes.fromDraft(d.values))\n\td.name = name\n\tself.view.custom.newName = ''\n"),
         ebtn("save", "Save Recipe", '{session.custom.canOperate} && len({session.custom.recipeDraft.name}) > 0',
-          "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(d.name, cal1615.recipes.fromDraft(d.values))\n"),
+          "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(d.name, cal1615.recipes.fromDraft(d.values))\n" + bump),
         ebtn("delete", "Delete Recipe", '{session.custom.canOperate} && len({session.custom.recipeDraft.name}) > 0',
-          "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.delete(d.name)\n\td.name = ''\n", "cal1615/btn-stop"),
+          "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.delete(d.name)\n\td.name = ''\n" + bump, "cal1615/btn-stop"),
         ebtn("download", "Download to PLC", '{session.custom.canOperate} && len({session.custom.recipeDraft.name}) > 0',
           "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.download(d.name, cal1615.recipes.fromDraft(d.values))\n", "cal1615/btn-start"),
       ], { direction: "row", alignItems: "center", wrap: "wrap", style: { classes: "cal1615/card", gap: "8px", padding: "6px", margin: "4px" } }, { grow: 1, shrink: 0, basis: "100%" }),
+      // Recipe list from SQL; click a recipe to load it into the editor.
+      flex("recipes", [
+        label("title", "Recipes", { style: { classes: "cal1615/card-header" } }, { basis: "26px", shrink: 0 }),
+        { type: "ia.display.table", meta: { name: "table" }, position: { grow: 1, basis: "400px" },
+          props: { selection: { mode: "single" }, pager: { bottom: false }, columns: [
+            { field: "name", header: { title: "Name" }, width: 190 }, { field: "modified", header: { title: "Modified" }, width: 150, render: "date", dateFormat: "YYYY-MM-DD HH:mm" }] },
+          propConfig: { "props.data": expr("{view.custom.rev}", [scriptT("\treturn cal1615.recipes.listDataset()")]) },
+          events: { component: { onRowClick: { type: "script", scope: "G", config: { script: loadInto("event.value['name']") } } } } },
+        flex("create", [
+          { type: "ia.input.text-field", meta: { name: "newName" }, position: { grow: 1, basis: "120px" }, props: { placeholder: "new recipe name" },
+            propConfig: { "props.text": { binding: { type: "property", config: { path: "view.custom.newName", bidirectional: true } } } } },
+          ebtn("create", "Create", '{session.custom.canOperate} && len(trim({view.custom.newName})) > 0',
+            "\tname = self.view.custom.newName.strip()\n\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(name, cal1615.recipes.fromDraft(d.values))\n\td.name = name\n\tself.view.custom.newName = ''\n" + bump),
+        ], { direction: "row", alignItems: "center", style: { gap: "6px", padding: "6px" } }, { basis: "48px", shrink: 0 }),
+      ], { direction: "column", style: { classes: "cal1615/card", margin: "4px", height: "680px" } }, { grow: 0, shrink: 0, basis: "360px" }),
       draftCard("lineSettings", "Line Settings", LINE_SETTINGS.filter((m) => has(`rcp.${m}`)).map((m) => draftField(LINE_LABELS[m], rcpKey(`rcp.${m}`), units(`rcp.${m}`), fmt(m))), "480px"),
       ...zones.map((n) => draftCard(`zone${n}`, `Zone ${n}`, ZONE_SP.map(([m, l]) => draftField(`Zone ${n} ${l}`, rcpKey(`rcp.zone_${n}.${m}`), units(`rcp.zone_${n}.${m}`), "#,##0.0")), "360px")),
       draftCard("other", "Other Recipe Values", rcpIds.filter((id) => !LINE_SETTINGS.includes(id.slice(4)) && !/^rcp\.zone_/.test(id))
         .map((id) => draftField(TAGMAP[id].label || id.slice(4), rcpKey(id), units(id), "#,##0.000")), "360px"),
     ]),
   }));
-  // Recipe library script: recipes are kept as JSON in the memory tag HMI/recipes.
-  tagFor("memory:recipes", "STRING", { value: "{}" });
+  // Recipe library script: recipes are rows in the SQL table, read and written through named queries.
   const nameWrite = TW("rcp.name");
   const fieldLines = rcpIds.map((id) => `\t'${rcpKey(id)}': ('${T(id)}', '${TW(id)}'),`).join("\n");
   writeScript("cal1615/recipes", `# Recipe library for cal1615 (generated by tools/pages.js).
-# Recipes are stored as JSON in ${`[${PROVIDER}]HMI/recipes`}: {name: {key: value}}.
+# Recipes live in SQL table ${RCP.TABLE} (database connection "${RCP.DB}") and are accessed through the
+# named queries in "${RCP.FOLDER}/", the same way cal2016 handles its rcp_line table.
 # The PLC copies p02_recipe_from_hmi into p01_recipe_active every scan (P02 R04),
 # so "download" is simply writing every member to p02_recipe_from_hmi.
-LIB = '[${PROVIDER}]HMI/recipes'
+Q = '${RCP.FOLDER}/'
 NAME_WRITE = '${nameWrite}'
-# key: (read tag in p01_recipe_active, write tag in p02_recipe_from_hmi)
+# key (= SQL column): (read tag in p01_recipe_active, write tag in p02_recipe_from_hmi)
 FIELDS = {
 ${fieldLines}
 }
 KEYS = sorted(FIELDS.keys())
+_tableChecked = [False]
 
-def _load():
-	v = system.tag.readBlocking([LIB])[0].value
-	try:
-		return dict(system.util.jsonDecode(v) or {}) if v else {}
-	except:
-		return {}
+def _run(query, params=None):
+	if not _tableChecked[0]:
+		system.db.runNamedQuery(Q + 'Create Table', {})
+		_tableChecked[0] = True
+	return system.db.runNamedQuery(Q + query, params or {})
 
-def _store(d):
-	system.tag.writeBlocking([LIB], [system.util.jsonEncode(d)])
+def listDataset():
+	return _run('Recipe List')
 
 def names():
-	return sorted(_load().keys())
+	ds = _run('Recipe List')
+	return [ds.getValueAt(r, 'name') for r in range(ds.getRowCount())]
+
+def exists(name):
+	return _run('Recipe Names', {'name': name}).getRowCount() > 0
 
 def get(name):
-	return dict(_load().get(name) or {})
+	ds = _run('Recipe Get', {'name': name})
+	if ds.getRowCount() == 0:
+		return {}
+	return dict((k, ds.getValueAt(0, k)) for k in KEYS)
 
 def save(name, values):
-	d = _load()
-	d[name] = dict((k, float(values.get(k) or 0)) for k in KEYS)
-	_store(d)
+	params = dict((k, float(values.get(k) or 0)) for k in KEYS)
+	params['name'] = name
+	_run('Recipe Edit' if exists(name) else 'Recipe Add', params)
 
 def delete(name):
-	d = _load()
-	d.pop(name, None)
-	_store(d)
+	_run('Recipe Delete', {'name': name})
 
 def fromDraft(values):
 	"""Plain dict from the session draft (a Perspective property object)."""
@@ -287,7 +301,7 @@ def download(name, values):
         { type: "ia.display.icon", meta: { name: "flame" }, position: pct(dx + 214, dy + 332, 60, 40), props: { path: "material/whatshot", color: "#FF6D00" },
           propConfig: T(`${z}.flame_on`) ? { "position.display": { binding: { type: "tag", config: { fallbackDelay: 2.5, mode: "direct", tagPath: T(`${z}.flame_on`) } }, transforms: [{ type: "expression", expression: "toBoolean({value})" }] } } : {} },
       ] : []),
-      chart("trend", [["Control Temp", tempTag], ["Control Setpoint", spTag]], pct(930, 50, 575, 470), false, `Zone ${n}`),
+      chart("trend", [["Control Temp", tempTag], ["Control Setpoint", spTag]], L.img(930, 50, 575, 470), false, `Zone ${n}`),
       cardAt("zoneCard", statusCard, 140, 530, 300),
       cardAt("chamber", chamber, 460, 530, 310),
       cardAt("temps", temps, 460, 530 + cardHeight(chamber.rows) + 10, 310),
@@ -325,7 +339,7 @@ def download(name, values):
   }
 
   // ------------------------------------------------------------ line drives (20 Line 00 / 10 / 20)
-  const trendCard = (name, pens, titleText) => chart(name, pens, pct(960, 60, 540, 440), false, titleText);
+  const trendCard = (name, pens, titleText) => chart(name, pens, L.img(960, 60, 540, 440), false, titleText);
   {
     // Let-Off & Splice Press. Crop origin (30,400) placed at (20,80).
     const ox = 20 - 30, oy = 80 - 400;

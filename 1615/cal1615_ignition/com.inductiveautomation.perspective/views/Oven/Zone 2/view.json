@@ -33,7 +33,9 @@
         },
         "props": {
           "path": "Oven/Zone 2 - Large",
-          "params": {}
+          "params": {},
+          "useDefaultViewWidth": true,
+          "useDefaultViewHeight": true
         }
       }
     ]

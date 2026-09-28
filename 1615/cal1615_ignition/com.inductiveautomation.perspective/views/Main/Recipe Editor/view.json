@@ -1,27 +1,10 @@
 {
   "custom": {
-    "names": [],
+    "rev": 0,
     "newName": ""
   },
   "params": {},
-  "propConfig": {
-    "custom.names": {
-      "binding": {
-        "type": "tag",
-        "config": {
-          "fallbackDelay": 2.5,
-          "mode": "direct",
-          "tagPath": "[cal1615]HMI/recipes"
-        }
-      },
-      "transforms": [
-        {
-          "type": "script",
-          "code": "\ttry:\n\t\treturn sorted(system.util.jsonDecode(value).keys()) if value else []\n\texcept:\n\t\treturn []"
-        }
-      ]
-    }
-  },
+  "propConfig": {},
   "props": {
     "defaultSize": {
       "width": 1280,
@@ -86,77 +69,30 @@
             }
           },
           {
-            "type": "ia.input.dropdown",
+            "type": "ia.display.label",
             "meta": {
-              "name": "select"
+              "name": "name"
             },
             "position": {
               "grow": 1,
-              "basis": "220px"
+              "basis": "200px"
             },
             "props": {
-              "placeholder": {
-                "text": "Select recipe"
-              }
-            },
-            "propConfig": {
-              "props.options": {
-                "binding": {
-                  "type": "expr",
-                  "config": {
-                    "expression": "{view.custom.names}"
-                  },
-                  "transforms": [
-                    {
-                      "type": "script",
-                      "code": "\treturn [{'label': n, 'value': n} for n in (value or [])]"
-                    }
-                  ]
-                }
-              },
-              "props.value": {
-                "binding": {
-                  "type": "property",
-                  "config": {
-                    "path": "session.custom.recipeDraft.name",
-                    "bidirectional": true
-                  }
-                }
-              }
-            }
-          },
-          {
-            "type": "ia.input.button",
-            "meta": {
-              "name": "load"
-            },
-            "position": {
-              "basis": "150px",
-              "shrink": 0
-            },
-            "props": {
-              "text": "Select Recipe",
+              "text": "",
               "style": {
-                "classes": "cal1615/btn"
+                "fontWeight": "bold",
+                "fontSize": "18px",
+                "classes": "cal1615/value",
+                "textAlign": "left",
+                "paddingLeft": "8px"
               }
             },
             "propConfig": {
-              "props.enabled": {
+              "props.text": {
                 "binding": {
                   "type": "expr",
                   "config": {
-                    "expression": "len({session.custom.recipeDraft.name}) > 0"
-                  }
-                }
-              }
-            },
-            "events": {
-              "component": {
-                "onActionPerformed": {
-                  "type": "script",
-                  "scope": "G",
-                  "config": {
-                    "script": "\td = self.session.custom.recipeDraft\n\tvals = cal1615.recipes.get(d.name)\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n"
+                    "expression": "if(len({session.custom.recipeDraft.name}) > 0, {session.custom.recipeDraft.name}, \"(none selected)\")"
                   }
                 }
               }
@@ -198,91 +134,6 @@
                 }
               }
             }
-          }
-        ]
-      },
-      {
-        "type": "ia.container.flex",
-        "meta": {
-          "name": "actions"
-        },
-        "position": {
-          "grow": 1,
-          "shrink": 0,
-          "basis": "100%"
-        },
-        "props": {
-          "direction": "row",
-          "alignItems": "center",
-          "wrap": "wrap",
-          "style": {
-            "classes": "cal1615/card",
-            "gap": "8px",
-            "padding": "6px",
-            "margin": "4px"
-          }
-        },
-        "children": [
-          {
-            "type": "ia.input.text-field",
-            "meta": {
-              "name": "newName"
-            },
-            "position": {
-              "grow": 1,
-              "basis": "200px"
-            },
-            "props": {
-              "placeholder": "new recipe name"
-            },
-            "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "property",
-                  "config": {
-                    "path": "view.custom.newName",
-                    "bidirectional": true
-                  }
-                }
-              }
-            }
-          },
-          {
-            "type": "ia.input.button",
-            "meta": {
-              "name": "create"
-            },
-            "position": {
-              "basis": "150px",
-              "shrink": 0
-            },
-            "props": {
-              "text": "Create Recipe",
-              "style": {
-                "classes": "cal1615/btn"
-              }
-            },
-            "propConfig": {
-              "props.enabled": {
-                "binding": {
-                  "type": "expr",
-                  "config": {
-                    "expression": "{session.custom.canOperate} && len(trim({view.custom.newName})) > 0"
-                  }
-                }
-              }
-            },
-            "events": {
-              "component": {
-                "onActionPerformed": {
-                  "type": "script",
-                  "scope": "G",
-                  "config": {
-                    "script": "\tname = self.view.custom.newName.strip()\n\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(name, cal1615.recipes.fromDraft(d.values))\n\td.name = name\n\tself.view.custom.newName = ''\n"
-                  }
-                }
-              }
-            }
           },
           {
             "type": "ia.input.button",
@@ -315,7 +166,7 @@
                   "type": "script",
                   "scope": "G",
                   "config": {
-                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(d.name, cal1615.recipes.fromDraft(d.values))\n"
+                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(d.name, cal1615.recipes.fromDraft(d.values))\n\tself.view.custom.rev += 1\n"
                   }
                 }
               }
@@ -352,7 +203,7 @@
                   "type": "script",
                   "scope": "G",
                   "config": {
-                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.delete(d.name)\n\td.name = ''\n"
+                    "script": "\td = self.session.custom.recipeDraft\n\tcal1615.recipes.delete(d.name)\n\td.name = ''\n\tself.view.custom.rev += 1\n"
                   }
                 }
               }
@@ -400,6 +251,187 @@
       {
         "type": "ia.container.flex",
         "meta": {
+          "name": "recipes"
+        },
+        "position": {
+          "grow": 0,
+          "shrink": 0,
+          "basis": "360px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "cal1615/card",
+            "margin": "4px",
+            "height": "680px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "26px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Recipes",
+              "style": {
+                "classes": "cal1615/card-header"
+              }
+            }
+          },
+          {
+            "type": "ia.display.table",
+            "meta": {
+              "name": "table"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "400px"
+            },
+            "props": {
+              "selection": {
+                "mode": "single"
+              },
+              "pager": {
+                "bottom": false
+              },
+              "columns": [
+                {
+                  "field": "name",
+                  "header": {
+                    "title": "Name"
+                  },
+                  "width": 190
+                },
+                {
+                  "field": "modified",
+                  "header": {
+                    "title": "Modified"
+                  },
+                  "width": 150,
+                  "render": "date",
+                  "dateFormat": "YYYY-MM-DD HH:mm"
+                }
+              ]
+            },
+            "propConfig": {
+              "props.data": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.rev}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "script",
+                      "code": "\treturn cal1615.recipes.listDataset()"
+                    }
+                  ]
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onRowClick": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\td = self.session.custom.recipeDraft\n\td.name = event.value['name']\n\tvals = cal1615.recipes.get(d.name)\n\tfor k in cal1615.recipes.KEYS:\n\t\td.values[k] = vals.get(k, 0)\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "create"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": {
+                "gap": "6px",
+                "padding": "6px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.input.text-field",
+                "meta": {
+                  "name": "newName"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "120px"
+                },
+                "props": {
+                  "placeholder": "new recipe name"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.newName",
+                        "bidirectional": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "create"
+                },
+                "position": {
+                  "basis": "150px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Create",
+                  "style": {
+                    "classes": "cal1615/btn"
+                  }
+                },
+                "propConfig": {
+                  "props.enabled": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{session.custom.canOperate} && len(trim({view.custom.newName})) > 0"
+                      }
+                    }
+                  }
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tname = self.view.custom.newName.strip()\n\td = self.session.custom.recipeDraft\n\tcal1615.recipes.save(name, cal1615.recipes.fromDraft(d.values))\n\td.name = name\n\tself.view.custom.newName = ''\n\tself.view.custom.rev += 1\n"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
           "name": "lineSettings"
         },
         "position": {
@@ -439,7 +471,7 @@
               "name": "f_line_speed_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -521,7 +553,7 @@
               "name": "f_letoff_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -603,7 +635,7 @@
               "name": "f_cure_time_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -685,7 +717,7 @@
               "name": "f_platen_temp_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -767,7 +799,7 @@
               "name": "f_acc_counter_pressure_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -849,7 +881,7 @@
               "name": "f_acc_fill_pressure_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -931,7 +963,7 @@
               "name": "f_acc_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1013,7 +1045,7 @@
               "name": "f_ts1_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1095,7 +1127,7 @@
               "name": "f_impreg_gap_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1177,7 +1209,7 @@
               "name": "f_impreg_supply_speed_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1259,7 +1291,7 @@
               "name": "f_slitter_speed_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1341,7 +1373,7 @@
               "name": "f_upper_poly_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1423,7 +1455,7 @@
               "name": "f_lower_poly_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1505,7 +1537,7 @@
               "name": "f_winder_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1587,7 +1619,7 @@
               "name": "f_adv_cooling_temp_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1707,7 +1739,7 @@
               "name": "f_zone_1__exhaust_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1789,7 +1821,7 @@
               "name": "f_zone_1__recirc_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1871,7 +1903,7 @@
               "name": "f_zone_1__temp_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -1991,7 +2023,7 @@
               "name": "f_zone_2__exhaust_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2073,7 +2105,7 @@
               "name": "f_zone_2__recirc_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2155,7 +2187,7 @@
               "name": "f_zone_2__temp_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2275,7 +2307,7 @@
               "name": "f_zone_3__exhaust_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2357,7 +2389,7 @@
               "name": "f_zone_3__recirc_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2439,7 +2471,7 @@
               "name": "f_zone_3__temp_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2559,7 +2591,7 @@
               "name": "f_impreg_gap_ds_offset_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2641,7 +2673,7 @@
               "name": "f_impreg_gap_os_offset_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2723,7 +2755,7 @@
               "name": "f_ts1_mode_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2805,7 +2837,7 @@
               "name": "f_ts1_stretch_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2887,7 +2919,7 @@
               "name": "f_ts2_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -2969,7 +3001,7 @@
               "name": "f_lower_poly_b_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -3051,7 +3083,7 @@
               "name": "f_upper_poly_b_tension_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -3133,7 +3165,7 @@
               "name": "f_winder_mode_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -3215,7 +3247,7 @@
               "name": "f_winder_torque_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {
@@ -3297,7 +3329,7 @@
               "name": "f_tension_deviation_sp"
             },
             "position": {
-              "basis": "26px",
+              "basis": "28px",
               "shrink": 0
             },
             "props": {

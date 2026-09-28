@@ -53,19 +53,6 @@
         }
       },
       {
-        "type": "ia.display.label",
-        "meta": {
-          "name": "spacer"
-        },
-        "position": {
-          "grow": 1,
-          "basis": "0"
-        },
-        "props": {
-          "text": ""
-        }
-      },
-      {
         "type": "ia.display.icon",
         "meta": {
           "name": "alarmIcon"

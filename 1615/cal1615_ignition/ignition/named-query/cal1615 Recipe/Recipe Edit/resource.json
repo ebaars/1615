@@ -1,0 +1,210 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "UpdateQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "mySQL",
+    "fallbackEnabled": false,
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "claude",
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    "syntaxProvider": "class com.adbs.syntax.MSSQLSyntaxProvider",
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "name",
+        "sqlType": 7
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_1__recirc_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_1__exhaust_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_1__temp_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_2__recirc_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_2__exhaust_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_2__temp_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_3__recirc_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_3__exhaust_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "zone_3__temp_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "line_speed_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "letoff_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "acc_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "acc_fill_pressure_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "acc_counter_pressure_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "cure_time_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "platen_temp_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "impreg_gap_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "impreg_gap_ds_offset_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "impreg_gap_os_offset_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "impreg_supply_speed_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "ts1_mode_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "ts1_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "ts1_stretch_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "slitter_speed_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "adv_cooling_temp_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "ts2_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "lower_poly_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "lower_poly_b_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "upper_poly_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "upper_poly_b_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "winder_tension_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "winder_mode_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "winder_torque_sp",
+        "sqlType": 4
+      },
+      {
+        "type": "Parameter",
+        "identifier": "tension_deviation_sp",
+        "sqlType": 4
+      }
+    ]
+  }
+}

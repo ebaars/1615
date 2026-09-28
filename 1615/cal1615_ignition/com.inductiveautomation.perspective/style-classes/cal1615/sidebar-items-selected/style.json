@@ -1,0 +1,25 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--neutral-50)",
+      "color": "#FFFFFF",
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "paddingLeft": "1rem!important",
+      "boxShadow": "inset 4px 0 var(--info)",
+      "borderBottomColor": "var(--neutral-40)",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "1px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--callToActionHighlight)",
+        "color": "var(--neutral-100)",
+        "cursor": "pointer"
+      }
+    }
+  ]
+}

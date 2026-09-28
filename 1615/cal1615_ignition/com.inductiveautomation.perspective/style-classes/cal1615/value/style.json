@@ -1,6 +1,15 @@
 {
   "base": {
     "style": {
+      "height": "22px",
+      "minHeight": "0",
+      "lineHeight": "20px",
+      "boxSizing": "border-box",
+      "paddingTop": "0",
+      "paddingBottom": "0",
+      "paddingLeft": "2px",
+      "overflow": "hidden",
+      "whiteSpace": "nowrap",
       "backgroundColor": "var(--neutral-10)",
       "borderColor": "var(--neutral-60)",
       "borderStyle": "solid",

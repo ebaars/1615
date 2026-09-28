@@ -1,93 +1,44 @@
 {
   "custom": {},
-  "params": {
-    "section": "main"
-  },
-  "propConfig": {
-    "params.section": {
-      "paramDirection": "input",
-      "persistent": true
-    }
-  },
+  "params": {},
+  "propConfig": {},
   "props": {
     "defaultSize": {
       "width": 1280,
-      "height": 96
+      "height": 56
     }
   },
   "root": {
-    "type": "ia.container.flex",
+    "type": "ia.container.breakpt",
     "meta": {
       "name": "root"
     },
-    "position": {},
     "props": {
-      "direction": "column"
+      "breakpoint": 900
     },
     "children": [
       {
-        "type": "ia.container.breakpt",
+        "type": "ia.display.view",
         "meta": {
-          "name": "bar"
+          "name": "small"
         },
-        "position": {
-          "basis": "56px",
-          "shrink": 0
-        },
+        "position": {},
         "props": {
-          "breakpoint": 900
-        },
-        "children": [
-          {
-            "type": "ia.display.view",
-            "meta": {
-              "name": "small"
-            },
-            "position": {},
-            "props": {
-              "path": "Framework/Header Small",
-              "params": {}
-            }
-          },
-          {
-            "type": "ia.display.view",
-            "meta": {
-              "name": "large"
-            },
-            "position": {
-              "size": "large"
-            },
-            "props": {
-              "path": "Framework/Header Large",
-              "params": {}
-            }
-          }
-        ]
+          "path": "Framework/Header Small",
+          "params": {}
+        }
       },
       {
         "type": "ia.display.view",
         "meta": {
-          "name": "tabs"
+          "name": "large"
         },
         "position": {
-          "basis": "40px",
-          "shrink": 0
+          "size": "large"
         },
         "props": {
-          "path": "Framework/Section Tabs",
-          "params": {
-            "section": "main"
-          }
-        },
-        "propConfig": {
-          "props.params.section": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.section"
-              }
-            }
-          }
+          "path": "Framework/Header Large",
+          "params": {}
         }
       }
     ]

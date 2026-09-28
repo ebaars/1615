@@ -15,13 +15,6 @@
         },
         {
           "dataType": "String",
-          "name": "recipes",
-          "tagType": "AtomicTag",
-          "valueSource": "memory",
-          "value": "{}"
-        },
-        {
-          "dataType": "String",
           "name": "shop_order",
           "tagType": "AtomicTag",
           "valueSource": "memory",

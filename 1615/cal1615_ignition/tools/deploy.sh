@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 D="${DOCKER:-/c/Users/ErikBaars/AppData/Local/Programs/DockerDesktop/resources/bin/docker.exe}"
 C="${CONTAINER:-ignition8-3}"
 O="$(cd .. && pwd)"
-node gen.js "$O" tagmap.json base-session-props.json
+node "${GEN:-gen.js}" "$O" tagmap.json base-session-props.json
 rm -rf .deploy; mkdir -p .deploy/cal1615_ignition
 cp -r "$O/project.json" "$O/com.inductiveautomation.perspective" "$O/ignition" .deploy/cal1615_ignition/
 export MSYS_NO_PATHCONV=1

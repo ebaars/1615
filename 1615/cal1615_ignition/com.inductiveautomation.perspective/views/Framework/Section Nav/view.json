@@ -1,0 +1,100 @@
+{
+  "custom": {},
+  "params": {
+    "section": "main"
+  },
+  "propConfig": {
+    "params.section": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 180,
+      "height": 1000
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "var(--neutral-20)",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "1px",
+        "borderRightColor": "var(--neutral-50)"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "classes": "cal1615/sidebar-heading"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.section"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\treturn {\"main\":\"Main\",\"oven\":\"Oven Zones\",\"line\":\"Line Drives\",\"maint\":\"Maintenance\",\"trend\":\"Trends\",\"alarms\":\"Alarms\"}.get(value, '')"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.navigation.menutree",
+        "meta": {
+          "name": "menu"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "items": [],
+          "itemStyle": {
+            "classes": "cal1615/sidebar-items"
+          }
+        },
+        "propConfig": {
+          "props.items": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "{view.params.section} + \"|\" + {page.props.path} + \"|\" + if({page.props.dimensions.viewport.width} < 900, \"narrow\", \"wide\")"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tsection, path, width = value.split('|')\n\tpages = {\"main\":[[\"Overview\",\"/overview\"],[\"Oven Control\",\"/oven-control\"],[\"Active Recipe\",\"/active-recipe\"],[\"Recipe Editor\",\"/recipe-editor\"],[\"Emergency Stops\",\"/emergency-stops\"]],\"oven\":[[\"Zone 1\",\"/zone-1\"],[\"Zone 2\",\"/zone-2\"],[\"Zone 3\",\"/zone-3\"],[\"Advanced Cooling\",\"/advanced-cooling\"]],\"line\":[[\"Let-Off / Splice\",\"/letoff-splice\"],[\"Accumulator / Tension Stand 1\",\"/accumulator-ts1\"],[\"Tension Stand 2 / Poly / Windup\",\"/ts2-poly-windup\"]],\"maint\":[[\"I/O\",\"/io\"],[\"Zone Setup\",\"/zone-setup\"],[\"VFD Drives\",\"/vfd-drives\"],[\"Servo Drives\",\"/servo-drives\"],[\"PM Schedule\",\"/pm-schedule\"]],\"trend\":[[\"Oven Trend\",\"/oven-trend\"],[\"Trend\",\"/trend\"]],\"alarms\":[[\"Alarms\",\"/alarms\"],[\"Warnings\",\"/warnings\"],[\"History\",\"/alarm-history\"]]}\n\tsections = [[\"main\",\"Main\",\"/overview\"],[\"oven\",\"Oven Zones\",\"/zone-1\"],[\"line\",\"Line Drives\",\"/letoff-splice\"],[\"maint\",\"Maintenance\",\"/io\"],[\"trend\",\"Trends\",\"/oven-trend\"],[\"alarms\",\"Alarms\",\"/alarms\"]]\n\tdef item(text, target, selected):\n\t\treturn {'label': {'text': text, 'icon': {'path': ''}}, 'navIcon': {'path': ''}, 'target': target, 'enabled': True, 'visible': True,\n\t\t\t'showHeader': True, 'items': [], 'style': {'classes': 'cal1615/sidebar-items-selected' if selected else 'cal1615/sidebar-items'}}\n\tout = [item(t, u, path == u or (path == '/' and u == '/overview')) for t, u in pages.get(section, [])]\n\tif width == 'narrow':\n\t\tout += [item(text, target, key == section) for key, text, target in sections if key != section]\n\treturn out"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

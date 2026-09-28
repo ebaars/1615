@@ -33,7 +33,9 @@
         },
         "props": {
           "path": "Line/TS2 Poly Windup - Large",
-          "params": {}
+          "params": {},
+          "useDefaultViewWidth": true,
+          "useDefaultViewHeight": true
         }
       }
     ]

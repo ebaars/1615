@@ -3,12 +3,13 @@
     "style": {
       "fontFamily": "Arial",
       "fontSize": "13px",
-      "borderRadius": "0px",
-      "backgroundColor": "var(--neutral-40)",
+      "borderRadius": "3px",
+      "backgroundColor": "var(--neutral-30)",
       "color": "var(--neutral-100)",
       "borderStyle": "none",
-      "marginRight": "2px",
-      "whiteSpace": "nowrap"
+      "whiteSpace": "normal",
+      "textAlign": "left",
+      "paddingLeft": "10px"
     }
   },
   "variants": [

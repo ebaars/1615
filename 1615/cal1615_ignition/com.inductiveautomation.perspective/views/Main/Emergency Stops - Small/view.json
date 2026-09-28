@@ -28,7 +28,7 @@
           "name": "estops"
         },
         "position": {
-          "basis": "268px",
+          "basis": "286px",
           "shrink": 0
         },
         "props": {
@@ -58,7 +58,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -85,7 +85,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -112,7 +112,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -139,7 +139,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -166,7 +166,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -193,7 +193,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -220,7 +220,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -247,7 +247,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
@@ -274,7 +274,7 @@
                 "buttons": [],
                 "labelWidth": "",
                 "instancePosition": {
-                  "basis": "26px",
+                  "basis": "28px",
                   "grow": 0,
                   "shrink": 0
                 }
