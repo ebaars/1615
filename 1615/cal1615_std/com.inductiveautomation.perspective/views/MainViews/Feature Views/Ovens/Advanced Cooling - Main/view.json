@@ -1,14 +1,7 @@
 {
   "custom": {},
-  "params": {
-    "zone": 1
-  },
-  "propConfig": {
-    "params.zone": {
-      "paramDirection": "input",
-      "persistent": true
-    }
-  },
+  "params": {},
+  "propConfig": {},
   "props": {},
   "root": {
     "type": "ia.container.breakpt",
@@ -26,20 +19,8 @@
         },
         "position": {},
         "props": {
-          "path": "MainViews/Feature Views/Ovens/Zone - Small",
-          "params": {
-            "zone": 1
-          }
-        },
-        "propConfig": {
-          "props.params.zone": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.zone"
-              }
-            }
-          }
+          "path": "MainViews/Feature Views/Ovens/Advanced Cooling - Small",
+          "params": {}
         }
       },
       {
@@ -68,22 +49,10 @@
               "shrink": 0
             },
             "props": {
-              "path": "MainViews/Feature Views/Ovens/Zone - Large",
-              "params": {
-                "zone": 1
-              },
+              "path": "MainViews/Feature Views/Ovens/Advanced Cooling - Large",
+              "params": {},
               "useDefaultViewWidth": true,
               "useDefaultViewHeight": true
-            },
-            "propConfig": {
-              "props.params.zone": {
-                "binding": {
-                  "type": "property",
-                  "config": {
-                    "path": "view.params.zone"
-                  }
-                }
-              }
             }
           },
           {

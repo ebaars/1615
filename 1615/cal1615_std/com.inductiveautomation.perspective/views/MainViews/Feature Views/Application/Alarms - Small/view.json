@@ -57,7 +57,7 @@
               "component": {
                 "onActionPerformed": {
                   "config": {
-                    "script": "\tsystem.tag.write(\u0027[cal1615]Line Main/Control/pb_fault_reset\u0027, 1)"
+                    "script": "\tsystem.tag.write(\u0027[cal1615]p02_dint_from_hmi/global_6_/bit_0\u0027, 1)"
                   },
                   "scope": "G",
                   "type": "script"

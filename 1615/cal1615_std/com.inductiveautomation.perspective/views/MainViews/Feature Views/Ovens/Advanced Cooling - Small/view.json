@@ -1,0 +1,70 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "basis": "214px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Roll Cooling",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pump"
+        },
+        "position": {
+          "basis": "102px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Roll Cooling Pump",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "valve"
+        },
+        "position": {
+          "basis": "158px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Roll Cooling Valve",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

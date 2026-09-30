@@ -4,7 +4,7 @@
   "propConfig": {},
   "props": {
     "defaultSize": {
-      "width": 1680,
+      "width": 1640,
       "height": 1024
     }
   },
@@ -50,29 +50,6 @@
           "path": "Framework/Carousel Arrow",
           "params": {
             "direction": "prev",
-            "sequence": [
-              "/letoff-splice",
-              "/accumulator-ts1",
-              "/ts2-poly-windup"
-            ]
-          }
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "arrow_right"
-        },
-        "position": {
-          "x": 1644,
-          "y": 330,
-          "width": 36,
-          "height": 90
-        },
-        "props": {
-          "path": "Framework/Carousel Arrow",
-          "params": {
-            "direction": "next",
             "sequence": [
               "/letoff-splice",
               "/accumulator-ts1",
@@ -236,7 +213,7 @@
         "position": {
           "x": 1067,
           "y": 67,
-          "width": 600,
+          "width": 569,
           "height": 489
         },
         "props": {

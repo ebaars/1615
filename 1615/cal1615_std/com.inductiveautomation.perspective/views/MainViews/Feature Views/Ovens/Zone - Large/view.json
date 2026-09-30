@@ -1,108 +1,81 @@
 {
-  "custom": {
-    "t": {}
-  },
+  "custom": {},
   "params": {
     "zone": 1
   },
   "propConfig": {
+    "custom.t": {
+      "binding": {
+        "config": {
+          "expression": "runScript(\"cal1615.zones.paths\", 0, {view.params.zone})"
+        },
+        "type": "expr"
+      }
+    },
     "params.zone": {
       "paramDirection": "input",
       "persistent": true
-    },
-    "custom.t": {
-      "binding": {
-        "type": "expr",
-        "config": {
-          "expression": "runScript(\"cal1615.zones.paths\", 0, {view.params.zone})"
-        }
-      }
     }
   },
   "props": {
     "defaultSize": {
-      "width": 1680,
-      "height": 1024
+      "height": 1024,
+      "width": 1640
     }
   },
   "root": {
-    "type": "ia.container.coord",
-    "meta": {
-      "name": "root"
-    },
-    "props": {
-      "mode": "fixed",
-      "style": {
-        "classes": "cal1615/page"
-      }
-    },
     "children": [
       {
-        "type": "ia.display.label",
         "meta": {
           "name": "title"
         },
         "position": {
-          "x": 507,
-          "y": 7,
+          "height": 40,
           "width": 667,
-          "height": 40
-        },
-        "props": {
-          "text": "",
-          "style": {
-            "classes": "cal1615/page-title"
-          }
+          "x": 507,
+          "y": 7
         },
         "propConfig": {
           "props.text": {
             "binding": {
-              "type": "expr",
               "config": {
                 "expression": "\"Zone \" + {view.params.zone}"
-              }
+              },
+              "type": "expr"
             }
           }
-        }
+        },
+        "props": {
+          "style": {
+            "classes": "cal1615/page-title"
+          }
+        },
+        "type": "ia.display.label"
       },
       {
-        "type": "ia.display.image",
         "meta": {
           "name": "drawing"
         },
         "position": {
-          "x": 9,
-          "y": 56,
+          "height": 522,
           "width": 1002,
-          "height": 522
+          "x": 9,
+          "y": 56
         },
         "props": {
-          "source": "/system/images/Custom/cal1615/zone.png",
           "fit": {
             "mode": "fill"
           },
+          "source": "/system/images/Custom/cal1615/zone.png",
           "style": {
             "classes": "cal1615/drawing"
           }
-        }
+        },
+        "type": "ia.display.image"
       },
       {
-        "type": "ia.container.flex",
-        "meta": {
-          "name": "exhaustStatus"
-        },
-        "position": {
-          "x": 362,
-          "y": 96,
-          "width": 142,
-          "height": 22
-        },
-        "props": {
-          "direction": "column"
-        },
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "status"
             },
@@ -110,74 +83,22 @@
               "basis": "22px",
               "shrink": 0
             },
-            "props": {
-              "text": "---",
-              "style": {
-                "classes": "cal1615/status"
-              }
-            },
             "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "tag",
-                  "config": {
-                    "fallbackDelay": 2.5,
-                    "mode": "indirect",
-                    "references": {
-                      "0": "{view.custom.t.exh_status}"
-                    },
-                    "tagPath": "{0}",
-                    "bidirectional": false
-                  },
-                  "transforms": [
-                    {
-                      "type": "map",
-                      "inputType": "scalar",
-                      "outputType": "scalar",
-                      "mappings": [
-                        {
-                          "input": 1,
-                          "output": "OK"
-                        },
-                        {
-                          "input": 2,
-                          "output": "Running"
-                        },
-                        {
-                          "input": 3,
-                          "output": "Stopped"
-                        },
-                        {
-                          "input": 4,
-                          "output": "Faulted"
-                        },
-                        {
-                          "input": 5,
-                          "output": "Default"
-                        }
-                      ],
-                      "fallback": "---"
-                    }
-                  ]
-                }
-              },
               "props.style.backgroundColor": {
                 "binding": {
-                  "type": "tag",
                   "config": {
+                    "bidirectional": false,
                     "fallbackDelay": 2.5,
                     "mode": "indirect",
                     "references": {
                       "0": "{view.custom.t.exh_status}"
                     },
-                    "tagPath": "{0}",
-                    "bidirectional": false
+                    "tagPath": "{0}"
                   },
                   "transforms": [
                     {
-                      "type": "map",
+                      "fallback": "#FFFFFF",
                       "inputType": "scalar",
-                      "outputType": "color",
                       "mappings": [
                         {
                           "input": 1,
@@ -200,32 +121,83 @@
                           "output": "#D0D0D0"
                         }
                       ],
-                      "fallback": "#FFFFFF"
+                      "outputType": "color",
+                      "type": "map"
                     }
-                  ]
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": false,
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.exh_status}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "---",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 1,
+                          "output": "OK"
+                        },
+                        {
+                          "input": 2,
+                          "output": "Running"
+                        },
+                        {
+                          "input": 3,
+                          "output": "Stopped"
+                        },
+                        {
+                          "input": 4,
+                          "output": "Faulted"
+                        },
+                        {
+                          "input": 5,
+                          "output": "Default"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
                 }
               }
-            }
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "type": "ia.display.label"
           }
-        ]
-      },
-      {
-        "type": "ia.container.flex",
+        ],
         "meta": {
-          "name": "zoneStatus"
+          "name": "exhaustStatus"
         },
         "position": {
-          "x": 260,
-          "y": 156,
+          "height": 22,
           "width": 142,
-          "height": 40
+          "x": 362,
+          "y": 96
         },
         "props": {
           "direction": "column"
         },
+        "type": "ia.container.flex"
+      },
+      {
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "title"
             },
@@ -234,15 +206,15 @@
               "shrink": 0
             },
             "props": {
-              "text": "Status",
               "style": {
                 "fontSize": "12px",
                 "textAlign": "center"
-              }
-            }
+              },
+              "text": "Status"
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "status"
             },
@@ -250,110 +222,22 @@
               "basis": "22px",
               "shrink": 0
             },
-            "props": {
-              "text": "---",
-              "style": {
-                "classes": "cal1615/status"
-              }
-            },
             "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "tag",
-                  "config": {
-                    "fallbackDelay": 2.5,
-                    "mode": "indirect",
-                    "references": {
-                      "0": "{view.custom.t.status}"
-                    },
-                    "tagPath": "{0}",
-                    "bidirectional": false
-                  },
-                  "transforms": [
-                    {
-                      "type": "map",
-                      "inputType": "scalar",
-                      "outputType": "scalar",
-                      "mappings": [
-                        {
-                          "input": 1,
-                          "output": "Off"
-                        },
-                        {
-                          "input": 2,
-                          "output": "Idle"
-                        },
-                        {
-                          "input": 3,
-                          "output": "Start Recirc"
-                        },
-                        {
-                          "input": 4,
-                          "output": "Start Exhaust"
-                        },
-                        {
-                          "input": 5,
-                          "output": "Wait Safeties"
-                        },
-                        {
-                          "input": 6,
-                          "output": "Safeties Made"
-                        },
-                        {
-                          "input": 7,
-                          "output": "Purge"
-                        },
-                        {
-                          "input": 8,
-                          "output": "Burner Lit"
-                        },
-                        {
-                          "input": 9,
-                          "output": "Heat to SP"
-                        },
-                        {
-                          "input": 10,
-                          "output": "Control to SP"
-                        },
-                        {
-                          "input": 11,
-                          "output": "Cooldown"
-                        },
-                        {
-                          "input": 12,
-                          "output": "Cooldown Fans"
-                        },
-                        {
-                          "input": 13,
-                          "output": "Complete"
-                        },
-                        {
-                          "input": 31,
-                          "output": "Manual"
-                        }
-                      ],
-                      "fallback": "---"
-                    }
-                  ]
-                }
-              },
               "props.style.backgroundColor": {
                 "binding": {
-                  "type": "tag",
                   "config": {
+                    "bidirectional": false,
                     "fallbackDelay": 2.5,
                     "mode": "indirect",
                     "references": {
                       "0": "{view.custom.t.status}"
                     },
-                    "tagPath": "{0}",
-                    "bidirectional": false
+                    "tagPath": "{0}"
                   },
                   "transforms": [
                     {
-                      "type": "map",
+                      "fallback": "#FFFFFF",
                       "inputType": "scalar",
-                      "outputType": "color",
                       "mappings": [
                         {
                           "input": 1,
@@ -412,32 +296,119 @@
                           "output": "#FFA040"
                         }
                       ],
-                      "fallback": "#FFFFFF"
+                      "outputType": "color",
+                      "type": "map"
                     }
-                  ]
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": false,
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.status}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "---",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 1,
+                          "output": "Off"
+                        },
+                        {
+                          "input": 2,
+                          "output": "Idle"
+                        },
+                        {
+                          "input": 3,
+                          "output": "Start Recirc"
+                        },
+                        {
+                          "input": 4,
+                          "output": "Start Exhaust"
+                        },
+                        {
+                          "input": 5,
+                          "output": "Wait Safeties"
+                        },
+                        {
+                          "input": 6,
+                          "output": "Safeties Made"
+                        },
+                        {
+                          "input": 7,
+                          "output": "Purge"
+                        },
+                        {
+                          "input": 8,
+                          "output": "Burner Lit"
+                        },
+                        {
+                          "input": 9,
+                          "output": "Heat to SP"
+                        },
+                        {
+                          "input": 10,
+                          "output": "Control to SP"
+                        },
+                        {
+                          "input": 11,
+                          "output": "Cooldown"
+                        },
+                        {
+                          "input": 12,
+                          "output": "Cooldown Fans"
+                        },
+                        {
+                          "input": 13,
+                          "output": "Complete"
+                        },
+                        {
+                          "input": 31,
+                          "output": "Manual"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
                 }
               }
-            }
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "type": "ia.display.label"
           }
-        ]
-      },
-      {
-        "type": "ia.container.flex",
+        ],
         "meta": {
-          "name": "recircStatus"
+          "name": "zoneStatus"
         },
         "position": {
-          "x": 404,
-          "y": 490,
+          "height": 40,
           "width": 142,
-          "height": 22
+          "x": 488.5,
+          "y": 156
         },
         "props": {
           "direction": "column"
         },
+        "type": "ia.container.flex"
+      },
+      {
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "status"
             },
@@ -445,74 +416,22 @@
               "basis": "22px",
               "shrink": 0
             },
-            "props": {
-              "text": "---",
-              "style": {
-                "classes": "cal1615/status"
-              }
-            },
             "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "tag",
-                  "config": {
-                    "fallbackDelay": 2.5,
-                    "mode": "indirect",
-                    "references": {
-                      "0": "{view.custom.t.recirc_status}"
-                    },
-                    "tagPath": "{0}",
-                    "bidirectional": false
-                  },
-                  "transforms": [
-                    {
-                      "type": "map",
-                      "inputType": "scalar",
-                      "outputType": "scalar",
-                      "mappings": [
-                        {
-                          "input": 1,
-                          "output": "OK"
-                        },
-                        {
-                          "input": 2,
-                          "output": "Running"
-                        },
-                        {
-                          "input": 3,
-                          "output": "Stopped"
-                        },
-                        {
-                          "input": 4,
-                          "output": "Faulted"
-                        },
-                        {
-                          "input": 5,
-                          "output": "Default"
-                        }
-                      ],
-                      "fallback": "---"
-                    }
-                  ]
-                }
-              },
               "props.style.backgroundColor": {
                 "binding": {
-                  "type": "tag",
                   "config": {
+                    "bidirectional": false,
                     "fallbackDelay": 2.5,
                     "mode": "indirect",
                     "references": {
                       "0": "{view.custom.t.recirc_status}"
                     },
-                    "tagPath": "{0}",
-                    "bidirectional": false
+                    "tagPath": "{0}"
                   },
                   "transforms": [
                     {
-                      "type": "map",
+                      "fallback": "#FFFFFF",
                       "inputType": "scalar",
-                      "outputType": "color",
                       "mappings": [
                         {
                           "input": 1,
@@ -535,50 +454,113 @@
                           "output": "#D0D0D0"
                         }
                       ],
-                      "fallback": "#FFFFFF"
+                      "outputType": "color",
+                      "type": "map"
                     }
-                  ]
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.recirc_status}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "---",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 1,
+                          "output": "OK"
+                        },
+                        {
+                          "input": 2,
+                          "output": "Running"
+                        },
+                        {
+                          "input": 3,
+                          "output": "Stopped"
+                        },
+                        {
+                          "input": 4,
+                          "output": "Faulted"
+                        },
+                        {
+                          "input": 5,
+                          "output": "Default"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
                 }
               }
-            }
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "type": "ia.display.label"
           }
-        ]
+        ],
+        "meta": {
+          "name": "recircStatus"
+        },
+        "position": {
+          "height": 22,
+          "width": 142,
+          "x": 404,
+          "y": 490
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
       },
       {
-        "type": "ia.display.label",
         "meta": {
           "name": "lampS"
         },
         "position": {
-          "x": 47,
-          "y": 396,
+          "height": 26,
           "width": 29,
-          "height": 26
-        },
-        "props": {
-          "text": "S",
-          "style": {
-            "classes": "cal1615/led"
-          }
+          "x": 47,
+          "y": 396
         },
         "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.zone} \u003c 3"
+              },
+              "type": "expr"
+            }
+          },
           "props.style.backgroundColor": {
             "binding": {
-              "type": "tag",
               "config": {
+                "bidirectional": false,
                 "fallbackDelay": 2.5,
                 "mode": "indirect",
                 "references": {
                   "0": "{view.custom.t.burner_safeties_ok}"
                 },
-                "tagPath": "{0}",
-                "bidirectional": false
+                "tagPath": "{0}"
               },
               "transforms": [
                 {
-                  "type": "map",
+                  "fallback": "#FF00FF",
                   "inputType": "scalar",
-                  "outputType": "color",
                   "mappings": [
                     {
                       "input": true,
@@ -589,56 +571,56 @@
                       "output": "#FF2020"
                     }
                   ],
-                  "fallback": "#FF00FF"
+                  "outputType": "color",
+                  "type": "map"
                 }
-              ]
-            }
-          },
-          "position.display": {
-            "binding": {
-              "type": "expr",
-              "config": {
-                "expression": "{view.params.zone} < 3"
-              }
+              ],
+              "type": "tag"
             }
           }
-        }
+        },
+        "props": {
+          "style": {
+            "classes": "cal1615/led"
+          },
+          "text": "S"
+        },
+        "type": "ia.display.label"
       },
       {
-        "type": "ia.display.label",
         "meta": {
           "name": "lampL"
         },
         "position": {
-          "x": 47,
-          "y": 452,
+          "height": 26,
           "width": 29,
-          "height": 26
-        },
-        "props": {
-          "text": "L",
-          "style": {
-            "classes": "cal1615/led"
-          }
+          "x": 47,
+          "y": 452
         },
         "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.zone} \u003c 3"
+              },
+              "type": "expr"
+            }
+          },
           "props.style.backgroundColor": {
             "binding": {
-              "type": "tag",
               "config": {
+                "bidirectional": false,
                 "fallbackDelay": 2.5,
                 "mode": "indirect",
                 "references": {
                   "0": "{view.custom.t.flame_on}"
                 },
-                "tagPath": "{0}",
-                "bidirectional": false
+                "tagPath": "{0}"
               },
               "transforms": [
                 {
-                  "type": "map",
+                  "fallback": "#FF00FF",
                   "inputType": "scalar",
-                  "outputType": "color",
                   "mappings": [
                     {
                       "input": true,
@@ -649,56 +631,56 @@
                       "output": "#FF2020"
                     }
                   ],
-                  "fallback": "#FF00FF"
+                  "outputType": "color",
+                  "type": "map"
                 }
-              ]
-            }
-          },
-          "position.display": {
-            "binding": {
-              "type": "expr",
-              "config": {
-                "expression": "{view.params.zone} < 3"
-              }
+              ],
+              "type": "tag"
             }
           }
-        }
+        },
+        "props": {
+          "style": {
+            "classes": "cal1615/led"
+          },
+          "text": "L"
+        },
+        "type": "ia.display.label"
       },
       {
-        "type": "ia.display.label",
         "meta": {
           "name": "lampH"
         },
         "position": {
-          "x": 90,
-          "y": 452,
+          "height": 26,
           "width": 29,
-          "height": 26
-        },
-        "props": {
-          "text": "H",
-          "style": {
-            "classes": "cal1615/led"
-          }
+          "x": 90,
+          "y": 452
         },
         "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.zone} \u003c 3"
+              },
+              "type": "expr"
+            }
+          },
           "props.style.backgroundColor": {
             "binding": {
-              "type": "tag",
               "config": {
+                "bidirectional": false,
                 "fallbackDelay": 2.5,
                 "mode": "indirect",
                 "references": {
                   "0": "{view.custom.t.high_limit_ok}"
                 },
-                "tagPath": "{0}",
-                "bidirectional": false
+                "tagPath": "{0}"
               },
               "transforms": [
                 {
-                  "type": "map",
+                  "fallback": "#FF00FF",
                   "inputType": "scalar",
-                  "outputType": "color",
                   "mappings": [
                     {
                       "input": true,
@@ -709,106 +691,123 @@
                       "output": "#FF2020"
                     }
                   ],
-                  "fallback": "#FF00FF"
+                  "outputType": "color",
+                  "type": "map"
                 }
-              ]
-            }
-          },
-          "position.display": {
-            "binding": {
-              "type": "expr",
-              "config": {
-                "expression": "{view.params.zone} < 3"
-              }
+              ],
+              "type": "tag"
             }
           }
-        }
+        },
+        "props": {
+          "style": {
+            "classes": "cal1615/led"
+          },
+          "text": "H"
+        },
+        "type": "ia.display.label"
       },
       {
-        "type": "ia.display.icon",
         "meta": {
           "name": "flame"
         },
         "position": {
-          "x": 247,
-          "y": 424,
+          "height": 44,
           "width": 67,
-          "height": 44
-        },
-        "props": {
-          "path": "material/whatshot",
-          "color": "#FF6D00"
+          "x": 247,
+          "y": 424
         },
         "propConfig": {
           "position.display": {
             "binding": {
-              "type": "tag",
               "config": {
+                "bidirectional": false,
                 "fallbackDelay": 2.5,
                 "mode": "indirect",
                 "references": {
                   "0": "{view.custom.t.flame_on}"
                 },
-                "tagPath": "{0}",
-                "bidirectional": false
+                "tagPath": "{0}"
               },
               "transforms": [
                 {
-                  "type": "expression",
-                  "expression": "toBoolean({value}) && {view.params.zone} < 3"
+                  "expression": "toBoolean({value}) \u0026\u0026 {view.params.zone} \u003c 3",
+                  "type": "expression"
                 }
-              ]
+              ],
+              "type": "tag"
             }
           }
-        }
+        },
+        "props": {
+          "color": "#FF6D00",
+          "path": "material/whatshot"
+        },
+        "type": "ia.display.icon"
       },
       {
-        "type": "ia.chart.powerchart",
         "meta": {
           "name": "trend"
         },
         "position": {
+          "height": 522,
+          "width": 603,
           "x": 1033,
-          "y": 56,
-          "width": 639,
-          "height": 522
-        },
-        "props": {
-          "config": {
-            "measureOfTime": "hours",
-            "unitOfTime": 1
-          }
+          "y": 56
         },
         "propConfig": {
           "props.pens": {
             "binding": {
-              "type": "expr",
               "config": {
                 "expression": "{view.params.zone}"
               },
               "transforms": [
                 {
-                  "type": "script",
-                  "code": "\tdef pen(name, tag, color):\n\t\tst = lambda o: {'fill': {'color': color, 'opacity': o}, 'stroke': {'color': color, 'dashArray': 0, 'opacity': o, 'width': 1.5}}\n\t\treturn {'axis': '', 'name': name, 'plot': 0, 'enabled': True, 'selectable': True, 'visible': True,\n\t\t\t'data': {'aggregateMode': 'default', 'source': 'histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:' + tag},\n\t\t\t'display': {'type': 'line', 'breakLine': True, 'interpolation': 'curveLinear', 'radius': 3, 'styles': {'normal': st(0.9), 'highlighted': st(1), 'muted': st(0.4), 'selected': st(1)}}}\n\tt = cal1615.zones.paths(value)\n\tstrip = lambda p: p.split(']', 1)[-1].lower()\n\treturn [pen('Control Temp', strip(t['temp']), '#1F77B4'), pen('Control Setpoint', strip(t['temp_sp']), '#D62728')]"
+                  "code": "\tdef pen(name, tag, color):\n\t\tst \u003d lambda o: {\u0027fill\u0027: {\u0027color\u0027: color, \u0027opacity\u0027: o}, \u0027stroke\u0027: {\u0027color\u0027: color, \u0027dashArray\u0027: 0, \u0027opacity\u0027: o, \u0027width\u0027: 1.5}}\n\t\treturn {\u0027axis\u0027: \u0027\u0027, \u0027name\u0027: name, \u0027plot\u0027: 0, \u0027enabled\u0027: True, \u0027selectable\u0027: True, \u0027visible\u0027: True,\n\t\t\t\u0027data\u0027: {\u0027aggregateMode\u0027: \u0027default\u0027, \u0027source\u0027: \u0027histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:\u0027 + tag},\n\t\t\t\u0027display\u0027: {\u0027type\u0027: \u0027line\u0027, \u0027breakLine\u0027: True, \u0027interpolation\u0027: \u0027curveLinear\u0027, \u0027radius\u0027: 3, \u0027styles\u0027: {\u0027normal\u0027: st(0.9), \u0027highlighted\u0027: st(1), \u0027muted\u0027: st(0.4), \u0027selected\u0027: st(1)}}}\n\tt \u003d cal1615.zones.paths(value)\n\tstrip \u003d lambda p: p.split(\u0027]\u0027, 1)[-1].lower()\n\treturn [pen(\u0027Control Temp\u0027, strip(t[\u0027temp\u0027]), \u0027#1F77B4\u0027), pen(\u0027Control Setpoint\u0027, strip(t[\u0027temp_sp\u0027]), \u0027#D62728\u0027)]",
+                  "type": "script"
                 }
-              ]
+              ],
+              "type": "expr"
             }
           }
-        }
+        },
+        "props": {
+          "config": {
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1790791175304
+              ],
+              "$ts": 1790791163291
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1790791175303
+              ],
+              "$ts": 1790787575291
+            },
+            "unitOfTime": 1
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "rangeZoomLevel": 1
+          }
+        },
+        "type": "ia.chart.powerchart"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "arrow_left"
         },
         "position": {
-          "x": 0,
-          "y": 330,
+          "height": 90,
           "width": 36,
-          "height": 90
+          "y": 330
         },
         "props": {
-          "path": "Framework/Carousel Arrow",
           "params": {
             "direction": "prev",
             "sequence": [
@@ -817,173 +816,145 @@
               "/zone/3",
               "/advanced-cooling"
             ]
-          }
-        }
+          },
+          "path": "Framework/Carousel Arrow"
+        },
+        "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
-          "name": "arrow_right"
+          "name": "zoneStatus_0"
         },
         "position": {
-          "x": 1644,
-          "y": 330,
-          "width": 36,
-          "height": 90
-        },
-        "props": {
-          "path": "Framework/Carousel Arrow",
-          "params": {
-            "direction": "next",
-            "sequence": [
-              "/zone/1",
-              "/zone/2",
-              "/zone/3",
-              "/advanced-cooling"
-            ]
-          }
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "zoneStatus"
-        },
-        "position": {
-          "x": 156,
-          "y": 589,
+          "height": 214,
           "width": 333,
-          "height": 214
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Zone Status",
-          "params": {
-            "zone": 1
-          }
+          "x": 156,
+          "y": 589
         },
         "propConfig": {
           "props.params.zone": {
             "binding": {
-              "type": "property",
               "config": {
                 "path": "view.params.zone"
-              }
+              },
+              "type": "property"
             }
           }
-        }
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Status"
+        },
+        "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "chamber"
         },
         "position": {
-          "x": 511,
-          "y": 589,
+          "height": 88,
           "width": 344,
-          "height": 88
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Chamber Data",
-          "params": {
-            "zone": 1
-          }
+          "x": 511,
+          "y": 589
         },
         "propConfig": {
           "props.params.zone": {
             "binding": {
-              "type": "property",
               "config": {
                 "path": "view.params.zone"
-              }
+              },
+              "type": "property"
             }
           }
-        }
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Chamber Data"
+        },
+        "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "temps"
         },
         "position": {
-          "x": 511,
-          "y": 687,
+          "height": 144,
           "width": 344,
-          "height": 144
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Temperature Data",
-          "params": {
-            "zone": 1
-          }
+          "x": 511,
+          "y": 687
         },
         "propConfig": {
           "props.params.zone": {
             "binding": {
-              "type": "property",
               "config": {
                 "path": "view.params.zone"
-              }
+              },
+              "type": "property"
             }
           }
-        }
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Temperature Data"
+        },
+        "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "valve"
         },
         "position": {
-          "x": 156,
-          "y": 813,
+          "height": 158,
           "width": 333,
-          "height": 158
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Control Valve",
-          "params": {
-            "zone": 1
-          }
+          "x": 156,
+          "y": 813
         },
         "propConfig": {
           "props.params.zone": {
             "binding": {
-              "type": "property",
               "config": {
                 "path": "view.params.zone"
-              }
+              },
+              "type": "property"
             }
           }
-        }
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Control Valve"
+        },
+        "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "motors"
         },
         "position": {
-          "x": 878,
-          "y": 589,
+          "height": 144,
           "width": 367,
-          "height": 144
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Motor Data",
-          "params": {
-            "zone": 1
-          }
+          "x": 878,
+          "y": 589
         },
         "propConfig": {
           "props.params.zone": {
             "binding": {
-              "type": "property",
               "config": {
                 "path": "view.params.zone"
-              }
+              },
+              "type": "property"
             }
           }
-        }
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Motor Data"
+        },
+        "type": "ia.display.view"
       }
-    ]
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "type": "ia.container.coord"
   }
 }

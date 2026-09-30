@@ -17,7 +17,7 @@ The cal1615 line HMI (Ignition 8.3 Perspective), built from the cal2016 project 
 
 ## Kept from cal2016
 
-- **Navigation and header:** the header, with the top nav underlining the current section; the sidebar accordion (with a pin button to keep it open); and the Dock Main Nav (mobile menu). The docks are shared docks.
+- **Navigation and header:** the header, with the top nav underlining the current section; the sidebar accordion (with a pin button to keep it open). The docks are shared docks. (cal2016's right-side phone menu, `Framework/Dock Main Nav`, is not used: the left menu covers phones too.)
 - **Pages:** Alarms / Warnings / History, and AdHocTrends (the Trend page).
 - **Other resources:** data-entry popups, style classes, the stylesheet, session props and scripts, and the alarm pipeline.
 
@@ -35,7 +35,7 @@ Folders follow cal2016's structure:
 | Path | Contents |
 |---|---|
 | `MainViews/Feature Views/<Section>/<Page> - Main / - Large / - Small` | Pages with a drawing. `- Main` is the breakpoint (1200px); `- Large` is a fixed coordinate container over the drawing (from Image Management, `Custom/cal1615/`); `- Small` is the phone layout. |
-| `MainViews/Feature Views/...` (single views) | Card pages that wrap: Oven Control, recipes, Advanced Cooling, Maintenance pages, Oven Trend. |
+| `MainViews/Feature Views/...` (single views) | Card pages that wrap: Oven Control, recipes, Maintenance pages, Oven Trend. (Advanced Cooling uses the `- Main / - Large / - Small` set like Zone, without a drawing.) |
 | `Components/<Area>/...` | One view per card. |
 | `Components/Oven/Zone/*` | Shared by Zone 1–3 through the `zone` parameter. |
 | `Components/Common/Indicator` | Label and lamp template for the drawings. |
@@ -49,6 +49,11 @@ Folders follow cal2016's structure:
   - **Named queries:** in the `cal1615 Recipe/` folder.
   - **Script:** in `cal1615.recipes`.
   - **Download to PLC:** writes every member to `p02_recipe_from_hmi.*`. The PLC copies that into the active recipe each scan.
+- **Alarms:** tags `Alarms/<area>/Axx` (priority High, Alarms page) and `Warnings/<area>/Wxx` (priority Low, Warnings page). There is one Boolean tag per PLC alarm bit (`pNN_dint_to_hmi[n].b`, accumulator `Program:P31_WAC.hmi_dint[n].b`), with the PLC comment as the alarm name. The alarm journal `AlarmJournal` writes to `myOracle`. Fault Reset writes `p02_dint_from_hmi.global[6].0`, which the PLC unlatches.
+- **Tag history (`myOracle` historian):**
+  - Process values and active recipe values (`p01_recipe_active`): sampled every 10 s (periodic, and at least every 10 s even when steady).
+  - Other setpoints, PID/zone parameters and status words: stored on change, and at least once a minute.
+  - Not logged: raw I/O, the `p02_*` HMI write buffers and single bits.
 - **PM schedule:** in the script `cal1615.pm`. Tasks are kept in the memory tag `[cal1615]HMI/pm_tasks`.
 - **Tags:** import `../cal1615_ignition/tags/cal1615_tags.json` into the `cal1615` provider. It includes the memory tags `HMI/shop_order` and `HMI/pm_tasks`.
 - **Row layout inside a card:** title, then a 100px box, then a 34px units column. Status and lamp boxes are the same 100px, so the boxes line up.

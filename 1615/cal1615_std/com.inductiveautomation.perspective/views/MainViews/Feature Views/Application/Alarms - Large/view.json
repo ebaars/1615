@@ -132,7 +132,7 @@
         {
           "name": "AlmAckn",
           "params": [],
-          "script": "\talarmlist \u003d system.alarm.queryStatus(state \u003d [\"ActiveUnacked\", \"ClearUnacked\"])\n\tuuidlist \u003d [str(row.getId()) for row in alarmlist]\n\tsystem.alarm.acknowledge(uuidlist,\" \",\" \")\t\t\n\tsystem.tag.writeAsync(\u0027[cal1615]Line Main/Control/pb_fault_reset\u0027, 1)"
+          "script": "\talarmlist \u003d system.alarm.queryStatus(state \u003d [\"ActiveUnacked\", \"ClearUnacked\"])\n\tuuidlist \u003d [str(row.getId()) for row in alarmlist]\n\tsystem.alarm.acknowledge(uuidlist,\" \",\" \")\t\t\n\tsystem.tag.writeAsync(\u0027[cal1615]p02_dint_from_hmi/global_6_/bit_0\u0027, 1)"
         }
       ],
       "extensionFunctions": null,

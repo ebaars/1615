@@ -24,7 +24,7 @@
         }
       },
       {
-        "type": "ia.display.view",
+        "type": "ia.container.flex",
         "meta": {
           "name": "large"
         },
@@ -32,11 +32,56 @@
           "size": "large"
         },
         "props": {
-          "path": "MainViews/Feature Views/Line/TS2 Poly Windup - Large",
-          "params": {},
-          "useDefaultViewWidth": true,
-          "useDefaultViewHeight": true
-        }
+          "direction": "row",
+          "justify": "space-between",
+          "alignItems": "flex-start",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "page"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "path": "MainViews/Feature Views/Line/TS2 Poly Windup - Large",
+              "params": {},
+              "useDefaultViewWidth": true,
+              "useDefaultViewHeight": true
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "arrow_right"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "Framework/Carousel Arrow",
+              "params": {
+                "direction": "next",
+                "sequence": [
+                  "/letoff-splice",
+                  "/accumulator-ts1",
+                  "/ts2-poly-windup"
+                ]
+              },
+              "useDefaultViewWidth": true,
+              "useDefaultViewHeight": true,
+              "style": {
+                "marginTop": "330px"
+              }
+            }
+          }
+        ]
       }
     ]
   }

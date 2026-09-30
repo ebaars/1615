@@ -54,6 +54,18 @@
     "props.lastActivity": {
       "access": "SYSTEM",
       "persistent": false
+    },
+    "props.offline.capable": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.offline.enabled": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.offline.lastSynced": {
+      "access": "SYSTEM",
+      "persistent": false
     }
   },
   "props": {
@@ -61,6 +73,7 @@
     "device": {},
     "geolocation": {},
     "locale": "en-US",
+    "offline": {},
     "timeZoneId": "America/New_York"
   }
 }
