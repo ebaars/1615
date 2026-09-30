@@ -1,0 +1,764 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rack0"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "text": "Letoff Panel",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "var(--callToAction)"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m0"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 0 1794-OE4-B",
+          "params": {},
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 1 1794-IE8-B",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 2 1794-IT8-A",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 3 1794-OB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m4"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 4 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m5"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 5 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m6"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 6 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r0m7"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Letoff Panel/Slot 7 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rack1"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "text": "Oven Panel",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "var(--callToAction)"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r1m0"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Oven Panel/Slot 0 1794-OE4-B",
+          "params": {},
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r1m1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Oven Panel/Slot 1 1794-IE8-B",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r1m2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Oven Panel/Slot 2 1794-IT8-A",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r1m3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Oven Panel/Slot 3 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r1m4"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Oven Panel/Slot 4 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r1m5"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Oven Panel/Slot 5 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rack2"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "text": "Winder Panel",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "var(--callToAction)"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m0"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 0 1794-OE4-B",
+          "params": {},
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 1 1794-OE4-B",
+          "params": {},
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 2 1794-IE8-B",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 3 1794-IT8-A",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m4"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 4 1794-OB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m5"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 5 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r2m6"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Winder Panel/Slot 6 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rack3"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "text": "Line Drive Panel",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "var(--callToAction)"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r3m0"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Line Drive Panel/Slot 0 1794-OE4-B",
+          "params": {},
+          "style": {
+            "height": "172px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r3m1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Line Drive Panel/Slot 1 1794-OB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r3m2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Line Drive Panel/Slot 2 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r3m3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Line Drive Panel/Slot 3 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rack4"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "text": "Process Drive Panel",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "var(--callToAction)"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r4m0"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Process Drive Panel/Slot 0 1794-OB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r4m1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Process Drive Panel/Slot 1 1794-IB16-A",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rack5"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "text": "Local chassis",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "var(--callToAction)"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r5m0"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Local chassis/Slot 3 1756-IF16-A",
+          "params": {},
+          "style": {
+            "height": "284px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r5m1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Local chassis/Slot 4 1756-IB16",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r5m2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Local chassis/Slot 5 1756-IB16",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r5m3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Local chassis/Slot 6 1756-IB16",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "r5m4"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/IO/Local chassis/Slot 7 1756-OA16I",
+          "params": {},
+          "style": {
+            "height": "508px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

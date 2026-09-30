@@ -103,7 +103,7 @@ const S = {
   "cal1615/value": { base: { style: { height: "22px", minHeight: "0", lineHeight: "20px", boxSizing: "border-box", paddingTop: "0", paddingBottom: "0", paddingLeft: "2px", overflow: "hidden", whiteSpace: "nowrap", backgroundColor: "var(--neutral-10)", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "right", paddingRight: "4px", color: "var(--neutral-100)" } } },
   "cal1615/entry": { base: { style: { height: "22px", minHeight: "0", lineHeight: "20px", boxSizing: "border-box", paddingTop: "0", paddingBottom: "0", paddingLeft: "3px", paddingRight: "3px", textOverflow: "clip", overflow: "hidden", whiteSpace: "nowrap", backgroundColor: "#B8F4FF", color: "#000000", borderColor: "#0097A7", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "right" } } },
   "cal1615/status": { base: { style: { height: "22px", minHeight: "0", lineHeight: "20px", boxSizing: "border-box", paddingTop: "0", paddingBottom: "0", overflow: "hidden", whiteSpace: "nowrap", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "2px", fontFamily: "Arial", fontSize: "13px", fontWeight: "bold", textAlign: "center", color: "#000000" } } },
-  "cal1615/units": { base: { style: { whiteSpace: "nowrap", minWidth: "26px", fontFamily: "Arial", fontSize: "12px", color: "var(--neutral-70)", paddingLeft: "3px" } } },
+  "cal1615/units": { base: { style: { whiteSpace: "nowrap", minWidth: "26px", lineHeight: "22px", fontFamily: "Arial", fontSize: "12px", color: "var(--neutral-70)", paddingLeft: "3px" } } },
   "cal1615/led": { base: { style: { borderColor: "var(--neutral-70)", borderStyle: "solid", borderWidth: "1px", borderRadius: "10px", fontFamily: "Arial", fontSize: "12px", textAlign: "center", color: "#000000", whiteSpace: "nowrap", overflow: "hidden" } } },
   "cal1615/indicator": { base: { style: { backgroundColor: "var(--neutral-10)", borderColor: "var(--neutral-60)", borderStyle: "solid", borderWidth: "1px", borderRadius: "3px", fontFamily: "Arial", fontSize: "12px", paddingLeft: "4px", paddingRight: "4px", boxShadow: "0 1px 2px rgba(0,0,0,0.2)" } } },
   "cal1615/banner": { base: { style: { backgroundColor: "var(--neutral-20)", borderColor: "var(--neutral-50)", borderStyle: "solid", borderWidth: "1px", borderRadius: "4px", fontFamily: "Arial", fontSize: "20px", fontWeight: "bold", paddingLeft: "10px", paddingRight: "10px" } } },
@@ -178,7 +178,7 @@ function buildComponents() {
       },
     }),
     // Row mode: sized to its content beside the label. Stacked: a 22px line under the label.
-    flex("val", valueChildren, { direction: "row", justify: "center", alignItems: "center" }, { grow: 0, shrink: 0, basis: "auto" }, {
+    flex("val", valueChildren, { direction: "row", justify: "center", alignItems: "stretch", style: { height: "22px" } }, { grow: 0, shrink: 0, basis: "auto" }, {
       propConfig: {
         "position.basis": expr('if({view.params.stacked}, "22px", if({view.params.compact}, "34px", if({view.params.kind} = "value" || {view.params.kind} = "entry", "auto", "55%")))'),
         "position.grow": expr('if(!{view.params.stacked} && len({view.params.label}) = 0, 1, 0)'),
@@ -544,7 +544,7 @@ function buildZoneTable() {
           propConfig: T(`zone${n}.${key}`) ? { "props.text": { binding: { type: "tag", config: { fallbackDelay: 2.5, mode: "direct", tagPath: T(`zone${n}.${key}`) }, transforms: [{ type: "expression", expression: `if(isNull({value}), "---", numberFormat({value}, "${format}"))` }] } } } : {},
         }),
     label("u", units, { style: { classes: "cal1615/units" } }, { basis: "26px", shrink: 0 }),
-  ], { direction: "row", alignItems: "center" }, { grow: 1, basis: "0" });
+  ], { direction: "row", alignItems: "stretch", style: { height: "22px" } }, { grow: 1, basis: "0" });
   const clean = (o) => JSON.parse(JSON.stringify(o));
   writeView("Components/Oven/Zone Table", view({
     size: { width: 366, height: 152 },

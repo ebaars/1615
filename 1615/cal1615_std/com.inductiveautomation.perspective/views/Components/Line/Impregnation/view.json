@@ -1,0 +1,715 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 280,
+      "height": 200
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Impregnation",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row0"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Speed",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p23_ai_metering_roll_speed_fpm",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "format",
+                      "formatType": "numeric",
+                      "formatValue": "#,##0.0"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "FPM",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row1"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Speed Setpoint",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p23_ao_selected_speed",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "format",
+                      "formatType": "numeric",
+                      "formatValue": "#,##0.0"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "FPM",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row2"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Gap Setpoint",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p01_recipe_active/impreg_gap_sp",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from p01_recipe_active/impreg_gap_sp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking(['[cal1615]p02_recipe_from_hmi/impreg_gap_sp'], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "IN",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row3"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Gap Actual (DS)",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p23_ai_ds_masked_gap",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "format",
+                      "formatType": "numeric",
+                      "formatValue": "#,##0.0000"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "IN",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row4"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Tank Level",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp_Low"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Low",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p23_di_tank_level_low",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp_High"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "High",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p23_di_tank_level_high",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row5"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Trough Level",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp_Low"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Low",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p23_di_though_level_low",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      }
+    ]
+  }
+}

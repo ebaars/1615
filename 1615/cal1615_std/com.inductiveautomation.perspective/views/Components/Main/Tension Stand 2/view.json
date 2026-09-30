@@ -1,0 +1,429 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 118,
+      "height": 176
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Tension Stand 2",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row0"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "2px 6px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Speed",
+              "style": {
+                "classes": "cal1615/row-label",
+                "textAlign": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "alignItems": "stretch",
+              "style": {
+                "gap": "3px",
+                "overflow": "hidden"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "basis": "66px",
+                  "shrink": 0,
+                  "grow": 0
+                },
+                "props": {
+                  "text": "---",
+                  "style": {
+                    "classes": "cal1615/value"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p25_ai_speed",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "format",
+                          "formatType": "numeric",
+                          "formatValue": "#,##0.0"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "units"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "FPM",
+                  "style": {
+                    "classes": "cal1615/units",
+                    "minWidth": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row1"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "2px 6px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Speed SP",
+              "style": {
+                "classes": "cal1615/row-label",
+                "textAlign": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "alignItems": "stretch",
+              "style": {
+                "gap": "3px",
+                "overflow": "hidden"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "basis": "66px",
+                  "shrink": 0,
+                  "grow": 0
+                },
+                "props": {
+                  "text": "---",
+                  "style": {
+                    "classes": "cal1615/value"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p25_ao_selected_speed",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "format",
+                          "formatType": "numeric",
+                          "formatValue": "#,##0.0"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "units"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "FPM",
+                  "style": {
+                    "classes": "cal1615/units",
+                    "minWidth": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row2"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "2px 6px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Mode",
+              "style": {
+                "classes": "cal1615/row-label",
+                "textAlign": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "alignItems": "stretch",
+              "style": {
+                "gap": "3px",
+                "overflow": "hidden"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "status"
+                },
+                "position": {
+                  "basis": "66px",
+                  "shrink": 0,
+                  "grow": 0
+                },
+                "props": {
+                  "text": "---",
+                  "style": {
+                    "classes": "cal1615/status"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p25_dint_to_hmi_7_",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "scalar",
+                          "mappings": [
+                            {
+                              "input": 0,
+                              "output": "---"
+                            },
+                            {
+                              "input": 1,
+                              "output": "Jog"
+                            },
+                            {
+                              "input": 2,
+                              "output": "Run"
+                            },
+                            {
+                              "input": 3,
+                              "output": "Thread"
+                            }
+                          ],
+                          "fallback": "---"
+                        }
+                      ]
+                    }
+                  },
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p25_dint_to_hmi_7_",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": 0,
+                              "output": "#D0D0D0"
+                            },
+                            {
+                              "input": 1,
+                              "output": "#FFFF80"
+                            },
+                            {
+                              "input": 2,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": 3,
+                              "output": "#FFFF80"
+                            }
+                          ],
+                          "fallback": "#FFFFFF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "units"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "classes": "cal1615/units",
+                    "minWidth": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

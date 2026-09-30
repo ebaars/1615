@@ -1,0 +1,20 @@
+{
+  "base": {
+    "style": {
+      "color": "#351c75",
+      "fontSize": "72px",
+      "fontWeight": "bold"
+    }
+  },
+  "variants": [
+    {
+      "media": {
+        "feature": "maxWidth",
+        "value": "800px"
+      },
+      "style": {
+        "fontSize": "32px"
+      }
+    }
+  ]
+}

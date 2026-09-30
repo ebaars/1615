@@ -1,0 +1,259 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed"
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 513,
+          "y": 7,
+          "width": 654,
+          "height": 40
+        },
+        "props": {
+          "text": "Emergency Stops",
+          "style": {
+            "classes": "cal1615/page-title"
+          }
+        }
+      },
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 40,
+          "y": 251,
+          "width": 1623,
+          "height": 321
+        },
+        "props": {
+          "source": "/system/images/Custom/cal1615/line_estop.png",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch1"
+        },
+        "position": {
+          "x": 53,
+          "y": 316,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 1",
+            "tagPath": "[cal1615]p01_di_rope_sw_1_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch2"
+        },
+        "position": {
+          "x": 159,
+          "y": 590,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 2",
+            "tagPath": "[cal1615]p01_di_rope_sw_2_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch3"
+        },
+        "position": {
+          "x": 382,
+          "y": 142,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 3",
+            "tagPath": "[cal1615]p01_di_rope_sw_3_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch4"
+        },
+        "position": {
+          "x": 561,
+          "y": 590,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 4",
+            "tagPath": "[cal1615]p01_di_rope_sw_4_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch5"
+        },
+        "position": {
+          "x": 844,
+          "y": 276,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 5",
+            "tagPath": "[cal1615]p01_di_rope_sw_5_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch6"
+        },
+        "position": {
+          "x": 1241,
+          "y": 316,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 6",
+            "tagPath": "[cal1615]p01_di_rope_sw_6_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch7"
+        },
+        "position": {
+          "x": 1244,
+          "y": 590,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 7",
+            "tagPath": "[cal1615]p01_di_rope_sw_7_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ropeSwitch8"
+        },
+        "position": {
+          "x": 1471,
+          "y": 316,
+          "width": 142,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Rope Switch 8",
+            "tagPath": "[cal1615]p01_di_rope_sw_8_active",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "mainEstop"
+        },
+        "position": {
+          "x": 768,
+          "y": 719,
+          "width": 207,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Main OP Station E-Stop",
+            "tagPath": "[cal1615]p01_di_main_hmi_estop",
+            "onColor": "#FF2020",
+            "offColor": "#00E000",
+            "invert": false
+          }
+        }
+      }
+    ]
+  }
+}

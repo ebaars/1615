@@ -1,0 +1,37 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Overview - Small"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Home/Overview - Small"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "OverviewCoordinate"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Home/OverviewCoordinate"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1500
+    },
+    "type": "ia.container.breakpt"
+  }
+}

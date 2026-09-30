@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "height": "22px",
+      "lineHeight": "20px",
+      "boxSizing": "border-box",
+      "padding": "0 3px",
+      "overflow": "hidden",
+      "whiteSpace": "nowrap",
+      "backgroundColor": "var(--neutral-10)",
+      "borderColor": "var(--neutral-60)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderRadius": "2px",
+      "fontFamily": "Arial",
+      "fontSize": "13px",
+      "fontWeight": "bold",
+      "textAlign": "right",
+      "color": "var(--neutral-100)"
+    }
+  }
+}

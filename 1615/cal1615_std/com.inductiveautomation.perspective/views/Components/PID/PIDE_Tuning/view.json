@@ -1,0 +1,2621 @@
+{
+  "custom": {},
+  "params": {
+    "UpperLower": "Upper",
+    "num": 1
+  },
+  "propConfig": {
+    "params.UpperLower": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.num": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 2500,
+      "width": 990
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 0,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 0,
+              "rowIndex": 0,
+              "span": 3
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 0,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 177.97,
+          "x": 22.99,
+          "y": 5.98
+        },
+        "props": {
+          "text": "1. Autontune Tag:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 0,
+              "span": 2
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 0,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 166.97,
+          "x": 162.01,
+          "y": 5.98
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tr \u003d value[\u0027Ready\u0027]\n\ta \u003d value[\u0027Aquired\u0027]\n\tif (r \u003d\u003d True) and (a \u003d\u003d True):\n\t\ts \u003d \u0027Aquired\u0027\t\n\telif (a \u003d\u003d True) and not (r \u003d\u003d True):\n\t\ts \u003d \u0027Another PID\u0027\n\telse:\n\t\ts \u003d \u0027Available\u0027\t\t\n\treturn s",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 1
+            },
+            {
+              "colIndex": 5,
+              "name": "md",
+              "order": 2,
+              "rowIndex": 0,
+              "span": 2
+            },
+            {
+              "colIndex": 5,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 0,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 177.97,
+          "x": 280.02,
+          "y": 5.98
+        },
+        "props": {
+          "text": "2. Inputs"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_6"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 1
+            },
+            {
+              "colIndex": 7,
+              "name": "md",
+              "order": 3,
+              "rowIndex": 0,
+              "span": 2
+            },
+            {
+              "colIndex": 9,
+              "name": "lg",
+              "order": 3,
+              "rowIndex": 0,
+              "span": 1
+            }
+          ],
+          "height": 60,
+          "width": 177.97,
+          "x": 594.03,
+          "y": 5.98
+        },
+        "props": {
+          "text": "3. Tune"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_7"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 1
+            },
+            {
+              "colIndex": 9,
+              "name": "md",
+              "order": 3.5,
+              "rowIndex": 0,
+              "span": 2
+            },
+            {
+              "colIndex": 10,
+              "name": "lg",
+              "order": 4,
+              "rowIndex": 0,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 166.97,
+          "x": 655.98,
+          "y": 5.51
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "aborted": "{parent.custom.control.AtuneAborted}",
+                  "done": "{parent.custom.control.AtuneDone}",
+                  "on": "{parent.custom.control.AtuneOn}",
+                  "ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\taborted \u003d value[\u0027aborted\u0027]\n\tdone \u003d value[\u0027done\u0027]\n\ton \u003d value[\u0027on\u0027]\n\tready \u003d value[\u0027ready\u0027]\n\tif (aborted \u003d\u003d True):\n\t\ts \u003d \u0027Aborted\u0027\t\n\telif (done \u003d\u003d True):\n\t\ts \u003d \u0027Completed\u0027\n\telif (on \u003d\u003d True):\n\t\ts \u003d \u0027In Progress\u0027\n\telif (ready \u003d\u003d False):\n\t\ts \u003d \"\"\t\t\t\n\telse:\n\t\ts \u003d \u0027Ready\u0027\t\t\n\treturn s",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold"
+          },
+          "textStyle": {
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "#\tself.view.custom.pide_ctrl.AtuneAcquire \u003d True\n\tself.parent.custom.control.AtuneAcquire \u003d True\n\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 3
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 1,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 175.99,
+          "x": 42.01,
+          "y": 49.48
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--neutral-40)"
+          },
+          "text": "Acquire"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label_3"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 1,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 99.98,
+          "x": 269.02,
+          "y": 50.99
+        },
+        "props": {
+          "style": {
+            "classes": "components/cal_entry_field_title"
+          },
+          "text": "Process Type:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 5,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 1,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 176.98,
+          "x": 369.5,
+          "y": 49.48
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ta \u003d value[\u0027Aquired\u0027]\n\tr \u003d value[\u0027Ready\u0027]\n\t\n\tif (a\u003d\u003dTrue) and (r \u003d\u003dTrue):\n\t\tret \u003d True\n\telse:\n\t\tret \u003d False\t\n\treturn ret",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.ProcessType"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "Temperature",
+              "value": 0
+            },
+            {
+              "label": "Pressure",
+              "value": 1
+            },
+            {
+              "label": "Flow",
+              "value": 2
+            },
+            {
+              "label": "Level",
+              "value": 3
+            },
+            {
+              "label": "Position",
+              "value": 4
+            },
+            {
+              "label": "Velocity",
+              "value": 5
+            },
+            {
+              "label": "Integrating",
+              "value": 6
+            },
+            {
+              "label": "Nonintegrating",
+              "value": 7
+            },
+            {
+              "label": "Unknown",
+              "value": 8
+            }
+          ]
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.parent.custom.control.AtuneStart \u003d True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_1"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 9,
+              "name": "lg",
+              "order": 3,
+              "rowIndex": 1,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 175.99,
+          "x": 588.99,
+          "y": 49.48
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneAcquired} \u0026\u0026 {parent.custom.control.AtuneReady}\r\n\u0026\u0026!{parent.custom.control.AtuneOn}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--neutral-40)"
+          },
+          "text": "Start"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "#\tself.view.custom.pide_ctrl.AtuneUnacquire \u003d True\n\tself.parent.custom.control.AtuneUnacquire \u003d True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_0"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 2,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 175.99,
+          "x": 42.01,
+          "y": 94
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-40)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-40)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Release"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label_4"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1.5,
+              "rowIndex": 2,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 113.96,
+          "x": 269.02,
+          "y": 94
+        },
+        "props": {
+          "style": {
+            "classes": "components/cal_entry_field_title"
+          },
+          "text": "PV Change Limit"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_0"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 5,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 2,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 124.96,
+          "x": 421.52,
+          "y": 94
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ta \u003d value[\u0027Aquired\u0027]\n\tr \u003d value[\u0027Ready\u0027]\n\t\n\tif (a\u003d\u003dTrue) and (r \u003d\u003dTrue):\n\t\tret \u003d \"#08FFFF\"\n\telse:\n\t\tret \u003d \"#ffffff\"\n\treturn ret",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.PVTuneLimit"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.parent.custom.control.AtuneAbort \u003d True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_2"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 9,
+              "name": "lg",
+              "order": 2.5,
+              "rowIndex": 2,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 175.99,
+          "x": 588.99,
+          "y": 94
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneAcquired} \u0026\u0026 {parent.custom.control.AtuneOn}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--neutral-40)"
+          },
+          "text": "Abort"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label_5"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 3,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 3,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 113.96,
+          "x": 269.02,
+          "y": 133.98
+        },
+        "props": {
+          "style": {
+            "classes": "components/cal_entry_field_title"
+          },
+          "text": "CV Stop Size"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_1"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 4,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 4,
+              "span": 1
+            },
+            {
+              "colIndex": 5,
+              "name": "lg",
+              "order": 0.5,
+              "rowIndex": 3,
+              "span": 3
+            }
+          ],
+          "height": 60,
+          "width": 124.96,
+          "x": 421.52,
+          "y": 133.98
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ta \u003d value[\u0027Aquired\u0027]\n\tr \u003d value[\u0027Ready\u0027]\n\t\n\tif (a\u003d\u003dTrue) and (r \u003d\u003dTrue):\n\t\tret \u003d \"#08FFFF\"\n\telse:\n\t\tret \u003d \"#ffffff\"\n\treturn ret",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.StepSize"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_8"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 4,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 4,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 4,
+              "span": 12
+            }
+          ],
+          "height": 60,
+          "width": 177.97,
+          "x": 22.99,
+          "y": 186.01
+        },
+        "props": {
+          "text": "Status"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_9"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 5,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 5,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 5,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 89.98,
+          "x": 26.96,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.AtuneStatus} \u003d 0"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "OK"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_14"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 5,
+              "span": 2
+            }
+          ],
+          "height": 60
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVChanged}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Changes"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_23"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 6,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 5,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 131.99,
+          "x": 406.97,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.GainTooLarge}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Gain too Large"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_26"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 9,
+              "name": "lg",
+              "order": 3,
+              "rowIndex": 5,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 151.01,
+          "x": 617.02,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ModeInv}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Mode Inv"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_10"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 6,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 89.98,
+          "x": 26.96,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "ATune Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_15"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1.5,
+              "rowIndex": 6,
+              "span": 2
+            }
+          ],
+          "height": 60
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.EUSpanChanged}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "EU Span Changed"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_22"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 6,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 6,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 151.01,
+          "x": 406.97,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.GainTooSmall}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Gain too Small"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_25"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 9,
+              "name": "lg",
+              "order": 2.5,
+              "rowIndex": 6,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 617.02,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneTimedOut}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "ATune Timed Out"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_11"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 7,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 131.99,
+          "x": 26.96,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVWindupFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Windup Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_16"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 7,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 217,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.PVChangeTooSmall}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "PV Change too Small"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_21"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 6,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 7,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 406.97,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.StepSizeZero}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Step Size Zero"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_24"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 9,
+              "name": "lg",
+              "order": 2.5,
+              "rowIndex": 7,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 617.02,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.LongDeadTime}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Long Deadtime"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_12"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 8,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 131.99,
+          "x": 26.96,
+          "y": 346.01
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVLimitsFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Limits Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_17"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1.5,
+              "rowIndex": 8,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 217,
+          "y": 346.01
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.PVOutOfLimit}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "PV Out of Limit"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_20"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 1
+            },
+            {
+              "colIndex": 6,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 8,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 406.97,
+          "y": 346.01
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.StepSizeTooSmall}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Step Size too Small"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_13"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 1,
+              "rowIndex": 9,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 131.99,
+          "x": 26.96,
+          "y": 385.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVInitFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Init Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_18"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 10,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 10,
+              "span": 1
+            },
+            {
+              "colIndex": 3,
+              "name": "lg",
+              "order": 1.5,
+              "rowIndex": 9,
+              "span": 2
+            }
+          ],
+          "height": 60,
+          "width": 167.96,
+          "x": 217,
+          "y": 385.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.PVNotSettled}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "PV Not Settled"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_19"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 10,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 10,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 10,
+              "span": 12
+            }
+          ],
+          "height": 60,
+          "width": 177.97,
+          "x": 13.98,
+          "y": 436.98
+        },
+        "props": {
+          "text": "4. Gains"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "RadioGroup"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "parent.custom.autotune.ResponseSpeed"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "radios": [
+                {
+                  "selected": true,
+                  "text": "Slow",
+                  "value": 0
+                },
+                {
+                  "selected": false,
+                  "text": "Medium",
+                  "value": 1
+                },
+                {
+                  "selected": false,
+                  "text": "Fast",
+                  "value": 2
+                },
+                {
+                  "selected": false,
+                  "text": "Current",
+                  "value": -1
+                }
+              ]
+            },
+            "type": "ia.input.radio-group"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 0,
+              "name": "sm",
+              "order": 0,
+              "rowIndex": 11,
+              "span": 3
+            },
+            {
+              "colIndex": 0,
+              "name": "md",
+              "order": 0,
+              "rowIndex": 11,
+              "span": 3
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 0,
+              "rowIndex": 11,
+              "span": 2
+            }
+          ],
+          "height": 262
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "NumericEntryField"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 1
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 2
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 1
+                }
+              ],
+              "height": 60,
+              "width": 124.96,
+              "x": 165.98,
+              "y": 512
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.autotune.PGainTunedSlow"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "containerStyle": {
+                "classes": "components/cal_entry_field"
+              },
+              "enabled": false,
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "backgroundColor": "#FFFFFF",
+                "classes": "components/cal_entry_field",
+                "color": "#000000"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "NumericEntryField_6"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 1
+                },
+                {
+                  "colIndex": 3,
+                  "name": "md",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 2
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 1
+                }
+              ],
+              "height": 60,
+              "width": 124.96,
+              "x": 312.11,
+              "y": 512
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.autotune.IGainTunedSlow"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "containerStyle": {
+                "classes": "components/cal_entry_field"
+              },
+              "enabled": false,
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "backgroundColor": "#FFFFFF",
+                "classes": "components/cal_entry_field",
+                "color": "#000000"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "NumericEntryField_9"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 1
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 2,
+                  "rowIndex": 0,
+                  "span": 2
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 1
+                }
+              ],
+              "height": 60,
+              "width": 124.96,
+              "x": 453.11,
+              "y": 512
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.autotune.DGainTunedSlow"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "containerStyle": {
+                "classes": "components/cal_entry_field"
+              },
+              "enabled": false,
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "backgroundColor": "#FFFFFF",
+                "classes": "components/cal_entry_field",
+                "color": "#000000"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          }
+        ],
+        "meta": {
+          "name": "ColumnContainer"
+        },
+        "position": {
+          "breakpoints": [
+            {
+              "colIndex": 4,
+              "name": "sm",
+              "order": 1,
+              "rowIndex": 11,
+              "span": 1
+            },
+            {
+              "colIndex": 4,
+              "name": "md",
+              "order": 1,
+              "rowIndex": 11,
+              "span": 1
+            },
+            {
+              "colIndex": 0,
+              "name": "lg",
+              "order": 2,
+              "rowIndex": 11,
+              "span": 10
+            }
+          ],
+          "height": 263
+        },
+        "props": {
+          "gutters": {
+            "vertical": 1
+          }
+        },
+        "type": "ia.container.column"
+      }
+    ],
+    "custom": {
+      "autotune": {
+        "ATuneAcquired": true,
+        "ATuneFault": false,
+        "ATuneTimedOut": false,
+        "AtuneStatus": 0,
+        "CVChanged": false,
+        "CVInitFault": false,
+        "CVLimitsFault": false,
+        "CVWindupFault": false,
+        "DGainTunedFast": 0.14167562,
+        "DGainTunedMed": 0.094450414,
+        "DGainTunedSlow": 0.047225207,
+        "DeadTime": 0.85,
+        "EUSpanChanged": false,
+        "Gain": 0.2999424,
+        "GainTooLarge": false,
+        "GainTooSmall": false,
+        "IGainTunedFast": 14.5356045,
+        "IGainTunedMed": 8.0753355,
+        "IGainTunedSlow": 3.8053343,
+        "LongDeadTime": false,
+        "ModeInv": false,
+        "PGainTunedFast": 30.001894,
+        "PGainTunedMed": 20.001263,
+        "PGainTunedSlow": 10.000631,
+        "PVChangeTooSmall": false,
+        "PVNotSettled": false,
+        "PVOutOfLimit": false,
+        "PVTuneLimit": 1000,
+        "ProcessType": 7,
+        "ResponseSpeed": 0,
+        "Screen_Title": "Oven 1 Upper",
+        "StepSize": 80,
+        "StepSizeTooSmall": false,
+        "StepSizeUsed": 80,
+        "StepSizeZero": false,
+        "TestLength": 0,
+        "TimeConstant": 157.40001,
+        "TunedGood": true,
+        "TunedUncertain": false,
+        "UsedProcessType": 7,
+        "hmi_kd": 0,
+        "hmi_ki": 0,
+        "hmi_kp": 0,
+        "manual_setpoint": 0,
+        "pb_pide_manual": false,
+        "pb_pide_use_auto_tune_gains": false,
+        "ss_pide_manual": true
+      },
+      "control": {
+        "AllowCasRat": false,
+        "AtuneAbort": false,
+        "AtuneAborted": false,
+        "AtuneAcquire": false,
+        "AtuneBusy": false,
+        "AtuneDataInv": false,
+        "AtuneDone": true,
+        "AtuneOn": false,
+        "AtuneReady": true,
+        "AtuneStart": false,
+        "AtuneUnacquire": false,
+        "AtuneUseGains": false,
+        "Auto": false,
+        "CV": 0,
+        "CVEU": 0,
+        "CVEUMax": 100,
+        "CVEUMin": 0,
+        "CVEUSpanInv": false,
+        "CVFault": false,
+        "CVFaulted": false,
+        "CVHAlarm": false,
+        "CVHLimit": 100,
+        "CVInitReq": false,
+        "CVInitValue": 0,
+        "CVInitializing": false,
+        "CVLAlarm": false,
+        "CVLLimit": 0,
+        "CVLimitsInv": false,
+        "CVManLimiting": false,
+        "CVOper": 0,
+        "CVOperInv": false,
+        "CVOverride": 0,
+        "CVOverrideInv": false,
+        "CVPrevious": 0,
+        "CVPreviousInv": false,
+        "CVProg": 0,
+        "CVProgInv": false,
+        "CVROCAlarm": false,
+        "CVROCLimit": 0,
+        "CVROCLimitInv": false,
+        "CVSetPrevious": false,
+        "CasRat": false,
+        "ControlAction": false,
+        "DGain": 1,
+        "DGainInv": false,
+        "DSmoothing": false,
+        "DeltaT": 0.05,
+        "DeltaTInv": false,
+        "DependIndepend": false,
+        "DevDeadband": 0,
+        "DevDeadbandInv": false,
+        "DevHAlarm": false,
+        "DevHHAlarm": false,
+        "DevHHLimit": "3.4028235E38",
+        "DevHLLimitsInv": false,
+        "DevHLimit": "3.4028235E38",
+        "DevLAlarm": false,
+        "DevLLAlarm": false,
+        "DevLLLimit": "3.4028235E38",
+        "DevLLimit": "3.4028235E38",
+        "E": -67,
+        "EPercent": -6.7,
+        "EnableIn": true,
+        "EnableOut": true,
+        "FF": 0,
+        "FFInv": false,
+        "FFPrevious": 0,
+        "FFPreviousInv": false,
+        "FFSetPrevious": false,
+        "Hand": false,
+        "HandFB": 0,
+        "HandFBFault": false,
+        "HandFBFaulted": false,
+        "HandFBInv": false,
+        "IGain": 18,
+        "IGainInv": false,
+        "InitPrimary": true,
+        "InstructFault": false,
+        "Manual": true,
+        "ManualAfterInit": false,
+        "OperAutoReq": false,
+        "OperCasRatReq": false,
+        "OperManualReq": false,
+        "OperOperReq": false,
+        "OperProgReq": false,
+        "Override": false,
+        "OversampleDT": 0,
+        "PGain": 24,
+        "PGainInv": false,
+        "PV": 70,
+        "PVDeadband": 0,
+        "PVDeadbandInv": false,
+        "PVEDerivative": true,
+        "PVEProportional": false,
+        "PVEUMax": 1000,
+        "PVEUMin": 0,
+        "PVFault": false,
+        "PVFaulted": false,
+        "PVHAlarm": false,
+        "PVHHAlarm": false,
+        "PVHHLimit": "3.4028235E38",
+        "PVHLimit": "3.4028235E38",
+        "PVLAlarm": false,
+        "PVLLAlarm": false,
+        "PVLLLimit": "-3.4028235E38",
+        "PVLLimit": "-3.4028235E38",
+        "PVPercent": 7,
+        "PVROCLimitsInv": false,
+        "PVROCNegAlarm": false,
+        "PVROCNegLimit": 0,
+        "PVROCPeriod": 0,
+        "PVROCPosAlarm": false,
+        "PVROCPosLimit": 0,
+        "PVSpanInv": false,
+        "PVTracking": false,
+        "ProgAutoReq": false,
+        "ProgCasRatReq": false,
+        "ProgHandReq": false,
+        "ProgManualReq": true,
+        "ProgOper": true,
+        "ProgOperReq": false,
+        "ProgOverrideReq": false,
+        "ProgProgReq": true,
+        "ProgValueReset": false,
+        "RTSMissed": false,
+        "RTSTime": 1,
+        "RTSTimeInv": false,
+        "RTSTimeStamp": 0,
+        "RTSTimeStampInv": false,
+        "Ratio": 1,
+        "RatioHAlarm": false,
+        "RatioHLimit": 1,
+        "RatioLAlarm": false,
+        "RatioLLimit": 1,
+        "RatioLimitsInv": false,
+        "RatioOper": 1,
+        "RatioOperInv": false,
+        "RatioProg": 1,
+        "RatioProgInv": false,
+        "SP": 3,
+        "SPCascade": 0,
+        "SPCascadeInv": false,
+        "SPHAlarm": false,
+        "SPHLimit": 1000,
+        "SPLAlarm": false,
+        "SPLLimit": 0,
+        "SPLimitsInv": false,
+        "SPOper": 3,
+        "SPOperInv": false,
+        "SPPercent": 0.3,
+        "SPProg": 3,
+        "SPProgInv": false,
+        "Status1": 0,
+        "Status2": 0,
+        "TimingMode": 0,
+        "TimingModeInv": false,
+        "UseRatio": false,
+        "WindupHIn": false,
+        "WindupHOut": false,
+        "WindupLIn": false,
+        "WindupLOut": false,
+        "ZCDeadband": 0,
+        "ZCDeadbandInv": false,
+        "ZCDeadbandOn": false,
+        "ZCOff": false
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoints": [
+        {
+          "minWidth": 0,
+          "name": "sm"
+        },
+        {
+          "minWidth": 10,
+          "name": "md"
+        },
+        {
+          "minWidth": 500,
+          "name": "lg"
+        }
+      ]
+    },
+    "type": "ia.container.column"
+  }
+}

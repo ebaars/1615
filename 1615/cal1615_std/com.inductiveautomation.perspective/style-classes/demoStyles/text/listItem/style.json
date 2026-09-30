@@ -1,0 +1,21 @@
+{
+  "base": {
+    "style": {
+      "fontSize": "16px",
+      "lineHeight": "24px",
+      "paddingBottom": "4px",
+      "paddingLeft": "28px",
+      "paddingRight": "28px",
+      "paddingTop": "4px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "#fce5cd",
+        "cursor": "pointer"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 1000,
+      "width": 1900
+    }
+  },
+  "root": {
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundAttachment": "fixed",
+        "backgroundImage": "url(\u0027/system/images/Custom/lineoverview01.png\u0027)",
+        "backgroundPosition": "left 180px top 100px",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "1600px"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

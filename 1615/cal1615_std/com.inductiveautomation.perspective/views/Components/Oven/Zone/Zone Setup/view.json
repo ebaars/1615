@@ -1,0 +1,2212 @@
+{
+  "custom": {
+    "t": {}
+  },
+  "params": {
+    "zone": 1
+  },
+  "propConfig": {
+    "params.zone": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "custom.t": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "runScript(\"cal1615.zones.paths\", 0, {view.params.zone})"
+        }
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 360,
+      "height": 536
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Zone",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "\"Zone \" + {view.params.zone}"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_tc1_zero"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Process Control TC1 Zero Offset",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.tc1_zero}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:tc1_zero but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['tc1_zero_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.tc1_zero}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_tc2_zero"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Process Control TC2 Zero Offset",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.tc2_zero}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:tc2_zero but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['tc2_zero_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.tc2_zero}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_tc_high_limit"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Process Control TC High Limit",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.tc_high_limit}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:tc_high_limit but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['tc_high_limit_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.tc_high_limit}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_sp_dev_warning"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Control SP Deviation Warning",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.sp_dev_warning}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:sp_dev_warning but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['sp_dev_warning_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.sp_dev_warning}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_lfl_warning"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "LFL Warning Level",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.lfl_warning}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:lfl_warning but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['lfl_warning_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "%",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.lfl_warning}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_lfl_alarm"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "LFL Alarm Level",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.lfl_alarm}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:lfl_alarm but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['lfl_alarm_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "%",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.lfl_alarm}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_shutdown_temp"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Shutdown Temperature",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.shutdown_temp}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:shutdown_temp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['shutdown_temp_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.shutdown_temp}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_low_prs_warning"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Low Pressure Warning Level",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.low_prs_warning}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:low_prs_warning but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['low_prs_warning_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "WC",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.low_prs_warning}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_fast_to_soak"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Fast to Soak Deviation",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.fast_to_soak}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:fast_to_soak but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['fast_to_soak_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.fast_to_soak}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_soak_to_fast"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Soak to Fast Deviation",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.soak_to_fast}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:soak_to_fast but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['soak_to_fast_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "F",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.soak_to_fast}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid1_kp"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID1 (Fast) Gain Kp",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid1_kp}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid1_kp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid1_kp_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid1_kp}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid1_ki"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID1 Integral Ki",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid1_ki}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid1_ki but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid1_ki_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid1_ki}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid1_kd"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID1 Derivative Kd",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid1_kd}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid1_kd but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid1_kd_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid1_kd}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid1_bias"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID1 Bias",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid1_bias}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid1_bias but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid1_bias_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "%",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid1_bias}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid2_kp"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID2 (Soak) Gain Kp",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid2_kp}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid2_kp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid2_kp_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid2_kp}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid2_ki"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID2 Integral Ki",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid2_ki}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid2_ki but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid2_ki_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid2_ki}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid2_kd"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID2 Derivative Kd",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.000",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid2_kd}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid2_kd but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid2_kd_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid2_kd}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "r_pid2_bias"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "PID2 Bias",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.input.numeric-entry-field",
+            "meta": {
+              "name": "entry"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.custom.t.pid2_bias}"
+                    },
+                    "tagPath": "{0}",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\t# Setpoint is read from @z:pid2_bias but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([self.view.custom.t['pid2_bias_w']], [self.props.value])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "%",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.custom.t.pid2_bias}) > 0"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

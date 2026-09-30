@@ -1,0 +1,3 @@
+# Name resolution for clients using this TNS_ADMIN folder: tnsnames.ora aliases first, then host:port/service.
+NAMES.DIRECTORY_PATH = (TNSNAMES, EZCONNECT)
+SQLNET.AUTHENTICATION_SERVICES = (NTS)

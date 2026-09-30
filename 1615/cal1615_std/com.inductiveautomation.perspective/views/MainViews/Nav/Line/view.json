@@ -1,0 +1,144 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 260,
+      "height": 142
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column"
+    },
+    "children": [
+      {
+        "type": "ia.navigation.menutree",
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "100%",
+          "shrink": 0
+        },
+        "props": {
+          "itemStyle": {
+            "classes": "framework/sidebar-items"
+          },
+          "items": [
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Let-Off / Splice"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/letoff-splice",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Accumulator / TS1"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/accumulator-ts1",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "TS2 / Poly / Windup"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/ts2-poly-windup",
+              "visible": true
+            }
+          ]
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/letoff-splice' or (value == '/' and '/letoff-splice' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/accumulator-ts1' or (value == '/' and '/accumulator-ts1' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[2].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/ts2-poly-windup' or (value == '/' and '/ts2-poly-windup' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "base": {
+    "style": {
+      "fontWeight": "bold",
+      "paddingBottom": "8px",
+      "paddingLeft": "28px",
+      "paddingRight": "28px",
+      "paddingTop": "24px"
+    }
+  }
+}

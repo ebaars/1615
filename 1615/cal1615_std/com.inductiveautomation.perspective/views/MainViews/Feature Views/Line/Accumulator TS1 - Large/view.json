@@ -1,0 +1,440 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed"
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 507,
+          "y": 7,
+          "width": 667,
+          "height": 40
+        },
+        "props": {
+          "text": "Accumulator & Tension Stand 1",
+          "style": {
+            "classes": "cal1615/page-title"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "arrow_left"
+        },
+        "position": {
+          "x": 0,
+          "y": 330,
+          "width": 36,
+          "height": 90
+        },
+        "props": {
+          "path": "Framework/Carousel Arrow",
+          "params": {
+            "direction": "prev",
+            "sequence": [
+              "/letoff-splice",
+              "/accumulator-ts1",
+              "/ts2-poly-windup"
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "arrow_right"
+        },
+        "position": {
+          "x": 1644,
+          "y": 330,
+          "width": 36,
+          "height": 90
+        },
+        "props": {
+          "path": "Framework/Carousel Arrow",
+          "params": {
+            "direction": "next",
+            "sequence": [
+              "/letoff-splice",
+              "/accumulator-ts1",
+              "/ts2-poly-windup"
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 22,
+          "y": 67,
+          "width": 1033,
+          "height": 672
+        },
+        "props": {
+          "source": "/system/images/Custom/cal1615/line_accum.png",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "acc"
+        },
+        "position": {
+          "x": 544,
+          "y": 81,
+          "width": 367,
+          "height": 270
+        },
+        "props": {
+          "path": "Components/Line/Entry Accumulator",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "fullLS"
+        },
+        "position": {
+          "x": 87,
+          "y": 192,
+          "width": 271,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Accumulator Full Limit Switch",
+            "tagPath": "[cal1615]p20_di_acc_full",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "emptyLS"
+        },
+        "position": {
+          "x": 87,
+          "y": 600,
+          "width": 271,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Accumulator Empty Limit Switch",
+            "tagPath": "[cal1615]p20_di_acc_empty",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "nipL"
+        },
+        "position": {
+          "x": 153,
+          "y": 487,
+          "width": 116,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tagPath": "[cal1615]p20_do_close_nip",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "nipR"
+        },
+        "position": {
+          "x": 602,
+          "y": 487,
+          "width": 116,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tagPath": "[cal1615]p22_do_close_nip_roll",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tankUp"
+        },
+        "position": {
+          "x": 851,
+          "y": 653,
+          "width": 111,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Tank Up",
+            "tagPath": "[cal1615]p23_di_impreg_tank_up",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "x": 1067,
+          "y": 67,
+          "width": 600,
+          "height": 489
+        },
+        "props": {
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          },
+          "pens": [
+            {
+              "axis": "",
+              "name": "TS1 Tension",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p22r06_ave_lc"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Tension Setpoint",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/ts1_tension_sp"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts1"
+        },
+        "position": {
+          "x": 422,
+          "y": 756,
+          "width": 300,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Line/Tension Stand 1",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "impreg"
+        },
+        "position": {
+          "x": 744,
+          "y": 756,
+          "width": 311,
+          "height": 200
+        },
+        "props": {
+          "path": "Components/Line/Impregnation",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "x": 1222,
+          "y": 578,
+          "width": 289,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Line/Tension Stand 1 PID",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

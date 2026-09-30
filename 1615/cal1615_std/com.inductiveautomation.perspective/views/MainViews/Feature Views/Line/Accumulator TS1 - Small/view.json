@@ -1,0 +1,84 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 1400
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "acc"
+        },
+        "position": {
+          "basis": "270px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Entry Accumulator",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts1"
+        },
+        "position": {
+          "basis": "116px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Tension Stand 1",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "impreg"
+        },
+        "position": {
+          "basis": "200px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Impregnation",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "basis": "116px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Tension Stand 1 PID",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

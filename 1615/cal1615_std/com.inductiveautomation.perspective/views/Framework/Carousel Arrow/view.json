@@ -1,0 +1,76 @@
+{
+  "custom": {},
+  "params": {
+    "direction": "next",
+    "sequence": []
+  },
+  "propConfig": {
+    "params.direction": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.sequence": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 36,
+      "height": 90
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "justify": "center"
+    },
+    "children": [
+      {
+        "type": "ia.display.icon",
+        "meta": {
+          "name": "arrow"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "path": "material/chevron_right",
+          "color": "var(--neutral-90)",
+          "style": {
+            "cursor": "pointer",
+            "backgroundColor": "rgba(128,128,128,0.18)",
+            "borderRadius": "6px"
+          }
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({view.params.direction} = \"prev\", \"material/chevron_left\", \"material/chevron_right\")"
+              }
+            }
+          }
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tseq = list(self.view.params.sequence)\n\tpath = self.page.props.path\n\ti = seq.index(path) if path in seq else 0\n\tstep = -1 if self.view.params.direction == 'prev' else 1\n\tsystem.perspective.navigate(page=seq[(i + step) % len(seq)])"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

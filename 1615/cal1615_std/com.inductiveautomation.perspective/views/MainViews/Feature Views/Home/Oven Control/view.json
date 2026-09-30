@@ -1,0 +1,112 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Control",
+          "params": {
+            "zone": 1
+          },
+          "style": {
+            "height": "242px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Control",
+          "params": {
+            "zone": 2
+          },
+          "style": {
+            "height": "242px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Control",
+          "params": {
+            "zone": 3
+          },
+          "style": {
+            "height": "242px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "oven"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Oven",
+          "params": {},
+          "style": {
+            "height": "186px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

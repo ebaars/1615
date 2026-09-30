@@ -1,0 +1,165 @@
+{
+  "custom": {},
+  "params": {
+    "zone": 1
+  },
+  "propConfig": {
+    "params.zone": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 1200
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zoneStatus"
+        },
+        "position": {
+          "basis": "214px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Status",
+          "params": {
+            "zone": 1
+          }
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "temps"
+        },
+        "position": {
+          "basis": "144px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Temperature Data",
+          "params": {
+            "zone": 1
+          }
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "chamber"
+        },
+        "position": {
+          "basis": "88px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Chamber Data",
+          "params": {
+            "zone": 1
+          }
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "valve"
+        },
+        "position": {
+          "basis": "158px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Control Valve",
+          "params": {
+            "zone": 1
+          }
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "motors"
+        },
+        "position": {
+          "basis": "144px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Motor Data",
+          "params": {
+            "zone": 1
+          }
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

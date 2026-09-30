@@ -1,0 +1,75 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 677,
+      "height": 34
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "alignItems": "center",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingLeft": "10px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "lbl"
+        },
+        "position": {
+          "basis": "170px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Active Recipe:",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "name"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "text": "---",
+          "style": {
+            "fontSize": "20px",
+            "fontWeight": "bold"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "tag",
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[cal1615]p01_recipe_active/name/name",
+                "bidirectional": false
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -135,7 +135,7 @@ module.exports = (g) => {
     { type: "ia.input.numeric-entry-field", meta: { name: "v" }, position: { basis: "90px", shrink: 0 }, props: { format, spinner: { enabled: false }, style: { classes: "cal1615/entry" } },
       propConfig: { "props.value": { binding: { type: "property", config: { path: `session.custom.recipeDraft.values.${key}`, bidirectional: true } } } } },
     label("u", unitsText, { style: { classes: "cal1615/units" } }, { basis: "40px", shrink: 0 }),
-  ], { direction: "row", alignItems: "center", style: { paddingLeft: "6px", paddingRight: "6px" } }, { basis: "28px", shrink: 0 });
+  ], { direction: "row", alignItems: "stretch", style: { paddingLeft: "6px", paddingRight: "6px", paddingTop: "3px", paddingBottom: "3px" } }, { basis: "28px", shrink: 0 });
   const draftCard = (name, titleText, fields, basis) => flex(name, [
     label("title", titleText, { style: { classes: "cal1615/card-header" } }, { basis: "26px", shrink: 0 }),
     ...fields,

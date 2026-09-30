@@ -1,0 +1,19 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "24px",
+      "borderTopRightRadius": "24px",
+      "borderBottomLeftRadius": "24px",
+      "borderBottomRightRadius": "24px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "#f7d7b5",
+        "cursor": "pointer"
+      }
+    }
+  ]
+}

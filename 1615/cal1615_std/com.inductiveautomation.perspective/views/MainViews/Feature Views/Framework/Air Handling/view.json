@@ -1,0 +1,781 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 376,
+      "width": 366
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Middle"
+        },
+        "position": {
+          "height": 124.00000000000003,
+          "width": 155,
+          "x": 96.99,
+          "y": 194.66
+        },
+        "props": {
+          "elements": [
+            {
+              "d": "M 202.33333 158.0 L 217.0 152.0453 L 296.13385 151.84467 L 310.13385 157.8576 L 310.13385 197.1424 L 296.0 201.91263 L 216.64566 202.33333 L 202.0 197.0 Z",
+              "fill": {
+                "paint": "#D7D7D7"
+              },
+              "name": "path",
+              "type": "path"
+            }
+          ],
+          "viewBox": "202 151.84467 108.13385 50.48865999999998"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Right"
+        },
+        "position": {
+          "height": 56,
+          "width": 60,
+          "x": 220.89,
+          "y": 229
+        },
+        "propConfig": {
+          "custom.temp": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "vav": "{view.params.vav}"
+                },
+                "tagPath": "{vav}/Temp_Discharge"
+              },
+              "type": "tag"
+            }
+          },
+          "props.elements[0].fill.paint.stops[1].style.stopColor": {
+            "binding": {
+              "config": {
+                "expression": "gradient({this.custom.temp},55,100,color(196,227,236),color(245,196,194))"
+              },
+              "enabled": false,
+              "transforms": [
+                {
+                  "code": "\treturn \u0027rgb(\u0027 + str(value.getRed()) + \u0027,\u0027 + str(value.getGreen()) + \u0027,\u0027 + str(value.getBlue()) + \u0027)\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "fill": {
+                "paint": {
+                  "stops": [
+                    {
+                      "offset": "0%",
+                      "style": {
+                        "stopColor": "#D7D7D7"
+                      }
+                    },
+                    {
+                      "offset": "100%",
+                      "style": {
+                        "stopColor": "rgb(204,221,228)"
+                      }
+                    }
+                  ],
+                  "type": "linear",
+                  "x1": "0%",
+                  "x2": "100%",
+                  "y1": "0%",
+                  "y2": "0%"
+                }
+              },
+              "height": "100%",
+              "style": {
+                "classes": ""
+              },
+              "type": "rect",
+              "width": "100%",
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "preserveAspectRatio": "none",
+          "viewBox": "0 0 100 100"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Left"
+        },
+        "position": {
+          "height": 56,
+          "width": 60,
+          "x": 69,
+          "y": 229
+        },
+        "propConfig": {
+          "props.elements[0].fill.paint.stops[0].style.stopColor": {
+            "binding": {
+              "config": {
+                "expression": "gradient({90BR/AHU/AHU1/Supply_Air_Temp},55,100,color(196,227,236),color(245,196,194))"
+              },
+              "enabled": false,
+              "transforms": [
+                {
+                  "code": "\treturn \u0027rgb(\u0027 + str(value.getRed()) + \u0027,\u0027 + str(value.getGreen()) + \u0027,\u0027 + str(value.getBlue()) + \u0027)\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "fill": {
+                "paint": {
+                  "stops": [
+                    {
+                      "offset": "0%",
+                      "style": {
+                        "stopColor": "rgb(203,222,229)"
+                      }
+                    },
+                    {
+                      "offset": "100%",
+                      "style": {
+                        "stopColor": "#D7D7D7"
+                      }
+                    }
+                  ],
+                  "type": "linear",
+                  "x1": "0%",
+                  "x2": "100%",
+                  "y1": "0%",
+                  "y2": "0%"
+                }
+              },
+              "height": "100%",
+              "style": {
+                "classes": ""
+              },
+              "type": "rect",
+              "width": "100%",
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "preserveAspectRatio": "none",
+          "viewBox": "0 0 100 100"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Inlet Temp"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 62.01,
+          "x": 40,
+          "y": 195
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[Sample_Tags]Realistic/Realistic1"
+              },
+              "transforms": [
+                {
+                  "expression": "// Convert to Celsius if necessary\r\nif({session.props.locale} \u003d \u0027en-US\u0027,\r\n\t{value},\r\n\t({value} - 32) * 0.5556)",
+                  "type": "expression"
+                },
+                {
+                  "formatType": "numeric",
+                  "formatValue": "##0.00",
+                  "type": "format"
+                },
+                {
+                  "expression": "if({session.props.locale} \u003d \u0027en-US\u0027,\r\n\t{value} + \"°F\",\r\n\t{value} + \"°C\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "--neutral-100",
+            "fontSize": "15px",
+            "textAlign": "right"
+          },
+          "textStyle": {
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Damper"
+        },
+        "position": {
+          "height": 120,
+          "width": 100,
+          "x": 90,
+          "y": 197.309
+        },
+        "propConfig": {
+          "props.params.percentOpen": {
+            "binding": {
+              "config": {
+                "path": "../Valve Slider.props.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "isCooling": false
+          },
+          "path": "MainViews/Feature Views/Framework/Air Handling Damper",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\t# Open the exhaust fan controls popup.\n\t\n\tsystem.perspective.openPopup(\u0027exhaust-fan-controls\u0027,\u0027Building Automation Demo/Page/Controls/Framework/AHU 1/Control Popups/Exhaust Fan Controls\u0027,position \u003d {\u0027left\u0027:event.clientX,\u0027top\u0027:event.clientY},resizable\u003dFalse,title\u003d\u0027Exhaust Fan\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Cooling Fan",
+          "tooltip": {
+            "enabled": true,
+            "text": "ACCESS CONTROLS"
+          }
+        },
+        "position": {
+          "height": 103.98,
+          "width": 122,
+          "x": 1,
+          "y": 14
+        },
+        "propConfig": {
+          "props.fill": {
+            "binding": {
+              "config": {
+                "path": "../Fan Control Multi State.props.indicatorValue"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--callToAction--disabled)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 1,
+                      "output": "var(--success)"
+                    },
+                    {
+                      "input": 2,
+                      "output": "var(--qual-10)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "d": "M2.060 2.060 L 0.000 4.119 -0.000 200.000 L -0.000 395.881 2.060 397.940 L 4.119 400.000 200.000 400.000 L 395.881 400.000 397.940 397.940 L 400.000 395.881 400.000 200.000 L 400.000 4.119 397.940 2.060 L 395.881 0.000 200.000 0.000 L 4.119 0.000 2.060 2.060 M35.999 20.344 C 46.520 25.711,43.284 41.225,31.485 41.983 C 25.920 42.340,22.695 40.608,20.344 35.999 C 15.089 25.699,25.699 15.089,35.999 20.344 M216.797 40.642 C 349.313 55.450,407.337 215.536,314.871 311.225 C 231.272 397.738,85.829 364.184,47.793 249.609 C 11.617 140.635,102.790 27.903,216.797 40.642 M144.752 63.666 C 136.881 65.853,123.572 73.609,108.012 85.076 C 103.035 88.744,101.217 91.868,102.097 95.234 C 102.316 96.071,117.002 116.558,134.733 140.760 C 164.972 182.034,166.925 184.896,166.222 186.913 C 165.314 189.517,165.809 189.508,157.755 187.071 C 86.714 165.584,48.947 176.409,53.152 217.055 C 54.229 227.460,61.247 252.638,64.420 257.481 C 67.006 261.428,67.021 261.424,123.176 242.944 C 185.614 222.395,182.907 222.771,173.669 235.942 C 129.872 298.386,130.623 339.135,175.687 345.403 C 178.858 345.844,188.465 346.268,197.037 346.345 L 212.622 346.484 214.514 344.292 L 216.406 342.100 216.406 287.476 L 216.406 232.853 218.711 231.661 C 219.979 231.005,221.167 230.469,221.351 230.469 C 221.535 230.469,223.725 233.193,226.218 236.523 C 271.149 296.552,310.673 308.074,330.341 266.878 C 335.696 255.661,342.495 234.660,341.686 231.837 C 340.530 227.808,338.494 227.005,290.625 211.691 C 265.059 203.513,243.022 196.462,241.656 196.024 C 239.522 195.340,239.059 194.708,238.384 191.559 C 237.457 187.242,237.274 187.461,243.750 185.145 C 313.254 160.289,335.621 128.208,304.746 97.656 C 295.907 88.911,277.422 75.041,273.826 74.458 C 269.440 73.746,268.855 74.450,236.855 118.911 L 206.294 161.374 202.952 161.061 C 198.594 160.652,198.464 160.364,198.449 151.112 C 198.356 89.779,176.846 54.749,144.752 63.666 M206.900 180.893 C 226.988 186.858,222.889 216.532,201.953 216.704 C 180.127 216.884,176.759 185.600,198.047 180.418 C 201.632 179.545,202.523 179.593,206.900 180.893 M375.554 359.347 C 380.921 362.619,382.712 370.841,379.111 375.665 C 371.587 385.742,357.222 380.899,358.015 368.554 C 358.586 359.655,367.975 354.726,375.554 359.347 ",
+                  "name": "path0",
+                  "stroke": {
+                    "paint": "none"
+                  },
+                  "type": "path"
+                }
+              ],
+              "name": "svgg",
+              "type": "group"
+            }
+          ],
+          "style": {
+            "cursor": "pointer"
+          },
+          "viewBox": "0, 0, 400,400"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Fan Label"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 183.02,
+          "x": 141,
+          "y": 14
+        },
+        "props": {
+          "text": "Cooling Fan Control",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Inlet Temp Label"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 155,
+          "y": 160
+        },
+        "props": {
+          "text": "Inlet Temperature",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Discharge Temp Label"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 155,
+          "x": 185,
+          "y": 160
+        },
+        "props": {
+          "text": "Discharge Temperature",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Outlet Temp"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 62.01,
+          "x": 236.206,
+          "y": 194.658
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[Sample_Tags]Realistic/Realistic1"
+              },
+              "transforms": [
+                {
+                  "expression": "// Simulate different value\r\n{value} * 0.863",
+                  "type": "expression"
+                },
+                {
+                  "expression": "// Convert to Celsius if necessary\r\nif({session.props.locale} \u003d \u0027en-US\u0027,\r\n\t{value},\r\n\t({value} - 32) * 0.5556)",
+                  "type": "expression"
+                },
+                {
+                  "formatType": "numeric",
+                  "formatValue": "##0.00",
+                  "type": "format"
+                },
+                {
+                  "expression": "if({session.props.locale} \u003d \u0027en-US\u0027,\r\n\t{value} + \"°F\",\r\n\t{value} + \"°C\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "--neutral-100",
+            "fontSize": "15px",
+            "textAlign": "right"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Fan Speed Slider"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 128,
+          "x": 157.01,
+          "y": 87.98
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "expression": "{../Fan Control Multi State.props.indicatorValue} \u003d 2"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "value": 75
+        },
+        "type": "ia.input.slider"
+      },
+      {
+        "meta": {
+          "name": "Fan Speed Label"
+        },
+        "position": {
+          "height": 26.98,
+          "width": 194.99,
+          "x": 124,
+          "y": 110
+        },
+        "props": {
+          "text": "Fan Speed",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Fan Control Multi State"
+        },
+        "position": {
+          "height": 35,
+          "width": 200,
+          "x": 130,
+          "y": 49
+        },
+        "propConfig": {
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "path": "this.props.controlValue"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "controlValue": 2,
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "backgroundColor": "--qual-10",
+                "classes": ""
+              },
+              "text": "Hand",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 2
+            },
+            {
+              "selectedStyle": {
+                "backgroundColor": "--callToAction--disabled",
+                "classes": ""
+              },
+              "text": "Off",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "backgroundColor": "--success",
+                "classes": ""
+              },
+              "text": "Auto",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ]
+        },
+        "type": "ia.input.multi-state-button"
+      },
+      {
+        "meta": {
+          "name": "Arrow 1"
+        },
+        "position": {
+          "height": 75,
+          "width": 40,
+          "x": 28,
+          "y": 217
+        },
+        "props": {
+          "color": "--neutral-70",
+          "path": "material/arrow_right_alt"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "Arrow 2"
+        },
+        "position": {
+          "height": 75,
+          "width": 40,
+          "x": 281,
+          "y": 217
+        },
+        "props": {
+          "color": "--neutral-70",
+          "path": "material/arrow_right_alt"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "Valve Slider"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 180,
+          "x": 82.49,
+          "y": 302.01
+        },
+        "props": {
+          "value": 64
+        },
+        "type": "ia.input.slider"
+      },
+      {
+        "meta": {
+          "name": "Valve Label"
+        },
+        "position": {
+          "height": 22.99,
+          "width": 100.98,
+          "x": 120.51,
+          "y": 328.99
+        },
+        "props": {
+          "text": "Valve",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Fan Speed Value"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 57.02,
+          "x": 33.82,
+          "y": 118.02
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../Fan Control Multi State.props.indicatorValue"
+              },
+              "transforms": [
+                {
+                  "fallback": "0",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 1,
+                      "output": "68 + {[Sample_Tags]Ramp/Ramp0}"
+                    },
+                    {
+                      "input": 2,
+                      "output": "{../Fan Speed Slider.props.value}"
+                    }
+                  ],
+                  "outputType": "expression",
+                  "type": "map"
+                },
+                {
+                  "expression": "// Convert to percentage\r\n{value} / 100.0",
+                  "type": "expression"
+                },
+                {
+                  "formatType": "numeric",
+                  "formatValue": "##0.0%",
+                  "type": "format"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Valve Label Open"
+        },
+        "position": {
+          "height": 22.99,
+          "width": 75,
+          "x": 262,
+          "y": 306
+        },
+        "props": {
+          "text": "Open",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Valve Label Close"
+        },
+        "position": {
+          "height": 22.99,
+          "width": 75,
+          "x": 2,
+          "y": 306
+        },
+        "props": {
+          "text": "Close",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Divider"
+        },
+        "position": {
+          "height": 3.01,
+          "width": 315,
+          "x": 15,
+          "y": 152.7
+        },
+        "props": {
+          "style": {
+            "backgroundImage": "linear-gradient(90deg, rgba(213,213,213,0) 0%, rgba(213,213,213,1) 10%, rgba(213,213,213,1) 90%, rgba(213,213,213,0) 100%)"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Fan Speed Label 0"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 30,
+          "x": 122.02,
+          "y": 87.98
+        },
+        "props": {
+          "text": "0%",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Fan Speed Value 100"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 46.98,
+          "x": 290,
+          "y": 87.98
+        },
+        "props": {
+          "text": "100%",
+          "textStyle": {
+            "fontSize": "15px",
+            "textAlign": "left"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": 22,
+      "y": 3.984375
+    },
+    "type": "ia.container.coord"
+  }
+}

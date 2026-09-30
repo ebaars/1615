@@ -1,0 +1,7 @@
+{
+  "title": "cal1615",
+  "description": "Park cal1615 line HMI. Built from the cal2016 project template.",
+  "parent": "",
+  "enabled": true,
+  "inheritable": false
+}

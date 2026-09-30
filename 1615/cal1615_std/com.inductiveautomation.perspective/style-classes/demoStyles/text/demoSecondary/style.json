@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "color": "#e69138",
+      "fontSize": "20px",
+      "fontWeight": "bold",
+      "textAlign": "center"
+    }
+  },
+  "variants": [
+    {
+      "media": {
+        "feature": "maxWidth",
+        "value": "800px"
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "normal"
+      }
+    }
+  ]
+}

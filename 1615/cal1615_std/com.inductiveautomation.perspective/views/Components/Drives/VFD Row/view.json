@@ -1,0 +1,868 @@
+{
+  "custom": {},
+  "params": {
+    "name": "",
+    "speed": "",
+    "amps": "",
+    "hz": "",
+    "rpm": "",
+    "faulted": "",
+    "warning": "",
+    "run_fwd": "",
+    "run_rev": "",
+    "ready": "",
+    "ctrl_net": "",
+    "ref_net": "",
+    "at_ref": "",
+    "faulted_inv": false,
+    "warning_inv": false,
+    "run_fwd_inv": false,
+    "run_rev_inv": false,
+    "ready_inv": false,
+    "ctrl_net_inv": false,
+    "ref_net_inv": false,
+    "at_ref_inv": false
+  },
+  "propConfig": {
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.speed": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.amps": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.hz": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.rpm": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.faulted": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.warning": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.run_fwd": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.run_rev": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ready": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ctrl_net": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ref_net": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.at_ref": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.faulted_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.warning_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.run_fwd_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.run_rev_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ready_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ctrl_net_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ref_net_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.at_ref_inv": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1400,
+      "height": 36
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "alignItems": "center",
+      "style": {
+        "paddingLeft": "8px",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "1px",
+        "borderBottomColor": "var(--neutral-40)"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "name"
+        },
+        "position": {
+          "basis": "190px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "fontWeight": "bold",
+            "fontSize": "13px"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.name"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "speed"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "textAlign": "right",
+            "fontSize": "13px",
+            "paddingRight": "12px"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "tag",
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "0": "{view.params.speed}"
+                },
+                "tagPath": "{0}"
+              },
+              "transforms": [
+                {
+                  "type": "format",
+                  "formatType": "numeric",
+                  "formatValue": "#,##0.0"
+                }
+              ]
+            }
+          },
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.speed}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "amps"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "textAlign": "right",
+            "fontSize": "13px",
+            "paddingRight": "12px"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "tag",
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "0": "{view.params.amps}"
+                },
+                "tagPath": "{0}"
+              },
+              "transforms": [
+                {
+                  "type": "format",
+                  "formatType": "numeric",
+                  "formatValue": "#,##0.00"
+                }
+              ]
+            }
+          },
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.amps}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "hz"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "textAlign": "right",
+            "fontSize": "13px",
+            "paddingRight": "12px"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "tag",
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "0": "{view.params.hz}"
+                },
+                "tagPath": "{0}"
+              },
+              "transforms": [
+                {
+                  "type": "format",
+                  "formatType": "numeric",
+                  "formatValue": "#,##0.0"
+                }
+              ]
+            }
+          },
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.hz}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "rpm"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "textAlign": "right",
+            "fontSize": "13px",
+            "paddingRight": "12px"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "tag",
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "0": "{view.params.rpm}"
+                },
+                "tagPath": "{0}"
+              },
+              "transforms": [
+                {
+                  "type": "format",
+                  "formatType": "numeric",
+                  "formatValue": "#,##0"
+                }
+              ]
+            }
+          },
+          "position.display": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "len({view.params.rpm}) > 0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_faulted"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "faulted"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.faulted}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.faulted_inv}, \"#FF2020\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.faulted}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_warning"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "warning"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.warning}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.warning_inv}, \"#FFA000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.warning}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_run_fwd"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "run_fwd"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.run_fwd}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.run_fwd_inv}, \"#00E000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.run_fwd}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_run_rev"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "run_rev"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.run_rev}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.run_rev_inv}, \"#00E000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.run_rev}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_ready"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "ready"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.ready}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.ready_inv}, \"#00E000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.ready}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_ctrl_net"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "ctrl_net"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.ctrl_net}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.ctrl_net_inv}, \"#00E000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.ctrl_net}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_ref_net"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "ref_net"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.ref_net}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.ref_net_inv}, \"#00E000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.ref_net}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "c_at_ref"
+        },
+        "position": {
+          "basis": "95px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "justify": "center",
+          "style": {
+            "padding": "7px 0"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "at_ref"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/led"
+              }
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "0": "{view.params.at_ref}"
+                    },
+                    "tagPath": "{0}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "expression",
+                      "expression": "if(isNull({value}), \"#FF00FF\", if(toBoolean({value}) != {view.params.at_ref_inv}, \"#00E000\", \"#FFFF00\"))"
+                    }
+                  ]
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "len({view.params.at_ref}) > 0"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

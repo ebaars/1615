@@ -1,0 +1,139 @@
+{
+  "pages": {
+    "/": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Home/Overview - Main"
+    },
+    "/overview": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Home/Overview - Main"
+    },
+    "/oven-control": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Home/Oven Control"
+    },
+    "/emergency-stops": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Home/Emergency Stops - Main"
+    },
+    "/active-recipe": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Home/Active Recipe"
+    },
+    "/recipe": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Home/Recipe"
+    },
+    "/advanced-cooling": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Ovens/Advanced Cooling"
+    },
+    "/letoff-splice": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Line/Letoff Splice - Main"
+    },
+    "/accumulator-ts1": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Line/Accumulator TS1 - Main"
+    },
+    "/ts2-poly-windup": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Line/TS2 Poly Windup - Main"
+    },
+    "/zone-setup": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/Zone Setup"
+    },
+    "/vfd-drives": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/VFD Drives"
+    },
+    "/servo-drives": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/Servo Drives"
+    },
+    "/io": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/IO"
+    },
+    "/pm-schedule": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/PM Schedule"
+    },
+    "/oven-trend": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Trending/Oven Trend"
+    },
+    "/zone/:zone": {
+      "title": "Zone",
+      "viewPath": "MainViews/Feature Views/Ovens/Zone - Main"
+    },
+    "/alarms": {
+      "title": "",
+      "viewPath": "MainViews/Feature Views/Application/Alarms - Main"
+    },
+    "/warnings": {
+      "title": "",
+      "viewPath": "MainViews/Feature Views/Application/Warnings - Main"
+    },
+    "/history": {
+      "title": "",
+      "viewPath": "MainViews/Feature Views/Application/History - Main"
+    },
+    "/trend": {
+      "title": "Trend",
+      "viewPath": "MainViews/Feature Views/Trending/AdHocTrends"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom",
+    "left": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 900,
+        "content": "push",
+        "handle": "hide",
+        "iconUrl": "",
+        "id": "Menu",
+        "modal": false,
+        "resizable": false,
+        "show": "onDemand",
+        "size": 240,
+        "viewParams": {},
+        "viewPath": "MainViews/Nav/Sidebar Dock Nav"
+      }
+    ],
+    "right": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 480,
+        "content": "cover",
+        "handle": "show",
+        "iconUrl": "",
+        "id": "dock-main-nav",
+        "modal": true,
+        "resizable": false,
+        "show": "onDemand",
+        "size": 300,
+        "viewParams": {},
+        "viewPath": "Framework/Dock Main Nav"
+      }
+    ],
+    "top": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 480,
+        "content": "push",
+        "handle": "hide",
+        "iconUrl": "",
+        "id": "",
+        "modal": false,
+        "resizable": false,
+        "show": "visible",
+        "size": 56,
+        "viewParams": {},
+        "viewPath": "Framework/Header"
+      }
+    ]
+  }
+}

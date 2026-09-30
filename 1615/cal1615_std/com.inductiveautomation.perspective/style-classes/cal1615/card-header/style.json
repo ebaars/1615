@@ -1,0 +1,13 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--callToAction)",
+      "color": "#FFFFFF",
+      "fontFamily": "Arial",
+      "fontSize": "13px",
+      "fontWeight": "bold",
+      "textAlign": "center",
+      "lineHeight": "26px"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 1000,
+      "width": 480
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "logoImage"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "fit": {
+                "height": 80,
+                "mode": "absolute",
+                "width": 80
+              },
+              "source": "/system/images/sample-images/quick-start.png"
+            },
+            "type": "ia.display.image"
+          },
+          {
+            "meta": {
+              "name": "heading"
+            },
+            "position": {
+              "basis": "40px",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "fontSize": "32px",
+                "fontWeight": "500",
+                "lineHeight": "40px",
+                "textAlign": "center"
+              },
+              "text": "Welcome to Quick Start"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "heading-secondary"
+            },
+            "position": {
+              "basis": "120px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "color": "var(--neutral-60)",
+                "fontSize": "32px",
+                "lineHeight": "40px",
+                "textAlign": "center"
+              },
+              "text": "The fastest way to get started with application design in Ignition."
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "body"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "markdown": {
+                "escapeHtml": false
+              },
+              "source": "\u003cp\u003eExplore this app in the browser to get a feel for its features and navigation structure. Continue by opening the project in the Ignition Designer itself to see how the pages are laid out and customized. You\u0027ll learn how tags, bindings, and Components work together behind the scenes.\n\u003c/p\u003e\u003cp\u003e\nThroughout the project, look for hyperlinks to our \u003ca style\u003d\"color:var(--callToAction);text-decoration:none;\" href\u003d\"https://docs.inductiveautomation.com/\" target\u003d\"_blank\" rel\u003d\"noopener noreferrer\"\u003eonline documentation\u003c/a\u003e and footers like the one below that indicate the view path in the designer.\u003c/p\u003e",
+              "style": {
+                "fontSize": "16px",
+                "marginTop": "20px",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.markdown"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "alignContent": "flex-start",
+          "alignItems": "center",
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Path"
+            },
+            "position": {
+              "basis": "800px"
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "var(--info)",
+                "color": "var(--neutral-10)",
+                "fontSize": "12px",
+                "marginTop": "8px",
+                "padding": "4px"
+              },
+              "text": "Open this view in the Designer: Home/Landing Page",
+              "textStyle": {
+                "fontWeight": "500",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "View Path Container"
+        },
+        "position": {
+          "basis": "800px"
+        },
+        "props": {
+          "alignContent": "center",
+          "alignItems": "flex-start",
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "IU"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "markdown": {
+            "escapeHtml": false
+          },
+          "source": "\u003cp\u003eCheck out the free online training videos and courses at \u003ca style\u003d\"color:var(--callToAction);text-decoration:none;\" href\u003d\"https://links.inductiveautomation.com/university\" target\u003d\"_blank\" rel\u003d\"noopener noreferrer\"\u003eInductive University\u003c/a\u003e for more insights, examples, and ideas. Have fun!\n\u003c/p\u003e\n\u003cbr\u003e\nWe can\u0027t wait to see what you build with Ignition!",
+          "style": {
+            "fontSize": "16px",
+            "marginTop": "20px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.markdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "basis": "1000px",
+      "grow": 1,
+      "shrink": 1
+    },
+    "props": {
+      "alignContent": "flex-start",
+      "alignItems": "center",
+      "style": {
+        "padding": "8px"
+      },
+      "wrap": "wrap"
+    },
+    "type": "ia.container.flex"
+  }
+}

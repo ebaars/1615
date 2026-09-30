@@ -1,0 +1,9 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "#f7d7b5",
+      "fontSize": "18px",
+      "paddingBottom": "24px"
+    }
+  }
+}

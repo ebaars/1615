@@ -1,0 +1,416 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed"
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 507,
+          "y": 7,
+          "width": 667,
+          "height": 40
+        },
+        "props": {
+          "text": "Tension Stand 2 & Polys & Windup",
+          "style": {
+            "classes": "cal1615/page-title"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "arrow_left"
+        },
+        "position": {
+          "x": 0,
+          "y": 330,
+          "width": 36,
+          "height": 90
+        },
+        "props": {
+          "path": "Framework/Carousel Arrow",
+          "params": {
+            "direction": "prev",
+            "sequence": [
+              "/letoff-splice",
+              "/accumulator-ts1",
+              "/ts2-poly-windup"
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "arrow_right"
+        },
+        "position": {
+          "x": 1644,
+          "y": 330,
+          "width": 36,
+          "height": 90
+        },
+        "props": {
+          "path": "Framework/Carousel Arrow",
+          "params": {
+            "direction": "next",
+            "sequence": [
+              "/letoff-splice",
+              "/accumulator-ts1",
+              "/ts2-poly-windup"
+            ]
+          }
+        }
+      },
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 22,
+          "y": 67,
+          "width": 1039,
+          "height": 483
+        },
+        "props": {
+          "source": "/system/images/Custom/cal1615/line_winder.png",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "upper"
+        },
+        "position": {
+          "x": 469,
+          "y": 72,
+          "width": 256,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Line/Upper Poly Unwind",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "slitter"
+        },
+        "position": {
+          "x": 206,
+          "y": 152,
+          "width": 256,
+          "height": 88
+        },
+        "props": {
+          "path": "Components/Line/Slitter",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "wfoot"
+        },
+        "position": {
+          "x": 850,
+          "y": 132,
+          "width": 167,
+          "height": 88
+        },
+        "props": {
+          "path": "Components/Line/Winder Footage",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "turret"
+        },
+        "position": {
+          "x": 760,
+          "y": 256,
+          "width": 298,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Turret in Position Proximity Switch",
+            "tagPath": "[cal1615]turret_in_position",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "x": 24,
+          "y": 364,
+          "width": 270,
+          "height": 88
+        },
+        "props": {
+          "path": "Components/Line/Roll Cooling",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "x": 1067,
+          "y": 67,
+          "width": 600,
+          "height": 489
+        },
+        "props": {
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          },
+          "pens": [
+            {
+              "axis": "",
+              "name": "Winder Tension",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p29r06_ave_wdr_lc"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Tension Setpoint",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/winder_tension_sp"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts2"
+        },
+        "position": {
+          "x": 67,
+          "y": 578,
+          "width": 300,
+          "height": 172
+        },
+        "props": {
+          "path": "Components/Line/Tension Stand 2",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lower"
+        },
+        "position": {
+          "x": 389,
+          "y": 578,
+          "width": 278,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Line/Lower Poly Unwind",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winder"
+        },
+        "position": {
+          "x": 689,
+          "y": 578,
+          "width": 300,
+          "height": 144
+        },
+        "props": {
+          "path": "Components/Line/Winder",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "x": 1222,
+          "y": 578,
+          "width": 289,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Line/Winder PID",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 56,
+      "width": 700
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "HorizontalMenu"
+        },
+        "position": {
+          "basis": "56px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/overview\" || {page.props.path} = \"/oven-control\" || {page.props.path} = \"/active-recipe\" || {page.props.path} = \"/recipe\" || {page.props.path} = \"/emergency-stops\" || {page.props.path} = \"/\", \"framework/header-selected\", \"\")"
+              }
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/zone/1\" || {page.props.path} = \"/zone/2\" || {page.props.path} = \"/zone/3\" || {page.props.path} = \"/advanced-cooling\", \"framework/header-selected\", \"\")"
+              }
+            }
+          },
+          "props.items[2].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/letoff-splice\" || {page.props.path} = \"/accumulator-ts1\" || {page.props.path} = \"/ts2-poly-windup\", \"framework/header-selected\", \"\")"
+              }
+            }
+          },
+          "props.items[3].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/io\" || {page.props.path} = \"/zone-setup\" || {page.props.path} = \"/vfd-drives\" || {page.props.path} = \"/servo-drives\" || {page.props.path} = \"/pm-schedule\", \"framework/header-selected\", \"\")"
+              }
+            }
+          },
+          "props.items[4].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/oven-trend\" || {page.props.path} = \"/trend\", \"framework/header-selected\", \"\")"
+              }
+            }
+          },
+          "props.items[5].style.classes": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({page.props.path} = \"/alarms\" || {page.props.path} = \"/warnings\" || {page.props.path} = \"/history\", \"framework/header-selected\", \"\")"
+              }
+            }
+          }
+        },
+        "props": {
+          "items": [
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Main",
+              "style": {},
+              "target": "/overview"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Oven Zones",
+              "style": {},
+              "target": "/zone/1"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Line Drives",
+              "style": {},
+              "target": "/letoff-splice"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Maintenance",
+              "style": {},
+              "target": "/io"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Trending",
+              "style": {},
+              "target": "/oven-trend"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Alarms",
+              "style": {},
+              "target": "/alarms"
+            }
+          ],
+          "style": {
+            "border": "none"
+          }
+        },
+        "type": "ia.navigation.horizontalmenu"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

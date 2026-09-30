@@ -1,0 +1,84 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 1400
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoff"
+        },
+        "position": {
+          "basis": "116px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Let-Off",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "footage"
+        },
+        "position": {
+          "basis": "88px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Let-Off Footage",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "splice"
+        },
+        "position": {
+          "basis": "214px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Splice Press",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "pid"
+        },
+        "position": {
+          "basis": "116px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Line/Let-Off PID",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

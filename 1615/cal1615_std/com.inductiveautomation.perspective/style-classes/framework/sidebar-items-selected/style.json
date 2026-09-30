@@ -1,0 +1,35 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--neutral-50)",
+      "color": "#FFFFFF",
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "paddingLeft": "1rem!important"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--callToActionHighlight)",
+        "color": "var(--neutral-100)",
+        "cursor": "pointer"
+      }
+    },
+    {
+      "pseudo": "last-child",
+      "style": {
+        "borderBottomStyle": "none"
+      }
+    },
+    {
+      "pseudo": "first-child",
+      "style": {
+        "borderTopColor": "var(--neutral-50)",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "1px"
+      }
+    }
+  ]
+}

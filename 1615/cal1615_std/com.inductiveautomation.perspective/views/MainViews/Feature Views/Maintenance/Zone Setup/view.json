@@ -1,0 +1,112 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Setup",
+          "params": {
+            "zone": 1
+          },
+          "style": {
+            "height": "536px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Setup",
+          "params": {
+            "zone": 2
+          },
+          "style": {
+            "height": "536px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Zone/Zone Setup",
+          "params": {
+            "zone": 3
+          },
+          "style": {
+            "height": "536px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/Roll Cooling Setup",
+          "params": {},
+          "style": {
+            "height": "340px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

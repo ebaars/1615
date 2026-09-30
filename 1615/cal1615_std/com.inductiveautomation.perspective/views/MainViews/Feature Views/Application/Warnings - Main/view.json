@@ -1,0 +1,37 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Alarms - Small"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Application/Warnings - Small"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Alarms - Large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Application/Warnings - Large"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1350
+    },
+    "type": "ia.container.breakpt"
+  }
+}

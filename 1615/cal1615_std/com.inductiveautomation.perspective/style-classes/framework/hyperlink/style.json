@@ -1,0 +1,17 @@
+{
+  "base": {
+    "style": {
+      "color": "var(--info)",
+      "fontWeight": "600",
+      "textDecoration": "underline"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "visited",
+      "style": {
+        "color": "var(--qual-1)"
+      }
+    }
+  ]
+}

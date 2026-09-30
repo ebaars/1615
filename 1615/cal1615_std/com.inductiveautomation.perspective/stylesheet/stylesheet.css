@@ -1,0 +1,28 @@
+/* Direct stylesheet authoring is an advanced feature. Knowledge of CSS required.*/
+
+#myLabel {
+	font-size: 20px;
+	color: orange;
+
+	animation-duration: 3s;
+	animation-name: slide-in;
+	
+}
+
+@keyframes slide-in{
+	from {
+		margin-left: 50%;
+		width: 50%;
+	}
+	to {
+		margin-left: 0%;
+		width: 100%
+	}
+}
+
+#config {
+	width: auto !important;
+}
+#config .popup-content {
+    width: auto !important;
+}

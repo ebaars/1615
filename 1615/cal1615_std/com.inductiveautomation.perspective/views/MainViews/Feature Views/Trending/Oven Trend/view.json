@@ -1,0 +1,591 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "padding": "6px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "chart"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "400px"
+        },
+        "props": {
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": true
+            }
+          },
+          "pens": [
+            {
+              "axis": "",
+              "name": "Zone 1 Temp",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p11_ai_tc01"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Zone 1 SP",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p11r30_pid_temp_sp"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Zone 2 Temp",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p12_ai_tc01"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Zone 2 SP",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p12r30_pid_temp_sp"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Zone 3 Temp",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p13_ai_tc01"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Zone 3 SP",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p13r30_pid_temp_sp"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#8C564B",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#8C564B",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#8C564B",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8C564B",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#8C564B",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#8C564B",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#8C564B",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8C564B",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Roll Cooling Temp",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p19_ai_tc01"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#17BECF",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#17BECF",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#17BECF",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#17BECF",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#17BECF",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#17BECF",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#17BECF",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#17BECF",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Splice Platen Temp",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p21_ai_splice_platen_temp"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#BCBD22",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#BCBD22",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#BCBD22",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#BCBD22",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#BCBD22",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#BCBD22",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#BCBD22",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#BCBD22",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

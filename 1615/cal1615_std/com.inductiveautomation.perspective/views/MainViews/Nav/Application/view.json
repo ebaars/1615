@@ -1,0 +1,144 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 260,
+      "height": 142
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column"
+    },
+    "children": [
+      {
+        "type": "ia.navigation.menutree",
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "100%",
+          "shrink": 0
+        },
+        "props": {
+          "itemStyle": {
+            "classes": "framework/sidebar-items"
+          },
+          "items": [
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Alarms"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/alarms",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Warnings"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/warnings",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "History"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/history",
+              "visible": true
+            }
+          ]
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/alarms' or (value == '/' and '/alarms' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/warnings' or (value == '/' and '/warnings' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[2].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/history' or (value == '/' and '/history' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

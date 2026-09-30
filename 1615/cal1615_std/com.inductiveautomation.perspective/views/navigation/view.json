@@ -1,0 +1,97 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 838
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "domId": "myLabel",
+          "name": "myLabel"
+        },
+        "position": {
+          "height": 33,
+          "width": 620,
+          "x": 15,
+          "y": 303
+        },
+        "props": {
+          "text": "mylabel"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.getSibling(\"Icon\").props.style.transform \u003d \u0027translateY(-20px)\u0027\n\tself.getSibling(\"Icon\").props.style.transition \u003d \u00273s\u0027\n\tself.getSibling(\"Icon\").position.y  \u003d self.getSibling(\"Icon\").position.y -20"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 50,
+          "rotate": {
+            "anchor": "-11% 50%"
+          },
+          "width": 80,
+          "x": 110,
+          "y": 450
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "height": 30,
+          "rotate": {
+            "anchor": "-50% 183%"
+          },
+          "width": 30,
+          "x": 545
+        },
+        "propConfig": {
+          "position.y": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[cal1615]_a_temp"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "path": "material/insert_emoticon",
+          "style": {
+            "transform": "translateY(-20px)",
+            "transition": "3s"
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "transform": "value",
+      "x": "100%",
+      "y": "200%"
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1066
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "AlarmStatusTable"
+        },
+        "position": {
+          "basis": "800px",
+          "grow": 1
+        },
+        "props": {
+          "columns": {
+            "active": {
+              "displayPath": {
+                "enabled": false
+              },
+              "label": {
+                "enabled": true
+              },
+              "priority": {
+                "enabled": false
+              },
+              "source": {
+                "enabled": false
+              },
+              "state": {
+                "enabled": false
+              }
+            }
+          },
+          "filters": {
+            "active": {
+              "priorities": {
+                "low": false,
+                "medium": false
+              },
+              "states": {
+                "clearUnacked": false
+              }
+            }
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": [
+            {
+              "enabled": false,
+              "name": "filterAlarm",
+              "script": null
+            },
+            {
+              "enabled": false,
+              "name": "filterShelvedAlarm",
+              "script": null
+            }
+          ],
+          "messageHandlers": []
+        },
+        "type": "ia.display.alarmstatustable"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "#\tsystem.tag.writeAsync(\u0027[cal1615]_a_count\u0027, 77)\n\tself.view.rootContainer.AlmAckn()\n#\tsystem.tag.writeAsync(\u0027[cal1615]_a_count\u0027, 66)\n"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 9,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 3
+                },
+                {
+                  "colIndex": 5,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 3
+                },
+                {
+                  "colIndex": 5,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 2
+                }
+              ],
+              "height": 60
+            },
+            "props": {
+              "text": "Reset"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "ColumnContainer"
+        },
+        "type": "ia.container.column"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "AlmAckn",
+          "params": [],
+          "script": "\talarmlist \u003d system.alarm.queryStatus(state \u003d [\"ActiveUnacked\", \"ClearUnacked\"])\n\tuuidlist \u003d [str(row.getId()) for row in alarmlist]\n\tsystem.alarm.acknowledge(uuidlist,\" \",\" \")\t\t\n\tsystem.tag.writeAsync(\u0027[cal1615]Line Main/Control/pb_fault_reset\u0027, 1)"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": []
+    },
+    "type": "ia.container.flex"
+  }
+}

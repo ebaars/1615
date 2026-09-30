@@ -1,0 +1,9 @@
+{
+  "base": {
+    "style": {
+      "fontFamily": "inherit",
+      "fontSize": "24px",
+      "textAlign": "center"
+    }
+  }
+}

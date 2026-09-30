@@ -1,0 +1,212 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 260,
+      "height": 234
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column"
+    },
+    "children": [
+      {
+        "type": "ia.navigation.menutree",
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "100%",
+          "shrink": 0
+        },
+        "props": {
+          "itemStyle": {
+            "classes": "framework/sidebar-items"
+          },
+          "items": [
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Overview"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/overview",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Oven Control"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/oven-control",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Active Recipe"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/active-recipe",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Recipe"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/recipe",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Emergency Stops"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/emergency-stops",
+              "visible": true
+            }
+          ]
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/overview' or (value == '/' and '/overview' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/oven-control' or (value == '/' and '/oven-control' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[2].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/active-recipe' or (value == '/' and '/active-recipe' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[3].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/recipe' or (value == '/' and '/recipe' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[4].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/emergency-stops' or (value == '/' and '/emergency-stops' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -476,10 +476,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -558,10 +560,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -640,10 +644,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -722,10 +728,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -804,10 +812,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -886,10 +896,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -968,10 +980,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1050,10 +1064,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1132,10 +1148,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1214,10 +1232,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1296,10 +1316,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1378,10 +1400,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1460,10 +1484,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1542,10 +1568,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1624,10 +1652,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1744,10 +1774,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1826,10 +1858,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -1908,10 +1942,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2028,10 +2064,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2110,10 +2148,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2192,10 +2232,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2312,10 +2354,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2394,10 +2438,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2476,10 +2522,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2596,10 +2644,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2678,10 +2728,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2760,10 +2812,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2842,10 +2896,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -2924,10 +2980,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -3006,10 +3064,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -3088,10 +3148,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -3170,10 +3232,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -3252,10 +3316,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [
@@ -3334,10 +3400,12 @@
             },
             "props": {
               "direction": "row",
-              "alignItems": "center",
+              "alignItems": "stretch",
               "style": {
                 "paddingLeft": "6px",
-                "paddingRight": "6px"
+                "paddingRight": "6px",
+                "paddingTop": "3px",
+                "paddingBottom": "3px"
               }
             },
             "children": [

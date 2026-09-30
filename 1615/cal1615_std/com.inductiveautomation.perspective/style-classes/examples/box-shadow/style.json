@@ -1,0 +1,7 @@
+{
+  "base": {
+    "style": {
+      "boxShadow": "2px 5px var(--neutral-60)"
+    }
+  }
+}

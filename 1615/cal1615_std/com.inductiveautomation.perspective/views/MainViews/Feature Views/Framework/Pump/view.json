@@ -1,0 +1,136 @@
+{
+  "custom": {},
+  "params": {
+    "tagPath": "[Sample_Tags]Ramp/Ramp0"
+  },
+  "propConfig": {
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 126,
+      "width": 166
+    },
+    "dropConfig": {
+      "udts": [
+        {
+          "action": "path",
+          "param": "tagPath",
+          "type": "Motor"
+        }
+      ]
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "height": 32,
+          "width": 166
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tagPath": "{view.params.tagPath}"
+                },
+                "tagPath": "{tagPath}.Name"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#D5D5D587",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "LED Display"
+        },
+        "position": {
+          "height": 25.99,
+          "width": 92.99,
+          "x": 65.01,
+          "y": 96
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tagPath": "{view.params.tagPath}"
+                },
+                "tagPath": "{tagPath}"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "type": "ia.display.led-display"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 32,
+          "width": 61,
+          "x": 11.01,
+          "y": 93
+        },
+        "props": {
+          "text": "GPM:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Pump"
+        },
+        "position": {
+          "height": 61,
+          "width": 100,
+          "x": 33,
+          "y": 32
+        },
+        "props": {
+          "animationSpeed": 100,
+          "label": {
+            "location": "hidden"
+          },
+          "state": "running",
+          "value": {
+            "location": "hidden"
+          }
+        },
+        "type": "ia.symbol.pump"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "Card"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

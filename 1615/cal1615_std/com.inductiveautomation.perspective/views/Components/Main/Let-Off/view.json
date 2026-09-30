@@ -1,0 +1,428 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 125,
+      "height": 176
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Let-Off",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row0"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "2px 6px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Tension",
+              "style": {
+                "classes": "cal1615/row-label",
+                "textAlign": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "alignItems": "stretch",
+              "style": {
+                "gap": "3px",
+                "overflow": "hidden"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "basis": "66px",
+                  "shrink": 0,
+                  "grow": 0
+                },
+                "props": {
+                  "text": "---",
+                  "style": {
+                    "classes": "cal1615/value"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p20r06_ave_lc",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "format",
+                          "formatType": "numeric",
+                          "formatValue": "#,##0.0"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "units"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units",
+                    "minWidth": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row1"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "2px 6px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Tension SP",
+              "style": {
+                "classes": "cal1615/row-label",
+                "textAlign": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "alignItems": "stretch",
+              "style": {
+                "gap": "3px",
+                "overflow": "hidden"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.input.numeric-entry-field",
+                "meta": {
+                  "name": "entry"
+                },
+                "position": {
+                  "basis": "66px",
+                  "shrink": 0,
+                  "grow": 0
+                },
+                "props": {
+                  "format": "#,##0.0",
+                  "spinner": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "classes": "cal1615/entry"
+                  }
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01_recipe_active/letoff_tension_sp",
+                        "bidirectional": false
+                      }
+                    }
+                  },
+                  "props.enabled": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{session.props.auth.authenticated}"
+                      }
+                    }
+                  }
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\t# Setpoint is read from p01_recipe_active/letoff_tension_sp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking(['[cal1615]p02_recipe_from_hmi/letoff_tension_sp'], [self.props.value])"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "units"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "LBS",
+                  "style": {
+                    "classes": "cal1615/units",
+                    "minWidth": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row2"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "2px 6px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "20px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Active Let-Off",
+              "style": {
+                "classes": "cal1615/row-label",
+                "textAlign": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "alignItems": "stretch",
+              "style": {
+                "gap": "3px",
+                "overflow": "hidden"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "status"
+                },
+                "position": {
+                  "basis": "66px",
+                  "shrink": 0,
+                  "grow": 0
+                },
+                "props": {
+                  "text": "---",
+                  "style": {
+                    "classes": "cal1615/status"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p20_di_loa_active",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "scalar",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "A"
+                            },
+                            {
+                              "input": false,
+                              "output": "B"
+                            }
+                          ],
+                          "fallback": "---"
+                        }
+                      ]
+                    }
+                  },
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p20_di_loa_active",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#FFFFFF"
+                            },
+                            {
+                              "input": false,
+                              "output": "#FFFFFF"
+                            }
+                          ],
+                          "fallback": "#FFFFFF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "units"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "classes": "cal1615/units",
+                    "minWidth": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

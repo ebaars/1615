@@ -1,0 +1,16 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "props.json"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "eb",
+      "timestamp": "2024-06-10T19:20:14Z"
+    },
+    "lastModificationSignature": "2e80ab84db9652b91b7a036214a35fb9c0cf95d7a58f5403e6902ca132216772"
+  }
+}

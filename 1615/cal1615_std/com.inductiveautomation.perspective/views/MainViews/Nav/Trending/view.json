@@ -1,0 +1,110 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 260,
+      "height": 96
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column"
+    },
+    "children": [
+      {
+        "type": "ia.navigation.menutree",
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "100%",
+          "shrink": 0
+        },
+        "props": {
+          "itemStyle": {
+            "classes": "framework/sidebar-items"
+          },
+          "items": [
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Oven Trend"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/oven-trend",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "Trend"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/trend",
+              "visible": true
+            }
+          ]
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/oven-trend' or (value == '/' and '/oven-trend' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "type": "script",
+                  "code": "\tif value == '/trend' or (value == '/' and '/trend' == '/overview'):\n\t\treturn 'framework/sidebar-items-selected'\n\treturn 'framework/sidebar-items'"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

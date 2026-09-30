@@ -1,0 +1,936 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "margin": "6px",
+        "overflow": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "44px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "paddingLeft": "8px",
+            "backgroundColor": "var(--neutral-40)"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_name"
+            },
+            "position": {
+              "basis": "190px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "VFD",
+              "style": {
+                "fontWeight": "bold"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_speed"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Speed",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "right",
+                "paddingRight": "12px"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_amps"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Amps",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "right",
+                "paddingRight": "12px"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_hz"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Hz",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "right",
+                "paddingRight": "12px"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_rpm"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "RPM",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "right",
+                "paddingRight": "12px"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_faulted"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Faulted",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_warning"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Warning",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_run_fwd"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Running Forward",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_run_rev"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Running Reverse",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_ready"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Ready",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_ctrl_net"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Ctrl from Net",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_ref_net"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Ref from Net",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "h_at_ref"
+            },
+            "position": {
+              "basis": "95px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "At Reference",
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center",
+                "fontSize": "12px",
+                "whiteSpace": "normal"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_loa"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Letoff A",
+            "speed": "[cal1615]p20_ai_loa_speed",
+            "amps": "[cal1615]p20_loa_ai_amps",
+            "hz": "[cal1615]p20_loa_ai_hz",
+            "rpm": "[cal1615]p20_loa_ai_rpm",
+            "faulted": "[cal1615]p20_vfd_di_loa/faulted",
+            "warning": "[cal1615]p20_vfd_di_loa/warning",
+            "run_fwd": "[cal1615]p20_vfd_di_loa/running_fwd",
+            "run_rev": "[cal1615]p20_vfd_di_loa/running_rev",
+            "ready": "[cal1615]p20_vfd_di_loa/ready",
+            "ctrl_net": "[cal1615]p20_vfd_di_loa/ctrl_from_net",
+            "ref_net": "[cal1615]p20_vfd_di_loa/ref_from_net",
+            "at_ref": "[cal1615]p20_vfd_di_loa/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_lob"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Letoff B",
+            "speed": "[cal1615]p20_ai_lob_speed",
+            "amps": "[cal1615]p20_lob_ai_amps",
+            "hz": "[cal1615]p20_lob_ai_hz",
+            "rpm": "[cal1615]p20_lob_ai_rpm",
+            "faulted": "[cal1615]p20_vfd_di_lob/faulted",
+            "warning": "[cal1615]p20_vfd_di_lob/warning",
+            "run_fwd": "[cal1615]p20_vfd_di_lob/running_fwd",
+            "run_rev": "[cal1615]p20_vfd_di_lob/running_rev",
+            "ready": "[cal1615]p20_vfd_di_lob/ready",
+            "ctrl_net": "[cal1615]p20_vfd_di_lob/ctrl_from_net",
+            "ref_net": "[cal1615]p20_vfd_di_lob/ref_from_net",
+            "at_ref": "[cal1615]p20_vfd_di_lob/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_lot"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Letoff Turret",
+            "speed": "[cal1615]p20_ai_lo_turret_speed",
+            "amps": "[cal1615]p20_ai_lo_turret_amps",
+            "hz": "[cal1615]p20_ai_lo_turret_hz",
+            "rpm": "[cal1615]p00_vfd_lo_turret_I/Data_1_",
+            "faulted": "[cal1615]p20_di_lo_turret/faulted",
+            "warning": "[cal1615]p20_di_lo_turret/warning",
+            "run_fwd": "[cal1615]p20_di_lo_turret/running_fwd",
+            "run_rev": "[cal1615]p20_di_lo_turret/running_rev",
+            "ready": "[cal1615]p20_di_lo_turret/ready",
+            "ctrl_net": "[cal1615]p20_di_lo_turret/ctrl_from_net",
+            "ref_net": "[cal1615]p20_di_lo_turret/ref_from_net",
+            "at_ref": "[cal1615]p20_di_lo_turret/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_ts1"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Tension Stand 1",
+            "speed": "[cal1615]p22_ai_speed",
+            "amps": "[cal1615]p22_ai_amps",
+            "hz": "[cal1615]p22_ai_hz",
+            "rpm": "[cal1615]p22r03_scaled_vfd_in",
+            "faulted": "[cal1615]p22_status_word/bit_3",
+            "warning": "[cal1615]p22_status_word/bit_7",
+            "run_fwd": "[cal1615]p22_status_word/bit_2",
+            "run_rev": "",
+            "ready": "[cal1615]p22_status_word/bit_0",
+            "ctrl_net": "[cal1615]p22_status_word/bit_9",
+            "ref_net": "[cal1615]p22_status_word/bit_11",
+            "at_ref": "[cal1615]p22_status_word/bit_8",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_impreg"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Impreg Metering Roll",
+            "speed": "[cal1615]p23_ai_metering_roll_speed_fpm",
+            "amps": "[cal1615]p23_ai_metering_roll_amps",
+            "hz": "[cal1615]p23_ai_metering_roll_hz",
+            "rpm": "[cal1615]p00_vfd_mtr_I/Data_1_",
+            "faulted": "[cal1615]p23_di_metering_roll/faulted",
+            "warning": "[cal1615]p23_di_metering_roll/warning",
+            "run_fwd": "[cal1615]p23_di_metering_roll/running_fwd",
+            "run_rev": "[cal1615]p23_di_metering_roll/running_rev",
+            "ready": "[cal1615]p23_di_metering_roll/ready",
+            "ctrl_net": "[cal1615]p23_di_metering_roll/ctrl_from_net",
+            "ref_net": "[cal1615]p23_di_metering_roll/ref_from_net",
+            "at_ref": "[cal1615]p23_di_metering_roll/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_ts2"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Tension Stand 2",
+            "speed": "[cal1615]p25_ai_speed",
+            "amps": "[cal1615]p25_ai_amps",
+            "hz": "[cal1615]p25_ai_hz",
+            "rpm": "[cal1615]p25r03_scaled_vfd_in",
+            "faulted": "[cal1615]p25_status_word/bit_3",
+            "warning": "[cal1615]p25_status_word/bit_7",
+            "run_fwd": "[cal1615]p25_status_word/bit_2",
+            "run_rev": "",
+            "ready": "[cal1615]p25_status_word/bit_0",
+            "ctrl_net": "[cal1615]p25_status_word/bit_9",
+            "ref_net": "[cal1615]p25_status_word/bit_11",
+            "at_ref": "[cal1615]p25_status_word/bit_8",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_slitter"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Slitter",
+            "speed": "[cal1615]p28_ai_slitter_speed",
+            "amps": "[cal1615]p28_ai_slitter_amps",
+            "hz": "[cal1615]p28_ai_slitter_hz",
+            "rpm": "[cal1615]p00_vfd_slitter_I/Data_1_",
+            "faulted": "[cal1615]p28_di_slitter/faulted",
+            "warning": "[cal1615]p28_di_slitter/warning",
+            "run_fwd": "[cal1615]p28_di_slitter/running_fwd",
+            "run_rev": "[cal1615]p28_di_slitter/running_rev",
+            "ready": "[cal1615]p28_di_slitter/ready",
+            "ctrl_net": "[cal1615]p28_di_slitter/ctrl_from_net",
+            "ref_net": "[cal1615]p28_di_slitter/ref_from_net",
+            "at_ref": "[cal1615]p28_di_slitter/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_wa"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Winder A",
+            "speed": "[cal1615]p29_ai_wa_speed",
+            "amps": "[cal1615]p29_ai_wa_amps",
+            "hz": "[cal1615]p29_ai_wa_hz",
+            "rpm": "[cal1615]p29_ai_wa_rpm",
+            "faulted": "[cal1615]p29_wda_status_word/bit_3",
+            "warning": "[cal1615]p29_wda_status_word/bit_7",
+            "run_fwd": "[cal1615]p29_wda_status_word/bit_2",
+            "run_rev": "",
+            "ready": "[cal1615]p29_wda_status_word/bit_0",
+            "ctrl_net": "[cal1615]p29_wda_status_word/bit_9",
+            "ref_net": "[cal1615]p29_wda_status_word/bit_11",
+            "at_ref": "[cal1615]p29_wda_status_word/bit_8",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_wb"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Winder B",
+            "speed": "[cal1615]p29_ai_wb_speed",
+            "amps": "[cal1615]p29_ai_wb_amps",
+            "hz": "[cal1615]p29_ai_wb_hz",
+            "rpm": "[cal1615]p29_ai_wb_rpm",
+            "faulted": "[cal1615]p29_wdb_status_word/bit_3",
+            "warning": "[cal1615]p29_wdb_status_word/bit_7",
+            "run_fwd": "[cal1615]p29_wdb_status_word/bit_2",
+            "run_rev": "",
+            "ready": "[cal1615]p29_wdb_status_word/bit_0",
+            "ctrl_net": "[cal1615]p29_wdb_status_word/bit_9",
+            "ref_net": "[cal1615]p29_wdb_status_word/bit_11",
+            "at_ref": "[cal1615]p29_wdb_status_word/bit_8",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_wt"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Winder Turret",
+            "speed": "",
+            "amps": "[cal1615]p29_ai_wdr_turret_amps",
+            "hz": "[cal1615]p29_ai_wdr_turret_hz",
+            "rpm": "[cal1615]p29_ai_wdr_turret_speed",
+            "faulted": "[cal1615]p29_di_wdr_turret/faulted",
+            "warning": "[cal1615]p29_di_wdr_turret/warning",
+            "run_fwd": "[cal1615]p29_di_wdr_turret/running_fwd",
+            "run_rev": "[cal1615]p29_di_wdr_turret/running_rev",
+            "ready": "[cal1615]p29_di_wdr_turret/ready",
+            "ctrl_net": "[cal1615]p29_di_wdr_turret/ctrl_from_net",
+            "ref_net": "[cal1615]p29_di_wdr_turret/ref_from_net",
+            "at_ref": "[cal1615]p29_di_wdr_turret/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_supply"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Impreg Supply Fan",
+            "speed": "",
+            "amps": "[cal1615]p23_ai_supply_amps",
+            "hz": "",
+            "rpm": "[cal1615]p23_ai_supply_rpm",
+            "faulted": "[cal1615]p23_di_supply/faulted",
+            "warning": "[cal1615]p23_di_supply/warning",
+            "run_fwd": "[cal1615]p23_di_supply/running_fwd",
+            "run_rev": "[cal1615]p23_di_supply/running_rev",
+            "ready": "[cal1615]p23_di_supply/ready",
+            "ctrl_net": "[cal1615]p23_di_supply/ctrl_from_net",
+            "ref_net": "[cal1615]p23_di_supply/ref_from_net",
+            "at_ref": "[cal1615]p23_di_supply/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_spring"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Impreg Spring Roll",
+            "speed": "",
+            "amps": "[cal1615]p00_vfd_sprng_I/Data_2_",
+            "hz": "",
+            "rpm": "[cal1615]p00_vfd_sprng_I/Data_1_",
+            "faulted": "[cal1615]p23_di_spring/faulted",
+            "warning": "[cal1615]p23_di_spring/warning",
+            "run_fwd": "[cal1615]p23_di_spring/running_fwd",
+            "run_rev": "[cal1615]p23_di_spring/running_rev",
+            "ready": "[cal1615]p23_di_spring/ready",
+            "ctrl_net": "[cal1615]p23_di_spring/ctrl_from_net",
+            "ref_net": "[cal1615]p23_di_spring/ref_from_net",
+            "at_ref": "[cal1615]p23_di_spring/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_z1r"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Zone 1 Recirc",
+            "speed": "",
+            "amps": "[cal1615]p11_ai_recirc_amps",
+            "hz": "[cal1615]p11_ai_recirc_hz",
+            "rpm": "[cal1615]p11_ai_recirc_rpm",
+            "faulted": "[cal1615]p11_di_recirc/faulted",
+            "warning": "[cal1615]p11_di_recirc/warning",
+            "run_fwd": "[cal1615]p11_di_recirc/running_fwd",
+            "run_rev": "[cal1615]p11_di_recirc/running_rev",
+            "ready": "[cal1615]p11_di_recirc/ready",
+            "ctrl_net": "[cal1615]p11_di_recirc/ctrl_from_net",
+            "ref_net": "[cal1615]p11_di_recirc/ref_from_net",
+            "at_ref": "[cal1615]p11_di_recirc/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_z1e"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Zone 1 Exhaust",
+            "speed": "",
+            "amps": "[cal1615]p11_ai_exh_amps",
+            "hz": "[cal1615]p11_ai_exh_hz",
+            "rpm": "[cal1615]p11_ai_exh_rpm",
+            "faulted": "[cal1615]p11_di_exh/faulted",
+            "warning": "[cal1615]p11_di_exh/warning",
+            "run_fwd": "[cal1615]p11_di_exh/running_fwd",
+            "run_rev": "[cal1615]p11_di_exh/running_rev",
+            "ready": "[cal1615]p11_di_exh/ready",
+            "ctrl_net": "[cal1615]p11_di_exh/ctrl_from_net",
+            "ref_net": "[cal1615]p11_di_exh/ref_from_net",
+            "at_ref": "[cal1615]p11_di_exh/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_z2r"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Zone 2 Recirc",
+            "speed": "",
+            "amps": "[cal1615]p12_ai_recirc_amps",
+            "hz": "[cal1615]p12_ai_recirc_hz",
+            "rpm": "[cal1615]p12_ai_recirc_rpm",
+            "faulted": "[cal1615]p12_di_recirc/faulted",
+            "warning": "[cal1615]p12_di_recirc/warning",
+            "run_fwd": "[cal1615]p12_di_recirc/running_fwd",
+            "run_rev": "[cal1615]p12_di_recirc/running_rev",
+            "ready": "[cal1615]p12_di_recirc/ready",
+            "ctrl_net": "[cal1615]p12_di_recirc/ctrl_from_net",
+            "ref_net": "[cal1615]p00_vfd_z2_recirc_I/Data_0_/bit_6",
+            "at_ref": "[cal1615]p12_di_recirc/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_z2e"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Zone 2 Exhaust",
+            "speed": "",
+            "amps": "[cal1615]p12_ai_exhaust_amps",
+            "hz": "[cal1615]p12_ai_exhaust_hz",
+            "rpm": "[cal1615]p12_ai_exhaust_rpm",
+            "faulted": "[cal1615]p12_di_exh/faulted",
+            "warning": "[cal1615]p12_di_exh/warning",
+            "run_fwd": "[cal1615]p12_di_exh/running_fwd",
+            "run_rev": "[cal1615]p12_di_exh/running_rev",
+            "ready": "[cal1615]p12_di_exh/ready",
+            "ctrl_net": "[cal1615]p12_di_exh/ctrl_from_net",
+            "ref_net": "[cal1615]p12_di_exh/ref_from_net",
+            "at_ref": "[cal1615]p12_di_exh/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_z3r"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Zone 3 Recirc",
+            "speed": "",
+            "amps": "[cal1615]p13_ai_recirc_amps",
+            "hz": "[cal1615]p13_ai_recirc_hz",
+            "rpm": "[cal1615]p13_ai_recirc_rpm",
+            "faulted": "[cal1615]p13_di_recirc/faulted",
+            "warning": "[cal1615]p13_di_recirc/warning",
+            "run_fwd": "[cal1615]p13_di_recirc/running_fwd",
+            "run_rev": "[cal1615]p13_di_recirc/running_rev",
+            "ready": "[cal1615]p13_di_recirc/ready",
+            "ctrl_net": "[cal1615]p13_di_recirc/ctrl_from_net",
+            "ref_net": "[cal1615]p13_di_recirc/ref_from_net",
+            "at_ref": "[cal1615]p13_di_recirc/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "vfd_z3e"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Drives/VFD Row",
+          "params": {
+            "name": "Zone 3 Exhaust",
+            "speed": "",
+            "amps": "[cal1615]p13_ai_exhaust_amps",
+            "hz": "[cal1615]p13_ai_exhaust_hz",
+            "rpm": "[cal1615]p13_ai_exhaust_rpm",
+            "faulted": "[cal1615]p13_di_exh/faulted",
+            "warning": "[cal1615]p13_di_exh/warning",
+            "run_fwd": "[cal1615]p13_di_exh/running_fwd",
+            "run_rev": "[cal1615]p13_di_exh/running_rev",
+            "ready": "[cal1615]p13_di_exh/ready",
+            "ctrl_net": "[cal1615]p13_di_exh/ctrl_from_net",
+            "ref_net": "[cal1615]p13_di_exh/ref_from_net",
+            "at_ref": "[cal1615]p13_di_exh/at_reference",
+            "faulted_inv": false,
+            "warning_inv": false,
+            "run_fwd_inv": false,
+            "run_rev_inv": false,
+            "ready_inv": false,
+            "ctrl_net_inv": false,
+            "ref_net_inv": false,
+            "at_ref_inv": false
+          }
+        }
+      }
+    ]
+  }
+}

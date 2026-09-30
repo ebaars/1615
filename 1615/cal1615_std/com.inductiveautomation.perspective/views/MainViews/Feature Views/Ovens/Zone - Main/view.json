@@ -1,0 +1,74 @@
+{
+  "custom": {},
+  "params": {
+    "zone": 1
+  },
+  "propConfig": {
+    "params.zone": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "type": "ia.container.breakpt",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1200
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "small"
+        },
+        "position": {},
+        "props": {
+          "path": "MainViews/Feature Views/Ovens/Zone - Small",
+          "params": {
+            "zone": 1
+          }
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Ovens/Zone - Large",
+          "params": {
+            "zone": 1
+          },
+          "useDefaultViewWidth": true,
+          "useDefaultViewHeight": true
+        },
+        "propConfig": {
+          "props.params.zone": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.params.zone"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

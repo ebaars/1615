@@ -1,0 +1,142 @@
+{
+  "custom": {
+    "navState": ""
+  },
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 56,
+      "width": 972
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "282px",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "color": "var(--neutral-10)",
+                "fontSize": "12px",
+                "fontWeight": "500",
+                "textAlign": "center"
+              },
+              "text": "View these screens within the Ignition Designer to fully understand how they're constructed. "
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "scope-warning"
+        },
+        "position": {
+          "basis": "32px",
+          "display": false,
+          "shrink": 0
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "session.props.device.type"
+              },
+              "enabled": false,
+              "transforms": [
+                {
+                  "fallback": true,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": "designer",
+                      "output": false
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--info)",
+            "overflow": "visible",
+            "padding": "2px 8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "small"
+            },
+            "props": {
+              "path": "Framework/Header Small Breakpoint"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "large"
+            },
+            "position": {
+              "size": "large"
+            },
+            "props": {
+              "path": "Framework/Header Large Breakpoint"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "breakpoint"
+        },
+        "position": {
+          "basis": "56px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "breakpoint": 900,
+          "style": {
+            "backgroundColor": "var(--neutral-20)",
+            "borderBottom": "1px solid var(--neutral-50)"
+          }
+        },
+        "type": "ia.container.breakpt"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  },
+  "propConfig": {
+    "custom.navState": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "{page.props.path} + \"|\" + {session.custom.navPinned}"
+        }
+      },
+      "onChange": {
+        "enabled": null,
+        "script": "\tif not self.session.custom.navPinned:\n\t\treturn\n\tpageId = self.page.props.pageId\n\tsessionId = self.session.props.id\n\tdef pin():\n\t\timport time\n\t\ttime.sleep(0.4)\n\t\tsystem.perspective.alterDock('Menu', {'show': 'visible', 'content': 'push'}, sessionId=sessionId, pageId=pageId)\n\t\tsystem.perspective.openDock('Menu', sessionId=sessionId, pageId=pageId)\n\t\tsystem.util.getLogger('cal1615.nav').debug('menu re-pinned for ' + str(pageId))\n\tsystem.util.invokeAsynchronous(pin)"
+      }
+    }
+  }
+}

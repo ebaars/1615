@@ -1,0 +1,43 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {},
+  "root": {
+    "type": "ia.container.breakpt",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1200
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "small"
+        },
+        "position": {},
+        "props": {
+          "path": "MainViews/Feature Views/Line/Accumulator TS1 - Small",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Line/Accumulator TS1 - Large",
+          "params": {},
+          "useDefaultViewWidth": true,
+          "useDefaultViewHeight": true
+        }
+      }
+    ]
+  }
+}

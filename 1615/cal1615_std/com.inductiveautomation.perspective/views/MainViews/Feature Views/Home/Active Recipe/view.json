@@ -1,0 +1,214 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "row",
+      "wrap": "wrap",
+      "alignContent": "flex-start",
+      "alignItems": "flex-start",
+      "style": {
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "banner"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Recipe Banner",
+          "params": {},
+          "style": {
+            "height": "40px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "saveAs"
+        },
+        "position": {
+          "basis": "100%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "classes": "cal1615/card",
+            "gap": "8px",
+            "padding": "6px",
+            "margin": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "lbl"
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Save running recipe as:",
+              "style": {
+                "fontWeight": "bold"
+              }
+            }
+          },
+          {
+            "type": "ia.input.text-field",
+            "meta": {
+              "name": "name"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "200px"
+            },
+            "props": {
+              "placeholder": "recipe name"
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "save"
+            },
+            "position": {
+              "basis": "140px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Save As...",
+              "style": {
+                "classes": "cal1615/btn"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated} && len(trim({../name.props.text})) > 0"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tname = self.getSibling('name').props.text.strip()\n\tcal1615.recipes.save(name, cal1615.recipes.readActive())\n\tself.getSibling('name').props.text = ''"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineSettings"
+        },
+        "position": {
+          "basis": "480px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Recipe/Active Line Settings",
+          "params": {},
+          "style": {
+            "height": "452px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone1"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Recipe/Active Zone 1",
+          "params": {},
+          "style": {
+            "height": "116px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone2"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Recipe/Active Zone 2",
+          "params": {},
+          "style": {
+            "height": "116px",
+            "margin": "4px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zone3"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Recipe/Active Zone 3",
+          "params": {},
+          "style": {
+            "height": "116px",
+            "margin": "4px"
+          }
+        }
+      }
+    ]
+  }
+}

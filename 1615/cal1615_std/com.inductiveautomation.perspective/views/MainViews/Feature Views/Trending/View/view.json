@@ -1,0 +1,69 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1709
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\t# This example would remove the selected row from a List component, by re-assigning the List\u0027s data property to the new dataset returned by thedeleteRow function.\n\t\n\tdataset \u003d system.tag.readBlocking(\u0027[cal1615]Trend1Settings\u0027)[0].value\n\t\n\trows \u003d dataset.rowCount\n\tfor row in range(rows):\n\t\tdata \u003d system.dataset.deleteRow(dataset, row)\n\t   \tsystem.tag.writeBlocking(\u0027[cal1615]Trend1Settings\u0027, data)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 34,
+          "width": 127,
+          "x": 268,
+          "y": 609
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "height": 530,
+          "width": 701,
+          "x": 210,
+          "y": 63
+        },
+        "propConfig": {
+          "props.data": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "publishInitial": false,
+                "tagPath": "[cal1615]Trend1Settings"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": 0,
+      "y": 142
+    },
+    "type": "ia.container.coord"
+  }
+}

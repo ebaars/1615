@@ -1,0 +1,594 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed"
+    },
+    "children": [
+      {
+        "type": "ia.display.image",
+        "meta": {
+          "name": "drawing"
+        },
+        "position": {
+          "x": 16,
+          "y": 76,
+          "width": 1645,
+          "height": 492
+        },
+        "props": {
+          "source": "/system/images/Custom/cal1615/line_overview.png",
+          "fit": {
+            "mode": "fill"
+          },
+          "style": {
+            "classes": "cal1615/drawing"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "recipeBanner"
+        },
+        "position": {
+          "x": 512,
+          "y": 13,
+          "width": 737,
+          "height": 34
+        },
+        "props": {
+          "path": "Components/Main/Recipe Banner",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "entryAccumulator"
+        },
+        "position": {
+          "x": 240,
+          "y": 76,
+          "width": 246,
+          "height": 186
+        },
+        "props": {
+          "path": "Components/Main/Entry Accumulator",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderAccumulator"
+        },
+        "position": {
+          "x": 1293,
+          "y": 76,
+          "width": 233,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Main/Winder Accumulator",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "accFullLS"
+        },
+        "position": {
+          "x": 515,
+          "y": 166,
+          "width": 100,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Full LS",
+            "tagPath": "[cal1615]p20_di_acc_full",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "accEmptyLS"
+        },
+        "position": {
+          "x": 515,
+          "y": 463,
+          "width": 100,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Empty LS",
+            "tagPath": "[cal1615]p20_di_acc_empty",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoffFootage"
+        },
+        "position": {
+          "x": 38,
+          "y": 278,
+          "width": 163,
+          "height": 88
+        },
+        "props": {
+          "path": "Components/Main/Let-Off Footage",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "feedRollNip"
+        },
+        "position": {
+          "x": 394,
+          "y": 341,
+          "width": 94,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tagPath": "[cal1615]p20_do_close_nip",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts1Nip"
+        },
+        "position": {
+          "x": 618,
+          "y": 341,
+          "width": 96,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tagPath": "[cal1615]p22_do_close_nip_roll",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "zoneTable"
+        },
+        "position": {
+          "x": 843,
+          "y": 172,
+          "width": 399,
+          "height": 152
+        },
+        "props": {
+          "path": "Components/Main/Zone Table",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "slitter"
+        },
+        "position": {
+          "x": 1293,
+          "y": 218,
+          "width": 115,
+          "height": 128
+        },
+        "props": {
+          "path": "Components/Main/Slitter",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "upperPoly"
+        },
+        "position": {
+          "x": 1411,
+          "y": 218,
+          "width": 115,
+          "height": 128
+        },
+        "props": {
+          "path": "Components/Main/Upper Poly",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderFootage"
+        },
+        "position": {
+          "x": 1510,
+          "y": 278,
+          "width": 153,
+          "height": 88
+        },
+        "props": {
+          "path": "Components/Main/Winder Footage",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoffTurret"
+        },
+        "position": {
+          "x": 38,
+          "y": 483,
+          "width": 139,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Turret in Position",
+            "tagPath": "[cal1615]p20_di_turret_pos",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "platenClosed"
+        },
+        "position": {
+          "x": 223,
+          "y": 483,
+          "width": 131,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Platen Closed",
+            "tagPath": "[cal1615]p21_di_platen_not_closed",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": true
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tankUp"
+        },
+        "position": {
+          "x": 744,
+          "y": 507,
+          "width": 92,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Tank Up",
+            "tagPath": "[cal1615]p23_di_impreg_tank_up",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "safetyPins"
+        },
+        "position": {
+          "x": 928,
+          "y": 462,
+          "width": 231,
+          "height": 60
+        },
+        "props": {
+          "path": "Components/Main/Safety Pins",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderTurret"
+        },
+        "position": {
+          "x": 1526,
+          "y": 483,
+          "width": 136,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Turret in Position",
+            "tagPath": "[cal1615]turret_in_position",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoff"
+        },
+        "position": {
+          "x": 38,
+          "y": 577,
+          "width": 136,
+          "height": 176
+        },
+        "props": {
+          "path": "Components/Main/Let-Off",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "splicePress"
+        },
+        "position": {
+          "x": 180,
+          "y": 577,
+          "width": 267,
+          "height": 172
+        },
+        "props": {
+          "path": "Components/Main/Splice Press",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tensionStand1"
+        },
+        "position": {
+          "x": 560,
+          "y": 577,
+          "width": 136,
+          "height": 176
+        },
+        "props": {
+          "path": "Components/Main/Tension Stand 1",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "impregnation"
+        },
+        "position": {
+          "x": 722,
+          "y": 577,
+          "width": 136,
+          "height": 224
+        },
+        "props": {
+          "path": "Components/Main/Impregnation",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "coolingRolls"
+        },
+        "position": {
+          "x": 1143,
+          "y": 577,
+          "width": 129,
+          "height": 128
+        },
+        "props": {
+          "path": "Components/Main/Cooling Rolls",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "tensionStand2"
+        },
+        "position": {
+          "x": 1276,
+          "y": 577,
+          "width": 129,
+          "height": 176
+        },
+        "props": {
+          "path": "Components/Main/Tension Stand 2",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lowerPoly"
+        },
+        "position": {
+          "x": 1409,
+          "y": 577,
+          "width": 120,
+          "height": 128
+        },
+        "props": {
+          "path": "Components/Main/Lower Poly",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winder"
+        },
+        "position": {
+          "x": 1533,
+          "y": 577,
+          "width": 130,
+          "height": 176
+        },
+        "props": {
+          "path": "Components/Main/Winder",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ovenControl"
+        },
+        "position": {
+          "x": 164,
+          "y": 839,
+          "width": 327,
+          "height": 158
+        },
+        "props": {
+          "path": "Components/Main/Oven Control",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineControl"
+        },
+        "position": {
+          "x": 501,
+          "y": 839,
+          "width": 283,
+          "height": 130
+        },
+        "props": {
+          "path": "Components/Main/Line Control",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineSpeed"
+        },
+        "position": {
+          "x": 795,
+          "y": 839,
+          "width": 283,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Main/Line Speed",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "production"
+        },
+        "position": {
+          "x": 1089,
+          "y": 839,
+          "width": 272,
+          "height": 122
+        },
+        "props": {
+          "path": "Components/Main/Production",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "faultReset"
+        },
+        "position": {
+          "x": 1433,
+          "y": 850,
+          "width": 218,
+          "height": 60
+        },
+        "props": {
+          "text": "Fault Reset",
+          "style": {
+            "classes": "cal1615/btn-stop"
+          }
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "{session.props.auth.authenticated}"
+              }
+            }
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\ttag = '[cal1615]p02_dint_from_hmi/global_6_/bit_0'\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag=tag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

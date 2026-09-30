@@ -3958,7 +3958,7 @@
           "tagType": "AtomicTag",
           "valueSource": "opc",
           "historyEnabled": true,
-          "historyProvider": "mySQL"
+          "historyProvider": "myOracle"
         },
         {
           "dataType": "Float4",
@@ -4008,7 +4008,7 @@
           "tagType": "AtomicTag",
           "valueSource": "opc",
           "historyEnabled": true,
-          "historyProvider": "mySQL"
+          "historyProvider": "myOracle"
         },
         {
           "dataType": "Float4",
@@ -4096,7 +4096,7 @@
           "tagType": "AtomicTag",
           "valueSource": "opc",
           "historyEnabled": true,
-          "historyProvider": "mySQL"
+          "historyProvider": "myOracle"
         },
         {
           "dataType": "Float4",
@@ -4138,7 +4138,7 @@
           "tagType": "AtomicTag",
           "valueSource": "opc",
           "historyEnabled": true,
-          "historyProvider": "mySQL"
+          "historyProvider": "myOracle"
         },
         {
           "dataType": "Float4",
@@ -4264,7 +4264,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Int4",
@@ -5692,7 +5692,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Float4",
@@ -6116,7 +6116,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Boolean",
@@ -6198,7 +6198,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Float4",
@@ -6614,7 +6614,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Boolean",
@@ -6680,7 +6680,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Float4",
@@ -7052,7 +7052,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Boolean",
@@ -7078,7 +7078,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Float4",
@@ -7576,7 +7576,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Boolean",
@@ -7656,7 +7656,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Boolean",
@@ -7800,7 +7800,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "name": "p22r10_pid_psn",
@@ -8364,7 +8364,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "dataType": "Float4",
@@ -8876,7 +8876,7 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "historyEnabled": true,
-      "historyProvider": "mySQL"
+      "historyProvider": "myOracle"
     },
     {
       "name": "p29r10_pid_psn",

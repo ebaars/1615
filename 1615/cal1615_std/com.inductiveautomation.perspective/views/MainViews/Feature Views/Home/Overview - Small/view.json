@@ -1,0 +1,331 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 1400
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "recipeBanner"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Recipe Banner",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineControl"
+        },
+        "position": {
+          "basis": "130px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Line Control",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineSpeed"
+        },
+        "position": {
+          "basis": "116px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Line Speed",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ovenControl"
+        },
+        "position": {
+          "basis": "158px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Oven Control",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoff"
+        },
+        "position": {
+          "basis": "176px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Let-Off",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "letoffFootage"
+        },
+        "position": {
+          "basis": "88px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Let-Off Footage",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "splice"
+        },
+        "position": {
+          "basis": "172px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Splice Press",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "entryAcc"
+        },
+        "position": {
+          "basis": "186px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Entry Accumulator",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts1"
+        },
+        "position": {
+          "basis": "176px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Tension Stand 1",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "impreg"
+        },
+        "position": {
+          "basis": "224px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Impregnation",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "cooling"
+        },
+        "position": {
+          "basis": "128px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Cooling Rolls",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "ts2"
+        },
+        "position": {
+          "basis": "176px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Tension Stand 2",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "slitter"
+        },
+        "position": {
+          "basis": "128px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Slitter",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "upperPoly"
+        },
+        "position": {
+          "basis": "128px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Upper Poly",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lowerPoly"
+        },
+        "position": {
+          "basis": "128px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Lower Poly",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderAcc"
+        },
+        "position": {
+          "basis": "116px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Winder Accumulator",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winder"
+        },
+        "position": {
+          "basis": "176px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Winder",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "winderFootage"
+        },
+        "position": {
+          "basis": "88px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Winder Footage",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "production"
+        },
+        "position": {
+          "basis": "122px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Main/Production",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "faultReset"
+        },
+        "position": {
+          "basis": "56px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Fault Reset",
+          "style": {
+            "classes": "cal1615/btn-stop"
+          }
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "{session.props.auth.authenticated}"
+              }
+            }
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\ttag = '[cal1615]p02_dint_from_hmi/global_6_/bit_0'\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag=tag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

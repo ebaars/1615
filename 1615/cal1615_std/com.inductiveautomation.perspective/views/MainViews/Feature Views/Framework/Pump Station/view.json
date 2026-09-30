@@ -1,0 +1,152 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 321,
+      "width": 441
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Pump 1"
+        },
+        "position": {
+          "height": 132,
+          "width": 170.01,
+          "x": 10.01,
+          "y": 10.02
+        },
+        "props": {
+          "params": {
+            "tagPath": "[Sample_Tags]Ramp/Ramp5"
+          },
+          "path": "Ignition 101/Feature Views/Framework/Pump",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "1px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Pump 2"
+        },
+        "position": {
+          "height": 132,
+          "width": 170.01,
+          "x": 10.01,
+          "y": 179.98
+        },
+        "props": {
+          "params": {
+            "tagPath": "[Sample_Tags]Ramp/Ramp6"
+          },
+          "path": "Ignition 101/Feature Views/Framework/Pump",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "1px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Vessel"
+        },
+        "position": {
+          "height": 302,
+          "width": 195.98,
+          "x": 236.99,
+          "y": 10.02
+        },
+        "propConfig": {
+          "props.value.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[Sample_Tags]Sine/Sine4"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} + 23",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "animationSpeed": 150,
+          "bottom": "rounded",
+          "displayAgitator": false,
+          "label": {
+            "location": "hidden"
+          },
+          "value": {
+            "capacity": 50,
+            "location": "hidden"
+          }
+        },
+        "type": "ia.symbol.vessel"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "pipes": [
+        {
+          "appearance": "auto",
+          "end": "none",
+          "fill": "#6e9be3",
+          "flanges": true,
+          "lineVariant": "solid",
+          "name": "Pipe",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "x": 119.51,
+                        "y": 60.86
+                      }
+                    ],
+                    "x": 223.5,
+                    "y": 60.86
+                  },
+                  {
+                    "connections": [
+                      {
+                        "x": 119.51,
+                        "y": 232.98
+                      }
+                    ],
+                    "x": 223.5,
+                    "y": 232.98
+                  }
+                ],
+                "x": 223.5,
+                "y": 133.99
+              }
+            ],
+            "x": 254.99,
+            "y": 133.99
+          },
+          "start": "none",
+          "stroke": "",
+          "visible": true,
+          "width": 10
+        }
+      ]
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "AlarmStatusTable"
+        },
+        "position": {
+          "basis": "800px"
+        },
+        "props": {
+          "columns": {
+            "active": {
+              "displayPath": {
+                "enabled": false
+              },
+              "label": {
+                "enabled": true
+              },
+              "priority": {
+                "enabled": false
+              },
+              "source": {
+                "enabled": false
+              },
+              "state": {
+                "enabled": false
+              }
+            }
+          },
+          "filters": {
+            "active": {
+              "priorities": {
+                "low": false,
+                "medium": false
+              },
+              "states": {
+                "clearUnacked": false
+              }
+            }
+          },
+          "toolbar": {
+            "enableFilter": false,
+            "enableFilterResults": false,
+            "enabled": false
+          }
+        },
+        "type": "ia.display.alarmstatustable"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.tag.write(\u0027[cal1615]Line Main/Control/pb_fault_reset\u0027, 1)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "34px",
+              "breakpoints": [
+                {
+                  "colIndex": 9,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 3
+                },
+                {
+                  "colIndex": 5,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 3
+                },
+                {
+                  "colIndex": 5,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 2
+                }
+              ],
+              "height": 60
+            },
+            "props": {
+              "text": "Reset"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "ColumnContainer"
+        },
+        "type": "ia.container.column"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

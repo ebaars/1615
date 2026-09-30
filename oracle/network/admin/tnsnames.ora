@@ -1,0 +1,16 @@
+# Local Oracle XE 21c (installed in E:\orcl, service OracleServiceXE, listener on port 1521).
+# TNS_ADMIN (user environment variable) points at this folder.
+
+# Pluggable database - use this one for application data.
+XEPDB1 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = XEPDB1))
+  )
+
+# Container database (administration).
+XE =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = XE))
+  )

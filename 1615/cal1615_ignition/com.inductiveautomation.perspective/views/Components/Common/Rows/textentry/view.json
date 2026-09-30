@@ -157,7 +157,10 @@
         "props": {
           "direction": "row",
           "justify": "center",
-          "alignItems": "center"
+          "alignItems": "stretch",
+          "style": {
+            "height": "22px"
+          }
         },
         "children": [
           {
