@@ -19,6 +19,18 @@
           "tagType": "AtomicTag",
           "valueSource": "memory",
           "value": ""
+        },
+        {
+          "name": "rto_mode",
+          "tagType": "AtomicTag",
+          "valueSource": "expr",
+          "dataType": "String",
+          "expression": "if(!{[cal1615]p01r14_oxidizer_heart_beat_ok}, \"No Comm\", if({[cal1615]p01_int_from_oxidizer_0_/bit_6}, \"Fault\", if({[cal1615]p01_int_from_oxidizer_0_/bit_7}, \"Shutdown\", if({[cal1615]p01_int_from_oxidizer_0_/bit_0}, \"Combustion Purge\", if({[cal1615]p01_int_from_oxidizer_0_/bit_1}, \"Purge\", if({[cal1615]p01_int_from_oxidizer_0_/bit_5}, \"Bake\", if({[cal1615]p01_int_from_oxidizer_0_/bit_2}, \"Heat\", if({[cal1615]p01_int_from_oxidizer_0_/bit_3}, \"Soak\", if({[cal1615]p01_int_from_oxidizer_0_/bit_4}, \"Run\", \"Idle\")))))))))",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
         }
       ]
     },
@@ -14332,6 +14344,313 @@
           ]
         }
       ]
+    },
+    {
+      "name": "p01_int_from_oxidizer_0_",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "Boolean",
+          "name": "bit_0",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].0",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Combustion Purge"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_1",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].1",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Purge"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_2",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].2",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Heat"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_3",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].3",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Soak"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].4",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Run"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_5",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].5",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Bake"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_6",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].6",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Fault"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_7",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].7",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Shutdown"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_9",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].9",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Oxidizer Ready"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_13",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].13",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Oven Purge"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_14",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].14",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Process Block Open"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "bit_15",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[0].15",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "1/3 Flow Fresh Air"
+        }
+      ]
+    },
+    {
+      "name": "p01_int_from_oxidizer_1_",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "Boolean",
+          "name": "bit_0",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_int_from_oxidizer[1].0",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "documentation": "Oven Purge Damper Closed"
+        }
+      ]
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_11_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[11]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-101 Inlet",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_12_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[12]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer Delta Temperature",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_13_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[13]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-103 Chamber",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_14_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[14]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-104 Chamber",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_15_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[15]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-105 Exhaust",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_16_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[16]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-107 Combustion Air",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_17_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[17]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-108 Bed",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_18_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[18]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer TE-109 Bed",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_real_to_hmi_19_",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_real_to_hmi[19]",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer Mass Flow [SCFM]",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Float4",
+      "name": "p01_ai_prs",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_ai_prs",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer Differential Pressure",
+      "historyEnabled": true,
+      "historyProvider": "myOracle",
+      "sampleMode": "Periodic",
+      "historySampleRate": 10,
+      "historySampleRateUnits": "SEC",
+      "historyMaxAge": 10,
+      "historyMaxAgeUnits": "SEC"
+    },
+    {
+      "dataType": "Boolean",
+      "name": "p01r14_oxidizer_heart_beat_ok",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01r14_oxidizer_heart_beat_ok",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Oxidizer communication (heartbeat) OK"
+    },
+    {
+      "dataType": "Boolean",
+      "name": "p01r13_permissive_oxidizer",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01r13_permissive_oxidizer",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc",
+      "documentation": "Line start permissive from the oxidizer"
     }
   ]
 }

@@ -1,0 +1,908 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 340,
+      "height": 226
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "RTO Status",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "mode"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Mode",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "status"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]HMI/rto_mode",
+                    "bidirectional": false
+                  }
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]HMI/rto_mode",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "map",
+                      "inputType": "scalar",
+                      "outputType": "color",
+                      "mappings": [
+                        {
+                          "input": "Run",
+                          "output": "#00E000"
+                        },
+                        {
+                          "input": "Heat",
+                          "output": "#FFD040"
+                        },
+                        {
+                          "input": "Soak",
+                          "output": "#FFD040"
+                        },
+                        {
+                          "input": "Bake",
+                          "output": "#FFA040"
+                        },
+                        {
+                          "input": "Purge",
+                          "output": "#80C8FF"
+                        },
+                        {
+                          "input": "Combustion Purge",
+                          "output": "#80C8FF"
+                        },
+                        {
+                          "input": "Fault",
+                          "output": "#FF2020"
+                        },
+                        {
+                          "input": "No Comm",
+                          "output": "#FF2020"
+                        },
+                        {
+                          "input": "Shutdown",
+                          "output": "#B0B0B0"
+                        },
+                        {
+                          "input": "Idle",
+                          "output": "#D0D0D0"
+                        }
+                      ],
+                      "fallback": "#FFFFFF"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "ready"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Oxidizer Ready",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Ready",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01_int_from_oxidizer_0_/bit_9",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "comm"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Communication",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "OK",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01r14_oxidizer_heart_beat_ok",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#FF2020"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "permissive"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Line Start Permissive",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "OK",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01r13_permissive_oxidizer",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "block"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Process Block Open",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Open",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01_int_from_oxidizer_0_/bit_14",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "damper"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Oven Purge Damper Closed",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "Closed",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01_int_from_oxidizer_1_/bit_0",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#FFA040"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "fresh"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "1/3 Flow Fresh Air",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "lamps"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "row",
+              "style": {
+                "gap": "4px"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "lamp"
+                },
+                "position": {
+                  "grow": 1,
+                  "basis": "0"
+                },
+                "props": {
+                  "text": "On",
+                  "style": {
+                    "classes": "cal1615/led"
+                  }
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "type": "tag",
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[cal1615]p01_int_from_oxidizer_0_/bit_15",
+                        "bidirectional": false
+                      },
+                      "transforms": [
+                        {
+                          "type": "map",
+                          "inputType": "scalar",
+                          "outputType": "color",
+                          "mappings": [
+                            {
+                              "input": true,
+                              "output": "#00E000"
+                            },
+                            {
+                              "input": false,
+                              "output": "#D0D0D0"
+                            }
+                          ],
+                          "fallback": "#FF00FF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

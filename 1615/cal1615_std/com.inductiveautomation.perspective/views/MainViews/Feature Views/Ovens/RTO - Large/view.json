@@ -1,0 +1,480 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 1640,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed",
+      "style": {
+        "classes": "cal1615/page"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "title"
+        },
+        "position": {
+          "x": 507,
+          "y": 7,
+          "width": 667,
+          "height": 40
+        },
+        "props": {
+          "text": "RTO (Oxidizer)",
+          "style": {
+            "classes": "cal1615/page-title"
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "status"
+        },
+        "position": {
+          "x": 60,
+          "y": 56,
+          "width": 340,
+          "height": 226
+        },
+        "props": {
+          "path": "Components/Oven/RTO Status",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "flow"
+        },
+        "position": {
+          "x": 60,
+          "y": 292,
+          "width": 340,
+          "height": 86
+        },
+        "props": {
+          "path": "Components/Oven/RTO Flow",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "temps"
+        },
+        "position": {
+          "x": 420,
+          "y": 56,
+          "width": 340,
+          "height": 254
+        },
+        "props": {
+          "path": "Components/Oven/RTO Temperatures",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.chart.powerchart",
+        "meta": {
+          "name": "trend"
+        },
+        "position": {
+          "x": 1033,
+          "y": 56,
+          "width": 603,
+          "height": 522
+        },
+        "props": {
+          "config": {
+            "measureOfTime": "hours",
+            "unitOfTime": 1,
+            "visibility": {
+              "showTagBrowser": false
+            }
+          },
+          "pens": [
+            {
+              "axis": "",
+              "name": "TE-103 Chamber",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_real_to_hmi_13_"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#1F77B4",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#1F77B4",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "TE-104 Chamber",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_real_to_hmi_14_"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#D62728",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#D62728",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "TE-101 Inlet",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_real_to_hmi_11_"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#2CA02C",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#2CA02C",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "TE-105 Exhaust",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_real_to_hmi_15_"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FF7F0E",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FF7F0E",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "axis": "",
+              "name": "Delta T",
+              "plot": 0,
+              "enabled": true,
+              "selectable": true,
+              "visible": true,
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_real_to_hmi_12_"
+              },
+              "display": {
+                "type": "line",
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "normal": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 0.9
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 0.9,
+                      "width": 1.5
+                    }
+                  },
+                  "highlighted": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1.5
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#9467BD",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#9467BD",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1.5
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "style": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "arrow_left"
+        },
+        "position": {
+          "x": 0,
+          "y": 330,
+          "width": 36,
+          "height": 90
+        },
+        "props": {
+          "path": "Framework/Carousel Arrow",
+          "params": {
+            "direction": "prev",
+            "sequence": [
+              "/zone/1",
+              "/zone/2",
+              "/zone/3",
+              "/advanced-cooling",
+              "/rto"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

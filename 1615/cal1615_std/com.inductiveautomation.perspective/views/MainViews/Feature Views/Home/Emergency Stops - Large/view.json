@@ -54,6 +54,16 @@
           "style": {
             "classes": "cal1615/drawing"
           }
+        },
+        "propConfig": {
+          "props.style.filter": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if(indexOf({session.props.theme}, \"dark\") >= 0, \"invert(0.88) hue-rotate(180deg)\", \"none\")"
+              }
+            }
+          }
         }
       },
       {

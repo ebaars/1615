@@ -83,6 +83,10 @@
     "/zone/:zone": {
       "title": "Zone",
       "viewPath": "MainViews/Feature Views/Ovens/Zone - Main"
+    },
+    "/rto": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Ovens/RTO - Main"
     }
   },
   "sharedDocks": {

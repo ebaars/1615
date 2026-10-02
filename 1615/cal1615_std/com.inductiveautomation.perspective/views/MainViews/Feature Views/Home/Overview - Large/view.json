@@ -36,6 +36,16 @@
           "style": {
             "classes": "cal1615/drawing"
           }
+        },
+        "propConfig": {
+          "props.style.filter": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if(indexOf({session.props.theme}, \"dark\") >= 0, \"invert(0.88) hue-rotate(180deg)\", \"none\")"
+              }
+            }
+          }
         }
       },
       {
@@ -587,6 +597,22 @@
               }
             }
           }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "rto"
+        },
+        "position": {
+          "x": 874,
+          "y": 577,
+          "width": 256,
+          "height": 226
+        },
+        "props": {
+          "path": "Components/Main/RTO",
+          "params": {}
         }
       }
     ]

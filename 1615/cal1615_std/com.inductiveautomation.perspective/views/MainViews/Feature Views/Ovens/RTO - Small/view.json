@@ -1,0 +1,70 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 400,
+      "height": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "6px",
+        "overflowY": "auto"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "status"
+        },
+        "position": {
+          "basis": "226px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/RTO Status",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "temps"
+        },
+        "position": {
+          "basis": "254px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/RTO Temperatures",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "flow"
+        },
+        "position": {
+          "basis": "86px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "Components/Oven/RTO Flow",
+          "params": {}
+        }
+      }
+    ]
+  }
+}

@@ -265,7 +265,8 @@
               "/zone/1",
               "/zone/2",
               "/zone/3",
-              "/advanced-cooling"
+              "/advanced-cooling",
+              "/rto"
             ]
           }
         }
