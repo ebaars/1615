@@ -1,15 +1,16 @@
 {
-  "scope": "G",
+  "scope": "A",
   "version": 1,
   "restricted": false,
   "overridable": true,
   "files": [
-    "view.json"
+    "code.py"
   ],
   "attributes": {
     "lastModification": {
       "actor": "claude",
-      "timestamp": "2026-09-29T00:00:00Z"
-    }
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    "hintScope": 2
   }
 }

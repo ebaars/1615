@@ -1,0 +1,2451 @@
+{
+  "custom": {
+    "note": "Imported from cal2016 (PIDE + PIDE_AUTOTUNE). Not wired: the cal1615 PLC runs classic PID. Needs PIDE loops with PIDE_AUTOTUNE tags ([cal1615]Oven {num} {UpperLower} PID Control / PID Autotune)."
+  },
+  "params": {
+    "UpperLower": "Upper",
+    "num": 1
+  },
+  "propConfig": {
+    "params.UpperLower": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.num": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "props.dropConfig.udts": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[cal1615]Oven 1 Lower PID Autotune"
+        },
+        "type": "tag"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 798,
+      "width": 827
+    },
+    "dropConfig": {}
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 177.97,
+          "x": 22.99,
+          "y": 5.98
+        },
+        "props": {
+          "text": "1. Autontune Tag:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "height": 32,
+          "width": 166.97,
+          "x": 162.01,
+          "y": 5.98
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tr = value['Ready']\n\ta = value['Aquired']\n\tif (r == True) and (a == True):\n\t\ts = 'Aquired'\t\n\telif (a == True) and not (r == True):\n\t\ts = 'Another PID'\n\telse:\n\t\ts = 'Available'\t\t\n\treturn s",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "#\tself.view.custom.pide_ctrl.AtuneAcquire = True\n\tself.parent.custom.control.AtuneAcquire = True\n\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 35.03,
+          "width": 175.99,
+          "x": 42.01,
+          "y": 49.48
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--neutral-40)"
+          },
+          "text": "Acquire"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "#\tself.view.custom.pide_ctrl.AtuneUnacquire = True\n\tself.parent.custom.control.AtuneUnacquire = True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_0"
+        },
+        "position": {
+          "height": 35.03,
+          "width": 175.99,
+          "x": 42.01,
+          "y": 94
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-40)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-40)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Release"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "height": 35.03,
+          "width": 176.98,
+          "x": 369.5,
+          "y": 49.48
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ta = value['Aquired']\n\tr = value['Ready']\n\t\n\tif (a==True) and (r ==True):\n\t\tret = True\n\telse:\n\t\tret = False\t\n\treturn ret",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.ProcessType"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "Temperature",
+              "value": 0
+            },
+            {
+              "label": "Pressure",
+              "value": 1
+            },
+            {
+              "label": "Flow",
+              "value": 2
+            },
+            {
+              "label": "Level",
+              "value": 3
+            },
+            {
+              "label": "Position",
+              "value": 4
+            },
+            {
+              "label": "Velocity",
+              "value": 5
+            },
+            {
+              "label": "Integrating",
+              "value": 6
+            },
+            {
+              "label": "Nonintegrating",
+              "value": 7
+            },
+            {
+              "label": "Unknown",
+              "value": 8
+            }
+          ]
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "height": 32,
+          "width": 177.97,
+          "x": 280.02,
+          "y": 5.98
+        },
+        "props": {
+          "text": "2. Inputs"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_3"
+        },
+        "position": {
+          "height": 32,
+          "width": 99.98,
+          "x": 269.02,
+          "y": 50.99
+        },
+        "props": {
+          "style": {
+            "classes": "components/cal_entry_field_title"
+          },
+          "text": "Process Type:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 421.52,
+          "y": 94
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ta = value['Aquired']\n\tr = value['Ready']\n\t\n\tif (a==True) and (r ==True):\n\t\tret = \"#08FFFF\"\n\telse:\n\t\tret = \"#ffffff\"\n\treturn ret",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.PVTuneLimit"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_4"
+        },
+        "position": {
+          "height": 32,
+          "width": 113.96,
+          "x": 269.02,
+          "y": 94
+        },
+        "props": {
+          "style": {
+            "classes": "components/cal_entry_field_title"
+          },
+          "text": "PV Change Limit"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_5"
+        },
+        "position": {
+          "height": 32,
+          "width": 113.96,
+          "x": 269.02,
+          "y": 133.98
+        },
+        "props": {
+          "style": {
+            "classes": "components/cal_entry_field_title"
+          },
+          "text": "CV Stop Size"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_1"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 421.52,
+          "y": 133.98
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Aquired": "{parent.custom.autotune.ATuneAcquired}",
+                  "Ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ta = value['Aquired']\n\tr = value['Ready']\n\t\n\tif (a==True) and (r ==True):\n\t\tret = \"#08FFFF\"\n\telse:\n\t\tret = \"#ffffff\"\n\treturn ret",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.StepSize"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_6"
+        },
+        "position": {
+          "height": 32,
+          "width": 177.97,
+          "x": 594.03,
+          "y": 5.98
+        },
+        "props": {
+          "text": "3. Tune"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.parent.custom.control.AtuneStart = True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_1"
+        },
+        "position": {
+          "height": 35.03,
+          "width": 175.99,
+          "x": 588.99,
+          "y": 49.48
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneAcquired} && {parent.custom.control.AtuneReady}\r\n&&!{parent.custom.control.AtuneOn}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--neutral-40)"
+          },
+          "text": "Start"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.parent.custom.control.AtuneAbort = True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_2"
+        },
+        "position": {
+          "height": 35.03,
+          "width": 175.99,
+          "x": 588.99,
+          "y": 94
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneAcquired} && {parent.custom.control.AtuneOn}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "var(--neutral-30)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "var(--neutral-40)"
+          },
+          "text": "Abort"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label_7"
+        },
+        "position": {
+          "height": 32,
+          "width": 166.97,
+          "x": 655.98,
+          "y": 5.51
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "aborted": "{parent.custom.control.AtuneAborted}",
+                  "done": "{parent.custom.control.AtuneDone}",
+                  "on": "{parent.custom.control.AtuneOn}",
+                  "ready": "{parent.custom.control.AtuneReady}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\taborted = value['aborted']\n\tdone = value['done']\n\ton = value['on']\n\tready = value['ready']\n\tif (aborted == True):\n\t\ts = 'Aborted'\t\n\telif (done == True):\n\t\ts = 'Completed'\n\telif (on == True):\n\t\ts = 'In Progress'\n\telif (ready == False):\n\t\ts = \"\"\t\t\t\n\telse:\n\t\ts = 'Ready'\t\t\n\treturn s",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold"
+          },
+          "textStyle": {
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_8"
+        },
+        "position": {
+          "height": 32,
+          "width": 177.97,
+          "x": 22.99,
+          "y": 186.01
+        },
+        "props": {
+          "text": "Status"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_9"
+        },
+        "position": {
+          "height": 32,
+          "width": 89.98,
+          "x": 26.96,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.AtuneStatus} = 0"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "OK"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_10"
+        },
+        "position": {
+          "height": 32,
+          "width": 89.98,
+          "x": 26.96,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "ATune Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_11"
+        },
+        "position": {
+          "height": 32,
+          "width": 131.99,
+          "x": 26.96,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVWindupFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Windup Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_12"
+        },
+        "position": {
+          "height": 32,
+          "width": 131.99,
+          "x": 26.96,
+          "y": 346.01
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVLimitsFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Limits Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_13"
+        },
+        "position": {
+          "height": 32,
+          "width": 131.99,
+          "x": 26.96,
+          "y": 385.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVInitFault}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Init Fault"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_14"
+        },
+        "position": {
+          "height": 32,
+          "width": 131.99,
+          "x": 217,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.CVChanged}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "CV Changes"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_15"
+        },
+        "position": {
+          "height": 32,
+          "width": 151.01,
+          "x": 217,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.EUSpanChanged}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "EU Span Changed"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_16"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 217,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.PVChangeTooSmall}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "PV Change too Small"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_17"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 217,
+          "y": 346.01
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.PVOutOfLimit}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "PV Out of Limit"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_18"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 217,
+          "y": 385.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.PVNotSettled}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "PV Not Settled"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_20"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 406.97,
+          "y": 346.01
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.StepSizeTooSmall}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Step Size too Small"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_21"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 406.97,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.StepSizeZero}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Step Size Zero"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_22"
+        },
+        "position": {
+          "height": 32,
+          "width": 151.01,
+          "x": 406.97,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.GainTooSmall}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Gain too Small"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_23"
+        },
+        "position": {
+          "height": 32,
+          "width": 131.99,
+          "x": 406.97,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.GainTooLarge}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Gain too Large"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_24"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 617.02,
+          "y": 306.03
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.LongDeadTime}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Long Deadtime"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_25"
+        },
+        "position": {
+          "height": 32,
+          "width": 167.96,
+          "x": 617.02,
+          "y": 265.97
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ATuneTimedOut}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "ATune Timed Out"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_26"
+        },
+        "position": {
+          "height": 32,
+          "width": 151.01,
+          "x": 617.02,
+          "y": 225.99
+        },
+        "propConfig": {
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "expression": "{parent.custom.autotune.ModeInv}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-30)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-100)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Mode Inv"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_19"
+        },
+        "position": {
+          "height": 32,
+          "width": 177.97,
+          "x": 13.98,
+          "y": 436.98
+        },
+        "props": {
+          "text": "4. Gains"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 165.98,
+          "y": 512
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.PGainTunedSlow"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_27"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 165.98,
+          "y": 466.03
+        },
+        "props": {
+          "text": "Proportional"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_28"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 312.11,
+          "y": 466.03
+        },
+        "props": {
+          "text": "Integral"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_29"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 453.11,
+          "y": 466.03
+        },
+        "props": {
+          "text": "Derivative"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_2"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 165.98,
+          "y": 555.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.PGainTunedMed"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_3"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 165.98,
+          "y": 600.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.PGainTunedFast"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_4"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 312.11,
+          "y": 555.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.IGainTunedMed"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_5"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 312.11,
+          "y": 600.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.IGainTunedFast"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_6"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 312.11,
+          "y": 512
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.IGainTunedSlow"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_7"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 453.11,
+          "y": 600.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.DGainTunedFast"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_8"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 453.11,
+          "y": 555.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.DGainTunedMed"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_9"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 453.11,
+          "y": 512
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.DGainTunedSlow"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "RadioGroup"
+        },
+        "position": {
+          "height": 167.02,
+          "width": 154.98,
+          "x": 8.02,
+          "y": 506.97
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.ResponseSpeed"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "radios": [
+            {
+              "selected": true,
+              "text": "Slow",
+              "value": 0
+            },
+            {
+              "selected": false,
+              "text": "Medium",
+              "value": 1
+            },
+            {
+              "selected": false,
+              "text": "Fast",
+              "value": 2
+            },
+            {
+              "selected": false,
+              "text": "Current",
+              "value": -1
+            }
+          ]
+        },
+        "type": "ia.input.radio-group"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_10"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 453.11,
+          "y": 647.02
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.control.DGain"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_11"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 312.11,
+          "y": 647.02
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.control.IGain"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_12"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 165.98,
+          "y": 647.02
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.control.PGain"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_30"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 642.99,
+          "y": 466.03
+        },
+        "props": {
+          "text": "Process Model"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_31"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 642.99,
+          "y": 504.02
+        },
+        "props": {
+          "text": "Time Constant:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_13"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 642.99,
+          "y": 528.04
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.TimeConstant"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_32"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 642.99,
+          "y": 566.02
+        },
+        "props": {
+          "text": "Deadtime:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_14"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 642.99,
+          "y": 589.96
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.DeadTime"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_33"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 642.99,
+          "y": 621.96
+        },
+        "props": {
+          "text": "Gain:"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_15"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 642.99,
+          "y": 647.02
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.Gain"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "containerStyle": {
+            "classes": "components/cal_entry_field"
+          },
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "classes": "components/cal_entry_field",
+            "color": "#000000"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.parent.custom.autotune.pb_pide_manual = True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_3"
+        },
+        "position": {
+          "height": 35.03,
+          "rotate": {
+            "anchor": "25% -36%"
+          },
+          "width": 175.99,
+          "x": 588.99,
+          "y": 749.48
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.ss_pide_manual"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--warningSecondary)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--success)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.ss_pide_manual"
+              },
+              "transforms": [
+                {
+                  "fallback": "PID in Manual",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "PID in Auto"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.autotune.ss_pide_manual"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-100)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-10)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_16"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 165.98,
+          "y": 704
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.user.roles[0]"
+              },
+              "transforms": [
+                {
+                  "fallback": "#ffffff",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": "Administrator",
+                      "output": "#08FFFF"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.hmi_kp"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_17"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 312.11,
+          "y": 704
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.user.roles[0]"
+              },
+              "transforms": [
+                {
+                  "fallback": "#ffffff",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": "Administrator",
+                      "output": "#08FFFF"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.hmi_ki"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_18"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 453.11,
+          "y": 704
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.user.roles[0]"
+              },
+              "transforms": [
+                {
+                  "fallback": "#ffffff",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": "Administrator",
+                      "output": "#08FFFF"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.hmi_kd"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.parent.custom.control.AtuneUseGains = True\n\tself.parent.custom.autotune.pb_pide_use_auto_tune_gains = True"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_4"
+        },
+        "position": {
+          "height": 35.03,
+          "width": 175.99,
+          "x": 42.01,
+          "y": 749.48
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "!{parent.custom.autotune.ATuneAcquired}"
+              },
+              "transforms": [
+                {
+                  "fallback": "var(--neutral-40)",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "var(--neutral-40)"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "text": "Load Gains",
+          "textStyle": {
+            "color": "#2B2B2B"
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField_19"
+        },
+        "position": {
+          "height": 32,
+          "width": 124.96,
+          "x": 642.99,
+          "y": 704
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.user.roles[0]"
+              },
+              "transforms": [
+                {
+                  "fallback": "#ffffff",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": "Administrator",
+                      "output": "#08FFFF"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "parent.custom.autotune.manual_setpoint"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "inputBounds": {
+            "maximum": 100000,
+            "minimum": 0
+          },
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "components/cal_entry_field"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label_34"
+        },
+        "position": {
+          "height": 32,
+          "width": 142.99,
+          "x": 642.99,
+          "y": 679.02
+        },
+        "props": {
+          "text": "Manual CV:"
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.autotune": {
+        "binding": {
+          "config": {
+            "bidirectional": true,
+            "fallbackDelay": 2.5,
+            "mode": "indirect",
+            "references": {
+              "UpperLower": "{view.params.UpperLower}",
+              "num": "{view.params.num}"
+            },
+            "tagPath": "[cal1615]Oven {num} {UpperLower} PID Autotune"
+          },
+          "type": "tag"
+        }
+      },
+      "custom.control": {
+        "binding": {
+          "config": {
+            "bidirectional": true,
+            "fallbackDelay": 2.5,
+            "mode": "indirect",
+            "references": {
+              "UpperLower": "{view.params.UpperLower}",
+              "num": "{view.params.num}"
+            },
+            "tagPath": "[cal1615]Oven {num} {UpperLower} PID Control"
+          },
+          "type": "tag"
+        }
+      }
+    },
+    "props": {
+      "aspectRatio": "50%"
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 260,
-      "height": 234
+      "height": 281
     }
   },
   "root": {
@@ -70,6 +70,26 @@
               "showHeader": true,
               "style": {},
               "target": "/zone-setup",
+              "visible": true
+            },
+            {
+              "backActionText": "",
+              "enabled": true,
+              "items": [],
+              "label": {
+                "icon": {
+                  "path": ""
+                },
+                "text": "PID Tuning"
+              },
+              "navIcon": {
+                "color": "",
+                "path": ""
+              },
+              "resetOnClick": false,
+              "showHeader": true,
+              "style": {},
+              "target": "/pid-tuning",
               "visible": true
             },
             {

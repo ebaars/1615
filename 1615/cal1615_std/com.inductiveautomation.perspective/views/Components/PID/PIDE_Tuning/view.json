@@ -1,5 +1,7 @@
 {
-  "custom": {},
+  "custom": {
+    "note": "Imported from cal2016 (PIDE + PIDE_AUTOTUNE). Not wired: the cal1615 PLC runs classic PID. Needs PIDE loops with PIDE_AUTOTUNE tags ([cal1615]Oven {num} {UpperLower} PID Control / PID Autotune)."
+  },
   "params": {
     "UpperLower": "Upper",
     "num": 1
@@ -105,7 +107,7 @@
               },
               "transforms": [
                 {
-                  "code": "\tr \u003d value[\u0027Ready\u0027]\n\ta \u003d value[\u0027Aquired\u0027]\n\tif (r \u003d\u003d True) and (a \u003d\u003d True):\n\t\ts \u003d \u0027Aquired\u0027\t\n\telif (a \u003d\u003d True) and not (r \u003d\u003d True):\n\t\ts \u003d \u0027Another PID\u0027\n\telse:\n\t\ts \u003d \u0027Available\u0027\t\t\n\treturn s",
+                  "code": "\tr = value['Ready']\n\ta = value['Aquired']\n\tif (r == True) and (a == True):\n\t\ts = 'Aquired'\t\n\telif (a == True) and not (r == True):\n\t\ts = 'Another PID'\n\telse:\n\t\ts = 'Available'\t\t\n\treturn s",
                   "type": "script"
                 }
               ],
@@ -243,7 +245,7 @@
               },
               "transforms": [
                 {
-                  "code": "\taborted \u003d value[\u0027aborted\u0027]\n\tdone \u003d value[\u0027done\u0027]\n\ton \u003d value[\u0027on\u0027]\n\tready \u003d value[\u0027ready\u0027]\n\tif (aborted \u003d\u003d True):\n\t\ts \u003d \u0027Aborted\u0027\t\n\telif (done \u003d\u003d True):\n\t\ts \u003d \u0027Completed\u0027\n\telif (on \u003d\u003d True):\n\t\ts \u003d \u0027In Progress\u0027\n\telif (ready \u003d\u003d False):\n\t\ts \u003d \"\"\t\t\t\n\telse:\n\t\ts \u003d \u0027Ready\u0027\t\t\n\treturn s",
+                  "code": "\taborted = value['aborted']\n\tdone = value['done']\n\ton = value['on']\n\tready = value['ready']\n\tif (aborted == True):\n\t\ts = 'Aborted'\t\n\telif (done == True):\n\t\ts = 'Completed'\n\telif (on == True):\n\t\ts = 'In Progress'\n\telif (ready == False):\n\t\ts = \"\"\t\t\t\n\telse:\n\t\ts = 'Ready'\t\t\n\treturn s",
                   "type": "script"
                 }
               ],
@@ -266,7 +268,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "#\tself.view.custom.pide_ctrl.AtuneAcquire \u003d True\n\tself.parent.custom.control.AtuneAcquire \u003d True\n\t"
+                "script": "#\tself.view.custom.pide_ctrl.AtuneAcquire = True\n\tself.parent.custom.control.AtuneAcquire = True\n\t"
               },
               "scope": "G",
               "type": "script"
@@ -423,7 +425,7 @@
               },
               "transforms": [
                 {
-                  "code": "\ta \u003d value[\u0027Aquired\u0027]\n\tr \u003d value[\u0027Ready\u0027]\n\t\n\tif (a\u003d\u003dTrue) and (r \u003d\u003dTrue):\n\t\tret \u003d True\n\telse:\n\t\tret \u003d False\t\n\treturn ret",
+                  "code": "\ta = value['Aquired']\n\tr = value['Ready']\n\t\n\tif (a==True) and (r ==True):\n\t\tret = True\n\telse:\n\t\tret = False\t\n\treturn ret",
                   "type": "script"
                 }
               ],
@@ -487,7 +489,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "\tself.parent.custom.control.AtuneStart \u003d True"
+                "script": "\tself.parent.custom.control.AtuneStart = True"
               },
               "scope": "G",
               "type": "script"
@@ -530,7 +532,7 @@
           "props.textStyle.color": {
             "binding": {
               "config": {
-                "expression": "{parent.custom.autotune.ATuneAcquired} \u0026\u0026 {parent.custom.control.AtuneReady}\r\n\u0026\u0026!{parent.custom.control.AtuneOn}"
+                "expression": "{parent.custom.autotune.ATuneAcquired} && {parent.custom.control.AtuneReady}\r\n&&!{parent.custom.control.AtuneOn}"
               },
               "transforms": [
                 {
@@ -563,7 +565,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "#\tself.view.custom.pide_ctrl.AtuneUnacquire \u003d True\n\tself.parent.custom.control.AtuneUnacquire \u003d True"
+                "script": "#\tself.view.custom.pide_ctrl.AtuneUnacquire = True\n\tself.parent.custom.control.AtuneUnacquire = True"
               },
               "scope": "G",
               "type": "script"
@@ -739,7 +741,7 @@
               },
               "transforms": [
                 {
-                  "code": "\ta \u003d value[\u0027Aquired\u0027]\n\tr \u003d value[\u0027Ready\u0027]\n\t\n\tif (a\u003d\u003dTrue) and (r \u003d\u003dTrue):\n\t\tret \u003d \"#08FFFF\"\n\telse:\n\t\tret \u003d \"#ffffff\"\n\treturn ret",
+                  "code": "\ta = value['Aquired']\n\tr = value['Ready']\n\t\n\tif (a==True) and (r ==True):\n\t\tret = \"#08FFFF\"\n\telse:\n\t\tret = \"#ffffff\"\n\treturn ret",
                   "type": "script"
                 }
               ],
@@ -775,7 +777,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "\tself.parent.custom.control.AtuneAbort \u003d True"
+                "script": "\tself.parent.custom.control.AtuneAbort = True"
               },
               "scope": "G",
               "type": "script"
@@ -818,7 +820,7 @@
           "props.textStyle.color": {
             "binding": {
               "config": {
-                "expression": "{parent.custom.autotune.ATuneAcquired} \u0026\u0026 {parent.custom.control.AtuneOn}"
+                "expression": "{parent.custom.autotune.ATuneAcquired} && {parent.custom.control.AtuneOn}"
               },
               "transforms": [
                 {
@@ -932,7 +934,7 @@
               },
               "transforms": [
                 {
-                  "code": "\ta \u003d value[\u0027Aquired\u0027]\n\tr \u003d value[\u0027Ready\u0027]\n\t\n\tif (a\u003d\u003dTrue) and (r \u003d\u003dTrue):\n\t\tret \u003d \"#08FFFF\"\n\telse:\n\t\tret \u003d \"#ffffff\"\n\treturn ret",
+                  "code": "\ta = value['Aquired']\n\tr = value['Ready']\n\t\n\tif (a==True) and (r ==True):\n\t\tret = \"#08FFFF\"\n\telse:\n\t\tret = \"#ffffff\"\n\treturn ret",
                   "type": "script"
                 }
               ],
@@ -1038,7 +1040,7 @@
           "props.textStyle.color": {
             "binding": {
               "config": {
-                "expression": "{parent.custom.autotune.AtuneStatus} \u003d 0"
+                "expression": "{parent.custom.autotune.AtuneStatus} = 0"
               },
               "transforms": [
                 {

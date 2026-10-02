@@ -1,0 +1,1911 @@
+{
+  "custom": {
+    "loop": "zone1",
+    "pvv": null,
+    "spv": null
+  },
+  "params": {},
+  "propConfig": {
+    "custom.p": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "runScript(\"cal1615.pid.loop\", 0, {view.custom.loop})"
+        }
+      }
+    },
+    "custom.pvv": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.pv}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.spv": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sp}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1680,
+      "height": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "padding": "6px",
+        "gap": "8px",
+        "overflow": "hidden"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "topBar"
+        },
+        "position": {
+          "basis": "44px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "220px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "PID Tuning",
+              "style": {
+                "classes": "cal1615/page-title",
+                "textAlign": "left"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "loop_zone1"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 1",
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop} = 'zone1'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tself.view.custom.loop = 'zone1'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "loop_zone2"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 2",
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop} = 'zone2'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tself.view.custom.loop = 'zone2'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "loop_zone3"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 3",
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop} = 'zone3'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tself.view.custom.loop = 'zone3'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "loop_cooling"
+            },
+            "position": {
+              "basis": "170px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Advanced Cooling",
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop} = 'cooling'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tself.view.custom.loop = 'cooling'"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "body"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.chart.powerchart",
+            "meta": {
+              "name": "trend"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "config": {
+                "measureOfTime": "minutes",
+                "unitOfTime": 30,
+                "refreshRate": 1000,
+                "visibility": {
+                  "showTagBrowser": false
+                }
+              },
+              "plots": [
+                {
+                  "color": "var(--neutral-10)",
+                  "markers": [],
+                  "relativeWeight": 3,
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "color": "var(--neutral-10)",
+                  "markers": [],
+                  "relativeWeight": 1,
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              ],
+              "style": {
+                "classes": "cal1615/card"
+              }
+            },
+            "propConfig": {
+              "props.pens": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop}"
+                  },
+                  "transforms": [
+                    {
+                      "type": "script",
+                      "code": "\treturn cal1615.pid.pens(value)"
+                    }
+                  ]
+                }
+              },
+              "props.title.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.p.label}"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "side"
+            },
+            "position": {
+              "basis": "420px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "8px",
+                "overflowY": "auto"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "live"
+                },
+                "position": {
+                  "basis": "144px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "cal1615/card",
+                    "paddingBottom": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "header"
+                    },
+                    "position": {
+                      "basis": "26px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Live",
+                      "style": {
+                        "classes": "cal1615/card-header"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.label}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "pv"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Process Value (PV)",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "value"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "---",
+                          "style": {
+                            "classes": "cal1615/value"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pv}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              },
+                              "transforms": [
+                                {
+                                  "type": "format",
+                                  "formatType": "numeric",
+                                  "formatValue": "#,##0.0"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "@",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "sp"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Setpoint (SP)",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "value"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "---",
+                          "style": {
+                            "classes": "cal1615/value"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.sp}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              },
+                              "transforms": [
+                                {
+                                  "type": "format",
+                                  "formatType": "numeric",
+                                  "formatValue": "#,##0.0"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "@",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "err"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Error (PV - SP)",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "value"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "---",
+                          "style": {
+                            "classes": "cal1615/value"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "if(isNull({view.custom.pvv}) || isNull({view.custom.spv}), '---', numberFormat({view.custom.pvv} - {view.custom.spv}, '#,##0.0'))"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "@",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "cv"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Controller Output",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "value"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "---",
+                          "style": {
+                            "classes": "cal1615/value"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.cv}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              },
+                              "transforms": [
+                                {
+                                  "type": "format",
+                                  "formatType": "numeric",
+                                  "formatValue": "#,##0.0"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "%",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "gains_pid1"
+                },
+                "position": {
+                  "basis": "144px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "cal1615/card",
+                    "paddingBottom": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "header"
+                    },
+                    "position": {
+                      "basis": "26px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "classes": "cal1615/card-header"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.set1}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid1_kp"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Proportional Gain Kp",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.000",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid1_kp}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid1_kp_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid1_kp}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid1_ki"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Integral Gain Ki",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.000",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid1_ki}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid1_ki_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "1/s",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid1_ki}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid1_kd"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Derivative Gain Kd",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.000",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid1_kd}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid1_kd_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "s",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid1_kd}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid1_bias"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Bias",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.0",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid1_bias}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid1_bias_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "%",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid1_bias}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "len({view.custom.p.pid1_kp}) > 0"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "gains_pid2"
+                },
+                "position": {
+                  "basis": "144px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "cal1615/card",
+                    "paddingBottom": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "header"
+                    },
+                    "position": {
+                      "basis": "26px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "classes": "cal1615/card-header"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.set2}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid2_kp"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Proportional Gain Kp",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.000",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid2_kp}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid2_kp_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid2_kp}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid2_ki"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Integral Gain Ki",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.000",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid2_ki}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid2_ki_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "1/s",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid2_ki}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid2_kd"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Derivative Gain Kd",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.000",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid2_kd}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid2_kd_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "s",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid2_kd}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_pid2_bias"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "Bias",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.0",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.pid2_bias}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\t# Read from the PLC parameter, written to the HMI input the PLC loads it from.\n\tpath = self.view.custom.p['pid2_bias_w']\n\tif path:\n\t\tsystem.tag.writeBlocking([path], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "%",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.pid2_bias}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "len({view.custom.p.pid2_kp}) > 0"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.view",
+                "meta": {
+                  "name": "valve"
+                },
+                "position": {
+                  "basis": "160px",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "",
+                  "params": {},
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{view.custom.p.valve_view}"
+                      }
+                    }
+                  },
+                  "props.params": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.p.valve_params"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "note"
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Gains are PLC parameters. A value entered here is sent to the HMI input the PLC loads the PID from; it takes effect on the next PLC scan. Trend: 30 min, history logged every 10 s.",
+                  "style": {
+                    "classes": "",
+                    "fontSize": "11px",
+                    "color": "var(--neutral-70)",
+                    "whiteSpace": "normal",
+                    "padding": "2px 4px"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

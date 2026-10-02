@@ -51,8 +51,29 @@ def _run(query, params=None):
 		_tableChecked[0] = True
 	return system.db.runNamedQuery(Q + query, params or {})
 
+_log = system.util.getLogger('cal1615.recipes')
+_lastError = ['']
+
 def listDataset():
-	return _run('Recipe List')
+	"""Recipe list for the table. Never raises: on a database error it returns an empty list and
+	keeps the error for listMessage()."""
+	try:
+		ds = _run('Recipe List')
+		_lastError[0] = ''
+		return ds
+	except Exception, e:
+		_tableChecked[0] = False
+		_lastError[0] = str(e)
+		_log.warn('Recipe list failed: %s' % e)
+		return system.dataset.toDataSet(['name', 'modified'], [])
+
+def listMessage(rowCount):
+	"""Text shown over the recipe list: '' when there are recipes, otherwise why the list is empty."""
+	if rowCount > 0:
+		return ''
+	if _lastError[0]:
+		return 'Recipe database not available. Check the myOracle connection.\n' + _lastError[0][:200]
+	return 'No recipes yet.\nType a name below and press Create to save the values on the right as a new recipe.'
 
 def names():
 	ds = _run('Recipe List')
@@ -62,7 +83,11 @@ def exists(name):
 	return _run('Recipe Names', {'name': name}).getRowCount() > 0
 
 def get(name):
-	ds = _run('Recipe Get', {'name': name})
+	try:
+		ds = _run('Recipe Get', {'name': name})
+	except Exception, e:
+		_log.warn('Recipe %s could not be read: %s' % (name, e))
+		return {}
 	if ds.getRowCount() == 0:
 		return {}
 	return dict((k, ds.getValueAt(0, k)) for k in KEYS)

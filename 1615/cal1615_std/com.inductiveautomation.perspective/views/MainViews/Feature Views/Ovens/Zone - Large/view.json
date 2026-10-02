@@ -62,6 +62,16 @@
           "x": 9,
           "y": 56
         },
+        "propConfig": {
+          "props.style.filter": {
+            "binding": {
+              "config": {
+                "expression": "if(indexOf({session.props.theme}, \"dark\") \u003e\u003d 0, \"invert(0.88) hue-rotate(180deg)\", \"none\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
         "props": {
           "fit": {
             "mode": "fill"
@@ -71,17 +81,7 @@
             "classes": "cal1615/drawing"
           }
         },
-        "type": "ia.display.image",
-        "propConfig": {
-          "props.style.filter": {
-            "binding": {
-              "type": "expr",
-              "config": {
-                "expression": "if(indexOf({session.props.theme}, \"dark\") >= 0, \"invert(0.88) hue-rotate(180deg)\", \"none\")"
-              }
-            }
-          }
-        }
+        "type": "ia.display.image"
       },
       {
         "children": [
@@ -548,10 +548,18 @@
           "y": 396
         },
         "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.zone} \u003c 3"
+              },
+              "type": "expr"
+            }
+          },
           "position.display": {
             "binding": {
               "config": {
-                "expression": "{view.params.zone} < 3"
+                "expression": "{view.params.zone} \u003c 3"
               },
               "type": "expr"
             }
@@ -559,7 +567,6 @@
           "props.style.backgroundColor": {
             "binding": {
               "config": {
-                "bidirectional": false,
                 "fallbackDelay": 2.5,
                 "mode": "indirect",
                 "references": {
@@ -608,10 +615,18 @@
           "y": 452
         },
         "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.zone} \u003c 3"
+              },
+              "type": "expr"
+            }
+          },
           "position.display": {
             "binding": {
               "config": {
-                "expression": "{view.params.zone} < 3"
+                "expression": "{view.params.zone} \u003c 3"
               },
               "type": "expr"
             }
@@ -668,10 +683,18 @@
           "y": 452
         },
         "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.zone} \u003c 3"
+              },
+              "type": "expr"
+            }
+          },
           "position.display": {
             "binding": {
               "config": {
-                "expression": "{view.params.zone} < 3"
+                "expression": "{view.params.zone} \u003c 3"
               },
               "type": "expr"
             }
@@ -741,7 +764,7 @@
               },
               "transforms": [
                 {
-                  "expression": "toBoolean({value}) && {view.params.zone} < 3",
+                  "expression": "toBoolean({value}) \u0026\u0026 {view.params.zone} \u003c 3",
                   "type": "expression"
                 }
               ],
@@ -773,7 +796,7 @@
               },
               "transforms": [
                 {
-                  "code": "\tdef pen(name, tag, color):\n\t\tst = lambda o: {'fill': {'color': color, 'opacity': o}, 'stroke': {'color': color, 'dashArray': 0, 'opacity': o, 'width': 1.5}}\n\t\treturn {'axis': '', 'name': name, 'plot': 0, 'enabled': True, 'selectable': True, 'visible': True,\n\t\t\t'data': {'aggregateMode': 'default', 'source': 'histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:' + tag},\n\t\t\t'display': {'type': 'line', 'breakLine': True, 'interpolation': 'curveLinear', 'radius': 3, 'styles': {'normal': st(0.9), 'highlighted': st(1), 'muted': st(0.4), 'selected': st(1)}}}\n\tt = cal1615.zones.paths(value)\n\tstrip = lambda p: p.split(']', 1)[-1].lower()\n\treturn [pen('Control Temp', strip(t['temp']), '#1F77B4'), pen('Control Setpoint', strip(t['temp_sp']), '#D62728')]",
+                  "code": "\tdef pen(name, tag, color):\n\t\tst \u003d lambda o: {\u0027fill\u0027: {\u0027color\u0027: color, \u0027opacity\u0027: o}, \u0027stroke\u0027: {\u0027color\u0027: color, \u0027dashArray\u0027: 0, \u0027opacity\u0027: o, \u0027width\u0027: 1.5}}\n\t\treturn {\u0027axis\u0027: \u0027\u0027, \u0027name\u0027: name, \u0027plot\u0027: 0, \u0027enabled\u0027: True, \u0027selectable\u0027: True, \u0027visible\u0027: True,\n\t\t\t\u0027data\u0027: {\u0027aggregateMode\u0027: \u0027default\u0027, \u0027source\u0027: \u0027histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:\u0027 + tag},\n\t\t\t\u0027display\u0027: {\u0027type\u0027: \u0027line\u0027, \u0027breakLine\u0027: True, \u0027interpolation\u0027: \u0027curveLinear\u0027, \u0027radius\u0027: 3, \u0027styles\u0027: {\u0027normal\u0027: st(0.9), \u0027highlighted\u0027: st(1), \u0027muted\u0027: st(0.4), \u0027selected\u0027: st(1)}}}\n\tt \u003d cal1615.zones.paths(value)\n\tstrip \u003d lambda p: p.split(\u0027]\u0027, 1)[-1].lower()\n\treturn [pen(\u0027Control Temp\u0027, strip(t[\u0027temp\u0027]), \u0027#1F77B4\u0027), pen(\u0027Control Setpoint\u0027, strip(t[\u0027temp_sp\u0027]), \u0027#D62728\u0027)]",
                   "type": "script"
                 }
               ],
@@ -787,17 +810,17 @@
               "$": [
                 "ts",
                 0,
-                1790791175304
+                1790953100756
               ],
-              "$ts": 1790791163291
+              "$ts": 1790953088718
             },
             "rangeStartDate": {
               "$": [
                 "ts",
                 0,
-                1790791175303
+                1790953100756
               ],
-              "$ts": 1790787575291
+              "$ts": 1790949500718
             },
             "unitOfTime": 1
           },

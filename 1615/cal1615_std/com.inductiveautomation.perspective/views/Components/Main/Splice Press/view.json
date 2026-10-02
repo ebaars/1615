@@ -1,29 +1,15 @@
 {
   "custom": {},
   "params": {},
-  "propConfig": {},
   "props": {
     "defaultSize": {
-      "width": 245,
-      "height": 172
+      "height": 172,
+      "width": 280
     }
   },
   "root": {
-    "type": "ia.container.flex",
-    "meta": {
-      "name": "root"
-    },
-    "position": {},
-    "props": {
-      "direction": "column",
-      "style": {
-        "classes": "cal1615/card",
-        "paddingBottom": "4px"
-      }
-    },
     "children": [
       {
-        "type": "ia.display.label",
         "meta": {
           "name": "header"
         },
@@ -32,14 +18,83 @@
           "shrink": 0
         },
         "props": {
-          "text": "Splice Press",
           "style": {
             "classes": "cal1615/card-header"
-          }
-        }
+          },
+          "text": "Splice Press"
+        },
+        "type": "ia.display.label"
       },
       {
-        "type": "ia.container.flex",
+        "children": [
+          {
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "basis": "0",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/row-label"
+              },
+              "text": "Temperature"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": false,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p21_ai_splice_platen_temp"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "#,##0.0",
+                      "type": "format"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/units"
+              },
+              "text": "F"
+            },
+            "type": "ia.display.label"
+          }
+        ],
         "meta": {
           "name": "row0"
         },
@@ -48,71 +103,86 @@
           "shrink": 0
         },
         "props": {
-          "direction": "row",
-          "alignItems": "stretch",
           "style": {
+            "gap": "4px",
+            "paddingBottom": "3px",
             "paddingLeft": "6px",
             "paddingRight": "6px",
-            "paddingTop": "3px",
-            "paddingBottom": "3px",
-            "gap": "4px"
+            "paddingTop": "3px"
           }
         },
+        "type": "ia.container.flex"
+      },
+      {
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "title"
             },
             "position": {
-              "grow": 1,
-              "basis": "0"
+              "basis": "0",
+              "grow": 1
             },
             "props": {
-              "text": "Temperature",
               "style": {
                 "classes": "cal1615/row-label"
-              }
-            }
+              },
+              "text": "Temperature SP"
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.display.label",
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\t# Setpoint is read from p01_recipe_active/platen_temp_sp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([\u0027[cal1615]p02_recipe_from_hmi/platen_temp_sp\u0027], [self.props.value])"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
             "meta": {
-              "name": "value"
+              "name": "entry"
             },
             "position": {
               "basis": "100px",
               "shrink": 0
             },
-            "props": {
-              "text": "---",
-              "style": {
-                "classes": "cal1615/value"
-              }
-            },
             "propConfig": {
-              "props.text": {
+              "props.enabled": {
                 "binding": {
-                  "type": "tag",
                   "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": false,
                     "fallbackDelay": 2.5,
                     "mode": "direct",
-                    "tagPath": "[cal1615]p21_ai_splice_platen_temp",
-                    "bidirectional": false
+                    "tagPath": "[cal1615]p01_recipe_active/platen_temp_sp"
                   },
-                  "transforms": [
-                    {
-                      "type": "format",
-                      "formatType": "numeric",
-                      "formatValue": "#,##0.0"
-                    }
-                  ]
+                  "type": "tag"
                 }
               }
-            }
+            },
+            "props": {
+              "format": "#,##0.0",
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "classes": "cal1615/entry"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
           },
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "units"
             },
@@ -121,17 +191,14 @@
               "shrink": 0
             },
             "props": {
-              "text": "F",
               "style": {
                 "classes": "cal1615/units"
-              }
-            }
+              },
+              "text": "F"
+            },
+            "type": "ia.display.label"
           }
         ],
-        "propConfig": {}
-      },
-      {
-        "type": "ia.container.flex",
         "meta": {
           "name": "row1"
         },
@@ -140,86 +207,70 @@
           "shrink": 0
         },
         "props": {
-          "direction": "row",
-          "alignItems": "stretch",
           "style": {
+            "gap": "4px",
+            "paddingBottom": "3px",
             "paddingLeft": "6px",
             "paddingRight": "6px",
-            "paddingTop": "3px",
-            "paddingBottom": "3px",
-            "gap": "4px"
+            "paddingTop": "3px"
           }
         },
+        "type": "ia.container.flex"
+      },
+      {
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "title"
             },
             "position": {
-              "grow": 1,
-              "basis": "0"
+              "basis": "0",
+              "grow": 1
             },
             "props": {
-              "text": "Temperature SP",
               "style": {
                 "classes": "cal1615/row-label"
-              }
-            }
+              },
+              "text": "Cure Time Remaining"
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.input.numeric-entry-field",
             "meta": {
-              "name": "entry"
+              "name": "value"
             },
             "position": {
               "basis": "100px",
               "shrink": 0
             },
-            "props": {
-              "format": "#,##0.0",
-              "spinner": {
-                "enabled": false
-              },
-              "style": {
-                "classes": "cal1615/entry"
-              }
-            },
             "propConfig": {
-              "props.value": {
+              "props.text": {
                 "binding": {
-                  "type": "tag",
                   "config": {
+                    "bidirectional": false,
                     "fallbackDelay": 2.5,
                     "mode": "direct",
-                    "tagPath": "[cal1615]p01_recipe_active/platen_temp_sp",
-                    "bidirectional": false
-                  }
-                }
-              },
-              "props.enabled": {
-                "binding": {
-                  "type": "expr",
-                  "config": {
-                    "expression": "{session.props.auth.authenticated}"
-                  }
+                    "tagPath": "[cal1615]p21r10_remaining_cure_time_sec"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "#,##0.0",
+                      "type": "format"
+                    }
+                  ],
+                  "type": "tag"
                 }
               }
             },
-            "events": {
-              "component": {
-                "onActionPerformed": {
-                  "type": "script",
-                  "scope": "G",
-                  "config": {
-                    "script": "\t# Setpoint is read from p01_recipe_active/platen_temp_sp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking(['[cal1615]p02_recipe_from_hmi/platen_temp_sp'], [self.props.value])"
-                  }
-                }
+            "props": {
+              "style": {
+                "classes": "cal1615/value"
               }
-            }
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "units"
             },
@@ -228,17 +279,14 @@
               "shrink": 0
             },
             "props": {
-              "text": "F",
               "style": {
                 "classes": "cal1615/units"
-              }
-            }
+              },
+              "text": "Sec"
+            },
+            "type": "ia.display.label"
           }
         ],
-        "propConfig": {}
-      },
-      {
-        "type": "ia.container.flex",
         "meta": {
           "name": "row2"
         },
@@ -247,133 +295,73 @@
           "shrink": 0
         },
         "props": {
-          "direction": "row",
-          "alignItems": "stretch",
           "style": {
+            "gap": "4px",
+            "paddingBottom": "3px",
             "paddingLeft": "6px",
             "paddingRight": "6px",
-            "paddingTop": "3px",
-            "paddingBottom": "3px",
-            "gap": "4px"
+            "paddingTop": "3px"
           }
         },
-        "children": [
-          {
-            "type": "ia.display.label",
-            "meta": {
-              "name": "title"
-            },
-            "position": {
-              "grow": 1,
-              "basis": "0"
-            },
-            "props": {
-              "text": "Cure Time Remaining",
-              "style": {
-                "classes": "cal1615/row-label"
-              }
-            }
-          },
-          {
-            "type": "ia.display.label",
-            "meta": {
-              "name": "value"
-            },
-            "position": {
-              "basis": "100px",
-              "shrink": 0
-            },
-            "props": {
-              "text": "---",
-              "style": {
-                "classes": "cal1615/value"
-              }
-            },
-            "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "tag",
-                  "config": {
-                    "fallbackDelay": 2.5,
-                    "mode": "direct",
-                    "tagPath": "[cal1615]p21r10_remaining_cure_time_sec",
-                    "bidirectional": false
-                  },
-                  "transforms": [
-                    {
-                      "type": "format",
-                      "formatType": "numeric",
-                      "formatValue": "#,##0.0"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "type": "ia.display.label",
-            "meta": {
-              "name": "units"
-            },
-            "position": {
-              "basis": "34px",
-              "shrink": 0
-            },
-            "props": {
-              "text": "Sec",
-              "style": {
-                "classes": "cal1615/units"
-              }
-            }
-          }
-        ],
-        "propConfig": {}
+        "type": "ia.container.flex"
       },
       {
-        "type": "ia.container.flex",
-        "meta": {
-          "name": "row3"
-        },
-        "position": {
-          "basis": "28px",
-          "shrink": 0
-        },
-        "props": {
-          "direction": "row",
-          "alignItems": "stretch",
-          "style": {
-            "paddingLeft": "6px",
-            "paddingRight": "6px",
-            "paddingTop": "3px",
-            "paddingBottom": "3px",
-            "gap": "4px"
-          }
-        },
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "title"
             },
             "position": {
-              "grow": 1,
-              "basis": "0"
+              "basis": "0",
+              "grow": 1
             },
             "props": {
-              "text": "Cure Time SP",
               "style": {
                 "classes": "cal1615/row-label"
-              }
-            }
+              },
+              "text": "Cure Time SP"
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.input.numeric-entry-field",
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\t# Setpoint is read from p01_recipe_active/cure_time_sp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking([\u0027[cal1615]p02_recipe_from_hmi/cure_time_sp\u0027], [self.props.value])"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
             "meta": {
               "name": "entry"
             },
             "position": {
               "basis": "100px",
               "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": false,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p01_recipe_active/cure_time_sp"
+                  },
+                  "type": "tag"
+                }
+              }
             },
             "props": {
               "format": "#,##0.0",
@@ -384,41 +372,9 @@
                 "classes": "cal1615/entry"
               }
             },
-            "propConfig": {
-              "props.value": {
-                "binding": {
-                  "type": "tag",
-                  "config": {
-                    "fallbackDelay": 2.5,
-                    "mode": "direct",
-                    "tagPath": "[cal1615]p01_recipe_active/cure_time_sp",
-                    "bidirectional": false
-                  }
-                }
-              },
-              "props.enabled": {
-                "binding": {
-                  "type": "expr",
-                  "config": {
-                    "expression": "{session.props.auth.authenticated}"
-                  }
-                }
-              }
-            },
-            "events": {
-              "component": {
-                "onActionPerformed": {
-                  "type": "script",
-                  "scope": "G",
-                  "config": {
-                    "script": "\t# Setpoint is read from p01_recipe_active/cure_time_sp but written to the HMI input the PLC copies from.\n\tsystem.tag.writeBlocking(['[cal1615]p02_recipe_from_hmi/cure_time_sp'], [self.props.value])"
-                  }
-                }
-              }
-            }
+            "type": "ia.input.numeric-entry-field"
           },
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "units"
             },
@@ -427,147 +383,72 @@
               "shrink": 0
             },
             "props": {
-              "text": "Sec",
               "style": {
                 "classes": "cal1615/units"
-              }
-            }
+              },
+              "text": "Sec"
+            },
+            "type": "ia.display.label"
           }
         ],
-        "propConfig": {}
-      },
-      {
-        "type": "ia.container.flex",
         "meta": {
-          "name": "row4"
+          "name": "row3"
         },
         "position": {
           "basis": "28px",
           "shrink": 0
         },
         "props": {
-          "direction": "row",
-          "alignItems": "stretch",
           "style": {
+            "gap": "4px",
+            "paddingBottom": "3px",
             "paddingLeft": "6px",
             "paddingRight": "6px",
-            "paddingTop": "3px",
-            "paddingBottom": "3px",
-            "gap": "4px"
+            "paddingTop": "3px"
           }
         },
+        "type": "ia.container.flex"
+      },
+      {
         "children": [
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "title"
             },
             "position": {
-              "grow": 1,
-              "basis": "0"
+              "basis": "0",
+              "grow": 1
             },
             "props": {
-              "text": "Sequencer",
               "style": {
                 "classes": "cal1615/row-label"
-              }
-            }
+              },
+              "text": "Sequencer"
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "status"
             },
             "position": {
               "basis": "100px",
+              "grow": 1,
               "shrink": 0
             },
-            "props": {
-              "text": "---",
-              "style": {
-                "classes": "cal1615/status"
-              }
-            },
             "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "tag",
-                  "config": {
-                    "fallbackDelay": 2.5,
-                    "mode": "direct",
-                    "tagPath": "[cal1615]p21r10_status",
-                    "bidirectional": false
-                  },
-                  "transforms": [
-                    {
-                      "type": "map",
-                      "inputType": "scalar",
-                      "outputType": "scalar",
-                      "mappings": [
-                        {
-                          "input": 1,
-                          "output": "Idle"
-                        },
-                        {
-                          "input": 2,
-                          "output": "Enable Sequence"
-                        },
-                        {
-                          "input": 3,
-                          "output": "Close Exit Clamp"
-                        },
-                        {
-                          "input": 4,
-                          "output": "Close Inlet Clamp"
-                        },
-                        {
-                          "input": 5,
-                          "output": "Closing Platen"
-                        },
-                        {
-                          "input": 6,
-                          "output": "Cure in Progress"
-                        },
-                        {
-                          "input": 7,
-                          "output": "Cure Done"
-                        },
-                        {
-                          "input": 8,
-                          "output": "Platen Open"
-                        },
-                        {
-                          "input": 9,
-                          "output": "Inlet Clamp Open"
-                        },
-                        {
-                          "input": 10,
-                          "output": "Exit Clamp Open"
-                        },
-                        {
-                          "input": 11,
-                          "output": "Complete"
-                        }
-                      ],
-                      "fallback": "---"
-                    }
-                  ]
-                }
-              },
               "props.style.backgroundColor": {
                 "binding": {
-                  "type": "tag",
                   "config": {
+                    "bidirectional": false,
                     "fallbackDelay": 2.5,
                     "mode": "direct",
-                    "tagPath": "[cal1615]p21r10_status",
-                    "bidirectional": false
+                    "tagPath": "[cal1615]p21r10_status"
                   },
                   "transforms": [
                     {
-                      "type": "map",
+                      "fallback": "#FFFFFF",
                       "inputType": "scalar",
-                      "outputType": "color",
                       "mappings": [
                         {
                           "input": 1,
@@ -614,15 +495,87 @@
                           "output": "#FFFFFF"
                         }
                       ],
-                      "fallback": "#FFFFFF"
+                      "outputType": "color",
+                      "type": "map"
                     }
-                  ]
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": false,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]p21r10_status"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "---",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 1,
+                          "output": "Idle"
+                        },
+                        {
+                          "input": 2,
+                          "output": "Enable Sequence"
+                        },
+                        {
+                          "input": 3,
+                          "output": "Close Exit Clamp"
+                        },
+                        {
+                          "input": 4,
+                          "output": "Close Inlet Clamp"
+                        },
+                        {
+                          "input": 5,
+                          "output": "Closing Platen"
+                        },
+                        {
+                          "input": 6,
+                          "output": "Cure in Progress"
+                        },
+                        {
+                          "input": 7,
+                          "output": "Cure Done"
+                        },
+                        {
+                          "input": 8,
+                          "output": "Platen Open"
+                        },
+                        {
+                          "input": 9,
+                          "output": "Inlet Clamp Open"
+                        },
+                        {
+                          "input": 10,
+                          "output": "Exit Clamp Open"
+                        },
+                        {
+                          "input": 11,
+                          "output": "Complete"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
                 }
               }
-            }
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "type": "ia.display.label"
           },
           {
-            "type": "ia.display.label",
             "meta": {
               "name": "units"
             },
@@ -631,15 +584,42 @@
               "shrink": 0
             },
             "props": {
-              "text": "",
               "style": {
                 "classes": "cal1615/units"
               }
-            }
+            },
+            "type": "ia.display.label"
           }
         ],
-        "propConfig": {}
+        "meta": {
+          "name": "row4"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "gap": "4px",
+            "paddingBottom": "3px",
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px"
+          }
+        },
+        "type": "ia.container.flex"
       }
-    ]
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "type": "ia.container.flex"
   }
 }

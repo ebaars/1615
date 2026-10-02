@@ -56,6 +56,10 @@
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Home/Recipe"
     },
+    "/rto": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Ovens/RTO - Main"
+    },
     "/servo-drives": {
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Maintenance/Servo Drives"
@@ -84,9 +88,9 @@
       "title": "Zone",
       "viewPath": "MainViews/Feature Views/Ovens/Zone - Main"
     },
-    "/rto": {
+    "/pid-tuning": {
       "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Ovens/RTO - Main"
+      "viewPath": "MainViews/Feature Views/Maintenance/PID Tuning"
     }
   },
   "sharedDocks": {

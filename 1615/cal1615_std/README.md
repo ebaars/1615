@@ -56,6 +56,18 @@ Folders follow cal2016's structure:
   - Not logged: raw I/O, the `p02_*` HMI write buffers and single bits.
 - **RTO (oxidizer):** shown on the RTO card on the main screen and on the page `Ovens/RTO - Main` (route `/rto`). Status bits come from `p01_int_from_oxidizer[0..1]`; temperatures and mass flow from `p01_real_to_hmi[11..19]`. The mode text is the expression tag `[cal1615]HMI/rto_mode`; it reads "No Comm" when `p01r14_oxidizer_heart_beat_ok` is false.
 - **Drawings and theme:** the drawing PNGs have transparent backgrounds, and the style class `cal1615/drawing` is transparent. Every drawing image binds `props.style.filter` to `session.props.theme`, so the dark themes show it inverted.
+- **Trend page and templates (`/trend`):** the template bar: **Template** [list] **Load** / **Update** / **Delete**, and [name] **Store New**. Store, Update and Delete need a logged-in user. Trends are stored in the `myOracle` table `AD_HOC_TRENDS_CONFIG`, in Ad Hoc Trends format, and are shared with everyone. The logic is in the project script `cal1615.trends`; the bar is built by `../cal1615_ignition/tools/trend_bar.js`. Ad Hoc Trends’ own Load/Save-to-DB panels are hidden. The 16 built-in templates can be updated but not deleted. To change them, edit `../cal1615_ignition/tools/trend_templates.js`, raise `VERSION`, run it and deploy. That replaces only templates nobody has re-saved.
+- **PID tuning (`/pid-tuning`, Maintenance menu):**
+  - Covers the four oven loops: Zones 1-3 and Advanced Cooling. Each loop shows a PV/SP and output trend, live PV/SP/error/output, its gain sets and its control-valve card.
+  - Gains are written to `p02_real_from_hmi.<section>[44..51]`, which the PLC loads into the PID.
+  - The loops are defined in the project script `cal1615.pid`, built by `../cal1615_ignition/tools/pid_tuning.js`.
+  - cal2016’s PIDE autotune faceplates are imported as `Components/PID/PID Control` and `PIDE_Tuning`. They are not used: the cal1615 PLC runs classic PID and has no PIDE_AUTOTUNE tags.
+- **PID gain units:** the cal1615 PID loops use the independent-gains equation (control-word bit `PE` = 0). Kp is unitless, **Ki is 1/s and Kd is s**. The first version of the PID Tuning page said 1/min and min; that was wrong and is fixed.
+- **PID tuning engine (`cal1615.tuning`):**
+  - It identifies a first-order-plus-dead-time model from captured SP, PV and CV and suggests Kp, Ki and Kd.
+  - Maths is in percent of span and percent of output, with a separate profile for temperature and tension loops. Tension capture needs 0.25 s or faster, but every tag is on the 1 s Default tag group.
+  - It is tested under Jython with `../cal1615_ignition/tools/tuning_test.py`; the command is in that file.
+  - It is not yet connected to the page.
 - **PM schedule:** in the script `cal1615.pm`. Tasks are kept in the memory tag `[cal1615]HMI/pm_tasks`.
 - **Tags:** import `../cal1615_ignition/tags/cal1615_tags.json` into the `cal1615` provider. It includes the memory tags `HMI/shop_order` and `HMI/pm_tasks`.
 - **Row layout inside a card:** title, then a 100px box, then a 34px units column. Status and lamp boxes are the same 100px, so the boxes line up.
