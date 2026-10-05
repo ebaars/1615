@@ -107,13 +107,16 @@ def simulate_fopdt(u, dt, K, tau, theta, y0, u0):
 		out.append(x)
 	return out
 
-def fit_fopdt(dt, u, y):
+def fit_fopdt(dt, u, y, u0=None, y0=None):
 	"""Fit K (%PV per %CV), tau and theta (s) to captured CV (u) and PV (y), both in %. The loop may be closed:
-	the measured CV is the process input, so no controller model is needed."""
+	the measured CV is the process input, so no controller model is needed.
+	u0 / y0: the operating point before the excitation (default: the first 4 % of the capture)."""
 	n = len(u)
 	m = max(5, n // 25)
-	u0 = mean(u[:m])
-	y0 = mean(y[:m])
+	if u0 is None:
+		u0 = mean(u[:m])
+	if y0 is None:
+		y0 = mean(y[:m])
 	T = n * dt
 	ybar = mean(y)
 	sst = sum((v - ybar) ** 2 for v in y) or 1e-12
@@ -273,8 +276,9 @@ def quality(loop, dt, u, y, fit):
 	"""Warnings about a capture: sample rate, excitation, saturation, fit."""
 	prof = PROFILES.get(loop.get('kind', 'temperature'), PROFILES['temperature'])
 	w = []
+	dt = max(dt, loop.get('dt_eff') or 0.0)   # the PV tag may update more slowly than the capture loop runs
 	if dt > prof['max_sample_s']:
-		w.append('Sampled every %.2f s; this kind of loop needs %.2f s or faster.' % (dt, prof['max_sample_s']))
+		w.append('The PV updates every %.2f s; this kind of loop needs %.2f s or faster (put its tags on a faster tag group).' % (dt, prof['max_sample_s']))
 	if fit['tau'] < 4.0 * dt:
 		w.append('Process time constant (%.2f s) is short compared with the sample time (%.2f s): sample faster.' % (fit['tau'], dt))
 	noise = noise_estimate(y)
@@ -292,6 +296,33 @@ def quality(loop, dt, u, y, fit):
 		w.append('Dead time is more than twice the time constant: PI gains will be modest.')
 	return {'snr': snr, 'noise_pct': noise, 'saturated_fraction': sat, 'warnings': w}
 
+# ---------------------------------------------------------------- does the PLC's PID work on % of span or on engineering units?
+def scale_check(cv, k_step, d_sp, kp_plc, span, noise_cv=0.2):
+	"""Look at the CV jump just after an SP step of d_sp (engineering units) made at sample k_step.
+	With error in engineering units the output jumps by Kp * d_sp; with error in % of span by Kp * d_sp * 100 / span.
+	Returns {'error_pct': True / False / None (cannot tell), 'jump', 'ratio_eu', 'ratio_pct', 'why'}."""
+	if k_step < 3 or k_step + 3 >= len(cv) or abs(d_sp) < 1e-9 or abs(kp_plc) < 1e-9:
+		return {'error_pct': None, 'why': 'no usable SP step'}
+	base = mean(cv[k_step - 3:k_step])
+	jump = cv[k_step + 2] - base
+	if base > 98.0 or base < 2.0 or cv[k_step + 2] >= 99.5 or cv[k_step + 2] <= 0.5:
+		return {'error_pct': None, 'jump': jump, 'why': 'output at its limit'}
+	if abs(jump) < 3.0 * noise_cv:
+		return {'error_pct': None, 'jump': jump, 'why': 'CV barely moved (%.2f %%)' % jump}
+	eff = abs(jump / d_sp)
+	r_eu = eff / abs(kp_plc)
+	r_pct = eff / (abs(kp_plc) * 100.0 / span)
+	e_eu = abs(math.log10(r_eu))
+	e_pct = abs(math.log10(r_pct))
+	best = 'pct' if e_pct < e_eu else 'eu'
+	err = min(e_eu, e_pct)
+	out = {'jump': jump, 'ratio_eu': r_eu, 'ratio_pct': r_pct}
+	if err > 0.3 or (jump > 0) != (d_sp > 0):
+		out.update({'error_pct': None, 'why': 'jump of %.2f %% matches neither form (x%.2f / x%.2f)' % (jump, r_eu, r_pct)})
+	else:
+		out.update({'error_pct': best == 'pct', 'why': 'jump %.2f %% for %.2f engineering units' % (jump, d_sp)})
+	return out
+
 # ---------------------------------------------------------------- one call for the page / tests
 def analyze(loop, dt, sp, pv, cv, current=None, use_d=False):
 	"""loop : dict(kind, pv_min, pv_max, cv_min, cv_max, [error_pct]).  sp / pv in engineering units, cv in % (PID output).
@@ -305,6 +336,118 @@ def analyze(loop, dt, sp, pv, cv, current=None, use_d=False):
 	res = {'model': fit, 'quality': q, 'suggested': sug,
 		'suggested_metrics': evaluate(fit, t['kc'], t['kc'] / t['ti'], t['kc'] * t['td']),
 		'gain_sign': 'direct acting needed (K < 0)' if fit['K'] < 0 else 'reverse acting (K > 0)'}
+	if current:
+		res['current_metrics'] = evaluate(fit, current['kp'] / scale, current['ki'] / scale, current['kd'] / scale)
+	return res
+
+
+# ---------------------------------------------------------------- heat-up from cold (Siemens pretuning style, passive capture)
+def _window_slope(y, i, w, k, dt):
+	"""Slope (units/s) of y over the window [i, i + w): mean of the last k points minus the mean of the first k, over the gap."""
+	return (mean(y[i + w - k:i + w]) - mean(y[i:i + k])) / ((w - k) * dt)
+
+def _median(v):
+	s = sorted(v)
+	n = len(s)
+	return s[n // 2] if n % 2 else 0.5 * (s[n // 2 - 1] + s[n // 2])
+
+def quality_heatup(loop, dt, y, u, fit, rise, rise_target, on_t):
+	prof = PROFILES.get(loop.get('kind', 'temperature'), PROFILES['temperature'])
+	w = []
+	dt = max(dt, loop.get('dt_eff') or 0.0)
+	if dt > prof['max_sample_s']:
+		w.append('The PV updates every %.2f s; this kind of loop needs %.2f s or faster.' % (dt, prof['max_sample_s']))
+	noise = noise_estimate(y[:max(10, int(on_t / max(dt, 1e-9)))])
+	snr = rise / noise if noise > 1e-9 else 1e9
+	if snr < 20.0:
+		w.append('PV rose only %.0f times the noise level.' % snr)
+	if rise < 3.0:
+		w.append('PV rose only %.1f %% of span: a bigger heat-up gives a more reliable model.' % rise)
+	if rise < 0.9 * rise_target:
+		w.append('The capture ended when PV had covered %.0f %% of the way to SP; the model is extrapolated from the first part of the heat-up.' % (100.0 * rise / rise_target))
+	if max(u) - min(u[:max(5, int(on_t / max(dt, 1e-9)))]) < 30.0:
+		w.append('CV rose by less than 30 %: the heat-up was not a strong enough step.')
+	if fit['r2'] < 0.9:
+		w.append('The model explains only %.0f %% of the heat-up (it may be nonlinear over this temperature range).' % (100.0 * fit['r2']))
+	return {'snr': snr, 'noise_pct': noise, 'saturated_fraction': 0.0, 'warnings': w}
+
+def analyze_heatup(loop, dt, sp, pv, cv, current=None, use_d=False):
+	"""Cold-start capture: PV rises from its starting value toward SP while the PLC's own PID drives CV (normally pinned at its limit
+	at first). The measured CV is the process input, so the same model fit applies. Also finds the steepest rise and the apparent
+	dead time (the tangent at the inflection point), as pretuning does. Returns the same keys as analyze() plus 'tangent' / 'coarse',
+	or {'error': text} when the capture cannot be used."""
+	y = pct(pv, loop['pv_min'], loop['pv_max'])
+	spp = pct(sp, loop['pv_min'], loop['pv_max'])
+	n = len(y)
+	thr = 5.0
+	on = None
+	for i in range(n):
+		if cv[i] >= thr:
+			on = i
+			break
+	if on is None:
+		return {'error': 'The valve output never rose above %.0f %%: the burner did not start.' % thr}
+	i0 = max(0, on - int(90.0 / dt))
+	base_n = on - i0
+	if base_n * dt < 20.0:
+		return {'error': 'Less than 20 s of data before the heat started; arm the capture before pressing Start Heat.'}
+	y0 = mean(y[i0:on])
+	u0 = mean(cv[i0:on])
+	sp_final = _median(spp[on:])
+	rise_target = sp_final - y0
+	if rise_target < 1.5:
+		return {'error': 'SP is only %.1f %% of span above the starting PV.' % rise_target}
+	rise = max(y[on:]) - y0
+	if rise < 1.5:
+		return {'error': 'PV rose only %.1f %% of span: not enough for a model.' % rise}
+	if (n - on) * dt < 120.0:
+		return {'error': 'Less than 2 minutes of heating was captured.'}
+	seg_y, seg_u = y[i0:], cv[i0:]
+	fit = fit_fopdt(dt, seg_u, seg_y, u0=u0, y0=y0)
+	# --- tangent at the steepest rise
+	w = max(8, int(round(30.0 / dt)))
+	k = max(2, w // 3)
+	top = on
+	for i in range(on, n):
+		if y[i] >= y0 + 0.7 * rise:
+			top = i
+			break
+	else:
+		top = n - 1
+	best, bi = 0.0, None
+	for i in range(on, max(on + 1, top - w)):
+		sl = _window_slope(y, i, w, k, dt)
+		if sl > best:
+			best, bi = sl, i
+	tangent = None
+	if bi is not None and best > 0.0:
+		ti = (bi + w / 2.0) * dt
+		yi = mean(y[bi:bi + w])
+		tb = ti - (yi - y0) / best
+		L = max(tb - on * dt, 0.5 * dt)
+		j0 = min(n - 1, on + int(L / dt))
+		du = mean(cv[j0:bi + w]) - u0 if bi + w > j0 else 0.0
+		if du < 5.0:
+			du = max(cv) - u0
+		R = best / du
+		tangent = {'slope_pct_per_s': best, 'dead_time': L, 'reaction_rate': R, 'cv_step': du, 'time': ti}
+		tangent['coarse'] = {'kc': 0.45 / (R * L), 'ti': 3.33 * L}   # Ziegler-Nichols reaction curve (PI), gain halved
+	q = quality_heatup(loop, dt, y, cv, fit, rise, rise_target, on * dt)
+	if tangent:
+		Rm = abs(fit['K']) / fit['tau']
+		if tangent['reaction_rate'] > 0 and not (0.5 <= Rm / tangent['reaction_rate'] <= 2.0):
+			q['warnings'].append('The steepest-rise estimate and the model fit disagree on the rise rate (x%.1f): the heat-up is not close to first order.' % (Rm / tangent['reaction_rate']))
+		if not (0.4 <= max(fit['theta'], 1e-6) / tangent['dead_time'] <= 2.5):
+			q['warnings'].append('The dead time from the model (%.0f s) and from the steepest-rise tangent (%.0f s) differ.' % (fit['theta'], tangent['dead_time']))
+	t = tune(fit, use_d)
+	scale = logix_scale(loop)
+	sug = {'kp': t['kc'] * scale, 'ki': t['kc'] / t['ti'] * scale, 'kd': t['kc'] * t['td'] * scale, 'ti': t['ti'], 'td': t['td']}
+	res = {'mode': 'heatup', 'model': fit, 'quality': q, 'suggested': sug, 'tangent': tangent,
+		'suggested_metrics': evaluate(fit, t['kc'], t['kc'] / t['ti'], t['kc'] * t['td']),
+		'gain_sign': 'direct acting needed (K < 0)' if fit['K'] < 0 else 'reverse acting (K > 0)',
+		'heatup': {'start_s': on * dt, 'baseline_pct': y0, 'rise_pct': rise, 'rise_target_pct': rise_target, 'samples': n - i0}}
+	if tangent:
+		res['coarse'] = {'kp': tangent['coarse']['kc'] * scale, 'ki': tangent['coarse']['kc'] / tangent['coarse']['ti'] * scale}
 	if current:
 		res['current_metrics'] = evaluate(fit, current['kp'] / scale, current['ki'] / scale, current['kd'] / scale)
 	return res

@@ -31,6 +31,20 @@
           "sampleMode": "OnChange",
           "historyMaxAge": 1,
           "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "tune_watchdog",
+          "tagType": "AtomicTag",
+          "valueSource": "expr",
+          "dataType": "DateTime",
+          "expression": "now(60000)",
+          "documentation": "Once a minute: cleans up a PID tuning test that died. See tools/tune_watchdog.js.",
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "\t# cal1615 PID tuning watchdog: clean up a tuning test that died (gateway restart, crashed thread).\n\timport sys\n\tlog = system.util.getLogger('cal1615.tunewatchdog')\n\ttry:\n\t\trows = system.db.runPrepQuery(\"SELECT id AS \\\"id\\\", run_mode AS \\\"mode\\\", orig_sp AS \\\"orig_sp\\\", last_cmd AS \\\"last_cmd\\\", sp_tag AS \\\"sp_tag\\\", (CAST(SYSTIMESTAMP AS DATE) - CAST(hb AS DATE)) * 86400 AS \\\"age\\\" FROM PID_TUNE_RUN WHERE status = 'RUNNING'\", [], 'myOracle')\n\texcept:\n\t\trows = []   # the table does not exist until the first test, or the database is down (a Java exception, which 'except Exception' would miss)\n\tfor r in rows:\n\t\tif float(r['age'] or 0.0) < 60.0:\n\t\t\tcontinue   # a live test: its heartbeat is recent\n\t\ttry:\n\t\t\tstatus = 'RECOVERED'\n\t\t\tif (r['mode'] or 'steady') == 'heatup' or r['orig_sp'] is None:\n\t\t\t\tstatus = 'ABORTED'\n\t\t\t\tmsg = 'Interrupted heat-up capture: the capture was lost. Nothing had been written to the PLC.'\n\t\t\telse:\n\t\t\t\torig = float(r['orig_sp'])\n\t\t\t\tlast = orig if r['last_cmd'] is None else float(r['last_cmd'])\n\t\t\t\tcur = system.tag.readBlocking([r['sp_tag']])[0]\n\t\t\t\tif not (cur.quality.isGood() and cur.value is not None):\n\t\t\t\t\tmsg = 'Interrupted test: the SP could not be read, so it was not touched. Check the setpoint.'\n\t\t\t\telif abs(cur.value - orig) <= 0.05:\n\t\t\t\t\tmsg = 'Interrupted test: SP was already %.1f.' % orig\n\t\t\t\telif abs(cur.value - last) > 0.05:\n\t\t\t\t\tmsg = 'Interrupted test: the SP is now %.1f, not the %.1f the test set. Someone else changed it, so it was not touched.' % (cur.value, last)\n\t\t\t\telse:\n\t\t\t\t\tsystem.tag.writeBlocking([r['sp_tag']], [orig])\n\t\t\t\t\tmsg = 'Interrupted test: SP put back to %.1f (was %.1f).' % (orig, cur.value)\n\t\t\tsystem.db.runPrepUpdate(\"UPDATE PID_TUNE_RUN SET status = ?, message = ?, ended = SYSTIMESTAMP WHERE id = ?\", [status, msg[:480], int(r['id'])], 'myOracle')\n\t\t\tlog.warn(msg)\n\t\texcept:\n\t\t\tlog.error('Could not clean up an interrupted tuning test: %s' % sys.exc_info()[1])"
+            }
+          ]
         }
       ]
     },
@@ -5564,6 +5578,30 @@
           "opcServer": "cal1615",
           "tagType": "AtomicTag",
           "valueSource": "opc"
+        },
+        {
+          "name": "ts2_40_",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p02_real_from_hmi.ts2[40]",
+          "opcServer": "cal1615",
+          "valueSource": "opc"
+        },
+        {
+          "name": "ts2_41_",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p02_real_from_hmi.ts2[41]",
+          "opcServer": "cal1615",
+          "valueSource": "opc"
+        },
+        {
+          "name": "ts2_42_",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p02_real_from_hmi.ts2[42]",
+          "opcServer": "cal1615",
+          "valueSource": "opc"
         }
       ]
     },
@@ -8624,6 +8662,72 @@
           "historySampleRateUnits": "SEC",
           "historyMaxAge": 10,
           "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "PV",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p20r10_pid_tens.PV",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "SP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p20r10_pid_tens.SP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "OUT",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p20r10_pid_tens.OUT",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "ERR",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p20r10_pid_tens.ERR",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        },
+        {
+          "name": "SWM",
+          "tagType": "AtomicTag",
+          "dataType": "Boolean",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p20r10_pid_tens.SWM",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
         }
       ]
     },
@@ -8937,6 +9041,72 @@
           "historySampleRateUnits": "SEC",
           "historyMaxAge": 10,
           "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "PV",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p22r10_pid_psn.PV",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "SP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p22r10_pid_psn.SP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "OUT",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p22r10_pid_psn.OUT",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "ERR",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p22r10_pid_psn.ERR",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        },
+        {
+          "name": "SWM",
+          "tagType": "AtomicTag",
+          "dataType": "Boolean",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p22r10_pid_psn.SWM",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
         }
       ]
     },
@@ -10254,6 +10424,72 @@
           "historySampleRateUnits": "SEC",
           "historyMaxAge": 10,
           "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "PV",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r10_pid_psn.PV",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "SP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r10_pid_psn.SP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "OUT",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r10_pid_psn.OUT",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "ERR",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r10_pid_psn.ERR",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        },
+        {
+          "name": "SWM",
+          "tagType": "AtomicTag",
+          "dataType": "Boolean",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r10_pid_psn.SWM",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
         }
       ]
     },
@@ -14651,6 +14887,284 @@
       "tagType": "AtomicTag",
       "valueSource": "opc",
       "documentation": "Line start permissive from the oxidizer"
+    },
+    {
+      "name": "p25r10_pid_psn",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "KP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.KP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "KI",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.KI",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "KD",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.KD",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "PV",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.PV",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "SP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.SP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "OUT",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.OUT",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "ERR",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.ERR",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        },
+        {
+          "name": "SWM",
+          "tagType": "AtomicTag",
+          "dataType": "Boolean",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_pid_psn.SWM",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        }
+      ]
+    },
+    {
+      "name": "p29r11_pid_psn",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "KP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.KP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "KI",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.KI",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "KD",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.KD",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "OnChange",
+          "historyMaxAge": 1,
+          "historyMaxAgeUnits": "MIN"
+        },
+        {
+          "name": "PV",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.PV",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "SP",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.SP",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "OUT",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.OUT",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast",
+          "historyEnabled": true,
+          "historyProvider": "myOracle",
+          "sampleMode": "Periodic",
+          "historySampleRate": 10,
+          "historySampleRateUnits": "SEC",
+          "historyMaxAge": 10,
+          "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "name": "ERR",
+          "tagType": "AtomicTag",
+          "dataType": "Float4",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.ERR",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        },
+        {
+          "name": "SWM",
+          "tagType": "AtomicTag",
+          "dataType": "Boolean",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_pid_psn.SWM",
+          "opcServer": "cal1615",
+          "valueSource": "opc",
+          "tagGroup": "Fast"
+        }
+      ]
+    },
+    {
+      "name": "p20r10_tension_request",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p20r10_tension_request",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
+    },
+    {
+      "name": "p22r11_request_tension",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p22r11_request_tension",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
+    },
+    {
+      "name": "p25r10_tension_request",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p25r10_tension_request",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
+    },
+    {
+      "name": "p29r10_request_run",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r10_request_run",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
+    },
+    {
+      "name": "p29r11_request_run",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29r11_request_run",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
+    },
+    {
+      "name": "p01r13_line_running",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01r13_line_running",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
+    },
+    {
+      "name": "p29_di_wdr_index_fwd",
+      "tagType": "AtomicTag",
+      "dataType": "Boolean",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p29_di_wdr_index_fwd",
+      "opcServer": "cal1615",
+      "valueSource": "opc"
     }
   ]
 }

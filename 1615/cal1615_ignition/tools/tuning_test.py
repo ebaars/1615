@@ -91,3 +91,62 @@ scenario('B. Tension loop: 0.05 s capture, 6 bump segments of 8 s', tens, tens_t
 	[0.0, 2.0, 0.0, -2.0, 0.0, 2.0], 8.0, 30.0, 50.0, 0.15)
 scenario('C. Same tension loop captured every 0.5 s (too slow for it)', tens, tens_true, 0.5, 48.0, (0.8, 0.5, 0.0),
 	[0.0, 2.0, 0.0, -2.0, 0.0, 2.0], 8.0, 30.0, 50.0, 0.15)
+
+
+# ---- heat-up from cold: SP is 70 F -> 165 F (7.0 -> 16.5 % of 0..1000), the burner starts 300 s after arming, the PLC PID saturates, then desaturates
+def heatup_capture(true, dt, T, kc, ki, start_s, sp_step, y0, noise, seed):
+	sp, pv, cv = make_capture(true, dt, T, kc, ki, 0.0, [0.0, sp_step], start_s, y0, 0.0, noise, seed)
+	return sp, pv, cv
+
+def heat_scenario(name, true, kc, ki, cur_eu, T=3600.0, noise=0.02, start_s=300.0, seed=11, expect=None):
+	print '=' * 78
+	print name
+	dt = 1.0
+	sp_pct, pv_pct, cv = heatup_capture(true, dt, T, kc, ki, start_s, 9.5, 7.0, noise, seed)
+	loop = {'kind': 'temperature', 'pv_min': 0.0, 'pv_max': 1000.0, 'cv_min': 0.0, 'cv_max': 100.0, 'error_pct': False}
+	span = 1000.0
+	sp = [v / 100.0 * span for v in sp_pct]
+	pv = [v / 100.0 * span for v in pv_pct]
+	res = analyze_heatup(loop, dt, sp, pv, cv, current={'kp': cur_eu[0], 'ki': cur_eu[1], 'kd': 0.0})
+	if 'error' in res:
+		print '  ERROR:', res['error']
+		return res
+	m = res['model']
+	h = res['heatup']
+	print '  CV first >5 %% at %.0f s; PV %.1f -> %.1f %% of span (SP %.1f %%); CV saturated for %d s' % (h['start_s'], h['baseline_pct'], h['baseline_pct'] + h['rise_pct'], h['baseline_pct'] + h['rise_target_pct'], sum(1 for v in cv if v >= 99.5))
+	print '  true  : K %.3f  tau %7.1f s  theta %5.1f s' % (true['K'], true['tau'], true['theta'])
+	print '  fitted: K %.3f  tau %7.1f s  theta %5.1f s   R2 %.3f  (K %+.0f %%, tau %+.0f %%, theta %+.0f %%)' % (
+		m['K'], m['tau'], m['theta'], m['r2'], 100 * (m['K'] / true['K'] - 1), 100 * (m['tau'] / true['tau'] - 1), 100 * (m['theta'] / true['theta'] - 1))
+	t = res['tangent']
+	if t:
+		print '  tangent: steepest rise %.4f %%/s, apparent dead time %.0f s, CV step %.0f %%, reaction rate %.5f (model K/tau %.5f)' % (t['slope_pct_per_s'], t['dead_time'], t['cv_step'], t['reaction_rate'], abs(m['K']) / m['tau'])
+		print '  coarse (tangent, ZN PI halved): Kp %.3f Ki %.4f /s' % (res['coarse']['kp'], res['coarse']['ki'])
+	for w in res['quality']['warnings']:
+		print '  WARNING:', w
+	sg = res['suggested']
+	print '  current  Kp %.3f Ki %.4f : %s' % (cur_eu[0], cur_eu[1], judge_eu(true, span, cur_eu[0], cur_eu[1]))
+	print '  suggested Kp %.3f Ki %.4f : %s' % (sg['kp'], sg['ki'], judge_eu(true, span, sg['kp'], sg['ki']))
+	bad, worst = 0, 0.0
+	for kK, kt, kth in CORNERS:
+		mm = evaluate(_scaled(true, kK, kt, kth), sg['kp'] * span / 100.0, sg['ki'] * span / 100.0, 0.0)
+		bad += 0 if mm['stable'] else 1
+		worst = max(worst, mm['overshoot_pct'])
+	print '  suggested gains on off-nominal plants: %d of %d unstable, worst overshoot %.0f %%' % (bad, len(CORNERS), worst)
+	return res
+
+def judge_eu(true, span, kp_eu, ki_eu):
+	return judge(true, kp_eu * span / 100.0, ki_eu * span / 100.0, 0.0)
+
+# true plant in %PV per %CV: 100 % CV would settle at 24 % of span; SP needs 9.5 % -> steady CV about 40 %
+true_oven = {'K': 0.24, 'tau': 600.0, 'theta': 60.0}
+heat_scenario('D. Cold oven, normal heat-up (current Fast PID: Kp 3.0 per F)', true_oven, 30.0, 0.05, (3.0, 0.005))
+heat_scenario('D2. Same, sluggish current gains', true_oven, 8.0, 0.01, (0.8, 0.001))
+heat_scenario('D3. Heat-up with a lazier oven (tau 1500 s, theta 150 s)', {'K': 0.24, 'tau': 1500.0, 'theta': 150.0}, 30.0, 0.05, (3.0, 0.005), T=7200.0)
+r = heat_scenario('D4. Noisy PV (0.15 % of span = 1.5 F)', true_oven, 30.0, 0.05, (3.0, 0.005), noise=0.15)
+# an oven that is already hot (no heat-up to analyse): CV never rises above 5 %
+loop = {'kind': 'temperature', 'pv_min': 0.0, 'pv_max': 1000.0, 'cv_min': 0.0, 'cv_max': 100.0, 'error_pct': False}
+print '=' * 78
+print 'D5. Unusable captures'
+print '  burner never starts :', analyze_heatup(loop, 1.0, [165.0] * 600, [70.0] * 600, [0.0] * 600)['error']
+print '  heat starts at once :', analyze_heatup(loop, 1.0, [165.0] * 900, [70.0 + 0.1 * i for i in range(900)], [100.0] * 900)['error']
+print '  SP below PV         :', analyze_heatup(loop, 1.0, [60.0] * 900, [70.0] * 300 + [70.0 + 0.1 * i for i in range(600)], [0.0] * 200 + [100.0] * 700)['error']
