@@ -91,6 +91,10 @@
     "/pid-tuning": {
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Maintenance/PID Tuning"
+    },
+    "/rolls": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/Rolls"
     }
   },
   "sharedDocks": {

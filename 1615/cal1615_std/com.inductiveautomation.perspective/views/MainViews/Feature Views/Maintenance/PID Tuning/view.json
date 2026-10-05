@@ -17,7 +17,13 @@
       "has_run": false
     },
     "ready": [],
-    "recovered": ""
+    "recovered": "",
+    "simc0": null,
+    "simc1": null,
+    "simc2": null,
+    "simc3": null,
+    "simc4": null,
+    "simc5": null
   },
   "params": {},
   "propConfig": {
@@ -51,6 +57,90 @@
           "mode": "indirect",
           "references": {
             "0": "{view.custom.p.sp}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.simc0": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sim_c0_tag}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.simc1": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sim_c1_tag}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.simc2": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sim_c2_tag}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.simc3": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sim_c3_tag}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.simc4": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sim_c4_tag}"
+          },
+          "tagPath": "{0}",
+          "bidirectional": false
+        }
+      }
+    },
+    "custom.simc5": {
+      "binding": {
+        "type": "tag",
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "0": "{view.custom.p.sim_c5_tag}"
           },
           "tagPath": "{0}",
           "bidirectional": false
@@ -498,6 +588,80 @@
                   "scope": "G",
                   "config": {
                     "script": "\tself.view.custom.loop = 'winder_b'\n\tself.view.custom.bumpUser = 0.0\n\tself.view.custom.confirm = ''\n\tself.view.custom.msg = ''"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "loop_sim_zone"
+            },
+            "position": {
+              "basis": "90px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Sim Oven",
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop} = 'sim_zone'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tself.view.custom.loop = 'sim_zone'\n\tself.view.custom.bumpUser = 0.0\n\tself.view.custom.confirm = ''\n\tself.view.custom.msg = ''"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "loop_sim_tension"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Sim Tension",
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{view.custom.loop} = 'sim_tension'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tself.view.custom.loop = 'sim_tension'\n\tself.view.custom.bumpUser = 0.0\n\tself.view.custom.confirm = ''\n\tself.view.custom.msg = ''"
                   }
                 }
               }
@@ -3415,6 +3579,991 @@
               }
             },
             "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "sim"
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "cal1615/card",
+                    "paddingBottom": "6px"
+                  }
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{view.custom.p.is_sim}"
+                      }
+                    }
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "header"
+                    },
+                    "position": {
+                      "basis": "26px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Simulator (no PLC, tags under Sim/)",
+                      "style": {
+                        "classes": "cal1615/card-header"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "what"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "11px",
+                        "padding": "2px 8px",
+                        "textAlign": "left",
+                        "whiteSpace": "pre-wrap",
+                        "color": "var(--neutral-70)"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "'A simulated plant that answers the PID output, so the tuning test can be tried without the oven. Reset it, then run the test above as usual. Set Sim/enable to false to stop it.'"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "ctl0"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "13px",
+                        "margin": "2px 6px"
+                      }
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_c0_tag}) > 0"
+                          }
+                        }
+                      },
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.sim_c0_label} + if({view.custom.p.sim_c0_kind} = 'toggle', if(coalesce({view.custom.simc0}, false), '   [ON]', '   [OFF]'), '')"
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tp = self.view.custom.p\n\ttag = p['sim_c0_tag']\n\tif p['sim_c0_kind'] == 'toggle':\n\t\tnow = system.tag.readBlocking([tag])[0].value\n\t\tsystem.tag.writeBlocking([tag], [not bool(now)])\n\telse:\n\t\tsystem.tag.writeBlocking([tag], [True])"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "ctl1"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "13px",
+                        "margin": "2px 6px"
+                      }
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_c1_tag}) > 0"
+                          }
+                        }
+                      },
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.sim_c1_label} + if({view.custom.p.sim_c1_kind} = 'toggle', if(coalesce({view.custom.simc1}, false), '   [ON]', '   [OFF]'), '')"
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tp = self.view.custom.p\n\ttag = p['sim_c1_tag']\n\tif p['sim_c1_kind'] == 'toggle':\n\t\tnow = system.tag.readBlocking([tag])[0].value\n\t\tsystem.tag.writeBlocking([tag], [not bool(now)])\n\telse:\n\t\tsystem.tag.writeBlocking([tag], [True])"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "ctl2"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "13px",
+                        "margin": "2px 6px"
+                      }
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_c2_tag}) > 0"
+                          }
+                        }
+                      },
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.sim_c2_label} + if({view.custom.p.sim_c2_kind} = 'toggle', if(coalesce({view.custom.simc2}, false), '   [ON]', '   [OFF]'), '')"
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tp = self.view.custom.p\n\ttag = p['sim_c2_tag']\n\tif p['sim_c2_kind'] == 'toggle':\n\t\tnow = system.tag.readBlocking([tag])[0].value\n\t\tsystem.tag.writeBlocking([tag], [not bool(now)])\n\telse:\n\t\tsystem.tag.writeBlocking([tag], [True])"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "ctl3"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "13px",
+                        "margin": "2px 6px"
+                      }
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_c3_tag}) > 0"
+                          }
+                        }
+                      },
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.sim_c3_label} + if({view.custom.p.sim_c3_kind} = 'toggle', if(coalesce({view.custom.simc3}, false), '   [ON]', '   [OFF]'), '')"
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tp = self.view.custom.p\n\ttag = p['sim_c3_tag']\n\tif p['sim_c3_kind'] == 'toggle':\n\t\tnow = system.tag.readBlocking([tag])[0].value\n\t\tsystem.tag.writeBlocking([tag], [not bool(now)])\n\telse:\n\t\tsystem.tag.writeBlocking([tag], [True])"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "ctl4"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "13px",
+                        "margin": "2px 6px"
+                      }
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_c4_tag}) > 0"
+                          }
+                        }
+                      },
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.sim_c4_label} + if({view.custom.p.sim_c4_kind} = 'toggle', if(coalesce({view.custom.simc4}, false), '   [ON]', '   [OFF]'), '')"
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tp = self.view.custom.p\n\ttag = p['sim_c4_tag']\n\tif p['sim_c4_kind'] == 'toggle':\n\t\tnow = system.tag.readBlocking([tag])[0].value\n\t\tsystem.tag.writeBlocking([tag], [not bool(now)])\n\telse:\n\t\tsystem.tag.writeBlocking([tag], [True])"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "ctl5"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "13px",
+                        "margin": "2px 6px"
+                      }
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_c5_tag}) > 0"
+                          }
+                        }
+                      },
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{view.custom.p.sim_c5_label} + if({view.custom.p.sim_c5_kind} = 'toggle', if(coalesce({view.custom.simc5}, false), '   [ON]', '   [OFF]'), '')"
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tp = self.view.custom.p\n\ttag = p['sim_c5_tag']\n\tif p['sim_c5_kind'] == 'toggle':\n\t\tnow = system.tag.readBlocking([tag])[0].value\n\t\tsystem.tag.writeBlocking([tag], [not bool(now)])\n\telse:\n\t\tsystem.tag.writeBlocking([tag], [True])"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "plant"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "11px",
+                        "padding": "4px 8px 0 8px",
+                        "textAlign": "left",
+                        "whiteSpace": "pre-wrap",
+                        "fontWeight": "bold"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "'Plant (changes take effect at once)'"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "par0"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p0_label}"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.00",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.sim_p0_tag}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tsystem.tag.writeBlocking([self.view.custom.p['sim_p0_tag']], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p0_units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_p0_tag}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "par1"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p1_label}"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.00",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.sim_p1_tag}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tsystem.tag.writeBlocking([self.view.custom.p['sim_p1_tag']], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p1_units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_p1_tag}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "par2"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p2_label}"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.00",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.sim_p2_tag}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tsystem.tag.writeBlocking([self.view.custom.p['sim_p2_tag']], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p2_units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_p2_tag}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "par3"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "stretch",
+                      "style": {
+                        "paddingLeft": "6px",
+                        "paddingRight": "6px",
+                        "paddingTop": "3px",
+                        "paddingBottom": "3px",
+                        "gap": "4px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "grow": 1,
+                          "basis": "0"
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/row-label"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p3_label}"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.numeric-entry-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "format": "#,##0.00",
+                          "spinner": {
+                            "enabled": false
+                          },
+                          "style": {
+                            "classes": "cal1615/entry"
+                          }
+                        },
+                        "propConfig": {
+                          "props.value": {
+                            "binding": {
+                              "type": "tag",
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "0": "{view.custom.p.sim_p3_tag}"
+                                },
+                                "tagPath": "{0}",
+                                "bidirectional": false
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tsystem.tag.writeBlocking([self.view.custom.p['sim_p3_tag']], [self.props.value])"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "units"
+                        },
+                        "position": {
+                          "basis": "34px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "",
+                          "style": {
+                            "classes": "cal1615/units"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.p.sim_p3_units}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "len({view.custom.p.sim_p3_tag}) > 0"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
               {
                 "type": "ia.container.flex",
                 "meta": {

@@ -1,0 +1,444 @@
+{
+  "name": "",
+  "tagType": "Provider",
+  "tags": [
+    {
+      "name": "Sim",
+      "tagType": "Folder",
+      "documentation": "Tuning simulator (see tools/tuning_sim.js). Set Sim/enable to false to stop it.",
+      "tags": [
+        {
+          "name": "enable",
+          "tagType": "AtomicTag",
+          "valueSource": "memory",
+          "dataType": "Boolean",
+          "value": true
+        },
+        {
+          "name": "tick",
+          "tagType": "AtomicTag",
+          "valueSource": "expr",
+          "dataType": "DateTime",
+          "expression": "now(100)",
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "\t# cal1615 tuning simulator. Runs every time [cal1615]Sim/tick changes (an expression tag, now(100)) and advances two simulated\n\t# plants by the real time since the last run: an oven zone (Sim/Zone/*) and a tension loop (Sim/Tension/*). The simulated PLC\n\t# (PID with Fast / Auto gain sets, status codes, HMI-input -> parameter copy) and the plants are plain memory tags, so the PID Tuning\n\t# page and cal1615.tunerun treat them like real loops. The zone plant is about 10x faster than a real oven so a test takes minutes.\n\t# Source of the tag script (tools/tuning_sim.js indents it into the tag) and of the test (tools/sim_test.py).\n\timport math, random\n\n\tP = '[cal1615]Sim/'\n\tBURNER_DELAY_S = 20.0       # Start Heat -> burner lit\n\tGL = system.util.getGlobals()\n\tst = GL.get('cal1615_sim')\n\tif st is None:\n\t\tst = {'t': None, 'busy': False}\n\t\tGL['cal1615_sim'] = st\n\n\n\tdef clamp(v, lo, hi):\n\t\treturn max(lo, min(hi, v))\n\n\n\tdef rd(prefix, names):\n\t\t\"\"\"Read Sim/<prefix><name> for every name; a missing or bad tag reads as None.\"\"\"\n\t\tvals = system.tag.readBlocking([P + prefix + n for n in names])\n\t\treturn dict((n, (v.value if v.quality.isGood() else None)) for n, v in zip(names, vals))\n\n\n\tdef wr(prefix, w):\n\t\tif w:\n\t\t\tnames = list(w.keys())\n\t\t\tsystem.tag.writeBlocking([P + prefix + n for n in names], [w[n] for n in names])\n\n\n\tdef delayed(s, theta, u, u0):\n\t\t\"\"\"Dead time: the plant sees the output from 'theta' seconds ago (a time-stamped buffer, so uneven steps are fine).\"\"\"\n\t\tbuf = s['buf']\n\t\tbuf.append((s['t'], u))\n\t\tcut = s['t'] - theta\n\t\ti = 0\n\t\twhile i + 1 < len(buf) and buf[i + 1][0] <= cut:\n\t\t\ti += 1\n\t\tif buf[i][0] <= cut:\n\t\t\tud = buf[i][1]\n\t\t\tdel buf[:i]\n\t\t\treturn ud\n\t\treturn u0\n\n\n\tZONE = ['pv', 'sp', 'sp_w', 'cv', 'status', 'faults_ok', 'auto', 'soak_to_fast', 'kp', 'ki', 'kd', 'kp_w', 'ki_w', 'kd_w',\n\t\t'kp1', 'ki1', 'kd1', 'kp1_w', 'ki1_w', 'kd1_w', 'pb_start_heat', 'pb_stop_heat', 'pb_reset_cold', 'pb_reset_hot', 'pb_recipe',\n\t\t'inject_fault', 'plant_k', 'plant_tau', 'plant_theta', 'plant_noise', 'ambient']\n\n\n\tdef zone(dt):\n\t\tx = rd('Zone/', ZONE)\n\t\tif None in (x['sp_w'], x['pv'], x['plant_k'], x['plant_tau'], x['plant_theta'], x['ambient'], x['status']):\n\t\t\treturn\n\t\tz = st.get('zone')\n\t\tif z is None:\n\t\t\tz = {'t': 0.0, 'pv_state': x['pv'], 'integ': 0.0, 'heat_on': x['status'] >= 9, 'burner': None, 'buf': [], 'u0': 0.0, 'fault': False}\n\t\t\tst['zone'] = z\n\t\tw = {}\n\t\tk, tau, theta, amb = x['plant_k'], max(x['plant_tau'], 0.5), max(x['plant_theta'], 0.0), x['ambient']\n\t\tstatus = x['status']\n\t\tz['t'] += dt\n\t\tif x['pb_recipe']:                       # a recipe download changes the setpoint from the HMI side\n\t\t\tx['sp_w'] += 10.0\n\t\t\tw['sp_w'] = x['sp_w']\n\t\t\tw['pb_recipe'] = False\n\t\tsp = x['sp_w']\n\t\tif x['pb_reset_cold']:                   # cold, empty oven\n\t\t\tz.update(pv_state=amb, integ=0.0, heat_on=False, burner=None, buf=[], u0=0.0)\n\t\t\tstatus = 2\n\t\t\tw['pb_reset_cold'] = False\n\t\tif x['pb_reset_hot']:                    # oven already at SP, controlling\n\t\t\tuop = clamp((sp - amb) / k, 0.0, 100.0)\n\t\t\tz.update(pv_state=sp, integ=uop, heat_on=True, burner=None, buf=[], u0=uop)\n\t\t\tstatus = 10\n\t\t\tw['pb_reset_hot'] = False\n\t\tif x['pb_stop_heat']:\n\t\t\tz.update(heat_on=False, burner=None, integ=0.0)\n\t\t\tstatus = 2\n\t\t\tw['pb_stop_heat'] = False\n\t\tif x['pb_start_heat']:\n\t\t\tif not z['heat_on'] and z['burner'] is None:\n\t\t\t\tz['burner'] = 0.0\n\t\t\t\tstatus = 3\n\t\t\tw['pb_start_heat'] = False\n\t\tif z['burner'] is not None:\n\t\t\tz['burner'] += dt\n\t\t\tif z['burner'] >= BURNER_DELAY_S:\n\t\t\t\tz.update(heat_on=True, burner=None)\n\t\t\t\tstatus = 9\n\t\tfaults_ok = not x['inject_fault']\n\t\tif not faults_ok and z['heat_on']:       # a zone fault trips the burner\n\t\t\tz.update(heat_on=False, integ=0.0)\n\t\t\tstatus = 2\n\t\tpv = z['pv_state'] + random.gauss(0.0, max(x['plant_noise'] or 0.0, 0.0))\n\t\te = sp - pv\n\t\tif z['heat_on'] and x['auto'] is not False:\n\t\t\tif abs(e) > (x['soak_to_fast'] if x['soak_to_fast'] is not None else 8.0):\n\t\t\t\tkp, ki = x['kp1_w'] if x['kp1_w'] is not None else 0.0, x['ki1_w'] if x['ki1_w'] is not None else 0.0\n\t\t\telse:\n\t\t\t\tkp, ki = x['kp_w'] if x['kp_w'] is not None else 0.0, x['ki_w'] if x['ki_w'] is not None else 0.0\n\t\t\tu = kp * e + z['integ']\n\t\t\tcv = clamp(u, 0.0, 100.0)\n\t\t\tif not ((u > 100.0 and e > 0) or (u < 0.0 and e < 0)):\n\t\t\t\tz['integ'] = clamp(z['integ'] + ki * e * dt, -50.0, 150.0)\n\t\t\tif status == 9 and abs(e) <= 3.0:\n\t\t\t\tstatus = 10\n\t\telse:\n\t\t\tcv = 0.0\n\t\t\tz['integ'] = 0.0\n\t\tud = delayed(z, theta, cv, z['u0'])\n\t\ta = math.exp(-dt / tau)\n\t\tz['pv_state'] = a * z['pv_state'] + (1.0 - a) * (amb + k * ud)\n\t\t# what the PLC does with the HMI inputs: copy the gains and the setpoint into the running PID\n\t\tfor n in ('kp', 'ki', 'kd', 'kp1', 'ki1', 'kd1'):\n\t\t\tif x[n + '_w'] is not None and x[n] != x[n + '_w']:\n\t\t\t\tw[n] = x[n + '_w']\n\t\tif x['status'] != status:\n\t\t\tw['status'] = status\n\t\tif x['faults_ok'] != faults_ok:\n\t\t\tw['faults_ok'] = faults_ok\n\t\tw['pv'], w['sp'], w['cv'] = pv, sp, cv\n\t\twr('Zone/', w)\n\n\n\tTENSION = ['pv', 'sp', 'sp_w', 'cv', 'active', 'line_running', 'swm', 'kp', 'ki', 'kd', 'kp_w', 'ki_w', 'kd_w', 'pb_recipe',\n\t\t'plant_k', 'plant_tau', 'plant_theta', 'plant_noise']\n\tTENSION_BASE = 15.0      # lb at the neutral output (50 %)\n\n\n\tdef tension(dt):\n\t\tx = rd('Tension/', TENSION)\n\t\tif None in (x['sp_w'], x['pv'], x['plant_k'], x['plant_tau'], x['plant_theta'], x['cv']):\n\t\t\treturn\n\t\ts = st.get('tension')\n\t\tif s is None:\n\t\t\ts = {'t': 0.0, 'pv_state': x['pv'], 'integ': 50.0, 'buf': [], 'cv': 50.0}\n\t\t\tst['tension'] = s\n\t\tw = {}\n\t\tk, tau, theta = x['plant_k'], max(x['plant_tau'], 0.05), max(x['plant_theta'], 0.0)\n\t\ts['t'] += dt\n\t\tif x['pb_recipe']:\n\t\t\tx['sp_w'] += 5.0\n\t\t\tw['sp_w'] = x['sp_w']\n\t\t\tw['pb_recipe'] = False\n\t\tsp = x['sp_w']\n\t\tpv = s['pv_state'] + random.gauss(0.0, max(x['plant_noise'] or 0.0, 0.0))\n\t\te = sp - pv\n\t\tif x['swm']:                             # PID in manual: the output stays where it is\n\t\t\tcv = s['cv']\n\t\t\ts['integ'] = cv\n\t\telif x['active'] and x['line_running']:\n\t\t\tkp = x['kp_w'] if x['kp_w'] is not None else 0.0\n\t\t\tki = x['ki_w'] if x['ki_w'] is not None else 0.0\n\t\t\tu = kp * e + s['integ']\n\t\t\tcv = clamp(u, 0.0, 100.0)\n\t\t\tif not ((u > 100.0 and e > 0) or (u < 0.0 and e < 0)):\n\t\t\t\ts['integ'] = clamp(s['integ'] + ki * e * dt, 0.0, 100.0)\n\t\telse:                                    # not running: neutral output\n\t\t\tcv = 50.0\n\t\t\ts['integ'] = 50.0\n\t\ts['cv'] = cv\n\t\tud = delayed(s, theta, cv, 50.0)\n\t\ta = math.exp(-dt / tau)\n\t\ts['pv_state'] = a * s['pv_state'] + (1.0 - a) * (TENSION_BASE + k * (ud - 50.0))\n\t\tfor n in ('kp', 'ki', 'kd'):\n\t\t\tif x[n + '_w'] is not None and x[n] != x[n + '_w']:\n\t\t\t\tw[n] = x[n + '_w']\n\t\tw['pv'], w['sp'], w['cv'] = pv, sp, cv\n\t\twr('Tension/', w)\n\n\n\tdef run():\n\t\tnow = system.date.now().getTime()\n\t\tlast = st['t']\n\t\tst['t'] = now\n\t\tif last is None:\n\t\t\treturn\n\t\tdt = (now - last) / 1000.0\n\t\tif dt <= 0.0:\n\t\t\treturn\n\t\tdt = min(dt, 0.5)                        # after a stall, do not take one huge step\n\t\ton = system.tag.readBlocking([P + 'enable'])[0]\n\t\tif not (on.quality.isGood() and on.value):\n\t\t\treturn\n\t\tzone(dt)\n\t\ttension(dt)\n\n\n\tif not st['busy']:                           # two overlapping runs would double-step the plants\n\t\tst['busy'] = True\n\t\ttry:\n\t\t\trun()\n\t\tfinally:\n\t\t\tst['busy'] = False\n"
+            }
+          ]
+        },
+        {
+          "name": "Zone",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "pv",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 70,
+              "historyEnabled": true,
+              "historyProvider": "myOracle",
+              "sampleMode": "Periodic",
+              "historySampleRate": 1,
+              "historySampleRateUnits": "SEC",
+              "historyMaxAge": 10,
+              "historyMaxAgeUnits": "SEC"
+            },
+            {
+              "name": "sp",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 165,
+              "historyEnabled": true,
+              "historyProvider": "myOracle",
+              "sampleMode": "Periodic",
+              "historySampleRate": 1,
+              "historySampleRateUnits": "SEC",
+              "historyMaxAge": 10,
+              "historyMaxAgeUnits": "SEC"
+            },
+            {
+              "name": "sp_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 165
+            },
+            {
+              "name": "cv",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0,
+              "historyEnabled": true,
+              "historyProvider": "myOracle",
+              "sampleMode": "Periodic",
+              "historySampleRate": 1,
+              "historySampleRateUnits": "SEC",
+              "historyMaxAge": 10,
+              "historyMaxAgeUnits": "SEC"
+            },
+            {
+              "name": "status",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Int4",
+              "value": 2
+            },
+            {
+              "name": "faults_ok",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": true
+            },
+            {
+              "name": "auto",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": true
+            },
+            {
+              "name": "hl",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 250
+            },
+            {
+              "name": "dev",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 10
+            },
+            {
+              "name": "soak_to_fast",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 8
+            },
+            {
+              "name": "kp",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1
+            },
+            {
+              "name": "ki",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.005
+            },
+            {
+              "name": "kd",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0
+            },
+            {
+              "name": "kp_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1
+            },
+            {
+              "name": "ki_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.005
+            },
+            {
+              "name": "kd_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0
+            },
+            {
+              "name": "kp1",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 6
+            },
+            {
+              "name": "ki1",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.03
+            },
+            {
+              "name": "kd1",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0
+            },
+            {
+              "name": "kp1_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 6
+            },
+            {
+              "name": "ki1_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.03
+            },
+            {
+              "name": "kd1_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0
+            },
+            {
+              "name": "pb_start_heat",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "pb_stop_heat",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "pb_reset_cold",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "pb_reset_hot",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "pb_recipe",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "inject_fault",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "plant_k",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 2.4
+            },
+            {
+              "name": "plant_tau",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 60
+            },
+            {
+              "name": "plant_theta",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 8
+            },
+            {
+              "name": "plant_noise",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.05
+            },
+            {
+              "name": "ambient",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 70
+            }
+          ]
+        },
+        {
+          "name": "Tension",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "pv",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 15,
+              "historyEnabled": true,
+              "historyProvider": "myOracle",
+              "sampleMode": "Periodic",
+              "historySampleRate": 1,
+              "historySampleRateUnits": "SEC",
+              "historyMaxAge": 10,
+              "historyMaxAgeUnits": "SEC"
+            },
+            {
+              "name": "sp",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 15,
+              "historyEnabled": true,
+              "historyProvider": "myOracle",
+              "sampleMode": "Periodic",
+              "historySampleRate": 1,
+              "historySampleRateUnits": "SEC",
+              "historyMaxAge": 10,
+              "historyMaxAgeUnits": "SEC"
+            },
+            {
+              "name": "sp_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 15
+            },
+            {
+              "name": "cv",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 50,
+              "historyEnabled": true,
+              "historyProvider": "myOracle",
+              "sampleMode": "Periodic",
+              "historySampleRate": 1,
+              "historySampleRateUnits": "SEC",
+              "historyMaxAge": 10,
+              "historyMaxAgeUnits": "SEC"
+            },
+            {
+              "name": "active",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": true
+            },
+            {
+              "name": "line_running",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": true
+            },
+            {
+              "name": "swm",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "kp",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1.5
+            },
+            {
+              "name": "ki",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1
+            },
+            {
+              "name": "kd",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0
+            },
+            {
+              "name": "kp_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1.5
+            },
+            {
+              "name": "ki_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1
+            },
+            {
+              "name": "kd_w",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0
+            },
+            {
+              "name": "pb_recipe",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "value": false
+            },
+            {
+              "name": "plant_k",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.5
+            },
+            {
+              "name": "plant_tau",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 1
+            },
+            {
+              "name": "plant_theta",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.2
+            },
+            {
+              "name": "plant_noise",
+              "tagType": "AtomicTag",
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "value": 0.04
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
