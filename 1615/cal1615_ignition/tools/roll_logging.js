@@ -43,7 +43,8 @@ let hmi = find(j.tags, "HMI");
 hmi.tags = hmi.tags.filter((t) => t.name !== "Rolls" && t.name !== "roll_tick");
 hmi.tags.push({ name: "Rolls", tagType: "Folder", tags: [
   mem("state", "String", "IDLE"), mem("roll_no", "Int4", -1), mem("roll_ft", "Float4", 0), mem("winder", "String", ""), mem("msg", "String", ""),
-  mem("prod_start", "Boolean", false), mem("prod_stop", "Boolean", false) ] });
+  mem("prod_start", "Boolean", false), mem("prod_stop", "Boolean", false),
+  mem("rolls_done", "Int4", 0), mem("ft_done", "Float4", 0), mem("session_start", "DateTime", null) ] });
 const body = src.replace(MARK, "TAGS = [\n" + list.map((t) => `\t${JSON.stringify(t)},`).join("\n") + "\n]");
 const script = body.split("\n").map((l) => (l.length ? "\t" + l : l)).join("\n");
 hmi.tags.push({ name: "roll_tick", tagType: "AtomicTag", valueSource: "expr", dataType: "DateTime", expression: "now(500)",

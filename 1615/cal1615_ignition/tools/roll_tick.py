@@ -34,7 +34,7 @@ st = GL.get('cal1615_rolls')
 if st is None:
 	st = {'busy': False, 'ready': False, 'cfg': dict(DEFAULTS), 't_cfg': 0, 't_snap': 0, 't_clean': 0, 'mode': 'idle', 'roll': None, 'session': None,
 		'wound': 0.0, 'prev_ft': {'A': None, 'B': None}, 'stopped_seen': False, 'manual': False, 'hold': False, 'off_since': None,
-		'shown': {}, 'warned': {}, 'tagset': 0, 'pending': [], 't_retry': 0, 'last_inc': 0.0}
+		'shown': {}, 'warned': {}, 'tagset': 0, 'pending': [], 't_retry': 0, 'last_inc': 0.0, 'rolls_done': 0, 'ft_done': 0.0, 'session_ms': None}
 	GL['cal1615_rolls'] = st
 
 
@@ -118,7 +118,7 @@ def event(kind, msg, roll=None):
 def save_state():
 	try:
 		data = system.util.jsonEncode({'mode': st['mode'], 'roll': st['roll'], 'session': st['session'], 'wound': st['wound'],
-			'manual': st['manual'], 'hold': st['hold']})
+			'manual': st['manual'], 'hold': st['hold'], 'rolls_done': st['rolls_done'], 'ft_done': st['ft_done'], 'session_ms': st['session_ms']})
 		system.db.runPrepUpdate('MERGE INTO ROLL_STATE s USING (SELECT 1 AS id FROM DUAL) d ON (s.id = d.id) WHEN MATCHED THEN UPDATE SET data = ?, saved = SYSTIMESTAMP WHEN NOT MATCHED THEN INSERT (id, data) VALUES (1, ?)',
 			[data, data], DB)
 	except:
@@ -227,6 +227,10 @@ def close_roll(status, reason):
 	roll['end_ft'] = roll['max_ft']
 	roll['length_ft'] = max(0.0, roll['max_ft'] - roll['start_ft'])
 	roll['w_end'] = roll['w_start'] + roll['length_ft']
+	if not roll['leader']:                 # the job counters on the Overview: good feet, and good rolls that were cut (not a partial at the end)
+		st['ft_done'] += roll['length_ft']
+		if status == 'CLOSED':
+			st['rolls_done'] += 1
 	try:
 		roll_stats(roll)
 	except:
@@ -284,7 +288,10 @@ def publish(inp):
 	roll = st['roll']
 	want = {'state': {'idle': 'IDLE', 'prod': 'PRODUCING'}[st['mode']] if not (roll and roll['leader']) else 'LEADER',
 		'roll_no': -1 if roll is None else roll['no'], 'roll_ft': 0.0 if roll is None else round(max(0.0, roll['max_ft'] - roll['start_ft']), 1),
-		'winder': '' if roll is None else roll['winder'], 'msg': st.get('msg', '')}
+		'winder': '' if roll is None else roll['winder'], 'msg': st.get('msg', ''),
+		'rolls_done': st['rolls_done'], 'ft_done': round(st['ft_done'] + (0.0 if (roll is None or roll['leader']) else max(0.0, roll['max_ft'] - roll['start_ft'])), 0)}
+	if st['session_ms'] is not None:
+		want['session_start'] = system.date.fromMillis(st['session_ms'])
 	chg = [k for k in want if st['shown'].get(k) != want[k]]
 	if chg:
 		try:
@@ -337,6 +344,7 @@ def step(inp, now):
 		if want and not st['hold'] and inp['line'] and w is not None:
 			st['mode'], st['session'], st['wound'], st['off_since'] = 'prod', int(system.db.runScalarPrepQuery('SELECT ROLL_SEQ.NEXTVAL FROM DUAL', [], DB)), st['last_inc'], None
 			st['t_snap'] = 0
+			st['rolls_done'], st['ft_done'], st['session_ms'] = 0, 0.0, now
 			event('START', 'Production started (tank up, RTO ready%s); winder %s is winding' % (', operator override' if st['manual'] and not inp['gates'] else '', w))
 			new_roll(0, True, w, inp['ft'][w], 'production start')
 		return
@@ -415,6 +423,7 @@ def restore():
 	if d.get('mode') == 'prod' and d.get('roll'):
 		st['mode'], st['roll'], st['session'], st['wound'] = 'prod', d['roll'], d['session'], float(d['wound'])
 		st['manual'], st['hold'] = bool(d.get('manual')), bool(d.get('hold'))
+		st['rolls_done'], st['ft_done'], st['session_ms'] = int(d.get('rolls_done') or 0), float(d.get('ft_done') or 0.0), d.get('session_ms')
 		st['roll_no'] = d['roll']['no']
 		flag(st['roll'], 'GAP', 'Roll logging resumed after a restart: roll %d was open; feet wound while it was down are not counted.' % d['roll']['no'])
 

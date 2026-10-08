@@ -47,7 +47,7 @@
           "height": 321
         },
         "props": {
-          "source": "/system/images/Custom/cal1615/line_estop.png",
+          "source": "/system/images/Custom/cal1615/line_estop.svg",
           "fit": {
             "mode": "fill"
           },
@@ -56,11 +56,11 @@
           }
         },
         "propConfig": {
-          "props.style.filter": {
+          "props.source": {
             "binding": {
               "type": "expr",
               "config": {
-                "expression": "if(indexOf({session.props.theme}, \"dark\") >= 0, \"invert(0.88) hue-rotate(180deg)\", \"none\")"
+                "expression": "\"/system/images/Custom/cal1615/line_estop\" + if(indexOf({session.props.theme}, \"dark\") >= 0, \"_dark\", \"\") + \".svg\""
               }
             }
           }

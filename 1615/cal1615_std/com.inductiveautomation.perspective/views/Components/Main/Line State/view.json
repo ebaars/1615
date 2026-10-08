@@ -1,0 +1,582 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {},
+  "props": {
+    "defaultSize": {
+      "width": 190,
+      "height": 198
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card",
+        "paddingBottom": "4px"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Line State",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "tile"
+        },
+        "position": {
+          "basis": "56px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "margin": "4px 8px 2px 8px",
+            "borderRadius": "8px",
+            "justifyContent": "center",
+            "alignItems": "stretch"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "state"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "24px",
+                "fontWeight": "800",
+                "color": "#ffffff",
+                "textAlign": "center",
+                "letterSpacing": "1px"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "coalesce({[cal1615]HMI/LineState/state}, '---')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "since"
+            },
+            "position": {
+              "basis": "18px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "color": "#ffffff",
+                "textAlign": "center",
+                "opacity": "0.92"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "runScript('cal1615.overview.age', 1000, {[cal1615]HMI/LineState/since}, 'for ')"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({[cal1615]HMI/LineState/state} = 'RUNNING', '#2e9e5b', if({[cal1615]HMI/LineState/state} = 'SETUP', '#e0a21b', if({[cal1615]HMI/LineState/state} = 'DOWN', '#d64545', '#6b7684')))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "hours"
+        },
+        "position": {
+          "basis": "16px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "fontSize": "11px",
+            "opacity": "0.7",
+            "textAlign": "left",
+            "paddingLeft": "14px"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "'Last 8 hours'"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_RUNNING"
+        },
+        "position": {
+          "basis": "22px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "alignItems": "center",
+            "gap": "8px",
+            "paddingLeft": "14px",
+            "paddingRight": "12px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "dot"
+            },
+            "position": {
+              "basis": "12px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "height": "12px",
+                "width": "12px",
+                "borderRadius": "6px",
+                "backgroundColor": "#2e9e5b",
+                "alignSelf": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "name"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "left"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "'Running'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "pct"
+            },
+            "position": {
+              "basis": "46px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "right"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "if(isNull({[cal1615]HMI/LineState/pct_running}), '--', numberFormat({[cal1615]HMI/LineState/pct_running}, '0') + ' %')"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "props.style.fontWeight": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({[cal1615]HMI/LineState/state} = 'RUNNING', 'bold', 'normal')"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_IDLE"
+        },
+        "position": {
+          "basis": "22px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "alignItems": "center",
+            "gap": "8px",
+            "paddingLeft": "14px",
+            "paddingRight": "12px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "dot"
+            },
+            "position": {
+              "basis": "12px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "height": "12px",
+                "width": "12px",
+                "borderRadius": "6px",
+                "backgroundColor": "#6b7684",
+                "alignSelf": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "name"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "left"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "'Idle'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "pct"
+            },
+            "position": {
+              "basis": "46px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "right"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "if(isNull({[cal1615]HMI/LineState/pct_idle}), '--', numberFormat({[cal1615]HMI/LineState/pct_idle}, '0') + ' %')"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "props.style.fontWeight": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({[cal1615]HMI/LineState/state} = 'IDLE', 'bold', 'normal')"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_SETUP"
+        },
+        "position": {
+          "basis": "22px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "alignItems": "center",
+            "gap": "8px",
+            "paddingLeft": "14px",
+            "paddingRight": "12px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "dot"
+            },
+            "position": {
+              "basis": "12px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "height": "12px",
+                "width": "12px",
+                "borderRadius": "6px",
+                "backgroundColor": "#e0a21b",
+                "alignSelf": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "name"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "left"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "'Setup'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "pct"
+            },
+            "position": {
+              "basis": "46px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "right"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "if(isNull({[cal1615]HMI/LineState/pct_setup}), '--', numberFormat({[cal1615]HMI/LineState/pct_setup}, '0') + ' %')"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "props.style.fontWeight": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({[cal1615]HMI/LineState/state} = 'SETUP', 'bold', 'normal')"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_DOWN"
+        },
+        "position": {
+          "basis": "22px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "alignItems": "center",
+            "gap": "8px",
+            "paddingLeft": "14px",
+            "paddingRight": "12px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "dot"
+            },
+            "position": {
+              "basis": "12px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "height": "12px",
+                "width": "12px",
+                "borderRadius": "6px",
+                "backgroundColor": "#d64545",
+                "alignSelf": "center"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "name"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "left"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "'Down'"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "pct"
+            },
+            "position": {
+              "basis": "46px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "fontSize": "13px",
+                "textAlign": "right"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "if(isNull({[cal1615]HMI/LineState/pct_down}), '--', numberFormat({[cal1615]HMI/LineState/pct_down}, '0') + ' %')"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {
+          "props.style.fontWeight": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({[cal1615]HMI/LineState/state} = 'DOWN', 'bold', 'normal')"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

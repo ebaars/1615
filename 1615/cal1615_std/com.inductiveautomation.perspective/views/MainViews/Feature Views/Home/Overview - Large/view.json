@@ -20,12 +20,12 @@
           "y": 76
         },
         "propConfig": {
-          "props.style.filter": {
+          "props.source": {
             "binding": {
+              "type": "expr",
               "config": {
-                "expression": "if(indexOf({session.props.theme}, \"dark\") \u003e\u003d 0, \"invert(0.88) hue-rotate(180deg)\", \"none\")"
-              },
-              "type": "expr"
+                "expression": "\"/system/images/Custom/cal1615/line_overview\" + if(indexOf({session.props.theme}, \"dark\") >= 0, \"_dark\", \"\") + \".svg\""
+              }
             }
           }
         },
@@ -33,7 +33,7 @@
           "fit": {
             "mode": "fill"
           },
-          "source": "/system/images/Custom/cal1615/line_overview.png",
+          "source": "/system/images/Custom/cal1615/line_overview.svg",
           "style": {
             "classes": "cal1615/drawing"
           }
@@ -536,7 +536,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "\ttag \u003d \u0027[cal1615]p02_dint_from_hmi/global_6_/bit_0\u0027\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag\u003dtag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
+                "script": "\ttag = '[cal1615]p02_dint_from_hmi/global_6_/bit_0'\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag=tag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
               },
               "scope": "G",
               "type": "script"
@@ -584,6 +584,38 @@
           "path": "Components/Main/RTO"
         },
         "type": "ia.display.view"
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "lineState"
+        },
+        "position": {
+          "x": 38,
+          "y": 76,
+          "width": 190,
+          "height": 198
+        },
+        "props": {
+          "path": "Components/Main/Line State",
+          "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "jobPanel"
+        },
+        "position": {
+          "x": 640,
+          "y": 52,
+          "width": 640,
+          "height": 116
+        },
+        "props": {
+          "path": "Components/Main/Job Panel",
+          "params": {}
+        }
       }
     ],
     "meta": {

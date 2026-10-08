@@ -12,11 +12,13 @@
       "borderColor": "#0097A7",
       "borderStyle": "solid",
       "borderWidth": "1px",
-      "borderRadius": "2px",
+      "borderRadius": "4px",
       "fontFamily": "Arial",
       "fontSize": "13px",
       "fontWeight": "bold",
-      "textAlign": "right"
+      "textAlign": "right",
+      "boxShadow": "inset 0 1px 2px rgba(0,0,0,0.12)",
+      "fontVariantNumeric": "tabular-nums"
     }
   }
 }

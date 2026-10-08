@@ -1,0 +1,16 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "line_accum_dark.svg"
+  ],
+  "attributes": {
+    "format": "SVG",
+    "lastModification": {
+      "actor": "claude",
+      "timestamp": "2026-10-05T18:14:27Z"
+    }
+  }
+}

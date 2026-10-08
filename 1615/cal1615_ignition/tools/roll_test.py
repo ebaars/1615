@@ -144,6 +144,8 @@ class World(object):
 		class SDate(object):
 			def now(self):
 				return Stamp()
+			def fromMillis(self, ms):
+				return ms
 		self.ns = {'system': NS()}
 		s = self.ns['system']
 		s.tag, s.util, s.date, s.db = STag(), SUtil(), SDate(), self.db
@@ -249,6 +251,8 @@ check('roll 1 saw the fabric that was at the coater 200 ft earlier: avg 10 (time
 check('roll 2 avg 20', abs(t2['avg'] - 20.0) < 0.01)
 check('snapshots cover the roll (>= 90 % of its length)', all(r['covered_ft'] > 0.9 * r['length_ft'] for r in rs[1:3]))
 check('events written (start, cuts, end)', len(w.db.events) >= 8)
+check('job counters: 2 good rolls cut, 1800 ft of good material (the partial counts feet, not a roll)', w.tags[H + 'rolls_done'] == 2 and abs(w.tags[H + 'ft_done'] - 1800.0) < 4.0)
+check('session start published', w.tags.get(H + 'session_start') is not None)
 
 print '=' * 78
 print '2. The index alone is not a cut: A keeps winding, then both stop and A restarts WITHOUT a counter reset'

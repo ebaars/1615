@@ -3,11 +3,13 @@
     "style": {
       "backgroundColor": "var(--callToAction)",
       "color": "#FFFFFF",
-      "fontFamily": "Arial",
+      "fontFamily": "Segoe UI, Noto Sans, Arial, sans-serif",
       "fontSize": "13px",
       "fontWeight": "bold",
       "textAlign": "center",
-      "lineHeight": "26px"
+      "lineHeight": "26px",
+      "backgroundImage": "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 55%, rgba(0,0,0,0.12) 100%)",
+      "letterSpacing": "0.3px"
     }
   }
 }

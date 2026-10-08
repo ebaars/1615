@@ -1,0 +1,818 @@
+{
+  "custom": {
+    "last": []
+  },
+  "params": {},
+  "propConfig": {
+    "custom.last": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "runScript('cal1615.rolls.list_rolls', 8000, 3)"
+        }
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 640,
+      "height": 116
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "cal1615/card"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "header"
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Job",
+          "style": {
+            "classes": "cal1615/card-header"
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "runScript('cal1615.overview.job_header', 1000, {[cal1615]HMI/Rolls/state}, {[cal1615]HMI/Rolls/session_start})"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "body"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "direction": "row",
+          "style": {
+            "gap": "14px",
+            "paddingLeft": "12px",
+            "paddingRight": "12px",
+            "paddingTop": "2px",
+            "paddingBottom": "4px",
+            "alignItems": "stretch"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "col1"
+            },
+            "position": {
+              "basis": "232px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "justifyContent": "space-around"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "shop"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "alignItems": "center",
+                    "gap": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "k"
+                    },
+                    "position": {
+                      "basis": "72px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Shop order",
+                      "style": {
+                        "fontSize": "11px",
+                        "opacity": "0.7",
+                        "textAlign": "left"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "v"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "0"
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "bold",
+                        "textAlign": "left",
+                        "overflow": "hidden",
+                        "whiteSpace": "nowrap",
+                        "textOverflow": "ellipsis"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "if(len(coalesce({[cal1615]HMI/shop_order}, '')) = 0, '---', {[cal1615]HMI/shop_order})"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "recipe"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "alignItems": "center",
+                    "gap": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "k"
+                    },
+                    "position": {
+                      "basis": "72px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Recipe",
+                      "style": {
+                        "fontSize": "11px",
+                        "opacity": "0.7",
+                        "textAlign": "left"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "v"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "0"
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "14px",
+                        "fontWeight": "bold",
+                        "textAlign": "left",
+                        "overflow": "hidden",
+                        "whiteSpace": "nowrap",
+                        "textOverflow": "ellipsis"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "coalesce({[cal1615]p01_recipe_active/name/name}, '---')"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "speed"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "alignItems": "center",
+                    "gap": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "k"
+                    },
+                    "position": {
+                      "basis": "72px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Line speed",
+                      "style": {
+                        "fontSize": "11px",
+                        "opacity": "0.7",
+                        "textAlign": "left"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "v"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "0"
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "14px",
+                        "fontWeight": "bold",
+                        "textAlign": "left",
+                        "overflow": "hidden",
+                        "whiteSpace": "nowrap",
+                        "textOverflow": "ellipsis"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "numberFormat(coalesce({[cal1615]p01r12_master_ramped_speed}, 0), '0.0') + '  /  ' + numberFormat(coalesce({[cal1615]p01_recipe_active/line_speed_sp}, 0), '0.0') + ' FPM'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "col2"
+            },
+            "position": {
+              "basis": "300px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "justifyContent": "space-around"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "roll"
+                },
+                "position": {
+                  "basis": "26px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "fontSize": "15px",
+                    "fontWeight": "bold",
+                    "textAlign": "left",
+                    "whiteSpace": "nowrap"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "if({[cal1615]HMI/Rolls/roll_no} < 0, 'No roll open   A ' + numberFormat(coalesce({[cal1615]p29r13_ai_wa_footage_ft}, 0), '#,##0') + ' ft   B ' + numberFormat(coalesce({[cal1615]p29r13_ai_wb_footage_ft}, 0), '#,##0') + ' ft',if({[cal1615]HMI/Rolls/state} = 'LEADER', 'Leader roll', 'Roll ' + toStr({[cal1615]HMI/Rolls/roll_no})) + '   Winder ' + {[cal1615]HMI/Rolls/winder} + '   ' + numberFormat({[cal1615]HMI/Rolls/roll_ft}, '#,##0') + ' ft')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "rolls"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "alignItems": "center",
+                    "gap": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "k"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Rolls",
+                      "style": {
+                        "fontSize": "11px",
+                        "opacity": "0.7",
+                        "textAlign": "left"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "track"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "0"
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "height": "12px",
+                        "borderRadius": "4px",
+                        "backgroundColor": "rgba(128,128,128,0.25)",
+                        "alignSelf": "center",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.container.flex",
+                        "meta": {
+                          "name": "bar"
+                        },
+                        "position": {
+                          "basis": "0%",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "direction": "row",
+                          "style": {
+                            "backgroundColor": "#2f7fc1",
+                            "borderRadius": "4px"
+                          }
+                        },
+                        "children": [],
+                        "propConfig": {
+                          "position.basis": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "toStr(if(coalesce({[cal1615]HMI/Job/target_rolls}, 0) > 0, min(100, 100 * coalesce({[cal1615]HMI/Rolls/rolls_done}, 0) / {[cal1615]HMI/Job/target_rolls}), 0)) + '%'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "done"
+                    },
+                    "position": {
+                      "basis": "62px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": "bold",
+                        "textAlign": "right"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "numberFormat(coalesce({[cal1615]HMI/Rolls/rolls_done}, 0), '#,##0') + ' of'"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.numeric-entry-field",
+                    "meta": {
+                      "name": "target"
+                    },
+                    "position": {
+                      "basis": "58px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "format": "#,##0",
+                      "placeholder": "target",
+                      "spinner": {
+                        "enabled": false
+                      },
+                      "style": {
+                        "classes": "cal1615/entry",
+                        "fontSize": "12px"
+                      }
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "type": "tag",
+                          "config": {
+                            "tagPath": "[cal1615]HMI/Job/target_rolls",
+                            "bidirectional": true
+                          },
+                          "transforms": [
+                            {
+                              "type": "script",
+                              "code": "\treturn value if value else None"
+                            }
+                          ]
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "feet"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "row",
+                  "style": {
+                    "alignItems": "center",
+                    "gap": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "k"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Feet",
+                      "style": {
+                        "fontSize": "11px",
+                        "opacity": "0.7",
+                        "textAlign": "left"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "track"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "0"
+                    },
+                    "props": {
+                      "direction": "row",
+                      "style": {
+                        "height": "12px",
+                        "borderRadius": "4px",
+                        "backgroundColor": "rgba(128,128,128,0.25)",
+                        "alignSelf": "center",
+                        "overflow": "hidden"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.container.flex",
+                        "meta": {
+                          "name": "bar"
+                        },
+                        "position": {
+                          "basis": "0%",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "direction": "row",
+                          "style": {
+                            "backgroundColor": "#2f7fc1",
+                            "borderRadius": "4px"
+                          }
+                        },
+                        "children": [],
+                        "propConfig": {
+                          "position.basis": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "toStr(if(coalesce({[cal1615]HMI/Job/target_ft}, 0) > 0, min(100, 100 * coalesce({[cal1615]HMI/Rolls/ft_done}, 0) / {[cal1615]HMI/Job/target_ft}), 0)) + '%'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "done"
+                    },
+                    "position": {
+                      "basis": "62px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": "bold",
+                        "textAlign": "right"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "numberFormat(coalesce({[cal1615]HMI/Rolls/ft_done}, 0), '#,##0') + ' of'"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.numeric-entry-field",
+                    "meta": {
+                      "name": "target"
+                    },
+                    "position": {
+                      "basis": "58px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "format": "#,##0",
+                      "placeholder": "target",
+                      "spinner": {
+                        "enabled": false
+                      },
+                      "style": {
+                        "classes": "cal1615/entry",
+                        "fontSize": "12px"
+                      }
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "type": "tag",
+                          "config": {
+                            "tagPath": "[cal1615]HMI/Job/target_ft",
+                            "bidirectional": true
+                          },
+                          "transforms": [
+                            {
+                              "type": "script",
+                              "code": "\treturn value if value else None"
+                            }
+                          ]
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "col3"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "justifyContent": "flex-start"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "t"
+                },
+                "position": {
+                  "basis": "16px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Last rolls",
+                  "style": {
+                    "fontSize": "11px",
+                    "opacity": "0.7",
+                    "textAlign": "left"
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "last0"
+                },
+                "position": {
+                  "basis": "22px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "fontSize": "12px",
+                    "textAlign": "left",
+                    "whiteSpace": "nowrap",
+                    "fontFamily": "monospace"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{view.custom.last}"
+                      },
+                      "transforms": [
+                        {
+                          "type": "script",
+                          "code": "\tif not value or len(value) <= 0:\n\t\treturn ''\n\tr = value[0]\n\treturn '%-6s %s %5s ft %s' % (r['roll'], r['winder'], format(r['length'] or 0, ',.0f'), r['flags'].replace('PARTIAL', 'PART').replace('NOCLEAR', 'NOCLR'))"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "last1"
+                },
+                "position": {
+                  "basis": "22px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "fontSize": "12px",
+                    "textAlign": "left",
+                    "whiteSpace": "nowrap",
+                    "fontFamily": "monospace"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{view.custom.last}"
+                      },
+                      "transforms": [
+                        {
+                          "type": "script",
+                          "code": "\tif not value or len(value) <= 1:\n\t\treturn ''\n\tr = value[1]\n\treturn '%-6s %s %5s ft %s' % (r['roll'], r['winder'], format(r['length'] or 0, ',.0f'), r['flags'].replace('PARTIAL', 'PART').replace('NOCLEAR', 'NOCLR'))"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "last2"
+                },
+                "position": {
+                  "basis": "22px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "fontSize": "12px",
+                    "textAlign": "left",
+                    "whiteSpace": "nowrap",
+                    "fontFamily": "monospace"
+                  }
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "expr",
+                      "config": {
+                        "expression": "{view.custom.last}"
+                      },
+                      "transforms": [
+                        {
+                          "type": "script",
+                          "code": "\tif not value or len(value) <= 2:\n\t\treturn ''\n\tr = value[2]\n\treturn '%-6s %s %5s ft %s' % (r['roll'], r['winder'], format(r['length'] or 0, ',.0f'), r['flags'].replace('PARTIAL', 'PART').replace('NOCLEAR', 'NOCLR'))"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
