@@ -396,4 +396,27 @@ w.wind('A', 100.0)
 check('NOPATH on the open roll', 'NOPATH' in w.rolls()[0]['flags'])
 
 print '=' * 78
+print '10. Setting gates_needed = 0: rolls are counted with the tank down and the RTO not ready'
+w = World()
+w.db.cfg['gates_needed'] = 0.0
+w.tank, w.rto = False, False
+w.counting = True
+w.wind('A', 300.0)
+check('production starts with the gates down (the line runs and a winder winds)', len(w.rolls()) == 1 and w.rolls()[0]['leader'] == 1 and w.tags[H + 'state'] in ('LEADER', 'PRODUCING'))
+w.stop()
+w.ft['B'] = 0.0
+w.wind('B', 400.0)
+check('the cut is counted: roll 1 on B open, the leader closed', len(w.rolls()) == 2 and w.rolls()[0]['status'] == 'CLOSED')
+w.ticks(200.0)
+check('production does not end because the gates are down (only the operator or a stopped line ends it)', w.tags[H + 'state'] != 'IDLE')
+w.tags[H + 'prod_stop'] = True
+w.wind('B', 20.0)
+check('Production stop closes the roll and it does not restart while the line keeps running', w.rolls()[1]['status'] == 'PARTIAL' and w.tags[H + 'state'] == 'IDLE')
+w.wind('B', 40.0)
+check('still idle while the line runs', w.tags[H + 'state'] == 'IDLE')
+w.stop(3.0)
+w.wind('B', 40.0)
+check('after the line stops and starts again a new production run begins', len(w.rolls()) == 3)
+
+print '=' * 78
 print 'RESULT: %d of %d checks passed' % (len([r for r in results if r]), len(results))

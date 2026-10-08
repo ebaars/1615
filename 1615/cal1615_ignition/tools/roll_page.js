@@ -31,7 +31,7 @@ const pulse = (name, text, tag, primary) => ({ type: "ia.input.button", meta: { 
 
 // settings card (keys and labels come from cal1615.rolls.SETTINGS; keep in step)
 const SETTINGS = [["path_len_ft", "Fabric path, coater to winder", "ft"], ["acc_cap_ft", "Accumulator capacity (full = 100 %)", "ft"], ["cut_max_ft", "Counter below this = new roll", "ft"],
-  ["min_roll_ft", "Shorter than this = SHORT", "ft"], ["snap_s", "Snapshot interval", "s"], ["prod_off_s", "Gates down this long ends production", "s"]];
+  ["min_roll_ft", "Shorter than this = SHORT", "ft"], ["snap_s", "Snapshot interval", "s"], ["prod_off_s", "Gates down this long ends production", "s"], ["gates_needed", "Tank + RTO needed (1 yes, 0 no)", ""]];
 const setRow = ([key, title, units]) => row(`s_${key}`, title, {
   type: "ia.input.numeric-entry-field", meta: { name: "entry" }, position: { basis: "100px", shrink: 0 },
   props: { format: "#,##0.0", spinner: { enabled: false }, style: { classes: "cal1615/entry" } },

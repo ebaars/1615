@@ -616,6 +616,22 @@
           "path": "Components/Main/Job Panel",
           "params": {}
         }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "speedSlider"
+        },
+        "position": {
+          "x": 16,
+          "y": 7,
+          "width": 490,
+          "height": 52
+        },
+        "props": {
+          "path": "Components/Main/Line Speed Slider",
+          "params": {}
+        }
       }
     ],
     "meta": {

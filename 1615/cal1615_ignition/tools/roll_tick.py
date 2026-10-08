@@ -26,7 +26,7 @@ T_RECIPE, T_SHOP = P + 'p01_recipe_active/name/name', P + 'HMI/shop_order'
 H = P + 'HMI/Rolls/'          # state shown on the page, and the operator buttons (pulses)
 TAGS = []   # @@TAGS@@
 DEFAULTS = [('path_len_ft', 0.0), ('acc_cap_ft', 0.0), ('snap_s', 10.0), ('cut_max_ft', 5.0), ('min_roll_ft', 100.0),
-	('prod_off_s', 60.0), ('keep_days', 90.0), ('cfg_reload_s', 60.0)]
+	('prod_off_s', 60.0), ('keep_days', 90.0), ('cfg_reload_s', 60.0), ('gates_needed', 1.0)]
 
 GL = system.util.getGlobals()
 log = system.util.getLogger('cal1615.rolls')
@@ -337,9 +337,10 @@ def step(inp, now):
 			system.tag.writeBlocking([H + 'prod_start', H + 'prod_stop'], [False, False])
 		except:
 			pass
-	want = inp['gates'] or st['manual']
-	if not inp['gates']:
-		st['hold'] = False                   # the gates dropped: allow the next production start
+	gated = cfg['gates_needed'] >= 0.5      # 0 = count rolls whenever the line runs (for a plant or simulator where the tank / RTO bits are not available)
+	want = inp['gates'] or st['manual'] or not gated
+	if (gated and not inp['gates']) or (not gated and not inp['line']):
+		st['hold'] = False                   # the gates dropped (or, without gates, the line stopped): allow the next production start
 	if st['mode'] == 'idle':
 		if want and not st['hold'] and inp['line'] and w is not None:
 			st['mode'], st['session'], st['wound'], st['off_since'] = 'prod', int(system.db.runScalarPrepQuery('SELECT ROLL_SEQ.NEXTVAL FROM DUAL', [], DB)), st['last_inc'], None

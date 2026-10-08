@@ -11,6 +11,7 @@ SETTINGS = [
 	('min_roll_ft', 'Shorter than this is flagged SHORT', 'ft', 100.0),
 	('snap_s', 'Snapshot interval', 's', 10.0),
 	('prod_off_s', 'Tank down / RTO not ready this long ends production', 's', 60.0),
+	('gates_needed', 'Tank up and RTO ready needed (1 = yes, 0 = count whenever the line runs)', '', 1.0),
 ]
 
 def _num(v, nd=1):
