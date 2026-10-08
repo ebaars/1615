@@ -12,26 +12,27 @@ const SP = "{[cal1615]p23r17_spd_adj}";
 const expr = (expression) => ({ binding: { type: "expr", config: { expression } } });
 const lbl = (name, text, position, style, propConfig) => ({ type: "ia.display.label", meta: { name }, position, props: { text, style }, ...(propConfig ? { propConfig } : {}) });
 
+const bidir = { binding: { type: "property", config: { path: "view.custom.sel", bidirectional: true } } };
 const view = {
-  custom: { sel: 0 }, params: {}, propConfig: {},
+  custom: { sel: 0 }, params: {},
+  // sel follows the PLC value; the slider and the entry box both edit it locally until the PLC value changes
+  propConfig: { "custom.sel": expr(`coalesce(${SP}, 0)`) },
   props: { defaultSize: { width: 490, height: 52 } },
   root: { type: "ia.container.flex", meta: { name: "root" }, position: {}, props: { direction: "row", alignItems: "center", style: { classes: "cal1615/card", gap: "10px", paddingLeft: "12px", paddingRight: "12px" } },
     children: [
       lbl("title", "Spring Conv.", { basis: "92px", shrink: 0 }, { fontSize: "14px", fontWeight: "bold", textAlign: "left" }),
       { type: "ia.input.slider", meta: { name: "slider" }, position: { grow: 1, basis: "0" },
         props: { min: -MAX, max: MAX, step: STEP, value: 0 },
-        propConfig: {
-          // follows the setpoint; dragging changes it locally until the setpoint tag changes
-          "props.value": { binding: { type: "expr", config: { expression: `coalesce(${SP}, 0)` } },
-            onChange: { enabled: true, script: "\tself.view.custom.sel = currentValue" } },
-          "props.enabled": expr(AUTH) } },
-      lbl("chosen", "", { basis: "78px", shrink: 0 }, { fontSize: "14px", fontWeight: "bold", textAlign: "right", whiteSpace: "nowrap" },
-        { "props.text": expr("numberFormat({view.custom.sel}, '0.0') + ' %'") }),
+        propConfig: { "props.value": bidir, "props.enabled": expr(AUTH) } },
+      { type: "ia.input.numeric-entry-field", meta: { name: "entry" }, position: { basis: "64px", shrink: 0 },
+        props: { format: "0.0", spinner: { enabled: false }, style: { classes: "cal1615/entry" } },
+        propConfig: { "props.value": bidir, "props.enabled": expr(AUTH) } },
+      lbl("pct", "%", { basis: "14px", shrink: 0 }, { fontSize: "14px", fontWeight: "bold" }),
       { type: "ia.input.button", meta: { name: "set" }, position: { basis: "46px", shrink: 0 },
         props: { text: "Set", primary: true, style: { fontSize: "13px" } },
         propConfig: { "position.display": expr(`abs({view.custom.sel} - coalesce(${SP}, 0)) > 0.05`), "props.enabled": expr(AUTH) },
         events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script:
-          "\tsystem.tag.writeBlocking(['[cal1615]p23r17_spd_adj'], [float(self.view.custom.sel)])" } } } } },
+          "\tsystem.tag.writeBlocking(['[cal1615]p23r17_spd_adj'], [max(-" + MAX + ".0, min(" + MAX + ".0, float(self.view.custom.sel)))])" } } } } },
       lbl("actual", "", { basis: "66px", shrink: 0 }, { fontSize: "11px", opacity: "0.75", textAlign: "right", whiteSpace: "nowrap" },
         { "props.text": expr(`'PLC ' + numberFormat(coalesce(${SP}, 0), '0.0')`) }),
     ] },

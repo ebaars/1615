@@ -3,7 +3,16 @@
     "sel": 0
   },
   "params": {},
-  "propConfig": {},
+  "propConfig": {
+    "custom.sel": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "coalesce({[cal1615]p23r17_spd_adj}, 0)"
+        }
+      }
+    }
+  },
   "props": {
     "defaultSize": {
       "width": 490,
@@ -63,14 +72,49 @@
         "propConfig": {
           "props.value": {
             "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.custom.sel",
+                "bidirectional": true
+              }
+            }
+          },
+          "props.enabled": {
+            "binding": {
               "type": "expr",
               "config": {
-                "expression": "coalesce({[cal1615]p23r17_spd_adj}, 0)"
+                "expression": "{session.props.auth.authenticated}"
               }
-            },
-            "onChange": {
-              "enabled": true,
-              "script": "\tself.view.custom.sel = currentValue"
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.numeric-entry-field",
+        "meta": {
+          "name": "entry"
+        },
+        "position": {
+          "basis": "64px",
+          "shrink": 0
+        },
+        "props": {
+          "format": "0.0",
+          "spinner": {
+            "enabled": false
+          },
+          "style": {
+            "classes": "cal1615/entry"
+          }
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "view.custom.sel",
+                "bidirectional": true
+              }
             }
           },
           "props.enabled": {
@@ -86,29 +130,17 @@
       {
         "type": "ia.display.label",
         "meta": {
-          "name": "chosen"
+          "name": "pct"
         },
         "position": {
-          "basis": "78px",
+          "basis": "14px",
           "shrink": 0
         },
         "props": {
-          "text": "",
+          "text": "%",
           "style": {
             "fontSize": "14px",
-            "fontWeight": "bold",
-            "textAlign": "right",
-            "whiteSpace": "nowrap"
-          }
-        },
-        "propConfig": {
-          "props.text": {
-            "binding": {
-              "type": "expr",
-              "config": {
-                "expression": "numberFormat({view.custom.sel}, '0.0') + ' %'"
-              }
-            }
+            "fontWeight": "bold"
           }
         }
       },
@@ -152,7 +184,7 @@
               "type": "script",
               "scope": "G",
               "config": {
-                "script": "\tsystem.tag.writeBlocking(['[cal1615]p23r17_spd_adj'], [float(self.view.custom.sel)])"
+                "script": "\tsystem.tag.writeBlocking(['[cal1615]p23r17_spd_adj'], [max(-5.0, min(5.0, float(self.view.custom.sel)))])"
               }
             }
           }
