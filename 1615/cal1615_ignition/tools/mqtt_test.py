@@ -11,7 +11,7 @@ SRC = SRC.replace("DIR = '/usr/local/bin/ignition/data/mqtt/'", "DIR = '" + D + 
 AJT = [('p01r12_master_ramped_speed', 't_speed', 'float', False), ('p01_recipe_active_line_speed_sp', 't_sp', 'float', True), ('p23_di_impreg_tank_up', 't_tank', 'bool', False),
 	('p01r13_status', 't_status', 'int', False), ('p01_recipe_active_name', 't_name', 'string', False), ('p25_ai_speed', 't_bad2', 'float', False)]
 SRC = SRC.replace('AJ = []     # @@AJ@@', 'AJ = ' + repr(AJT))
-CODE = compile(SRC.replace('TAGS = []   # @@TAGS@@', "TAGS = ['[cal1615]t_temp', '[cal1615]t_speed', '[cal1615]t_bad']"), 'mqtt_tick.py', 'exec')
+CODE_SRC = SRC.replace('TAGS = []   # @@TAGS@@', "TAGS = ['[cal1615]t_temp', '[cal1615]t_speed', '[cal1615]t_bad']")
 P = '[cal1615]'
 H = P + 'HMI/MQTT/'
 TOPIC = 'CUST09/LOC00/MACH00'
@@ -67,7 +67,7 @@ system.util.getLogger = lambda n: Log(n)
 system.util.jsonEncode = lambda o: json.dumps(o)
 system.util.jsonDecode = lambda s: json.loads(s)
 system.date.now = lambda: Date()
-system.date.toDate = lambda ms: Date(long(ms))
+system.date.fromMillis = lambda ms: Date(long(ms))
 
 
 def read(paths):
@@ -100,10 +100,28 @@ system.db.runPrepQuery = runPrepQuery
 system.db.runPrepUpdate = runPrepUpdate
 
 
+from org.python.util import PythonInterpreter
+from org.python.core import PySystemState, PyStringMap
+
+
+class Run(object):
+	"""The globals of one script run."""
+	def __init__(self, it):
+		self.it = it
+
+	def __getitem__(self, name):
+		return self.it.get(name)
+
+	def __setitem__(self, name, value):
+		self.it.set(name, value)
+
+
 def tick():
-	ns = {'system': system, '__name__': 'mqtt_tick'}
-	exec CODE in ns
-	return ns
+	# every run gets its own Jython interpreter and sys.path, like a tag event script on the gateway: a jar put on the path by one run is not on the next one's
+	it = PythonInterpreter(PyStringMap(), PySystemState())
+	it.set('system', system)
+	it.exec(CODE_SRC)
+	return Run(it)
 
 
 def st():
@@ -132,25 +150,7 @@ def check(name, ok, extra=''):
 	print '   %s  %s %s' % ('PASS' if ok else 'FAIL', name, extra if not ok else '')
 
 
-# ---- the other side: a client with the same certificates, as the AWS side would be
-sys.path.append(D + 'lib/org.eclipse.paho.client.mqttv3-1.2.5.jar')
-from org.eclipse.paho.client.mqttv3 import MqttClient, MqttConnectOptions, MqttCallback, MqttMessage
-from org.eclipse.paho.client.mqttv3.persist import MemoryPersistence
 inbox = []
-
-
-class Obs(MqttCallback):
-	def connectionLost(self, c):
-		pass
-
-	def messageArrived(self, t, m):
-		try:
-			inbox.append(json.loads(bytes(bytearray([b & 255 for b in m.getPayload()]))))
-		except ValueError:
-			pass
-
-	def deliveryComplete(self, t):
-		pass
 
 
 print 'scenario 1: switched off and not configured'
@@ -169,6 +169,24 @@ dbcfg['endpoint'] = 'localhost'
 st()['t_cfg'] = 0
 check('connects', until(lambda: st()['connected'], 25, 'connect'), st()['msg'])
 check('state CONNECTED', st()['state'] == 'CONNECTED', st()['state'])
+
+K = st()['cls']
+MqttClient, MqttConnectOptions, MqttCallback, MqttMessage, MemoryPersistence = K['MqttClient'], K['MqttConnectOptions'], K['MqttCallback'], K['MqttMessage'], K['MemoryPersistence']
+
+
+class Obs(MqttCallback):
+	def connectionLost(self, c):
+		pass
+
+	def messageArrived(self, t, m):
+		try:
+			inbox.append(json.loads(bytes(bytearray([b & 255 for b in m.getPayload()]))))
+		except ValueError:
+			pass
+
+	def deliveryComplete(self, t):
+		pass
+
 
 obs = MqttClient('ssl://localhost:8883', 'aws-side', MemoryPersistence())
 obs.setCallback(Obs())

@@ -10,7 +10,7 @@
       "binding": {
         "type": "expr",
         "config": {
-          "expression": "runScript(\"cal1615.rolls.get_cfg\", 8000)"
+          "expression": "runScript(\"cal1615.rolls.get_cfg\", 0)"
         }
       }
     }

@@ -51,7 +51,7 @@ const statsTable = { type: "ia.display.table", meta: { name: "stats" }, position
 const view = {
   custom: { sel: 0, msg: "", cfg: {} },
   params: {},
-  propConfig: { "custom.cfg": expr('runScript("cal1615.rolls.get_cfg", 8000)') },
+  propConfig: { "custom.cfg": expr('runScript("cal1615.rolls.get_cfg", 0)') },
   props: { defaultSize: { width: 1680, height: 1024 } },
   root: { type: "ia.container.flex", meta: { name: "root" }, position: {}, props: { direction: "column", style: { padding: "6px", gap: "8px", overflow: "hidden" } },
     children: [

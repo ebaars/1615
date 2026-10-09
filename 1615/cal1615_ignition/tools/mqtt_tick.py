@@ -35,7 +35,7 @@ if st is None:
 		'connected': False, 'last_in': None, 'last_out': None, 'conn_id': 0,
 		'need_birth': False, 'spb_seq': 0, 'bd_seq': 0, 'last': {}, 'last_t': {}}
 	GL['cal1615_mqtt'] = st
-for _k, _v in {'need_birth': False, 'spb_seq': 0, 'bd_seq': 0, 'last': {}, 'last_t': {}}.items():
+for _k, _v in {'need_birth': False, 'spb_seq': 0, 'bd_seq': 0, 'last': {}, 'last_t': {}, 'cls': None}.items():
 	st.setdefault(_k, _v)
 for _k, _v in DEFAULTS:      # state kept in the globals by an older version of this script lacks settings added later
 	st['cfg'].setdefault(_k, _v)
@@ -44,6 +44,7 @@ for _k, _v in DEFAULTS:      # state kept in the globals by an older version of 
 def err(key, msg):
 	"""Log an error at most once a minute per kind: a broken connection must not write a line every second."""
 	now = system.date.now().getTime()
+	key = key + msg[:80]
 	if now - st['warned'].get(key, 0) >= 60000:
 		st['warned'][key] = now
 		log.error(msg)
@@ -158,16 +159,28 @@ def socket_factory():
 
 
 def load_paho():
-	"""Put the Paho jar on the Jython path (once). It is not part of Ignition and is not in git: tools/mqtt_setup.sh downloads it."""
-	if st['paho']:
+	"""Load the Paho jar ONCE, with a class loader of its own, and keep the classes in the gateway globals. The jar is not part of Ignition and is not in
+	git: tools/mqtt_setup.sh downloads it. Putting it on sys.path would not do: every tag event run has its own Jython path, so a class that Paho's own
+	threads load later (CommsReceiver ...) is not found once the run that added the path has ended."""
+	if st.get('cls'):
 		return True
 	from java.io import File
 	jars = [f for f in (File(LIBDIR).list() or []) if f.startswith('org.eclipse.paho.client.mqttv3') and f.endswith('.jar')]
 	if not jars:
 		return False
-	if LIBDIR + jars[0] not in sys.path:
-		sys.path.append(LIBDIR + jars[0])
+	import jarray
+	from java.lang import Class, ClassLoader
+	from java.net import URL, URLClassLoader
+	from org.python.core import Py
+	loader = URLClassLoader(jarray.array([File(LIBDIR + jars[0]).toURI().toURL()], URL), ClassLoader.getSystemClassLoader())
+
+	def jc(name):
+		return Py.java2py(Class.forName(name, True, loader))
+	base = 'org.eclipse.paho.client.mqttv3.'
+	st['cls'] = {'MqttClient': jc(base + 'MqttClient'), 'MqttConnectOptions': jc(base + 'MqttConnectOptions'), 'MqttCallback': jc(base + 'MqttCallback'),
+		'MqttMessage': jc(base + 'MqttMessage'), 'MemoryPersistence': jc(base + 'persist.MemoryPersistence')}
 	st['paho'] = True
+	log.info('Paho loaded from %s' % (LIBDIR + jars[0]))
 	return True
 
 
@@ -175,14 +188,16 @@ def load_paho():
 def connect_worker(conn_id):
 	"""Runs in its own thread: connecting can take 15 s and must not hold up the tag event."""
 	try:
-		from org.eclipse.paho.client.mqttv3 import MqttClient, MqttConnectOptions, MqttCallback
-		from org.eclipse.paho.client.mqttv3.persist import MemoryPersistence
+		K = st['cls']
+		MqttClient, MqttConnectOptions, MqttCallback, MemoryPersistence = K['MqttClient'], K['MqttConnectOptions'], K['MqttCallback'], K['MemoryPersistence']
 
 		class Callback(MqttCallback):
 			def connectionLost(self, cause):
 				st['connected'] = False
-				setmsg('RECONNECTING', 'Connection lost: %s' % cause)
-				note('EVT', 'Connection lost: %s' % cause)
+				why = 'Connection lost after %d s, while: %s (%s)' % ((system.date.now().getTime() - st.get('t_conn', 0)) / 1000, st.get('op', '?'), cause)
+				setmsg('RECONNECTING', why)
+				note('EVT', why)
+				err('lost', 'MQTT ' + why)
 
 			def messageArrived(self, topic, message):
 				st['inq'].append((str(topic), bytes(bytearray([b & 255 for b in message.getPayload()])), system.date.now().getTime()))
@@ -208,7 +223,10 @@ def connect_worker(conn_id):
 		if spb:                               # NDEATH is the last will; its bdSeq pairs it with this connection's NBIRTH
 			st['bd_seq'] = (st['bd_seq'] + 1) & 255
 			opts.setWill(spb_topic('NDEATH'), signed(payload_pb(now, [metric_pb('bdSeq', now, 4, st['bd_seq'])], None)), 1, False)
+		st['op'] = 'connecting'
 		client.connect(opts)
+		st['t_conn'] = system.date.now().getTime()
+		st['op'] = 'subscribing'
 		subs = [spb_topic('NCMD'), spb_topic('DCMD')] if spb else [cfg['topic'].strip()]
 		for t in subs:
 			client.subscribe(t, int(num('qos', 1)))
@@ -217,6 +235,7 @@ def connect_worker(conn_id):
 			client.close()
 			return
 		st['client'], st['connected'], st['fail'], st['need_birth'] = client, True, 0, spb
+		st['op'] = 'connected, nothing sent yet'
 		setmsg('CONNECTED', 'Connected to %s, subscribed to %s' % (cfg['endpoint'].strip(), ', '.join(subs)))
 		note('EVT', 'Connected to %s as %s, subscribed to %s' % (cfg['endpoint'].strip(), cid, ', '.join(subs)))
 		log.info('MQTT connected to %s as %s' % (cfg['endpoint'].strip(), cid))
@@ -232,6 +251,7 @@ def connect_worker(conn_id):
 
 def drop(why):
 	c = st['client']
+	log.warn('MQTT dropped: %s (last operation: %s)' % (why, st.get('op', '?')))
 	st['client'], st['connected'] = None, False
 	if c is not None:
 		try:
@@ -280,7 +300,7 @@ def publish(now):
 	from java.time import Instant
 	msg = {'src': cfg['client_id'].strip(), 'topic': cfg['topic'].strip(), 'ts': Instant.now().toString(),
 		'seq': st['seq'], 'metrics': metrics}
-	from org.eclipse.paho.client.mqttv3 import MqttMessage
+	MqttMessage = st['cls']['MqttMessage']
 	body = system.util.jsonEncode(msg)
 	m = MqttMessage(body.encode('utf-8'))
 	m.setQos(int(num('qos', 1)))
@@ -461,7 +481,7 @@ def spb_topic(kind):
 
 
 def spb_send(kind, metrics, retain, now):
-	from org.eclipse.paho.client.mqttv3 import MqttMessage
+	MqttMessage = st['cls']['MqttMessage']
 	if kind == 'NBIRTH':
 		st['spb_seq'] = 0
 	seq = st['spb_seq']
@@ -469,7 +489,9 @@ def spb_send(kind, metrics, retain, now):
 	m = MqttMessage(signed(payload_pb(now, metrics, seq)))
 	m.setQos(int(num('qos', 1)))
 	m.setRetained(retain)
+	st['op'] = 'publishing %s (%d bytes%s)' % (kind, len(payload_pb(now, metrics, seq)), ', retained' if retain else '')
 	st['client'].publish(spb_topic(kind), m)
+	st['op'] = 'idle after %s' % kind
 	st['n_out'] += 1
 	st['last_out'] = now
 
@@ -587,9 +609,9 @@ def show(now):
 	"""Write the state tags that changed since the last time."""
 	want = {'state': st['state'], 'msg': st['msg'], 'connected': bool(st['connected']), 'count_out': st['n_out'], 'count_in': st['n_in'], 'rejected': st['n_rej']}
 	if st['last_out']:
-		want['last_out'] = system.date.toDate(st['last_out'])
+		want['last_out'] = system.date.fromMillis(st['last_out'])
 	if st['last_in']:
-		want['last_in'] = system.date.toDate(st['last_in'])
+		want['last_in'] = system.date.fromMillis(st['last_in'])
 	chg = [k for k in want if st['shown'].get(k) != want[k]]
 	if chg:
 		system.tag.writeBlocking([H + k for k in chg], [want[k] for k in chg])

@@ -29,14 +29,20 @@ const SETTINGS = [["enabled", "MQTT on (1 = on, 0 = off)"], ["format", "Format: 
   ["topic", "Topic (json format only)"], ["client_id", "Client id (must be allowed by the AWS IoT policy)"], ["publish_s", "Check for changes every (seconds)"],
   ["float_tol", "A float is sent only when it moved more than"], ["critical_s", "Critical metrics are re-sent every (seconds)"], ["qos", "QoS (0 or 1)"],
   ["write_tags", "Metrics / tags that incoming commands may write (comma list, empty = none)"], ["publish_tags", "Tags to publish (json format only; empty = all logged process values)"]];
+const SAVE = (key, from) => `	ok, msg = cal1615.mqtt.set_cfg('${key}', ${from}.props.text, self.session.props.auth.user.userName)
+	self.view.custom.msg = '${key}: ' + msg`;
 const setRow = ([key, title]) => ({ type: "ia.container.flex", meta: { name: `s_${key}` }, position: { basis: "auto", shrink: 0 },
   props: { direction: "column", style: { padding: "3px 8px", gap: "2px" } },
   children: [lbl("title", title, "cal1615/row-label", { basis: "auto", shrink: 0 }, undefined, { fontSize: "11px", textAlign: "left" }),
-    { type: "ia.input.text-field", meta: { name: "entry" }, position: { basis: "28px", shrink: 0 },
-      props: { style: { classes: "cal1615/entry", fontSize: "13px", textAlign: "left" } },
-      propConfig: { "props.text": expr(`{view.custom.cfg.${key}}`), "props.enabled": expr(AUTH) },
-      events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script:
-        `\tok, msg = cal1615.mqtt.set_cfg('${key}', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg` } } } } }] });
+    { type: "ia.container.flex", meta: { name: "line" }, position: { basis: "30px", shrink: 0 }, props: { direction: "row", alignItems: "center", style: { gap: "6px" } },
+      children: [
+        { type: "ia.input.text-field", meta: { name: "entry" }, position: { grow: 1, basis: "0" },
+          props: { style: { classes: "cal1615/entry", fontSize: "13px", textAlign: "left" } },
+          propConfig: { "props.text": expr(`{view.custom.cfg.${key}}`), "props.enabled": expr(AUTH) },
+          events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script: SAVE(key, "self") } } } } },
+        { type: "ia.input.button", meta: { name: "save" }, position: { basis: "60px", shrink: 0 },
+          props: { text: "Save", style: { fontSize: "12px" } }, propConfig: { "props.enabled": expr(AUTH) },
+          events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script: SAVE(key, "self.parent.getChild('entry')") } } } } }] }] });
 
 const COLS = (defs) => defs.map(([field, title, width]) => ({ field, header: { title }, width }));
 const msgTable = { type: "ia.display.table", meta: { name: "messages" }, position: { grow: 1, basis: "0" },
@@ -51,7 +57,7 @@ const HOW = "Sparkplug B for MachineIQ (default): on connect the gateway sends N
 const view = {
   custom: { msg: "", cfg: {} },
   params: {},
-  propConfig: { "custom.cfg": expr('runScript("cal1615.mqtt.get_cfg", 8000)') },
+  propConfig: { "custom.cfg": expr('runScript("cal1615.mqtt.get_cfg", 0)') },
   props: { defaultSize: { width: 1680, height: 1024 } },
   root: { type: "ia.container.flex", meta: { name: "root" }, position: {}, props: { direction: "column", style: { padding: "6px", gap: "8px", overflow: "hidden" } },
     children: [

@@ -9,7 +9,7 @@
       "binding": {
         "type": "expr",
         "config": {
-          "expression": "runScript(\"cal1615.mqtt.get_cfg\", 8000)"
+          "expression": "runScript(\"cal1615.mqtt.get_cfg\", 0)"
         }
       }
     }
@@ -322,50 +322,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.enabled}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.enabled}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('enabled', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'enabled: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('enabled', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'enabled: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('enabled', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -405,50 +461,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.format}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.format}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('format', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'format: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('format', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'format: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('format', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -488,50 +600,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.endpoint}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.endpoint}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('endpoint', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'endpoint: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('endpoint', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'endpoint: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('endpoint', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -571,50 +739,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.port}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.port}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('port', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'port: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('port', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'port: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('port', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -654,50 +878,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.group_id}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.group_id}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('group_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'group_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('group_id', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'group_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('group_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -737,50 +1017,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.edge_node_id}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.edge_node_id}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('edge_node_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'edge_node_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('edge_node_id', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'edge_node_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('edge_node_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -820,50 +1156,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.device_id}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.device_id}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('device_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'device_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('device_id', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'device_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('device_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -903,50 +1295,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.topic}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.topic}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('topic', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'topic: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('topic', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'topic: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('topic', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -986,50 +1434,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.client_id}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.client_id}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('client_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'client_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('client_id', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'client_id: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('client_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -1069,50 +1573,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.publish_s}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.publish_s}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_s', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'publish_s: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_s', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'publish_s: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_s', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -1152,50 +1712,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.float_tol}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.float_tol}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('float_tol', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'float_tol: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('float_tol', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'float_tol: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('float_tol', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -1235,50 +1851,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.critical_s}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.critical_s}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('critical_s', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'critical_s: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('critical_s', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'critical_s: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('critical_s', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -1318,50 +1990,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.qos}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.qos}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('qos', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'qos: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('qos', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'qos: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('qos', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -1401,50 +2129,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.write_tags}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.write_tags}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('write_tags', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'write_tags: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('write_tags', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'write_tags: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('write_tags', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
@@ -1484,50 +2268,106 @@
                         }
                       },
                       {
-                        "type": "ia.input.text-field",
+                        "type": "ia.container.flex",
                         "meta": {
-                          "name": "entry"
+                          "name": "line"
                         },
                         "position": {
-                          "basis": "28px",
+                          "basis": "30px",
                           "shrink": 0
                         },
                         "props": {
+                          "direction": "row",
+                          "alignItems": "center",
                           "style": {
-                            "classes": "cal1615/entry",
-                            "fontSize": "13px",
-                            "textAlign": "left"
+                            "gap": "6px"
                           }
                         },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{view.custom.cfg.publish_tags}"
+                        "children": [
+                          {
+                            "type": "ia.input.text-field",
+                            "meta": {
+                              "name": "entry"
+                            },
+                            "position": {
+                              "grow": 1,
+                              "basis": "0"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "cal1615/entry",
+                                "fontSize": "13px",
+                                "textAlign": "left"
+                              }
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{view.custom.cfg.publish_tags}"
+                                  }
+                                }
+                              },
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_tags', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'publish_tags: ' + msg"
+                                  }
+                                }
                               }
                             }
                           },
-                          "props.enabled": {
-                            "binding": {
-                              "type": "expr",
-                              "config": {
-                                "expression": "{session.props.auth.authenticated}"
+                          {
+                            "type": "ia.input.button",
+                            "meta": {
+                              "name": "save"
+                            },
+                            "position": {
+                              "basis": "60px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "text": "Save",
+                              "style": {
+                                "fontSize": "12px"
+                              }
+                            },
+                            "propConfig": {
+                              "props.enabled": {
+                                "binding": {
+                                  "type": "expr",
+                                  "config": {
+                                    "expression": "{session.props.auth.authenticated}"
+                                  }
+                                }
+                              }
+                            },
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "type": "script",
+                                  "scope": "G",
+                                  "config": {
+                                    "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_tags', self.parent.getChild('entry').props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = 'publish_tags: ' + msg"
+                                  }
+                                }
                               }
                             }
                           }
-                        },
-                        "events": {
-                          "component": {
-                            "onActionPerformed": {
-                              "type": "script",
-                              "scope": "G",
-                              "config": {
-                                "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_tags', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
-                              }
-                            }
-                          }
-                        }
+                        ]
                       }
                     ]
                   },

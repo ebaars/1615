@@ -53,7 +53,9 @@ hmi.tags.push({ name: "MQTT", tagType: "Folder", tags: [
   mem("count_out", "Int4", 0), mem("count_in", "Int4", 0), mem("rejected", "Int4", 0),
   mem("last_out", "DateTime", null), mem("last_in", "DateTime", null), mem("publish_now", "Boolean", false) ] });
 const body = src.replace(MARK, "TAGS = [\n" + list.map((t) => `\t${JSON.stringify(t)},`).join("\n") + "\n]")
-  .replace(MARK_AJ, "AJ = [\n" + aj.map((t) => `\t${JSON.stringify(t)},`).join("\n") + "\n]");
+  .replace(MARK_AJ, "AJ = [\n" + aj.map((t) => `\t(${JSON.stringify(t[0])}, ${JSON.stringify(t[1])}, ${JSON.stringify(t[2])}, ${t[3] ? "True" : "False"}),`).join("\n") + "\n]");
+// the lists are Python, not JSON: a true / false / null in them is a NameError on the gateway
+if (/\b(true|false|null)\b/.test(body.slice(body.indexOf("TAGS = ["), body.indexOf("DEFAULTS = [")))) throw new Error("JSON literal in the generated Python lists");
 const script = body.split("\n").map((l) => (l.length ? "\t" + l : l)).join("\n");
 hmi.tags.push({ name: "mqtt_tick", tagType: "AtomicTag", valueSource: "expr", dataType: "DateTime", expression: "now(1000)",
   documentation: "MQTT link to AWS IoT Core: publishes the process values and subscribes to the topic. See tools/mqtt_tick.py.",
