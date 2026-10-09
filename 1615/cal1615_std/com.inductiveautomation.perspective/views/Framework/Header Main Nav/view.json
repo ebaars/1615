@@ -46,7 +46,7 @@
             "binding": {
               "type": "expr",
               "config": {
-                "expression": "if({page.props.path} = \"/io\" || {page.props.path} = \"/zone-setup\" || {page.props.path} = \"/pid-tuning\" || {page.props.path} = \"/rolls\" || {page.props.path} = \"/vfd-drives\" || {page.props.path} = \"/servo-drives\" || {page.props.path} = \"/pm-schedule\", \"framework/header-selected\", \"\")"
+                "expression": "if({page.props.path} = \"/io\" || {page.props.path} = \"/zone-setup\" || {page.props.path} = \"/pid-tuning\" || {page.props.path} = \"/rolls\" || {page.props.path} = \"/mqtt\" || {page.props.path} = \"/vfd-drives\" || {page.props.path} = \"/servo-drives\" || {page.props.path} = \"/pm-schedule\", \"framework/header-selected\", \"\")"
               }
             }
           },

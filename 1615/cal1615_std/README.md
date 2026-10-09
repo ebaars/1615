@@ -96,3 +96,21 @@ Folders follow cal2016's structure:
 ## How it was made
 
 `../cal1615_ignition/tools/build_std.js` and `build_std_pages.js` produced this project once from the cal2016 project and the tag maps (`tools/tagmap*.json`). From now on, edit the project in the Designer. Re-running the build would overwrite Designer edits.
+
+## MQTT link to AWS IoT Core
+
+The gateway publishes the process values to AWS IoT Core and listens on the same topic (default `CUST09/LOC00/MACH00`). No Cirrus Link module is used: the
+open-source Paho client runs in a gateway tag script.
+
+- **Script:** `tools/mqtt_tick.py` (tag `[cal1615]HMI/mqtt_tick`, every second, generated into the tag file by `node tools/mqtt_logging.js`). One TLS connection with the
+  device certificate, reconnect with a growing pause, publish every `publish_s` seconds, subscribe to the topic.
+- **Message:** `{"src": client_id, "topic", "ts", "seq", "metrics": [{"name": "p01r12_master_ramped_speed", "value": 21.0}, ...]}`, the same name/value metrics as the
+  Raspberry Pi bridge (`ebaars/mqtt-iot-bridge`). Default list: every logged process value plus line state, shop order, recipe, rolls.
+- **Incoming:** a message with name/value metrics writes those tags, but only tags listed in the setting `write_tags` (empty = nothing); the rest is counted as refused.
+  The gateway's own messages coming back (`src` = client id) are ignored.
+- **Page:** Maintenance > MQTT (`/mqtt`): state, counters, last messages, Publish now, settings (stored in Oracle `MQTT_CFG`).
+- **Setup:** `tools/mqtt_setup.sh` puts the Paho jar in `data/mqtt/lib` of the gateway container. The certificate files (`certificate.pem.crt`, `private.pem.key`,
+  `AmazonRootCA1.pem`) are copied there by hand and never go into git (`.gitignore` blocks `*.key`, `*.pem`, `*.crt`). The AWS IoT policy must allow connect, publish,
+  subscribe and receive for the client id and the topic.
+- **Test:** `tools/mqtt_test.sh` starts a throw-away Mosquitto with TLS and client certificates and runs `mqtt_test.py` (27 checks: connect with the PKCS#1 key AWS hands out,
+  publish, publish now, allowed and refused writes, echo ignored, switch off, unreachable broker, PKCS#8 key).

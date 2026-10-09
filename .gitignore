@@ -10,3 +10,9 @@ Thumbs.db
 1615/cal1615_ignition/tools/.deploy/
 oracle/ojdbc17-full/
 oracle/ojdbc17-full.tar.gz
+
+# MQTT: keys and certificates never go into git; run logs
+*.pem
+*.key
+*.crt
+1615/cal1615_ignition/tools/logs/
