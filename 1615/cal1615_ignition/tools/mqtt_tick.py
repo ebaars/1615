@@ -3,11 +3,12 @@
 #
 # WHAT IT DOES
 #  1. Keeps one MQTT client connected to AWS IoT Core (TLS, X.509 device certificate) and reconnects with a growing pause after a failure.
-#  2. Publishes the line's process values as one JSON message every publish_s seconds to the topic (default CUST09/LOC00/MACH00):
-#       {"src": client_id, "topic": ..., "ts": "2026-10-09T13:00:00Z", "seq": 12, "metrics": [{"name": "p01r12_master_ramped_speed", "value": 21.0}, ...]}
-#     The names are tag paths without the [cal1615] provider, the same name/value metrics the Raspberry Pi bridge (mqtt-iot-bridge) uses.
-#  3. Subscribes to the same topic. A message in the same format (or a single {"name": ..., "value": ...}) is written to the tag, but ONLY for
-#     tags listed in the setting write_tags. Everything else is counted as rejected. Our own messages coming back are ignored (src = client_id).
+#  2. format = sparkplug (default): speaks Sparkplug B, which is what the MachineIQ cloud ingests, as the AJ line (group CUST03, edge node MACH00, device LOC00):
+#       NBIRTH + DBIRTH (retained) on connect, DDATA with the metrics that changed (floats only past float_tol, critical ones on any change and every
+#       critical_s), NDEATH as last will, and a rebirth when an NCMD asks for Node Control/Rebirth. The metrics are the 109 PLC tags of
+#       tools/aj_line_tags.csv under the names MachineIQ expects (the MES Signal column). Commands (NCMD/DCMD) write tags listed in write_tags only.
+#     format = json: one JSON message every publish_s seconds to the setting topic, {"src", "topic", "ts", "seq", "metrics": [{"name", "value"}]}, and the
+#     same topic is subscribed: name/value metrics write the tags in write_tags. Our own messages coming back (src = client id) are ignored.
 # Files (the private key never goes into git): data/mqtt/{certificate.pem.crt, private.pem.key, AmazonRootCA1.pem, lib/org.eclipse.paho.client.mqttv3-*.jar}
 # Settings: table MQTT_CFG (page Maintenance/MQTT). Messages shown on the page are kept in the gateway globals (cal1615_mqtt).
 import sys
@@ -20,16 +21,22 @@ CERT, KEY, CA = DIR + 'certificate.pem.crt', DIR + 'private.pem.key', DIR + 'Ama
 LIBDIR = DIR + 'lib/'
 EXTRA = ['HMI/LineState/state', 'HMI/Rolls/state', 'HMI/Rolls/rolls_done', 'HMI/Rolls/ft_done', 'HMI/shop_order', 'p01_recipe_active/name/name']
 TAGS = []   # @@TAGS@@
-DEFAULTS = [('enabled', '0'), ('endpoint', ''), ('port', '8883'), ('topic', 'CUST09/LOC00/MACH00'), ('client_id', 'cal1615-gateway'),
-	('publish_s', '10'), ('qos', '1'), ('write_tags', ''), ('publish_tags', '')]
+# the Sparkplug metrics: (metric name, Ignition tag path without the provider, type float|int|bool|string, critical)
+AJ = []     # @@AJ@@
+DEFAULTS = [('enabled', '0'), ('format', 'sparkplug'), ('endpoint', ''), ('port', '8883'), ('group_id', 'CUST03'), ('edge_node_id', 'MACH00'), ('device_id', 'LOC00'),
+	('topic', 'CUST03/LOC00/MACH00'), ('client_id', 'cal1615-MACH00'), ('publish_s', '5'), ('float_tol', '0.2'), ('critical_s', '300'), ('qos', '1'),
+	('write_tags', ''), ('publish_tags', '')]
 GL = system.util.getGlobals()
 log = system.util.getLogger('cal1615.mqtt')
 st = GL.get('cal1615_mqtt')
 if st is None:
 	st = {'busy': False, 'ready': False, 'cfg': dict(DEFAULTS), 't_cfg': 0, 'client': None, 'connecting': False, 'fail': 0, 't_try': 0, 't_pub': 0,
 		'inq': [], 'log': [], 'warned': {}, 'shown': {}, 'seq': 0, 'n_in': 0, 'n_out': 0, 'n_rej': 0, 'state': 'DISABLED', 'msg': '', 'paho': False,
-		'connected': False, 'last_in': None, 'last_out': None, 'conn_id': 0}
+		'connected': False, 'last_in': None, 'last_out': None, 'conn_id': 0,
+		'need_birth': False, 'spb_seq': 0, 'bd_seq': 0, 'last': {}, 'last_t': {}}
 	GL['cal1615_mqtt'] = st
+for _k, _v in {'need_birth': False, 'spb_seq': 0, 'bd_seq': 0, 'last': {}, 'last_t': {}}.items():
+	st.setdefault(_k, _v)
 for _k, _v in DEFAULTS:      # state kept in the globals by an older version of this script lacks settings added later
 	st['cfg'].setdefault(_k, _v)
 
@@ -185,6 +192,7 @@ def connect_worker(conn_id):
 				pass
 
 		cfg = st['cfg']
+		spb = cfg['format'].strip().lower() == 'sparkplug'
 		url = 'ssl://%s:%d' % (cfg['endpoint'].strip(), int(num('port', 8883)))
 		cid = cfg['client_id'].strip() or 'cal1615-gateway'
 		client = MqttClient(url, cid, MemoryPersistence())
@@ -196,15 +204,21 @@ def connect_worker(conn_id):
 		opts.setConnectionTimeout(15)
 		opts.setAutomaticReconnect(False)
 		opts.setSocketFactory(socket_factory())
+		now = system.date.now().getTime()
+		if spb:                               # NDEATH is the last will; its bdSeq pairs it with this connection's NBIRTH
+			st['bd_seq'] = (st['bd_seq'] + 1) & 255
+			opts.setWill(spb_topic('NDEATH'), signed(payload_pb(now, [metric_pb('bdSeq', now, 4, st['bd_seq'])], None)), 1, False)
 		client.connect(opts)
-		client.subscribe(cfg['topic'].strip(), int(num('qos', 1)))
+		subs = [spb_topic('NCMD'), spb_topic('DCMD')] if spb else [cfg['topic'].strip()]
+		for t in subs:
+			client.subscribe(t, int(num('qos', 1)))
 		if conn_id != st['conn_id']:           # the settings changed while connecting
 			client.disconnect()
 			client.close()
 			return
-		st['client'], st['connected'], st['fail'] = client, True, 0
-		setmsg('CONNECTED', 'Connected to %s, subscribed to %s' % (cfg['endpoint'].strip(), cfg['topic'].strip()))
-		note('EVT', 'Connected to %s as %s, subscribed to %s' % (cfg['endpoint'].strip(), cid, cfg['topic'].strip()))
+		st['client'], st['connected'], st['fail'], st['need_birth'] = client, True, 0, spb
+		setmsg('CONNECTED', 'Connected to %s, subscribed to %s' % (cfg['endpoint'].strip(), ', '.join(subs)))
+		note('EVT', 'Connected to %s as %s, subscribed to %s' % (cfg['endpoint'].strip(), cid, ', '.join(subs)))
 		log.info('MQTT connected to %s as %s' % (cfg['endpoint'].strip(), cid))
 	except:
 		st['fail'] += 1
@@ -278,6 +292,8 @@ def publish(now):
 
 
 def handle_in():
+	if st['cfg']['format'].strip().lower() == 'sparkplug':
+		return handle_in_spb()
 	allowed = [n.strip() for n in st['cfg']['write_tags'].split(',') if n.strip()]
 	own = st['cfg']['client_id'].strip()
 	while st['inq']:
@@ -316,6 +332,253 @@ def handle_in():
 				rej.append('%s (not in write_tags)' % name)
 		st['n_rej'] += len(rej)
 		note('IN', '%d metrics: wrote %s' % (len(metrics), ', '.join(wrote) if wrote else 'nothing'))
+		if rej:
+			note('REJ', 'refused: ' + ', '.join(rej)[:300])
+
+
+# ---------------------------------------------------------------- Sparkplug B (the protobuf is written by hand: the gateway has no protobuf library)
+DT = {'float': 9, 'int': 3, 'bool': 11, 'string': 12}      # Sparkplug datatypes: Float, Int32, Boolean, String
+
+
+def vint(n):
+	n = long(n)
+	out = []
+	while True:
+		b = n & 0x7f
+		n >>= 7
+		if n:
+			out.append(b | 0x80)
+		else:
+			out.append(b)
+			return out
+
+
+def pb_len(tag, data):
+	return [tag] + vint(len(data)) + data
+
+
+def pb_str(s):
+	if not isinstance(s, unicode):
+		s = unicode(str(s), 'utf-8', 'replace')
+	return list(bytearray(s.encode('utf-8')))
+
+
+def metric_pb(name, ts, dtype, value, is_null=False):
+	"""One Metric: name (1), timestamp (3), datatype (4), is_null (7), then the value in the field its datatype uses (10 int, 11 long, 12 float, 14 bool, 15 string)."""
+	import struct
+	out = pb_len(0x0a, pb_str(name)) + [0x18] + vint(ts) + [0x20] + vint(dtype)
+	if is_null:
+		return out + [0x38, 1]
+	if dtype == 3:
+		out += [0x50] + vint(int(value) & 0xFFFFFFFF)               # Int32 as 32-bit two's complement, as the cloud decoder expects
+	elif dtype == 4:
+		out += [0x58] + vint(int(value) & 0xFFFFFFFFFFFFFFFF)
+	elif dtype == 9:
+		out += [0x65] + list(bytearray(struct.pack('<f', float(value))))
+	elif dtype == 11:
+		out += [0x70, 1 if value else 0]
+	else:
+		out += pb_len(0x7a, pb_str(value))
+	return out
+
+
+def payload_pb(ts, metrics, seq):
+	out = [0x08] + vint(ts)
+	for m in metrics:
+		out += pb_len(0x12, m)
+	if seq is not None:
+		out += [0x18] + vint(seq)
+	return out
+
+
+def rd_varint(data, i):
+	v, shift = 0, 0
+	while True:
+		b = data[i]
+		i += 1
+		v |= (b & 0x7f) << shift
+		if not b & 0x80:
+			return v, i
+		shift += 7
+
+
+def pb_read(data):
+	"""All (field, wire type, value) of one message; a length-delimited value is a list of byte ints."""
+	i, out = 0, []
+	while i < len(data):
+		key, i = rd_varint(data, i)
+		f, wt = key >> 3, key & 7
+		if wt == 0:
+			v, i = rd_varint(data, i)
+		elif wt == 2:
+			n, i = rd_varint(data, i)
+			v, i = data[i:i + n], i + n
+		elif wt == 5:
+			v, i = data[i:i + 4], i + 4
+		elif wt == 1:
+			v, i = data[i:i + 8], i + 8
+		else:
+			raise ValueError('wire type %d' % wt)
+		out.append((f, wt, v))
+	return out
+
+
+def decode_metrics(raw):
+	"""The metrics of a Sparkplug payload as dicts {name, datatype, value} (enough to read a rebirth request or a write command)."""
+	import struct
+	out = []
+	for f, wt, v in pb_read(list(bytearray(raw))):
+		if f != 2:
+			continue
+		m = {'name': '', 'datatype': 0, 'value': None}
+		for f2, wt2, v2 in pb_read(v):
+			if f2 == 1:
+				m['name'] = str(bytearray(v2)).decode('utf-8', 'replace')
+			elif f2 == 4:
+				m['datatype'] = v2
+			elif f2 == 10:
+				m['value'] = v2 - 0x100000000 if v2 >= 0x80000000 else v2
+			elif f2 == 11:
+				m['value'] = v2 - 0x10000000000000000 if v2 >= 0x8000000000000000 else v2
+			elif f2 == 12:
+				m['value'] = struct.unpack('<f', str(bytearray(v2)))[0]
+			elif f2 == 13:
+				m['value'] = struct.unpack('<d', str(bytearray(v2)))[0]
+			elif f2 == 14:
+				m['value'] = bool(v2)
+			elif f2 == 15:
+				m['value'] = str(bytearray(v2)).decode('utf-8', 'replace')
+		out.append(m)
+	return out
+
+
+def spb_topic(kind):
+	c = st['cfg']
+	t = 'spBv1.0/%s/%s/%s' % (c['group_id'].strip(), kind, c['edge_node_id'].strip())
+	if kind.startswith('D'):
+		t += '/' + c['device_id'].strip()
+	return t
+
+
+def spb_send(kind, metrics, retain, now):
+	from org.eclipse.paho.client.mqttv3 import MqttMessage
+	if kind == 'NBIRTH':
+		st['spb_seq'] = 0
+	seq = st['spb_seq']
+	st['spb_seq'] = (seq + 1) & 255
+	m = MqttMessage(signed(payload_pb(now, metrics, seq)))
+	m.setQos(int(num('qos', 1)))
+	m.setRetained(retain)
+	st['client'].publish(spb_topic(kind), m)
+	st['n_out'] += 1
+	st['last_out'] = now
+
+
+def read_aj():
+	"""[(metric definition, value in the metric's type or None, good)] for every Sparkplug metric."""
+	out = []
+	for a, q in zip(AJ, system.tag.readBlocking([P + d[1] for d in AJ])):
+		v = q.value
+		good = bool(q.quality.isGood()) and v is not None
+		if good:
+			try:
+				if a[2] == 'float':
+					v = float(v)
+					good = v == v and v not in (float('inf'), float('-inf'))
+				elif a[2] == 'int':
+					v = int(v)
+				elif a[2] == 'bool':
+					v = bool(v)
+				else:
+					v = v if isinstance(v, basestring) else str(v)
+			except:
+				good = False
+		out.append((a, v if good else None, good))
+	return out
+
+
+def spb_birth(now):
+	"""NBIRTH, then DBIRTH with EVERY metric: the cloud replaces its whole signal map with a birth, so a metric left out is deleted there."""
+	spb_send('NBIRTH', [metric_pb('bdSeq', now, 4, st['bd_seq']), metric_pb('Node Control/Rebirth', now, 11, False), metric_pb('Node Control/Reboot', now, 11, False),
+		metric_pb('Properties/Version', now, 12, '1.0.0'), metric_pb('Properties/Software', now, 12, 'cal1615 Ignition gateway')], True, now)
+	st['last'], st['last_t'] = {}, {}
+	ms, bad = [], 0
+	for a, v, good in read_aj():
+		ms.append(metric_pb(a[0], now, DT[a[2]], v, not good))
+		bad += 0 if good else 1
+		if good:
+			st['last'][a[0]], st['last_t'][a[0]] = v, now
+	spb_send('DBIRTH', ms, True, now)
+	note('OUT', 'NBIRTH + DBIRTH, %d metrics, %d with no good value' % (len(ms), bad))
+
+
+def spb_changes(now, everything=False):
+	"""DDATA with what changed: a float only when it moved more than float_tol, a critical metric on any change and again every critical_s."""
+	tol, crit = num('float_tol', 0.2), num('critical_s', 300.0) * 1000.0
+	ms = []
+	for a, v, good in read_aj():
+		if not good:
+			continue
+		name = a[0]
+		send = everything or name not in st['last']
+		if not send:
+			old = st['last'][name]
+			if a[2] == 'float':
+				send = abs(v - old) > tol or (a[3] and v != old)
+			else:
+				send = v != old
+			if not send and a[3] and now - st['last_t'].get(name, 0) >= crit:
+				send = True
+		if send:
+			ms.append(metric_pb(name, now, DT[a[2]], v))
+			st['last'][name], st['last_t'][name] = v, now
+	if ms:
+		spb_send('DDATA', ms, False, now)
+		note('OUT', 'DDATA, %d metrics (message %d)' % (len(ms), (st['spb_seq'] - 1) & 255))
+
+
+def spb_cycle(now, pulse):
+	if st['need_birth']:
+		st['need_birth'] = False
+		spb_birth(now)
+		st['t_pub'] = now
+		return
+	if pulse or now - st['t_pub'] >= max(1.0, num('publish_s', 5.0)) * 1000.0:
+		st['t_pub'] = now
+		spb_changes(now, bool(pulse))
+
+
+def handle_in_spb():
+	allowed = [n.strip() for n in st['cfg']['write_tags'].split(',') if n.strip()]
+	paths = dict((a[0], a[1]) for a in AJ)
+	while st['inq']:
+		topic, payload, t = st['inq'].pop(0)
+		st['n_in'] += 1
+		st['last_in'] = t
+		kind = topic.split('/')[2] if topic.count('/') >= 3 else '?'
+		try:
+			metrics = decode_metrics(payload)
+		except:
+			note('IN', '%s: not a Sparkplug payload (%s)' % (kind, sys.exc_info()[1]))
+			continue
+		wrote, rej = [], []
+		for m in metrics:
+			if m['name'] == 'Node Control/Rebirth' and m['value']:
+				st['need_birth'] = True
+				note('IN', '%s: rebirth requested' % kind)
+			elif m['name'] in ('Node Control/Reboot', 'Node Control/Next Server', 'Node Control/Scan Rate'):
+				rej.append('%s (not supported)' % m['name'])
+			elif m['name'] in allowed and m['value'] is not None:
+				try:
+					system.tag.writeBlocking([P + paths.get(m['name'], m['name'])], [m['value']])
+					wrote.append(m['name'])
+				except:
+					rej.append('%s (%s)' % (m['name'], sys.exc_info()[1]))
+			else:
+				rej.append('%s (not in write_tags)' % m['name'])
+		st['n_rej'] += len(rej)
+		if wrote:
+			note('IN', '%s: wrote %s' % (kind, ', '.join(wrote)))
 		if rej:
 			note('REJ', 'refused: ' + ', '.join(rej)[:300])
 
@@ -369,6 +632,12 @@ def run():
 		return
 	handle_in()
 	pulse = system.tag.readBlocking([H + 'publish_now'])[0].value
+	if pulse:
+		system.tag.writeBlocking([H + 'publish_now'], [False])
+	if cfg['format'].strip().lower() == 'sparkplug':
+		spb_cycle(now, pulse)
+		show(now)
+		return
 	if pulse or now - st['t_pub'] >= max(1.0, num('publish_s', 10.0)) * 1000.0:
 		st['t_pub'] = now
 		if pulse:

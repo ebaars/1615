@@ -372,6 +372,89 @@
                   {
                     "type": "ia.container.flex",
                     "meta": {
+                      "name": "s_format"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Format: sparkplug (MachineIQ) or json (one plain topic)",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.cfg.format}"
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tok, msg = cal1615.mqtt.set_cfg('format', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
                       "name": "s_endpoint"
                     },
                     "position": {
@@ -538,6 +621,255 @@
                   {
                     "type": "ia.container.flex",
                     "meta": {
+                      "name": "s_group_id"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Sparkplug group = customer",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.cfg.group_id}"
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tok, msg = cal1615.mqtt.set_cfg('group_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "s_edge_node_id"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Sparkplug edge node = machine",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.cfg.edge_node_id}"
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tok, msg = cal1615.mqtt.set_cfg('edge_node_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "s_device_id"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Sparkplug device = location",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.cfg.device_id}"
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tok, msg = cal1615.mqtt.set_cfg('device_id', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
                       "name": "s_topic"
                     },
                     "position": {
@@ -562,7 +894,7 @@
                           "shrink": 0
                         },
                         "props": {
-                          "text": "Topic (publish and subscribe)",
+                          "text": "Topic (json format only)",
                           "style": {
                             "classes": "cal1615/row-label",
                             "fontSize": "11px",
@@ -728,7 +1060,7 @@
                           "shrink": 0
                         },
                         "props": {
-                          "text": "Publish every (seconds)",
+                          "text": "Check for changes every (seconds)",
                           "style": {
                             "classes": "cal1615/row-label",
                             "fontSize": "11px",
@@ -777,6 +1109,172 @@
                               "scope": "G",
                               "config": {
                                 "script": "\tok, msg = cal1615.mqtt.set_cfg('publish_s', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "s_float_tol"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "A float is sent only when it moved more than",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.cfg.float_tol}"
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tok, msg = cal1615.mqtt.set_cfg('float_tol', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "s_critical_s"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Critical metrics are re-sent every (seconds)",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{view.custom.cfg.critical_s}"
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "type": "script",
+                              "scope": "G",
+                              "config": {
+                                "script": "\tok, msg = cal1615.mqtt.set_cfg('critical_s', self.props.text, self.session.props.auth.user.userName)\n\tself.view.custom.msg = msg"
                               }
                             }
                           }
@@ -894,7 +1392,7 @@
                           "shrink": 0
                         },
                         "props": {
-                          "text": "Tags that incoming messages may write (comma list, empty = none)",
+                          "text": "Metrics / tags that incoming commands may write (comma list, empty = none)",
                           "style": {
                             "classes": "cal1615/row-label",
                             "fontSize": "11px",
@@ -977,7 +1475,7 @@
                           "shrink": 0
                         },
                         "props": {
-                          "text": "Tags to publish (comma list, empty = all logged process values)",
+                          "text": "Tags to publish (json format only; empty = all logged process values)",
                           "style": {
                             "classes": "cal1615/row-label",
                             "fontSize": "11px",
@@ -1122,7 +1620,7 @@
                         "binding": {
                           "type": "expr",
                           "config": {
-                            "expression": "'The gateway keeps one connection to AWS IoT Core (TLS, device certificate) and publishes the process values as JSON to the topic: {src, topic, ts, seq, metrics: [{name, value}]}. It also listens on the same topic. A message with name/value metrics writes those tags, but only the ones listed under Tags that incoming messages may write; anything else is refused. Messages sent by this gateway itself (same client id) are ignored. The certificate files go in the folder data/mqtt on the gateway (certificate.pem.crt, private.pem.key, AmazonRootCA1.pem), never in git.'"
+                            "expression": "'Sparkplug B for MachineIQ (default): on connect the gateway sends NBIRTH and DBIRTH (all 109 AJ line metrics, retained), then DDATA with what changed: a float only when it moved more than the tolerance, critical metrics on any change and again every few minutes. Commands (NCMD, DCMD) can ask for a rebirth or write the metrics listed under Metrics that incoming commands may write; anything else is refused. The json format sends the process values as one JSON message to a plain topic instead. The certificate files go in the folder data/mqtt on the gateway (certificate.pem.crt, private.pem.key, AmazonRootCA1.pem), never in git.'"
                           }
                         }
                       }

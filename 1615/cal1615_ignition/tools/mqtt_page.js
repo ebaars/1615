@@ -24,9 +24,11 @@ const publishNow = { type: "ia.input.button", meta: { name: "publishNow" }, posi
   events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script: "\tsystem.tag.writeBlocking(['[cal1615]HMI/MQTT/publish_now'], [True])" } } } } };
 
 // settings: a label above a text field (the values are long); keys and labels come from cal1615.mqtt.SETTINGS, keep in step
-const SETTINGS = [["enabled", "MQTT on (1 = on, 0 = off)"], ["endpoint", "AWS IoT endpoint (xxxx-ats.iot.<region>.amazonaws.com)"], ["port", "Port"],
-  ["topic", "Topic (publish and subscribe)"], ["client_id", "Client id (must be allowed by the AWS IoT policy)"], ["publish_s", "Publish every (seconds)"], ["qos", "QoS (0 or 1)"],
-  ["write_tags", "Tags that incoming messages may write (comma list, empty = none)"], ["publish_tags", "Tags to publish (comma list, empty = all logged process values)"]];
+const SETTINGS = [["enabled", "MQTT on (1 = on, 0 = off)"], ["format", "Format: sparkplug (MachineIQ) or json (one plain topic)"], ["endpoint", "AWS IoT endpoint (xxxx-ats.iot.<region>.amazonaws.com)"],
+  ["port", "Port"], ["group_id", "Sparkplug group = customer"], ["edge_node_id", "Sparkplug edge node = machine"], ["device_id", "Sparkplug device = location"],
+  ["topic", "Topic (json format only)"], ["client_id", "Client id (must be allowed by the AWS IoT policy)"], ["publish_s", "Check for changes every (seconds)"],
+  ["float_tol", "A float is sent only when it moved more than"], ["critical_s", "Critical metrics are re-sent every (seconds)"], ["qos", "QoS (0 or 1)"],
+  ["write_tags", "Metrics / tags that incoming commands may write (comma list, empty = none)"], ["publish_tags", "Tags to publish (json format only; empty = all logged process values)"]];
 const setRow = ([key, title]) => ({ type: "ia.container.flex", meta: { name: `s_${key}` }, position: { basis: "auto", shrink: 0 },
   props: { direction: "column", style: { padding: "3px 8px", gap: "2px" } },
   children: [lbl("title", title, "cal1615/row-label", { basis: "auto", shrink: 0 }, undefined, { fontSize: "11px", textAlign: "left" }),
@@ -41,10 +43,10 @@ const msgTable = { type: "ia.display.table", meta: { name: "messages" }, positio
   props: { columns: COLS([["time", "Time", 110], ["kind", "Kind", 60], ["text", "Message", 560]]) },
   propConfig: { "props.data": expr('runScript("cal1615.mqtt.recent", 2000, 60)') } };
 
-const HOW = "The gateway keeps one connection to AWS IoT Core (TLS, device certificate) and publishes the process values as JSON to the topic: "
-  + "{src, topic, ts, seq, metrics: [{name, value}]}. It also listens on the same topic. A message with name/value metrics writes those tags, "
-  + "but only the ones listed under Tags that incoming messages may write; anything else is refused. Messages sent by this gateway itself "
-  + "(same client id) are ignored. The certificate files go in the folder data/mqtt on the gateway (certificate.pem.crt, private.pem.key, AmazonRootCA1.pem), never in git.";
+const HOW = "Sparkplug B for MachineIQ (default): on connect the gateway sends NBIRTH and DBIRTH (all 109 AJ line metrics, retained), then DDATA with what changed: a float only "
+  + "when it moved more than the tolerance, critical metrics on any change and again every few minutes. Commands (NCMD, DCMD) can ask for a rebirth or write the metrics "
+  + "listed under Metrics that incoming commands may write; anything else is refused. The json format sends the process values as one JSON message to a plain topic instead. "
+  + "The certificate files go in the folder data/mqtt on the gateway (certificate.pem.crt, private.pem.key, AmazonRootCA1.pem), never in git.";
 
 const view = {
   custom: { msg: "", cfg: {} },

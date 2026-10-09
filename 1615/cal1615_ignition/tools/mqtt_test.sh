@@ -28,5 +28,16 @@ docker exec "$C" sh -c 'rm -rf /tmp/mqtt_test; mkdir -p /tmp/mqtt_test/lib'
 for f in AmazonRootCA1.pem certificate.pem.crt private.pem.key private8.pem.key; do docker cp "$T/$f" "$C:/tmp/mqtt_test/$f"; done
 docker exec "$C" sh -c 'cp /usr/local/bin/ignition/data/mqtt/lib/*.jar /tmp/mqtt_test/lib/'
 docker cp mqtt_tick.py "$C:/tmp/mqtt_tick.py"; docker cp mqtt_test.py "$C:/tmp/mqtt_test.py"
-docker exec "$C" java -Dpython.import.site=false -Dpython.path=/usr/local/bin/ignition/user-lib/pylib \
-  -cp /usr/local/bin/ignition/lib/core/common/jython-ia-2.7.4.0.jar org.python.util.jython -S /tmp/mqtt_test.py
+rm -rf "$T/dump"; docker exec "$C" rm -rf /tmp/spb_dump
+RC=0
+docker exec "$C" java -Dpython.import.site=false -Dpython.path=/usr/local/bin/ignition/user-lib/pylib   -cp /usr/local/bin/ignition/lib/core/common/jython-ia-2.7.4.0.jar org.python.util.jython -S /tmp/mqtt_test.py || RC=$?
+# the Sparkplug messages the test captured, decoded with the CLOUD's decoder (MachineIQ SparkplugIngest) in a python container
+ING="${MACHINEIQ:-/e/aaa_projects/machineiq}/mqtt-dashboard/lambda/machines/SparkplugIngest"
+if [ -d "$ING" ]; then
+  docker cp "$C:/tmp/spb_dump" "$T/dump"
+  echo; echo "cloud decoder check (protobuf 6.x, MachineIQ sparkplug_decode.py)"
+  docker run --rm -v "$W/dump:/dump" -v "$(cygpath -m "$ING"):/ingest:ro" -v "$(cygpath -m "$PWD/spb_cloud_check.py"):/chk.py:ro" python:3.12-slim     sh -c 'pip install -q protobuf==6.33.5 >/dev/null 2>&1; python /chk.py /dump /ingest' || RC=$?
+else
+  echo "(MachineIQ checkout not found at $ING: cloud decoder check skipped)"
+fi
+exit $RC

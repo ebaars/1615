@@ -8,6 +8,9 @@ import json, os, sys, time
 SRC = open('/tmp/mqtt_tick.py').read()
 D = '/tmp/mqtt_test/'
 SRC = SRC.replace("DIR = '/usr/local/bin/ignition/data/mqtt/'", "DIR = '" + D + "'")
+AJT = [('p01r12_master_ramped_speed', 't_speed', 'float', False), ('p01_recipe_active_line_speed_sp', 't_sp', 'float', True), ('p23_di_impreg_tank_up', 't_tank', 'bool', False),
+	('p01r13_status', 't_status', 'int', False), ('p01_recipe_active_name', 't_name', 'string', False), ('p25_ai_speed', 't_bad2', 'float', False)]
+SRC = SRC.replace('AJ = []     # @@AJ@@', 'AJ = ' + repr(AJT))
 CODE = compile(SRC.replace('TAGS = []   # @@TAGS@@', "TAGS = ['[cal1615]t_temp', '[cal1615]t_speed', '[cal1615]t_bad']"), 'mqtt_tick.py', 'exec')
 P = '[cal1615]'
 H = P + 'HMI/MQTT/'
@@ -151,7 +154,7 @@ class Obs(MqttCallback):
 
 
 print 'scenario 1: switched off and not configured'
-dbcfg.update({'enabled': '0', 'endpoint': '', 'publish_s': '1', 'write_tags': 'HMI/x', 'client_id': 'cal1615-gateway', 'topic': TOPIC, 'qos': '1', 'port': '8883'})
+dbcfg.update({'enabled': '0', 'format': 'json', 'endpoint': '', 'publish_s': '1', 'write_tags': 'HMI/x', 'client_id': 'cal1615-gateway', 'topic': TOPIC, 'qos': '1', 'port': '8883'})
 tick()
 check('off: state DISABLED', st()['state'] == 'DISABLED', st()['state'])
 check('off: no client', st()['client'] is None)
@@ -242,6 +245,107 @@ try:
 except:
 	print '      ', sys.exc_info()[1]
 check('PKCS#8 key accepted', sf is not None)
+
+# ================================================================ Sparkplug B (what MachineIQ ingests)
+print 'scenario 9: Sparkplug births on connect'
+import java.io
+dump_n = [0]
+spb_in = []
+
+
+class Obs2(MqttCallback):
+	def connectionLost(self, c):
+		pass
+
+	def messageArrived(self, t, m):
+		if '/NCMD/' in str(t) or '/DCMD/' in str(t):
+			return                         # our own commands
+		raw = bytes(bytearray([b & 255 for b in m.getPayload()]))
+		spb_in.append((str(t), raw))
+		dump_n[0] += 1
+		f = open('/tmp/spb_dump/%03d_%s.bin' % (dump_n[0], str(t).split('/')[2]), 'wb')
+		f.write(raw)
+		f.close()
+
+	def deliveryComplete(self, t):
+		pass
+
+
+java.io.File('/tmp/spb_dump').mkdirs()
+dbcfg.update({'enabled': '1', 'format': 'sparkplug', 'port': '8883', 'publish_s': '1', 'float_tol': '0.2', 'critical_s': '300',
+	'write_tags': 'p01_recipe_active_line_speed_sp'})
+bad.append(P + 't_bad2')
+for k, v in {'t_speed': 21.0, 't_sp': 50.0, 't_tank': True, 't_status': 5, 't_name': 'KEVLAR_285_PHEN', 't_bad2': 3.0, 't_other': 1.0}.items():
+	tags[P + k] = v
+GL['cal1615_mqtt']['client'] = None          # a fresh connection in the new format
+st()['t_cfg'] = 0
+st()['conn_id'] += 1
+st()['fail'] = 0
+st()['t_try'] = 0
+obs2 = MqttClient('ssl://localhost:8883', 'aws-side-2', MemoryPersistence())
+obs2.setCallback(Obs2())
+o2 = MqttConnectOptions()
+o2.setSocketFactory(tick()['socket_factory']())
+obs2.connect(o2)
+obs2.subscribe('spBv1.0/CUST03/#', 1)
+check('connects in Sparkplug mode', until(lambda: st()['connected'] and len(spb_in) >= 2, 25, 'birth'), st()['msg'])
+kinds = [t.split('/')[2] for t, r in spb_in]
+check('NBIRTH then DBIRTH', kinds[:2] == ['NBIRTH', 'DBIRTH'], str(kinds))
+check('topics: node and device', spb_in[0][0] == 'spBv1.0/CUST03/NBIRTH/MACH00' and spb_in[1][0] == 'spBv1.0/CUST03/DBIRTH/MACH00/LOC00', str([t for t, r in spb_in[:2]]))
+ns = tick()
+nb = dict((m['name'], m['value']) for m in ns['decode_metrics'](spb_in[0][1]))
+check('NBIRTH carries bdSeq and Rebirth', 'bdSeq' in nb and nb.get('Node Control/Rebirth') is False, str(nb))
+db = ns['decode_metrics'](spb_in[1][1])
+dbn = dict((m['name'], m['value']) for m in db)
+check('DBIRTH has every metric (also the one with no good value)', len(db) == len(ns['AJ']) and 'p25_ai_speed' in dbn, '%d of %d' % (len(db), len(ns['AJ'])))
+check('DBIRTH values and types', dbn.get('p01r12_master_ramped_speed') == 21.0 and dbn.get('p23_di_impreg_tank_up') is True and dbn.get('p01r13_status') == 5
+	and dbn.get('p01_recipe_active_name') == 'KEVLAR_285_PHEN', str(dbn))
+
+print 'scenario 10: DDATA only for what changed'
+n0 = len(spb_in)
+until(lambda: False, 3, 'quiet')
+check('nothing changed, nothing sent', len(spb_in) == n0, '%d new' % (len(spb_in) - n0))
+tags[P + 't_speed'] = 21.1                       # below the 0.2 deadband
+until(lambda: False, 3, 'small')
+check('float inside the deadband is not sent', len(spb_in) == n0)
+tags[P + 't_speed'] = 21.5
+check('float past the deadband is sent', until(lambda: len(spb_in) > n0, 6, 'big'))
+d = ns['decode_metrics'](spb_in[-1][1])
+check('DDATA topic and content', spb_in[-1][0] == 'spBv1.0/CUST03/DDATA/MACH00/LOC00' and [m['name'] for m in d] == ['p01r12_master_ramped_speed'] and abs(d[0]['value'] - 21.5) < 1e-4, str(d))
+n1 = len(spb_in)
+tags[P + 't_sp'] = 50.05                         # critical: any change goes out
+check('a critical metric goes out on any change', until(lambda: len(spb_in) > n1, 6, 'crit'))
+n2 = len(spb_in)
+tags[P + 't_tank'] = False
+tags[P + 't_status'] = 6
+check('bool and int changes go out together', until(lambda: len(spb_in) > n2, 6, 'bool'))
+d = dict((m['name'], m['value']) for m in ns['decode_metrics'](spb_in[-1][1]))
+check('both in one DDATA', d.get('p23_di_impreg_tank_up') is False and d.get('p01r13_status') == 6, str(d))
+seqs = [ns['pb_read'](list(bytearray(r))) for t, r in spb_in]
+seqn = [[v for f, w, v in x if f == 3][0] for x in seqs]
+check('seq counts 0, 1, 2 ...', seqn == range(len(seqn)), str(seqn))
+
+print 'scenario 11: rebirth on request'
+n3 = len(spb_in)
+cmd = ns['payload_pb'](long(time.time() * 1000), [ns['metric_pb']('Node Control/Rebirth', 0, 11, True)], None)
+m = MqttMessage(ns['signed'](cmd))
+m.setQos(1)
+obs2.publish('spBv1.0/CUST03/NCMD/MACH00', m)
+check('NBIRTH and DBIRTH again', until(lambda: len(spb_in) >= n3 + 2, 8, 'rebirth'))
+check('after the rebirth: NBIRTH, DBIRTH with seq restarted', [t.split('/')[2] for t, r in spb_in[n3:n3 + 2]] == ['NBIRTH', 'DBIRTH'])
+check('bdSeq unchanged by a rebirth', dict((x['name'], x['value']) for x in ns['decode_metrics'](spb_in[n3][1])).get('bdSeq') == nb['bdSeq'])
+
+print 'scenario 12: commands write only the allowed metrics'
+cmd = ns['payload_pb'](long(time.time() * 1000), [ns['metric_pb']('p01_recipe_active_line_speed_sp', 0, 9, 33.5), ns['metric_pb']('p01r12_master_ramped_speed', 0, 9, 99.0)], None)
+m = MqttMessage(ns['signed'](cmd))
+m.setQos(1)
+obs2.publish('spBv1.0/CUST03/DCMD/MACH00/LOC00', m)
+check('allowed metric written to its tag', until(lambda: abs(tags.get(P + 't_sp', 0) - 33.5) < 1e-3, 6, 'write'), str(tags.get(P + 't_sp')))
+check('other metric refused', abs(tags[P + 't_speed'] - 21.5) < 1e-6 and st()['n_rej'] >= 1, str(tags[P + 't_speed']))
+try:
+	obs2.disconnect()
+except:
+	pass
 
 print
 print '=' * 78

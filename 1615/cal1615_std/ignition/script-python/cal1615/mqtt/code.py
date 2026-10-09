@@ -5,14 +5,20 @@ DB = 'myOracle'
 # setting key -> (label, default). The tag script reads them from MQTT_CFG every 15 seconds.
 SETTINGS = [
 	('enabled', 'MQTT on (1 = on, 0 = off)', '0'),
+	('format', 'Format: sparkplug (MachineIQ) or json (one plain topic)', 'sparkplug'),
 	('endpoint', 'AWS IoT endpoint (xxxx-ats.iot.<region>.amazonaws.com)', ''),
 	('port', 'Port', '8883'),
-	('topic', 'Topic (publish and subscribe)', 'CUST09/LOC00/MACH00'),
-	('client_id', 'Client id (must be allowed by the AWS IoT policy)', 'cal1615-gateway'),
-	('publish_s', 'Publish every (seconds)', '10'),
+	('group_id', 'Sparkplug group = customer', 'CUST03'),
+	('edge_node_id', 'Sparkplug edge node = machine', 'MACH00'),
+	('device_id', 'Sparkplug device = location', 'LOC00'),
+	('topic', 'Topic (json format only)', 'CUST03/LOC00/MACH00'),
+	('client_id', 'Client id (must be allowed by the AWS IoT policy)', 'cal1615-MACH00'),
+	('publish_s', 'Check for changes every (seconds)', '5'),
+	('float_tol', 'A float is sent only when it moved more than', '0.2'),
+	('critical_s', 'Critical metrics are re-sent every (seconds)', '300'),
 	('qos', 'QoS (0 or 1)', '1'),
-	('write_tags', 'Tags that incoming messages may write (comma list, empty = none)', ''),
-	('publish_tags', 'Tags to publish (comma list, empty = all logged process values)', ''),
+	('write_tags', 'Metrics / tags that incoming commands may write (comma list, empty = none)', ''),
+	('publish_tags', 'Tags to publish (json format only; empty = all logged process values)', ''),
 ]
 
 
