@@ -1,7 +1,16 @@
 {
   "custom": {
     "msg": "",
-    "cfg": {}
+    "cfg": {},
+    "regmsg": "",
+    "reg": {
+      "customer": "CUST07",
+      "machine": "MACH00",
+      "serial": "",
+      "email": "",
+      "password": "",
+      "rotate": false
+    }
   },
   "params": {},
   "propConfig": {
@@ -2396,6 +2405,511 @@
                           "type": "expr",
                           "config": {
                             "expression": "coalesce({view.custom.msg}, '')"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "register"
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "cal1615/card",
+                    "paddingBottom": "4px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "header"
+                    },
+                    "position": {
+                      "basis": "26px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Register this gateway with PulseMQ (own certificate)",
+                      "style": {
+                        "classes": "cal1615/card-header"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_customer"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Customer (the Sparkplug group)",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.reg.customer",
+                                "bidirectional": true
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_machine"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Machine (the Sparkplug edge node)",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.reg.machine",
+                                "bidirectional": true
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_serial"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "Serial of this gateway (empty = made once and kept)",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.reg.serial",
+                                "bidirectional": true
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_email"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "PulseMQ email",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.reg.email",
+                                "bidirectional": true
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "r_password"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": "3px 8px",
+                        "gap": "2px"
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "title"
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "PulseMQ password (used for this one request, not stored)",
+                          "style": {
+                            "classes": "cal1615/row-label",
+                            "fontSize": "11px",
+                            "textAlign": "left"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ia.input.password-field",
+                        "meta": {
+                          "name": "entry"
+                        },
+                        "position": {
+                          "basis": "28px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "cal1615/entry",
+                            "fontSize": "13px",
+                            "textAlign": "left"
+                          }
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.reg.password",
+                                "bidirectional": true
+                              }
+                            }
+                          },
+                          "props.enabled": {
+                            "binding": {
+                              "type": "expr",
+                              "config": {
+                                "expression": "{session.props.auth.authenticated}"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.input.checkbox",
+                    "meta": {
+                      "name": "rotate"
+                    },
+                    "position": {
+                      "basis": "28px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Replace the existing certificate of this thing (revokes the old one)",
+                      "style": {
+                        "fontSize": "11px",
+                        "margin": "0 8px"
+                      }
+                    },
+                    "propConfig": {
+                      "props.selected": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.custom.reg.rotate",
+                            "bidirectional": true
+                          }
+                        }
+                      },
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "register"
+                    },
+                    "position": {
+                      "basis": "36px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Register with PulseMQ",
+                      "primary": true,
+                      "style": {
+                        "fontSize": "14px",
+                        "margin": "4px 8px"
+                      }
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "{session.props.auth.authenticated}"
+                          }
+                        }
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\treg = self.view.custom.reg\n\tself.view.custom.regmsg = 'Registering ...'\n\tok, msg = cal1615.mqtt.register(str(reg.customer), str(reg.machine), str(reg.serial), str(reg.email), str(reg.password), bool(reg.rotate))\n\tself.view.custom.reg.password = ''\n\tself.view.custom.regmsg = ('Done. ' if ok else 'Not registered. ') + msg"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "regmsg"
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "",
+                      "style": {
+                        "fontSize": "12px",
+                        "padding": "2px 8px",
+                        "textAlign": "left",
+                        "whiteSpace": "pre-wrap",
+                        "color": "#B05000"
+                      }
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "config": {
+                            "expression": "coalesce({view.custom.regmsg}, '')"
                           }
                         }
                       }

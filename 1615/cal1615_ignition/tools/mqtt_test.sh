@@ -22,7 +22,7 @@ docker run --rm -v "$W:/w" -w /w alpine sh -c '
  chmod 644 *'
 docker rm -f mq-test >/dev/null 2>&1 || true
 docker run -d --name mq-test --network "container:$C" -v "$W:/m" eclipse-mosquitto:2 mosquitto -c /m/mosquitto.conf >/dev/null
-trap 'docker rm -f mq-test >/dev/null 2>&1; sleep 1; rm -rf "$T" 2>/dev/null || true' EXIT
+trap 'docker rm -f mq-test mq-cloud >/dev/null 2>&1; sleep 1; rm -rf "$T" 2>/dev/null || true' EXIT
 sleep 3
 docker exec "$C" sh -c 'rm -rf /tmp/mqtt_test; mkdir -p /tmp/mqtt_test/lib'
 for f in AmazonRootCA1.pem certificate.pem.crt private.pem.key private8.pem.key; do docker cp "$T/$f" "$C:/tmp/mqtt_test/$f"; done
@@ -39,5 +39,18 @@ if [ -d "$ING" ]; then
   docker run --rm -v "$W/dump:/dump" -v "$(cygpath -m "$ING"):/ingest:ro" -v "$(cygpath -m "$PWD/spb_cloud_check.py"):/chk.py:ro" python:3.12-slim     sh -c 'pip install -q protobuf==6.33.5 >/dev/null 2>&1; python /chk.py /dump /ingest' || RC=$?
 else
   echo "(MachineIQ checkout not found at $ING: cloud decoder check skipped)"
+fi
+
+# the Register button: its code against a mock of PulseMQ that checks the certificate request with the cloud's own parser
+CLOUD="${MACHINEIQ:-/e/aaa_projects/machineiq}/mqtt-dashboard/lambda/machines/MachineManagement"
+if [ -d "$CLOUD" ]; then
+  echo; echo "register test (mock PulseMQ, MachineIQ edge_iot_registration.check_csr)"
+  docker rm -f mq-cloud >/dev/null 2>&1 || true
+  docker run -d --name mq-cloud --network "container:$C" -v "$(cygpath -m "$CLOUD"):/cloud:ro" -v "$(cygpath -m "$PWD/mqtt_mock_cloud.py"):/mock.py:ro" python:3.12-slim     sh -c 'pip install -q cryptography >/dev/null 2>&1; python /mock.py /cloud' >/dev/null
+  for i in $(seq 1 60); do docker exec "$C" curl -s http://127.0.0.1:8099/ >/dev/null 2>&1 && break; sleep 2; done
+  docker cp ../../cal1615_std/ignition/script-python/cal1615/mqtt/code.py "$C:/tmp/mqtt_code.py"; docker cp mqtt_register_test.py "$C:/tmp/mqtt_register_test.py"
+  docker exec "$C" sh -c 'rm -rf /tmp/regtest'
+  docker exec "$C" java -Dpython.import.site=false -Dpython.path=/usr/local/bin/ignition/user-lib/pylib     -cp /usr/local/bin/ignition/lib/core/common/jython-ia-2.7.4.0.jar org.python.util.jython -S /tmp/mqtt_register_test.py || RC=$?
+  docker rm -f mq-cloud >/dev/null 2>&1 || true
 fi
 exit $RC

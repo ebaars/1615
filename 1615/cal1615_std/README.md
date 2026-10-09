@@ -97,14 +97,14 @@ Folders follow cal2016's structure:
 
 `../cal1615_ignition/tools/build_std.js` and `build_std_pages.js` produced this project once from the cal2016 project and the tag maps (`tools/tagmap*.json`). From now on, edit the project in the Designer. Re-running the build would overwrite Designer edits.
 
-## MQTT link to AWS IoT Core (MachineIQ, AJ line CUST03 / LOC00 / MACH00)
+## MQTT link to AWS IoT Core (MachineIQ, default identity CUST07 / LOC00 / MACH00)
 
 The gateway talks Sparkplug B to AWS IoT Core, which is what the MachineIQ cloud ingests. No Cirrus Link module is used: the open-source Paho client runs in a gateway tag script.
 
 - **Script:** `tools/mqtt_tick.py` (tag `[cal1615]HMI/mqtt_tick`, every second, generated into the tag file by `node tools/mqtt_logging.js`). One TLS connection with the device
   certificate, reconnect with a growing pause. NDEATH is the last will.
 - **Sparkplug (default):** NBIRTH + DBIRTH (retained, every metric; one with no good value is sent as null) on connect, then DDATA with what changed. A float is sent only
-  when it moved more than `float_tol` (0.2); a critical metric on any change and again every `critical_s` (300 s). Topics `spBv1.0/CUST03/<type>/MACH00[/LOC00]`.
+  when it moved more than `float_tol` (0.2); a critical metric on any change and again every `critical_s` (300 s). Topics `spBv1.0/CUST07/<type>/MACH00[/LOC00]`.
   NCMD/DCMD are subscribed: Node Control/Rebirth makes a new birth, and a metric listed in `write_tags` is written to its tag; the rest is refused.
 - **Metrics:** the 109 PLC tags of `tools/aj_line_tags.csv` (copied from machineiq `docs/machines/AJ_LINE/AJ_Line_tag_list.csv`; the "MES Signal" column is the metric name) and the
   40 critical ones in `tools/aj_line_critical.txt` (from that line's `AJ_Line_config.yaml`). `mqtt_logging.js` maps each to its Ignition tag; 34 that were not in the tag export are
@@ -113,6 +113,6 @@ The gateway talks Sparkplug B to AWS IoT Core, which is what the MachineIQ cloud
 - **Page:** Maintenance > MQTT (`/mqtt`): state, counters, last messages, Publish now (a full DDATA), settings (stored in Oracle `MQTT_CFG`).
 - **Setup:** `tools/mqtt_setup.sh` puts the Paho jar in `data/mqtt/lib` of the gateway container. The certificate files (`certificate.pem.crt`, `private.pem.key`,
   `AmazonRootCA1.pem`) are copied there by hand and never go into git (`.gitignore` blocks `*.key`, `*.pem`, `*.crt`). The AWS IoT policy must allow connect, publish,
-  subscribe and receive for the client id and the `spBv1.0/CUST03/...` topics. Do not run this and the Raspberry Pi bridge for the same machine at the same time.
+  subscribe and receive for the client id and the `spBv1.0/CUST07/...` topics. Do not run this and the Raspberry Pi bridge for the same machine at the same time.
 - **Test:** `tools/mqtt_test.sh` starts a throw-away Mosquitto with TLS and client certificates and runs `mqtt_test.py` (46 checks: TLS with the PKCS#1 and PKCS#8 keys, json mode,
   Sparkplug births, change detection, rebirth, commands), then decodes what was published with the cloud's own `sparkplug_decode.py` (MachineIQ checkout, protobuf 6.x) in a python container.

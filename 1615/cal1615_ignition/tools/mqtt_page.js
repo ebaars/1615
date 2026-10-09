@@ -44,6 +44,28 @@ const setRow = ([key, title]) => ({ type: "ia.container.flex", meta: { name: `s_
           props: { text: "Save", style: { fontSize: "12px" } }, propConfig: { "props.enabled": expr(AUTH) },
           events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script: SAVE(key, "self.parent.getChild('entry')") } } } } }] }] });
 
+// Register with PulseMQ: the gateway makes its own key and certificate request, the operator signs in with the PulseMQ (Cognito) email and password for this one
+// request, MachineIQ issues the certificate, and the settings follow (cal1615.mqtt.register). Nothing typed here is stored.
+const two = (path) => ({ binding: { type: "property", config: { path, bidirectional: true } } });
+const regField = (name, title, kind, key, extra = {}) => ({ type: "ia.container.flex", meta: { name: `r_${name}` }, position: { basis: "auto", shrink: 0 },
+  props: { direction: "column", style: { padding: "3px 8px", gap: "2px" } },
+  children: [lbl("title", title, "cal1615/row-label", { basis: "auto", shrink: 0 }, undefined, { fontSize: "11px", textAlign: "left" }),
+    { type: kind, meta: { name: "entry" }, position: { basis: "28px", shrink: 0 }, props: { style: { classes: "cal1615/entry", fontSize: "13px", textAlign: "left" }, ...extra },
+      propConfig: { "props.text": two(`view.custom.reg.${key}`), "props.enabled": expr(AUTH) } }] });
+const registerButton = { type: "ia.input.button", meta: { name: "register" }, position: { basis: "36px", shrink: 0 },
+  props: { text: "Register with PulseMQ", primary: true, style: { fontSize: "14px", margin: "4px 8px" } }, propConfig: { "props.enabled": expr(AUTH) },
+  events: { component: { onActionPerformed: { type: "script", scope: "G", config: { script:
+    [
+      "\treg = self.view.custom.reg",
+      "\tself.view.custom.regmsg = 'Registering ...'",
+      "\tok, msg = cal1615.mqtt.register(str(reg.customer), str(reg.machine), str(reg.serial), str(reg.email), str(reg.password), bool(reg.rotate))",
+      "\tself.view.custom.reg.password = ''",
+      "\tself.view.custom.regmsg = ('Done. ' if ok else 'Not registered. ') + msg",
+    ].join("\n") } } } } };
+const rotateBox = { type: "ia.input.checkbox", meta: { name: "rotate" }, position: { basis: "28px", shrink: 0 },
+  props: { text: "Replace the existing certificate of this thing (revokes the old one)", style: { fontSize: "11px", margin: "0 8px" } },
+  propConfig: { "props.selected": two("view.custom.reg.rotate"), "props.enabled": expr(AUTH) } };
+
 const COLS = (defs) => defs.map(([field, title, width]) => ({ field, header: { title }, width }));
 const msgTable = { type: "ia.display.table", meta: { name: "messages" }, position: { grow: 1, basis: "0" },
   props: { columns: COLS([["time", "Time", 110], ["kind", "Kind", 60], ["text", "Message", 560]]) },
@@ -55,7 +77,7 @@ const HOW = "Sparkplug B for MachineIQ (default): on connect the gateway sends N
   + "The certificate files go in the folder data/mqtt on the gateway (certificate.pem.crt, private.pem.key, AmazonRootCA1.pem), never in git.";
 
 const view = {
-  custom: { msg: "", cfg: {} },
+  custom: { msg: "", cfg: {}, regmsg: "", reg: { customer: "CUST07", machine: "MACH00", serial: "", email: "", password: "", rotate: false } },
   params: {},
   propConfig: { "custom.cfg": expr('runScript("cal1615.mqtt.get_cfg", 0)') },
   props: { defaultSize: { width: 1680, height: 1024 } },
@@ -70,6 +92,13 @@ const view = {
           { type: "ia.container.flex", meta: { name: "side" }, position: { basis: "520px", shrink: 0 }, props: { direction: "column", style: { gap: "8px", overflowY: "auto" } },
             children: [
               card("settings", "Settings", [...SETTINGS.map(setRow), textLbl("msg", "coalesce({view.custom.msg}, '')", { color: "#B05000" })], { basis: "auto", shrink: 0 }),
+              card("register", "Register this gateway with PulseMQ (own certificate)", [
+                regField("customer", "Customer (the Sparkplug group)", "ia.input.text-field", "customer"),
+                regField("machine", "Machine (the Sparkplug edge node)", "ia.input.text-field", "machine"),
+                regField("serial", "Serial of this gateway (empty = made once and kept)", "ia.input.text-field", "serial"),
+                regField("email", "PulseMQ email", "ia.input.text-field", "email"),
+                regField("password", "PulseMQ password (used for this one request, not stored)", "ia.input.password-field", "password"),
+                rotateBox, registerButton, textLbl("regmsg", "coalesce({view.custom.regmsg}, '')", { color: "#B05000" })], { basis: "auto", shrink: 0 }),
               card("how", "How it works", [textLbl("t", "'" + HOW.replace(/'/g, "''") + "'", { fontSize: "11px", color: "var(--neutral-70)" })], { basis: "auto", shrink: 0 }),
             ] },
         ] },

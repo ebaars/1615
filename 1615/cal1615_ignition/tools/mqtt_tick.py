@@ -3,7 +3,7 @@
 #
 # WHAT IT DOES
 #  1. Keeps one MQTT client connected to AWS IoT Core (TLS, X.509 device certificate) and reconnects with a growing pause after a failure.
-#  2. format = sparkplug (default): speaks Sparkplug B, which is what the MachineIQ cloud ingests, as the AJ line (group CUST03, edge node MACH00, device LOC00):
+#  2. format = sparkplug (default): speaks Sparkplug B, which is what the MachineIQ cloud ingests, with the default identity (group CUST07, edge node MACH00, device LOC00):
 #       NBIRTH + DBIRTH (retained) on connect, DDATA with the metrics that changed (floats only past float_tol, critical ones on any change and every
 #       critical_s), NDEATH as last will, and a rebirth when an NCMD asks for Node Control/Rebirth. The metrics are the 109 PLC tags of
 #       tools/aj_line_tags.csv under the names MachineIQ expects (the MES Signal column). Commands (NCMD/DCMD) write tags listed in write_tags only.
@@ -23,8 +23,8 @@ EXTRA = ['HMI/LineState/state', 'HMI/Rolls/state', 'HMI/Rolls/rolls_done', 'HMI/
 TAGS = []   # @@TAGS@@
 # the Sparkplug metrics: (metric name, Ignition tag path without the provider, type float|int|bool|string, critical)
 AJ = []     # @@AJ@@
-DEFAULTS = [('enabled', '0'), ('format', 'sparkplug'), ('endpoint', ''), ('port', '8883'), ('group_id', 'CUST03'), ('edge_node_id', 'MACH00'), ('device_id', 'LOC00'),
-	('topic', 'CUST03/LOC00/MACH00'), ('client_id', 'cal1615-MACH00'), ('publish_s', '5'), ('float_tol', '0.2'), ('critical_s', '300'), ('qos', '1'),
+DEFAULTS = [('enabled', '0'), ('format', 'sparkplug'), ('endpoint', ''), ('port', '8883'), ('group_id', 'CUST07'), ('edge_node_id', 'MACH00'), ('device_id', 'LOC00'),
+	('topic', 'CUST07/LOC00/MACH00'), ('client_id', 'cal1615-MACH00'), ('publish_s', '5'), ('float_tol', '0.2'), ('critical_s', '300'), ('qos', '1'),
 	('write_tags', ''), ('publish_tags', '')]
 GL = system.util.getGlobals()
 log = system.util.getLogger('cal1615.mqtt')
@@ -263,7 +263,16 @@ def drop(why):
 		note('EVT', why)
 
 
+def ident():
+	"""What the connection depends on: when it changes (new certificate after a registration, another endpoint or client id) the gateway reconnects."""
+	from java.io import File
+	c = st['cfg']
+	return (c['endpoint'].strip(), c['port'], c['client_id'].strip(), c['format'], c['group_id'].strip(), c['edge_node_id'].strip(), c['device_id'].strip(), c['topic'].strip(),
+		File(CERT).lastModified(), File(KEY).lastModified(), File(CA).lastModified())
+
+
 def start_connect(now):
+	st['ident'] = ident()
 	st['connecting'] = True
 	st['t_try'] = now
 	st['conn_id'] += 1
@@ -643,6 +652,10 @@ def run():
 		show(now)
 		return
 	c = st['client']
+	if c is not None and st.get('ident') != ident():
+		drop('Settings or certificate changed: reconnecting')
+		st['fail'], st['t_try'] = 0, 0
+		c = None
 	if c is not None and not c.isConnected():
 		drop('Connection lost')
 		c = None
