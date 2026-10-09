@@ -36,6 +36,8 @@ if st is None:
 		'wound': 0.0, 'prev_ft': {'A': None, 'B': None}, 'stopped_seen': False, 'manual': False, 'hold': False, 'off_since': None,
 		'shown': {}, 'warned': {}, 'tagset': 0, 'pending': [], 't_retry': 0, 'last_inc': 0.0, 'rolls_done': 0, 'ft_done': 0.0, 'session_ms': None}
 	GL['cal1615_rolls'] = st
+for _k, _v in DEFAULTS:      # state kept in the globals by an older version of this script lacks settings added later
+	st['cfg'].setdefault(_k, _v)
 
 
 # ---------------------------------------------------------------- database
