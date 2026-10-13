@@ -10927,6 +10927,46 @@
           "historySampleRateUnits": "SEC",
           "historyMaxAge": 10,
           "historyMaxAgeUnits": "SEC"
+        },
+        {
+          "dataType": "Float4",
+          "name": "ai_tension",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]Program:P31_WAC.ai_tension",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "di_high_limit",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]Program:P31_WAC.di_high_limit",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "di_low_limit",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]Program:P31_WAC.di_low_limit",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "do_close_nip_sol",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]Program:P31_WAC.do_close_nip_sol",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "name": "di_ss_acc_on",
+          "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]Program:P31_WAC.di_ss_acc_on",
+          "opcServer": "cal1615",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
         }
       ]
     },

@@ -40,20 +40,6 @@
       {
         "type": "ia.display.view",
         "meta": {
-          "name": "slitter"
-        },
-        "position": {
-          "basis": "88px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Line/Slitter",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
           "name": "upper"
         },
         "position": {

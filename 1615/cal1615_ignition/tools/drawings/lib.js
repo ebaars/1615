@@ -147,13 +147,23 @@ class Kit {
     // guide rods and the ram
     s += this.rect(L + 33, -h + 16, 7, h - 30, { fill: "url(#gDark)", stroke: c.dark2, rx: 1 }) + this.rect(R - 40, -h + 16, 7, h - 30, { fill: "url(#gDark)", stroke: c.dark2, rx: 1 });
     s += this.rect(-5, -h + 10, 10, 66, { fill: "url(#gRam)", stroke: c.bodyLine, rx: 2 });
-    s += this.rect(-4, -h * 0.5, 8, h * 0.5 - 24, { fill: "url(#gRam)", stroke: c.ram2, rx: 1 });
+    s += this.rect(-4, -h + 70, 8, h - 94, { fill: "url(#gRam)", stroke: c.ram2, rx: 1 });      // the rod runs on from the top cylinder to the carriage, no gap
     // top pulley block
     s += this.circle(0, -h + 56, 8, { fill: "url(#gFab)", stroke: c.fabLine });
     // bottom carriage
     s += this.rect(L + 15, -30, w - 30, 14, { fill: "url(#gYellow)", stroke: c.yellow2 });
     for (const x of [-34, -17, 0, 17, 34]) s += this.idler(x, -14 + (Math.abs(x) % 2 ? 4 : 0), 6);
     s += this.rect(L - 2, -12, 22, 12, { fill: "url(#gDark)", stroke: c.dark2 }) + this.rect(R - 20, -12, 22, 12, { fill: "url(#gDark)", stroke: c.dark2 });
+    return s;
+  }
+  // mezzanine: a deck on two legs with gussets and a rail post; x = 0 is the left edge, the deck top is h above the floor (origin on the floor)
+  mezzanine({ w = 200, h = 150 } = {}) {
+    const c = this.c;
+    let s = "";
+    s += this.rect(2, -h, 14, h, { fill: "url(#gBodyH)" }) + this.rect(w - 16, -h, 14, h, { fill: "url(#gBodyH)" });
+    s += this.poly([[16, -h + 14], [16, -h + 46], [48, -h + 14]], { fill: "url(#gBody)" }) + this.poly([[w - 16, -h + 14], [w - 16, -h + 46], [w - 48, -h + 14]], { fill: "url(#gBody)" });
+    s += this.rect(0, -h - 2, w, 14, { fill: "url(#gBody)" }) + this.rect(w - 12, -h - 44, 5, 44, { fill: "url(#gSteel)" });
+    s += this.rect(-6, -6, 30, 6, { fill: "url(#gDark)", stroke: c.dark2 }) + this.rect(w - 24, -6, 30, 6, { fill: "url(#gDark)", stroke: c.dark2 });
     return s;
   }
   // roller box next to the tower (web turn rolls)

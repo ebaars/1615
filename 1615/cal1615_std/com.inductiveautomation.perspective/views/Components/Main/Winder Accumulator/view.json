@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 214,
-      "height": 116
+      "height": 166
     }
   },
   "root": {
@@ -37,6 +37,138 @@
             "classes": "cal1615/card-header"
           }
         }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_mode"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Mode",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "status"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/status"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]Program_P31_WAC/di_ss_acc_on",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "map",
+                      "inputType": "scalar",
+                      "outputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": true,
+                          "output": "On"
+                        },
+                        {
+                          "input": false,
+                          "output": "Off"
+                        }
+                      ],
+                      "fallback": "---"
+                    }
+                  ]
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]Program_P31_WAC/di_ss_acc_on",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "map",
+                      "inputType": "scalar",
+                      "outputType": "color",
+                      "mappings": [
+                        {
+                          "input": true,
+                          "output": "#00E000"
+                        },
+                        {
+                          "input": false,
+                          "output": "#E0E0E0"
+                        }
+                      ],
+                      "fallback": "#FFFFFF"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
       },
       {
         "type": "ia.container.flex",
@@ -122,6 +254,98 @@
             },
             "props": {
               "text": "%",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_tension"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Tension",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "100px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]Program_P31_WAC/ai_tension",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "format",
+                      "formatType": "numeric",
+                      "formatValue": "#,##0.0"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "LBS",
               "style": {
                 "classes": "cal1615/units"
               }

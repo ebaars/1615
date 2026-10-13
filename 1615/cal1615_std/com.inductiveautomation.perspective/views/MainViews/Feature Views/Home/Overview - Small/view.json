@@ -194,20 +194,6 @@
       {
         "type": "ia.display.view",
         "meta": {
-          "name": "slitter"
-        },
-        "position": {
-          "basis": "128px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Slitter",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
           "name": "upperPoly"
         },
         "position": {

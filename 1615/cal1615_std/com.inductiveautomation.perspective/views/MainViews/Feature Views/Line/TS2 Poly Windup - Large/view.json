@@ -95,7 +95,7 @@
           "name": "upper"
         },
         "position": {
-          "x": 469,
+          "x": 380,
           "y": 72,
           "width": 256,
           "height": 116
@@ -108,27 +108,11 @@
       {
         "type": "ia.display.view",
         "meta": {
-          "name": "slitter"
-        },
-        "position": {
-          "x": 206,
-          "y": 152,
-          "width": 256,
-          "height": 88
-        },
-        "props": {
-          "path": "Components/Line/Slitter",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
           "name": "wfoot"
         },
         "position": {
           "x": 850,
-          "y": 132,
+          "y": 160,
           "width": 167,
           "height": 88
         },
@@ -143,15 +127,15 @@
           "name": "turret"
         },
         "position": {
-          "x": 760,
-          "y": 256,
-          "width": 298,
+          "x": 866,
+          "y": 336,
+          "width": 170,
           "height": 32
         },
         "props": {
           "path": "Components/Common/Indicator",
           "params": {
-            "text": "Turret in Position Proximity Switch",
+            "text": "Turret in Position",
             "tagPath": "[cal1615]turret_in_position",
             "onColor": "#00E000",
             "offColor": "#FFFF00",
@@ -396,6 +380,50 @@
         "props": {
           "path": "Components/Line/Winder PID",
           "params": {}
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "fullLS"
+        },
+        "position": {
+          "x": 830,
+          "y": 72,
+          "width": 200,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Accumulator Full LS",
+            "tagPath": "[cal1615]Program_P31_WAC/di_high_limit",
+            "onColor": "#00E000",
+            "offColor": "#FFFF00",
+            "invert": false
+          }
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "nipWac"
+        },
+        "position": {
+          "x": 830,
+          "y": 112,
+          "width": 116,
+          "height": 32
+        },
+        "props": {
+          "path": "Components/Common/Indicator",
+          "params": {
+            "text": "Nip Open",
+            "tagPath": "[cal1615]Program_P31_WAC/do_close_nip_sol",
+            "onColor": "#00E000",
+            "offColor": "#D0D0D0",
+            "invert": true
+          }
         }
       }
     ]

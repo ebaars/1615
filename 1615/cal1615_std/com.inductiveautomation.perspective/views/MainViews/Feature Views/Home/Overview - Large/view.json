@@ -75,7 +75,7 @@
           "name": "winderAccumulator"
         },
         "position": {
-          "height": 116,
+          "height": 166,
           "width": 233,
           "x": 1293,
           "y": 76
@@ -205,28 +205,13 @@
       },
       {
         "meta": {
-          "name": "slitter"
-        },
-        "position": {
-          "height": 128,
-          "width": 115,
-          "x": 1293,
-          "y": 218
-        },
-        "props": {
-          "path": "Components/Main/Slitter"
-        },
-        "type": "ia.display.view"
-      },
-      {
-        "meta": {
           "name": "upperPoly"
         },
         "position": {
           "height": 128,
           "width": 115,
-          "x": 1411,
-          "y": 218
+          "x": 1308,
+          "y": 250
         },
         "props": {
           "path": "Components/Main/Upper Poly"
@@ -239,9 +224,9 @@
         },
         "position": {
           "height": 88,
-          "width": 153,
-          "x": 1510,
-          "y": 278
+          "width": 129,
+          "x": 1534,
+          "y": 204
         },
         "props": {
           "path": "Components/Main/Winder Footage"
