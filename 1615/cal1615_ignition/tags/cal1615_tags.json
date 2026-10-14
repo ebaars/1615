@@ -15793,6 +15793,24 @@
           "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]p01_recipe_active.impreg_roll_speed_sp"
         }
       ]
+    },
+    {
+      "dataType": "Int4",
+      "documentation": "Production Roll Count",
+      "name": "P29r02_roll_count",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]P29r02_roll_count",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc"
+    },
+    {
+      "dataType": "Boolean",
+      "documentation": "Production Roll Count Reset",
+      "name": "P29r02_pb_roll_count_reset",
+      "opcItemPath": "nsu=FTLGW_Server_Namespace;s=[PLC]P29r02_pb_roll_count_reset",
+      "opcServer": "cal1615",
+      "tagType": "AtomicTag",
+      "valueSource": "opc"
     }
   ]
 }
