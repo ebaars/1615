@@ -36,6 +36,16 @@
           "params": {},
           "useDefaultViewWidth": true,
           "useDefaultViewHeight": true
+        },
+        "propConfig": {
+          "props.style.zoom": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "min(1, ({page.props.dimensions.viewport.width} - if({session.custom.navPinned}, 240, 0) - 20) / 1680)"
+              }
+            }
+          }
         }
       }
     ]

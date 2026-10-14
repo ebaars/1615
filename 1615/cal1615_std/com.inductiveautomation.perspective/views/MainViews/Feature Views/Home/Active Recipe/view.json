@@ -33,7 +33,7 @@
         "position": {
           "basis": "100%",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Main/Recipe Banner",
@@ -52,7 +52,7 @@
         "position": {
           "basis": "100%",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "direction": "row",
