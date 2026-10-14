@@ -67,7 +67,7 @@
               "name": "title"
             },
             "position": {
-              "basis": "160px",
+              "basis": "110px",
               "shrink": 0
             },
             "props": {
@@ -75,6 +75,82 @@
               "style": {
                 "classes": "cal1615/page-title",
                 "textAlign": "left"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "start"
+            },
+            "position": {
+              "basis": "120px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Start MQTT",
+              "primary": true,
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated} && {[cal1615]HMI/MQTT/state} = 'DISABLED'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tok, msg = cal1615.mqtt.set_cfg('enabled', '1', self.session.props.auth.user.userName)\n\tself.view.custom.msg = ('MQTT ' + ('started. ' if '1' == '1' else 'stopped. ')) + msg"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "stop"
+            },
+            "position": {
+              "basis": "120px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Stop MQTT",
+              "primary": false,
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated} && {[cal1615]HMI/MQTT/state} != 'DISABLED'"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tok, msg = cal1615.mqtt.set_cfg('enabled', '0', self.session.props.auth.user.userName)\n\tself.view.custom.msg = ('MQTT ' + ('started. ' if '0' == '1' else 'stopped. ')) + msg"
+                  }
+                }
               }
             }
           },
@@ -111,6 +187,44 @@
                   "scope": "G",
                   "config": {
                     "script": "\tsystem.tag.writeBlocking(['[cal1615]HMI/MQTT/publish_now'], [True])"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "rebirth"
+            },
+            "position": {
+              "basis": "190px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Send birth again",
+              "primary": false,
+              "style": {
+                "fontSize": "14px"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated} && {[cal1615]HMI/MQTT/connected}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.tag.writeBlocking(['[cal1615]HMI/MQTT/rebirth'], [True])"
                   }
                 }
               }

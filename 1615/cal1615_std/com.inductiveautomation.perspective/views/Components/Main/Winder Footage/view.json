@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 140,
-      "height": 88
+      "height": 174
     }
   },
   "root": {
@@ -221,6 +221,233 @@
           }
         ],
         "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_rolls"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Rolls",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "56px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]P29r02_roll_count",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "format",
+                      "formatType": "numeric",
+                      "formatValue": "#,##0"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_feet"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px",
+            "gap": "4px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Feet",
+              "style": {
+                "classes": "cal1615/row-label"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "value"
+            },
+            "position": {
+              "basis": "56px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "---",
+              "style": {
+                "classes": "cal1615/value"
+              }
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[cal1615]AJ/p01_r15_footage_ft",
+                    "bidirectional": false
+                  },
+                  "transforms": [
+                    {
+                      "type": "format",
+                      "formatType": "numeric",
+                      "formatValue": "#,##0"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "units"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "FT",
+              "style": {
+                "classes": "cal1615/units"
+              }
+            }
+          }
+        ],
+        "propConfig": {}
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "row_reset"
+        },
+        "position": {
+          "basis": "34px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "row",
+          "alignItems": "stretch",
+          "style": {
+            "paddingLeft": "6px",
+            "paddingRight": "6px",
+            "paddingTop": "3px",
+            "paddingBottom": "3px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "reset"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Reset counts",
+              "style": {
+                "fontSize": "12px"
+              }
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.openPopup('confirm', 'Components/Common/Confirm', params={'title': 'Reset rolls', 'message': 'Set the roll count and the total length back to 0?\\nThe MES takes the next roll as roll 1.', 'tagPath': '[cal1615]P29r02_pb_roll_count_reset', 'value': True}, title='Reset roll count', modal=True, showCloseIcon=True, draggable=True, resizable=False, viewportBound=True)"
+                  }
+                }
+              }
+            }
+          }
+        ]
       }
     ]
   }

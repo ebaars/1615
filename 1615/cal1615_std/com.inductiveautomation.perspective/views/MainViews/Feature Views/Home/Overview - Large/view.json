@@ -22,10 +22,10 @@
         "propConfig": {
           "props.source": {
             "binding": {
-              "type": "expr",
               "config": {
                 "expression": "\"/system/images/Custom/cal1615/line_overview\" + if(indexOf({session.props.theme}, \"dark\") >= 0, \"_dark\", \"\") + \".svg\""
-              }
+              },
+              "type": "expr"
             }
           }
         },
@@ -33,7 +33,6 @@
           "fit": {
             "mode": "fill"
           },
-          "source": "/system/images/Custom/cal1615/line_overview.svg",
           "style": {
             "classes": "cal1615/drawing"
           }
@@ -75,10 +74,13 @@
           "name": "winderAccumulator"
         },
         "position": {
-          "height": 166,
+          "height": 181,
+          "rotate": {
+            "anchor": "50% 75%"
+          },
           "width": 233,
-          "x": 1293,
-          "y": 76
+          "x": 1367,
+          "y": 52
         },
         "props": {
           "path": "Components/Main/Winder Accumulator"
@@ -223,10 +225,10 @@
           "name": "winderFootage"
         },
         "position": {
-          "height": 88,
+          "height": 174,
           "width": 129,
-          "x": 1534,
-          "y": 204
+          "x": 1541,
+          "y": 297
         },
         "props": {
           "path": "Components/Main/Winder Footage"
@@ -571,6 +573,21 @@
         "type": "ia.display.view"
       },
       {
+        "meta": {
+          "name": "speedSlider"
+        },
+        "position": {
+          "height": 52,
+          "width": 490,
+          "x": 16,
+          "y": 7
+        },
+        "props": {
+          "path": "Components/Main/Line Speed Slider"
+        },
+        "type": "ia.display.view"
+      },
+      {
         "type": "ia.display.view",
         "meta": {
           "name": "lineState"
@@ -594,33 +611,21 @@
         "position": {
           "x": 640,
           "y": 52,
-          "width": 640,
+          "width": 700,
           "height": 116
         },
         "props": {
           "path": "Components/Main/Job Panel",
           "params": {}
         }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "speedSlider"
-        },
-        "position": {
-          "x": 16,
-          "y": 7,
-          "width": 490,
-          "height": 52
-        },
-        "props": {
-          "path": "Components/Main/Line Speed Slider",
-          "params": {}
-        }
       }
     ],
     "meta": {
       "name": "root"
+    },
+    "position": {
+      "x": 28,
+      "y": 83
     },
     "type": "ia.container.coord"
   }
