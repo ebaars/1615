@@ -11,7 +11,7 @@ Thumbs.db
 oracle/ojdbc17-full/
 oracle/ojdbc17-full.tar.gz
 
-# MQTT: keys and certificates never go into git; run logs
+# Keys and certificates never go into git; tool run logs
 *.pem
 *.key
 *.crt

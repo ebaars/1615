@@ -120,26 +120,6 @@
                 "icon": {
                   "path": ""
                 },
-                "text": "MQTT"
-              },
-              "navIcon": {
-                "color": "",
-                "path": ""
-              },
-              "resetOnClick": false,
-              "showHeader": true,
-              "style": {},
-              "target": "/mqtt",
-              "visible": true
-            },
-            {
-              "backActionText": "",
-              "enabled": true,
-              "items": [],
-              "label": {
-                "icon": {
-                  "path": ""
-                },
                 "text": "VFD Drives"
               },
               "navIcon": {

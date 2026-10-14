@@ -95,10 +95,6 @@
     "/rolls": {
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Maintenance/Rolls"
-    },
-    "/mqtt": {
-      "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Maintenance/MQTT"
     }
   },
   "sharedDocks": {
