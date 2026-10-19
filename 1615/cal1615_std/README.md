@@ -99,4 +99,4 @@ Folders follow cal2016's structure:
 
 ## AJ tags
 
-`[cal1615]AJ` holds 34 PLC tags (OPC) from the MachineIQ AJ line tag list that were not in the original tag export. The Job panel and the Winder Footage card read some of them.
+`[cal1615]AJ` holds 34 PLC tags (OPC) from the PulseMQ MES AJ line tag list that were not in the original tag export. The Job panel and the Winder Footage card read some of them.

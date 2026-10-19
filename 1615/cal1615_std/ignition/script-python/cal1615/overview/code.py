@@ -34,3 +34,17 @@ def job_header(state, session_start):
 	if session_start is None:
 		return 'Job   running'
 	return 'Job   running ' + _span(_elapsed(session_start))
+
+
+def last_rolls(n, state, plc_count):
+	"""The n lines of the Last rolls list of the job panel: the latest logged rolls, or, when none are logged yet, what the panel is waiting for."""
+	n = int(n)
+	lines = []
+	for r in cal1615.rolls.list_rolls(n)[:n]:
+		flags = (r['flags'] or '').replace('PARTIAL', 'PART').replace('NOCLEAR', 'NOCLR')
+		lines.append('%-7s %s %6s ft %s' % (r['roll'], r['winder'], format(r['length'] or 0, ',.0f'), flags))
+	if not lines:
+		lines = ['No rolls logged yet',
+			'Waiting for production' if state in (None, 'IDLE') else 'The first roll is the leader',
+			'PLC roll count ' + ('---' if plc_count is None else '%d' % plc_count)]
+	return lines + [''] * (n - len(lines))

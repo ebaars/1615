@@ -23,7 +23,7 @@
           "props.source": {
             "binding": {
               "config": {
-                "expression": "\"/system/images/Custom/cal1615/line_overview\" + if(indexOf({session.props.theme}, \"dark\") >= 0, \"_dark\", \"\") + \".svg\""
+                "expression": "\"/system/images/Custom/cal1615/line_overview\" + if(indexOf({session.props.theme}, \"dark\") \u003e\u003d 0, \"_dark\", \"\") + \".svg\""
               },
               "type": "expr"
             }
@@ -346,7 +346,7 @@
           "height": 176,
           "width": 136,
           "x": 38,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Let-Off"
@@ -361,7 +361,7 @@
           "height": 172,
           "width": 288,
           "x": 180,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Splice Press"
@@ -376,7 +376,7 @@
           "height": 176,
           "width": 136,
           "x": 560,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Tension Stand 1"
@@ -391,7 +391,7 @@
           "height": 224,
           "width": 136,
           "x": 722,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Impregnation"
@@ -406,7 +406,7 @@
           "height": 128,
           "width": 129,
           "x": 1143,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Cooling Rolls"
@@ -421,7 +421,7 @@
           "height": 176,
           "width": 129,
           "x": 1276,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Tension Stand 2"
@@ -436,7 +436,7 @@
           "height": 128,
           "width": 120,
           "x": 1409,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Lower Poly"
@@ -451,7 +451,7 @@
           "height": 176,
           "width": 130,
           "x": 1533,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/Winder"
@@ -466,7 +466,7 @@
           "height": 158,
           "width": 327,
           "x": 164,
-          "y": 839
+          "y": 813
         },
         "props": {
           "path": "Components/Main/Oven Control"
@@ -481,7 +481,7 @@
           "height": 130,
           "width": 283,
           "x": 501,
-          "y": 839
+          "y": 813
         },
         "props": {
           "path": "Components/Main/Line Control"
@@ -496,7 +496,7 @@
           "height": 116,
           "width": 283,
           "x": 795,
-          "y": 839
+          "y": 813
         },
         "props": {
           "path": "Components/Main/Line Speed"
@@ -511,7 +511,7 @@
           "height": 122,
           "width": 272,
           "x": 1089,
-          "y": 839
+          "y": 813
         },
         "props": {
           "path": "Components/Main/Production"
@@ -523,7 +523,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "\ttag = '[cal1615]p02_dint_from_hmi/global_6_/bit_0'\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag=tag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
+                "script": "\ttag \u003d \u0027[cal1615]p02_dint_from_hmi/global_6_/bit_0\u0027\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag\u003dtag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
               },
               "scope": "G",
               "type": "script"
@@ -537,7 +537,7 @@
           "height": 60,
           "width": 218,
           "x": 1433,
-          "y": 850
+          "y": 824
         },
         "propConfig": {
           "props.enabled": {
@@ -562,10 +562,10 @@
           "name": "rto"
         },
         "position": {
-          "height": 226,
+          "height": 233,
           "width": 256,
           "x": 874,
-          "y": 577
+          "y": 573
         },
         "props": {
           "path": "Components/Main/RTO"
@@ -588,36 +588,57 @@
         "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "lineState"
         },
         "position": {
-          "x": 38,
-          "y": 76,
+          "height": 198,
           "width": 190,
-          "height": 198
+          "x": 38,
+          "y": 76
         },
         "props": {
-          "path": "Components/Main/Line State",
-          "params": {}
-        }
+          "path": "Components/Main/Line State"
+        },
+        "type": "ia.display.view"
       },
       {
-        "type": "ia.display.view",
         "meta": {
           "name": "jobPanel"
         },
         "position": {
-          "x": 640,
-          "y": 52,
+          "height": 116,
           "width": 700,
-          "height": 116
+          "x": 640,
+          "y": 52
         },
         "props": {
-          "path": "Components/Main/Job Panel",
-          "params": {}
-        }
+          "path": "Components/Main/Job Panel"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\turl \u003d system.pmq.getSignInUrl(self.session.props.id)\n\tsystem.perspective.navigate(url\u003durl, newTab\u003dTrue)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 34,
+          "width": 80,
+          "x": 682,
+          "y": 228
+        },
+        "type": "ia.input.button"
       }
     ],
     "meta": {

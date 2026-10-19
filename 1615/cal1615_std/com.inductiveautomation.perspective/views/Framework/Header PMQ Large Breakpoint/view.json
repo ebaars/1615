@@ -1,0 +1,50 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 40,
+      "width": 1272
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "hasDelegate": true,
+          "name": "Spacer 1"
+        },
+        "position": {
+          "basis": "80px"
+        },
+        "props": {
+          "text": " "
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "PmqStation"
+        },
+        "position": {
+          "basis": "520px",
+          "shrink": 0
+        },
+        "props": {
+          "machine": "cal1615"
+        },
+        "type": "pmq.mes.station"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignContent": "flex-start",
+      "style": {
+        "classes": "framework/header"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

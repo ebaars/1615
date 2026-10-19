@@ -48,6 +48,10 @@
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Home/Overview - Main"
     },
+    "/pid-tuning": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/PID Tuning"
+    },
     "/pm-schedule": {
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Maintenance/PM Schedule"
@@ -55,6 +59,10 @@
     "/recipe": {
       "title": "cal1615",
       "viewPath": "MainViews/Feature Views/Home/Recipe"
+    },
+    "/rolls": {
+      "title": "cal1615",
+      "viewPath": "MainViews/Feature Views/Maintenance/Rolls"
     },
     "/rto": {
       "title": "cal1615",
@@ -87,14 +95,6 @@
     "/zone/:zone": {
       "title": "Zone",
       "viewPath": "MainViews/Feature Views/Ovens/Zone - Main"
-    },
-    "/pid-tuning": {
-      "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Maintenance/PID Tuning"
-    },
-    "/rolls": {
-      "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Maintenance/Rolls"
     }
   },
   "sharedDocks": {
@@ -126,7 +126,7 @@
         "modal": false,
         "resizable": false,
         "show": "visible",
-        "size": 56,
+        "size": 96,
         "viewParams": {},
         "viewPath": "Framework/Header"
       }
