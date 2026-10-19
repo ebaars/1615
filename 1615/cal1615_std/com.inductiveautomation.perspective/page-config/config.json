@@ -50,7 +50,7 @@
     },
     "/pid-tuning": {
       "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Maintenance/PID Tuning"
+      "viewPath": "MainViews/Feature Views/Maintenance/PID Tuning - Main"
     },
     "/pm-schedule": {
       "title": "cal1615",
@@ -62,7 +62,7 @@
     },
     "/rolls": {
       "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Maintenance/Rolls"
+      "viewPath": "MainViews/Feature Views/Maintenance/Rolls - Main"
     },
     "/rto": {
       "title": "cal1615",
@@ -82,7 +82,7 @@
     },
     "/vfd-drives": {
       "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Maintenance/VFD Drives"
+      "viewPath": "MainViews/Feature Views/Maintenance/VFD Drives - Main"
     },
     "/warnings": {
       "title": "",

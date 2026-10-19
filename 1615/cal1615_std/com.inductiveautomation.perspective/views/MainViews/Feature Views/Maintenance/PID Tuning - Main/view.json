@@ -1,0 +1,38 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "type": "ia.container.breakpt",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 1200
+    },
+    "children": [
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "small"
+        },
+        "position": {},
+        "props": {
+          "path": "MainViews/Feature Views/Maintenance/PID Tuning - Small"
+        }
+      },
+      {
+        "type": "ia.display.view",
+        "meta": {
+          "name": "large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "MainViews/Feature Views/Maintenance/PID Tuning"
+        }
+      }
+    ]
+  }
+}
