@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 400,
-      "height": 1400
+      "height": 1800
     }
   },
   "root": {
@@ -17,67 +17,609 @@
     "props": {
       "direction": "column",
       "style": {
-        "gap": "8px",
         "padding": "6px",
         "overflowY": "auto"
       }
     },
     "children": [
       {
-        "type": "ia.display.view",
+        "type": "ia.container.column",
         "meta": {
-          "name": "acc"
+          "name": "grid"
         },
         "position": {
-          "basis": "270px",
+          "basis": "auto",
           "shrink": 0
         },
         "props": {
-          "path": "Components/Line/Entry Accumulator",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "ts1"
+          "breakpoints": [
+            {
+              "minWidth": 0,
+              "name": "sm"
+            },
+            {
+              "minWidth": 700,
+              "name": "md"
+            },
+            {
+              "minWidth": 1100,
+              "name": "lg"
+            }
+          ]
         },
-        "position": {
-          "basis": "116px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Line/Tension Stand 1",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "impreg"
-        },
-        "position": {
-          "basis": "200px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Line/Impregnation",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "pid"
-        },
-        "position": {
-          "basis": "116px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Line/Tension Stand 1 PID",
-          "params": {}
-        }
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                }
+              ],
+              "height": 40
+            },
+            "props": {
+              "text": "Accumulator & Tension Stand 1",
+              "style": {
+                "classes": "cal1615/page-title"
+              }
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "acc"
+            },
+            "props": {
+              "path": "Components/Line/Entry Accumulator",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 270
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "ts1"
+            },
+            "props": {
+              "path": "Components/Line/Tension Stand 1",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 116
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "impreg"
+            },
+            "props": {
+              "path": "Components/Line/Impregnation",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 200
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "pid"
+            },
+            "props": {
+              "path": "Components/Line/Tension Stand 1 PID",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 4
+                }
+              ],
+              "height": 116
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "fullLS"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "path": "Components/Common/Indicator",
+              "params": {
+                "text": "Accumulator Full Limit Switch",
+                "tagPath": "[cal1615]p20_di_acc_full",
+                "onColor": "#00E000",
+                "offColor": "#FFFF00",
+                "invert": false
+              }
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "emptyLS"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "path": "Components/Common/Indicator",
+              "params": {
+                "text": "Accumulator Empty Limit Switch",
+                "tagPath": "[cal1615]p20_di_acc_empty",
+                "onColor": "#00E000",
+                "offColor": "#FFFF00",
+                "invert": false
+              }
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "nipL"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "path": "Components/Common/Indicator",
+              "params": {
+                "text": "Nip Open",
+                "tagPath": "[cal1615]p20_do_close_nip",
+                "onColor": "#00E000",
+                "offColor": "#D0D0D0",
+                "invert": true
+              }
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "nipR"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 6
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "path": "Components/Common/Indicator",
+              "params": {
+                "text": "Nip Open",
+                "tagPath": "[cal1615]p22_do_close_nip_roll",
+                "onColor": "#00E000",
+                "offColor": "#D0D0D0",
+                "invert": true
+              }
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "tankUp"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 6
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "path": "Components/Common/Indicator",
+              "params": {
+                "text": "Tank Up",
+                "tagPath": "[cal1615]p23_di_impreg_tank_up",
+                "onColor": "#00E000",
+                "offColor": "#FFFF00",
+                "invert": false
+              }
+            }
+          },
+          {
+            "type": "ia.chart.powerchart",
+            "meta": {
+              "name": "trend"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 12
+                }
+              ],
+              "height": 420
+            },
+            "props": {
+              "config": {
+                "measureOfTime": "hours",
+                "unitOfTime": 1,
+                "visibility": {
+                  "showTagBrowser": false
+                }
+              },
+              "pens": [
+                {
+                  "axis": "",
+                  "name": "TS1 Tension",
+                  "plot": 0,
+                  "enabled": true,
+                  "selectable": true,
+                  "visible": true,
+                  "data": {
+                    "aggregateMode": "default",
+                    "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p22r06_ave_lc"
+                  },
+                  "display": {
+                    "type": "line",
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "normal": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 0.9
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 0.9,
+                          "width": 1.5
+                        }
+                      },
+                      "highlighted": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1.5
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "axis": "",
+                  "name": "Tension Setpoint",
+                  "plot": 0,
+                  "enabled": true,
+                  "selectable": true,
+                  "visible": true,
+                  "data": {
+                    "aggregateMode": "default",
+                    "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/ts1_tension_sp"
+                  },
+                  "display": {
+                    "type": "line",
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "normal": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 0.9
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 0.9,
+                          "width": 1.5
+                        }
+                      },
+                      "highlighted": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1.5
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   }

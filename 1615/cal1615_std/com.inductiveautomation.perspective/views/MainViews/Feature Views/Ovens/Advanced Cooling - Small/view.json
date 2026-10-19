@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 400,
-      "height": 800
+      "height": 1800
     }
   },
   "root": {
@@ -17,53 +17,364 @@
     "props": {
       "direction": "column",
       "style": {
-        "gap": "8px",
         "padding": "6px",
         "overflowY": "auto"
       }
     },
     "children": [
       {
-        "type": "ia.display.view",
+        "type": "ia.container.column",
         "meta": {
-          "name": "cooling"
+          "name": "grid"
         },
         "position": {
-          "basis": "214px",
+          "basis": "auto",
           "shrink": 0
         },
         "props": {
-          "path": "Components/Oven/Roll Cooling",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "pump"
+          "breakpoints": [
+            {
+              "minWidth": 0,
+              "name": "sm"
+            },
+            {
+              "minWidth": 700,
+              "name": "md"
+            },
+            {
+              "minWidth": 1100,
+              "name": "lg"
+            }
+          ]
         },
-        "position": {
-          "basis": "102px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Oven/Roll Cooling Pump",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "valve"
-        },
-        "position": {
-          "basis": "158px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Oven/Roll Cooling Valve",
-          "params": {}
-        }
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                }
+              ],
+              "height": 40
+            },
+            "props": {
+              "text": "Advanced Cooling",
+              "style": {
+                "classes": "cal1615/page-title"
+              }
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "cooling"
+            },
+            "props": {
+              "path": "Components/Oven/Roll Cooling",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 214
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "pump"
+            },
+            "props": {
+              "path": "Components/Oven/Roll Cooling Pump",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 102
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "valve"
+            },
+            "props": {
+              "path": "Components/Oven/Roll Cooling Valve",
+              "params": {}
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 158
+            }
+          },
+          {
+            "type": "ia.chart.powerchart",
+            "meta": {
+              "name": "trend"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 12
+                }
+              ],
+              "height": 420
+            },
+            "props": {
+              "config": {
+                "measureOfTime": "hours",
+                "unitOfTime": 1,
+                "visibility": {
+                  "showTagBrowser": false
+                }
+              },
+              "pens": [
+                {
+                  "axis": "",
+                  "name": "Roll Cooling Temp",
+                  "plot": 0,
+                  "enabled": true,
+                  "selectable": true,
+                  "visible": true,
+                  "data": {
+                    "aggregateMode": "default",
+                    "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p19_ai_tc01"
+                  },
+                  "display": {
+                    "type": "line",
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "normal": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 0.9
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 0.9,
+                          "width": 1.5
+                        }
+                      },
+                      "highlighted": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1.5
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#1F77B4",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#1F77B4",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "axis": "",
+                  "name": "Setpoint",
+                  "plot": 0,
+                  "enabled": true,
+                  "selectable": true,
+                  "visible": true,
+                  "data": {
+                    "aggregateMode": "default",
+                    "source": "histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:p01_recipe_active/adv_cooling_temp_sp"
+                  },
+                  "display": {
+                    "type": "line",
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "normal": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 0.9
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 0.9,
+                          "width": 1.5
+                        }
+                      },
+                      "highlighted": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1.5
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#D62728",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#D62728",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1.5
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "style": {}
+            }
+          }
+        ]
       }
     ]
   }

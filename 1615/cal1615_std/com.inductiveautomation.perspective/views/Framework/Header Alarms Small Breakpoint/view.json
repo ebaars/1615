@@ -233,7 +233,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "id": "Menu",
+                "id": "dock-main-nav",
                 "type": "toggle"
               },
               "scope": "C",

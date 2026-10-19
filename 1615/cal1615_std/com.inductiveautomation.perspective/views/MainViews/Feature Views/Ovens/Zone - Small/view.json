@@ -12,7 +12,7 @@
   "props": {
     "defaultSize": {
       "width": 400,
-      "height": 1200
+      "height": 1800
     }
   },
   "root": {
@@ -24,141 +24,398 @@
     "props": {
       "direction": "column",
       "style": {
-        "gap": "8px",
         "padding": "6px",
         "overflowY": "auto"
       }
     },
     "children": [
       {
-        "type": "ia.display.view",
+        "type": "ia.container.column",
         "meta": {
-          "name": "zoneStatus"
+          "name": "grid"
         },
         "position": {
-          "basis": "214px",
+          "basis": "auto",
           "shrink": 0
         },
         "props": {
-          "path": "Components/Oven/Zone/Zone Status",
-          "params": {
-            "zone": 1
-          }
-        },
-        "propConfig": {
-          "props.params.zone": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.zone"
-              }
+          "breakpoints": [
+            {
+              "minWidth": 0,
+              "name": "sm"
+            },
+            {
+              "minWidth": 700,
+              "name": "md"
+            },
+            {
+              "minWidth": 1100,
+              "name": "lg"
             }
-          }
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "temps"
+          ]
         },
-        "position": {
-          "basis": "144px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Temperature Data",
-          "params": {
-            "zone": 1
-          }
-        },
-        "propConfig": {
-          "props.params.zone": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.zone"
+        "children": [
+          {
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                }
+              ],
+              "height": 40
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Zone \" + {view.params.zone}"
+                  },
+                  "type": "expr"
+                }
               }
-            }
-          }
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "chamber"
-        },
-        "position": {
-          "basis": "88px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Chamber Data",
-          "params": {
-            "zone": 1
-          }
-        },
-        "propConfig": {
-          "props.params.zone": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.zone"
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/page-title"
               }
-            }
-          }
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "valve"
-        },
-        "position": {
-          "basis": "158px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Control Valve",
-          "params": {
-            "zone": 1
-          }
-        },
-        "propConfig": {
-          "props.params.zone": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.zone"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "zoneStatus"
+            },
+            "props": {
+              "path": "Components/Oven/Zone/Zone Status",
+              "params": {
+                "zone": 1
               }
-            }
-          }
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "motors"
-        },
-        "position": {
-          "basis": "144px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Oven/Zone/Motor Data",
-          "params": {
-            "zone": 1
-          }
-        },
-        "propConfig": {
-          "props.params.zone": {
-            "binding": {
-              "type": "property",
-              "config": {
-                "path": "view.params.zone"
+            },
+            "propConfig": {
+              "props.params.zone": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.zone"
+                  }
+                }
               }
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 214
             }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "temps"
+            },
+            "props": {
+              "path": "Components/Oven/Zone/Temperature Data",
+              "params": {
+                "zone": 1
+              }
+            },
+            "propConfig": {
+              "props.params.zone": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.zone"
+                  }
+                }
+              }
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 144
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "chamber"
+            },
+            "props": {
+              "path": "Components/Oven/Zone/Chamber Data",
+              "params": {
+                "zone": 1
+              }
+            },
+            "propConfig": {
+              "props.params.zone": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.zone"
+                  }
+                }
+              }
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 88
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "valve"
+            },
+            "props": {
+              "path": "Components/Oven/Zone/Control Valve",
+              "params": {
+                "zone": 1
+              }
+            },
+            "propConfig": {
+              "props.params.zone": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.zone"
+                  }
+                }
+              }
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 4
+                }
+              ],
+              "height": 158
+            }
+          },
+          {
+            "type": "ia.display.view",
+            "meta": {
+              "name": "motors"
+            },
+            "props": {
+              "path": "Components/Oven/Zone/Motor Data",
+              "params": {
+                "zone": 1
+              }
+            },
+            "propConfig": {
+              "props.params.zone": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "view.params.zone"
+                  }
+                }
+              }
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 4
+                }
+              ],
+              "height": 144
+            }
+          },
+          {
+            "meta": {
+              "name": "trend"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 12
+                }
+              ],
+              "height": 420
+            },
+            "propConfig": {
+              "props.pens": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.zone}"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tdef pen(name, tag, color):\n\t\tst = lambda o: {'fill': {'color': color, 'opacity': o}, 'stroke': {'color': color, 'dashArray': 0, 'opacity': o, 'width': 1.5}}\n\t\treturn {'axis': '', 'name': name, 'plot': 0, 'enabled': True, 'selectable': True, 'visible': True,\n\t\t\t'data': {'aggregateMode': 'default', 'source': 'histprov:myOracle:/drv:ignition-4d950438c38c:cal1615:/tag:' + tag},\n\t\t\t'display': {'type': 'line', 'breakLine': True, 'interpolation': 'curveLinear', 'radius': 3, 'styles': {'normal': st(0.9), 'highlighted': st(1), 'muted': st(0.4), 'selected': st(1)}}}\n\tt = cal1615.zones.paths(value)\n\tstrip = lambda p: p.split(']', 1)[-1].lower()\n\treturn [pen('Control Temp', strip(t['temp']), '#1F77B4'), pen('Control Setpoint', strip(t['temp_sp']), '#D62728')]",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "config": {
+                "rangeEndDate": {
+                  "$": [
+                    "ts",
+                    0,
+                    1790953100756
+                  ],
+                  "$ts": 1790953088718
+                },
+                "rangeStartDate": {
+                  "$": [
+                    "ts",
+                    0,
+                    1790953100756
+                  ],
+                  "$ts": 1790949500718
+                },
+                "unitOfTime": 1
+              },
+              "interaction": {
+                "chartZoomLevel": 1,
+                "rangeZoomLevel": 1
+              }
+            },
+            "type": "ia.chart.powerchart"
           }
-        }
+        ]
       }
     ]
   }

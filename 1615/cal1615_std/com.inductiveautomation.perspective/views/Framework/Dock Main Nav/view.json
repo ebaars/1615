@@ -3,574 +3,1404 @@
   "params": {},
   "props": {
     "defaultSize": {
-      "width": 400
+      "width": 300,
+      "height": 900
     }
   },
   "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "var(--neutral-20)"
+      }
+    },
     "children": [
       {
+        "type": "ia.container.flex",
         "meta": {
-          "name": "MenuTree"
+          "name": "titleRow"
         },
         "position": {
-          "basis": "300px",
-          "grow": 1
+          "basis": "56px",
+          "shrink": 0
         },
         "props": {
-          "headerStyle": {
-            "classes": "framework/sidebar-items-mobile-headers"
-          },
-          "itemStyle": {
-            "classes": "framework/sidebar-items-mobile"
-          },
-          "items": [
-            {
-              "enabled": true,
-              "items": [
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Overview"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/overview",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Oven Control"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/oven-control",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Active Recipe"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/active-recipe",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Recipe"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/recipe",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Emergency Stops"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/emergency-stops",
-                  "visible": true
-                }
-              ],
-              "label": {
-                "icon": {
-                  "path": "material/home"
-                },
-                "text": "Main"
-              },
-              "navIcon": {
-                "color": "",
-                "path": "material/chevron_right"
-              },
-              "showHeader": true,
-              "style": {
-                "classes": "framework/sidebar-items-mobile-headers"
-              },
-              "target": "/overview",
-              "visible": true
-            },
-            {
-              "enabled": true,
-              "items": [
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Zone 1"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/zone/1",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Zone 2"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/zone/2",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Zone 3"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/zone/3",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Advanced Cooling"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/advanced-cooling",
-                  "visible": true
-                }
-              ],
-              "label": {
-                "icon": {
-                  "path": "material/home"
-                },
-                "text": "Oven Zones"
-              },
-              "navIcon": {
-                "color": "",
-                "path": "material/chevron_right"
-              },
-              "showHeader": true,
-              "style": {
-                "classes": "framework/sidebar-items-mobile-headers"
-              },
-              "target": "/zone/1",
-              "visible": true
-            },
-            {
-              "enabled": true,
-              "items": [
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Let-Off / Splice"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/letoff-splice",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Accumulator / TS1"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/accumulator-ts1",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "TS2 / Poly / Windup"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/ts2-poly-windup",
-                  "visible": true
-                }
-              ],
-              "label": {
-                "icon": {
-                  "path": "material/home"
-                },
-                "text": "Line Drives"
-              },
-              "navIcon": {
-                "color": "",
-                "path": "material/chevron_right"
-              },
-              "showHeader": true,
-              "style": {
-                "classes": "framework/sidebar-items-mobile-headers"
-              },
-              "target": "/letoff-splice",
-              "visible": true
-            },
-            {
-              "enabled": true,
-              "items": [
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "I/O"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/io",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Zone Setup"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/zone-setup",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "VFD Drives"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/vfd-drives",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Servo Drives"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/servo-drives",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "PM Schedule"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/pm-schedule",
-                  "visible": true
-                }
-              ],
-              "label": {
-                "icon": {
-                  "path": "material/home"
-                },
-                "text": "Maintenance"
-              },
-              "navIcon": {
-                "color": "",
-                "path": "material/chevron_right"
-              },
-              "showHeader": true,
-              "style": {
-                "classes": "framework/sidebar-items-mobile-headers"
-              },
-              "target": "/io",
-              "visible": true
-            },
-            {
-              "enabled": true,
-              "items": [
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Oven Trend"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/oven-trend",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Trend"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/trend",
-                  "visible": true
-                }
-              ],
-              "label": {
-                "icon": {
-                  "path": "material/home"
-                },
-                "text": "Trending"
-              },
-              "navIcon": {
-                "color": "",
-                "path": "material/chevron_right"
-              },
-              "showHeader": true,
-              "style": {
-                "classes": "framework/sidebar-items-mobile-headers"
-              },
-              "target": "/oven-trend",
-              "visible": true
-            },
-            {
-              "enabled": true,
-              "items": [
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Alarms"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/alarms",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "Warnings"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/warnings",
-                  "visible": true
-                },
-                {
-                  "enabled": true,
-                  "items": [],
-                  "label": {
-                    "icon": {
-                      "path": ""
-                    },
-                    "text": "History"
-                  },
-                  "navIcon": {
-                    "path": ""
-                  },
-                  "showHeader": true,
-                  "style": {
-                    "classes": null
-                  },
-                  "target": "/history",
-                  "visible": true
-                }
-              ],
-              "label": {
-                "icon": {
-                  "path": "material/home"
-                },
-                "text": "Alarms"
-              },
-              "navIcon": {
-                "color": "",
-                "path": "material/chevron_right"
-              },
-              "showHeader": true,
-              "style": {
-                "classes": "framework/sidebar-items-mobile-headers"
-              },
-              "target": "/alarms",
-              "visible": true
-            }
-          ]
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "padding": "0 4px 0 12px",
+            "borderBottom": "1px solid var(--neutral-50)"
+          }
         },
-        "type": "ia.navigation.menutree"
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "title"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "0"
+            },
+            "props": {
+              "text": "Menu",
+              "style": {
+                "fontWeight": "bold",
+                "fontSize": "18px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "btn-close"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "",
+              "primary": false,
+              "style": {
+                "margin": "4px 0"
+              },
+              "image": {
+                "height": 24,
+                "width": 24,
+                "icon": {
+                  "path": "material/close"
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "items"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "0"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflowY": "auto",
+            "paddingBottom": "8px"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "section_0"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Main",
+              "style": {
+                "classes": "typography/list-heading",
+                "marginTop": "6px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_01"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Overview",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              },
+              "image": {
+                "height": 20,
+                "width": 20,
+                "icon": {
+                  "path": "material/home"
+                }
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/overview\" || {page.props.path} = \"/\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/overview')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_02"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Oven Control",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              },
+              "image": {
+                "height": 20,
+                "width": 20,
+                "icon": {
+                  "path": "material/whatshot"
+                }
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/oven-control\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/oven-control')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_03"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Active Recipe",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              },
+              "image": {
+                "height": 20,
+                "width": 20,
+                "icon": {
+                  "path": "material/assignment"
+                }
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/active-recipe\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/active-recipe')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_04"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Recipe",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              },
+              "image": {
+                "height": 20,
+                "width": 20,
+                "icon": {
+                  "path": "material/list"
+                }
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/recipe\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/recipe')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_05"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Emergency Stops",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              },
+              "image": {
+                "height": 20,
+                "width": 20,
+                "icon": {
+                  "path": "material/report"
+                }
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/emergency-stops\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/emergency-stops')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "section_1"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Oven Zones",
+              "style": {
+                "classes": "typography/list-heading",
+                "marginTop": "6px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_06"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 1",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/zone/1\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/zone/1')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_07"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 2",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/zone/2\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/zone/2')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_08"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone 3",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/zone/3\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/zone/3')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_09"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Advanced Cooling",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/advanced-cooling\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/advanced-cooling')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_10"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "RTO (Oxidizer)",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/rto\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/rto')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "section_2"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Line Drives",
+              "style": {
+                "classes": "typography/list-heading",
+                "marginTop": "6px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_11"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Let-Off / Splice",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/letoff-splice\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/letoff-splice')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_12"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Accumulator / TS1",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/accumulator-ts1\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/accumulator-ts1')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_13"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "TS2 / Poly / Windup",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/ts2-poly-windup\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/ts2-poly-windup')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "section_3"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Alarms",
+              "style": {
+                "classes": "typography/list-heading",
+                "marginTop": "6px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_14"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Alarms",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              },
+              "image": {
+                "height": 20,
+                "width": 20,
+                "icon": {
+                  "path": "material/alarm"
+                }
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/alarms\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/alarms')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_15"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Warnings",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/warnings\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/warnings')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_16"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "History",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/history\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/history')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "section_4"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Trending",
+              "style": {
+                "classes": "typography/list-heading",
+                "marginTop": "6px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_17"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Oven Trend",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/oven-trend\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/oven-trend')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_18"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Trend",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/trend\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/trend')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "section_5"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Maintenance",
+              "style": {
+                "classes": "typography/list-heading",
+                "marginTop": "6px"
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_19"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "I/O",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/io\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/io')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_20"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Zone Setup",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/zone-setup\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/zone-setup')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_21"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "PID Tuning",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/pid-tuning\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/pid-tuning')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_22"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Rolls",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/rolls\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/rolls')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_23"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "VFD Drives",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/vfd-drives\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/vfd-drives')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_24"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Servo Drives",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/servo-drives\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/servo-drives')"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "meta": {
+              "name": "nav_25"
+            },
+            "position": {
+              "basis": "48px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "PM Schedule",
+              "justify": "flex-start",
+              "primary": false,
+              "style": {
+                "margin": "2px 8px",
+                "fontSize": "16px",
+                "paddingLeft": "12px"
+              },
+              "textStyle": {
+                "fontWeight": "normal"
+              }
+            },
+            "propConfig": {
+              "props.primary": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "{page.props.path} = \"/pm-schedule\""
+                  }
+                }
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "\tsystem.perspective.closeDock('dock-main-nav')\n\tsystem.perspective.navigate(page='/pm-schedule')"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "btn-user"
+        },
+        "position": {
+          "basis": "48px",
+          "shrink": 0
+        },
+        "props": {
+          "text": "Sign in",
+          "justify": "flex-start",
+          "primary": false,
+          "style": {
+            "margin": "4px 8px",
+            "fontSize": "16px",
+            "paddingLeft": "12px"
+          },
+          "image": {
+            "height": 20,
+            "width": 20,
+            "icon": {
+              "path": "material/person"
+            }
+          }
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "if({session.props.auth.authenticated}, \"Sign out \" + {session.props.auth.user.userName}, \"Sign in\")"
+              }
+            }
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "\tif self.session.props.auth.authenticated:\n\t\tsystem.perspective.logout()\n\telse:\n\t\tsystem.perspective.login()"
+              }
+            }
+          }
+        }
       },
       {
         "children": [
@@ -596,7 +1426,7 @@
               "name": "Dropdown"
             },
             "position": {
-              "basis": "144px",
+              "basis": "160px",
               "shrink": 0
             },
             "propConfig": {
@@ -649,28 +1479,18 @@
           "name": "themePicker"
         },
         "position": {
-          "basis": "56px"
+          "basis": "56px",
+          "shrink": 0
         },
         "props": {
           "justify": "space-between",
           "style": {
-            "marginBottom": "56px",
-            "padding": "8px"
+            "padding": "8px",
+            "borderTop": "1px solid var(--neutral-50)"
           }
         },
         "type": "ia.container.flex"
       }
-    ],
-    "meta": {
-      "name": "root"
-    },
-    "props": {
-      "direction": "column",
-      "justify": "space-between",
-      "style": {
-        "backgroundColor": "var(--neutral-20)"
-      }
-    },
-    "type": "ia.container.flex"
+    ]
   }
 }

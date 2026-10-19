@@ -141,7 +141,7 @@
         "position": {
           "basis": "480px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Recipe/Active Line Settings",
@@ -160,7 +160,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Recipe/Active Zone 1",
@@ -179,7 +179,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Recipe/Active Zone 2",
@@ -198,7 +198,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Recipe/Active Zone 3",

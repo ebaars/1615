@@ -58,7 +58,7 @@
     },
     "/recipe": {
       "title": "cal1615",
-      "viewPath": "MainViews/Feature Views/Home/Recipe"
+      "viewPath": "MainViews/Feature Views/Home/Recipe - Main"
     },
     "/rolls": {
       "title": "cal1615",
@@ -113,6 +113,22 @@
         "size": 240,
         "viewParams": {},
         "viewPath": "MainViews/Nav/Sidebar Dock Nav"
+      }
+    ],
+    "right": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 480,
+        "content": "cover",
+        "handle": "hide",
+        "iconUrl": "",
+        "id": "dock-main-nav",
+        "modal": true,
+        "resizable": false,
+        "show": "onDemand",
+        "size": 300,
+        "viewParams": {},
+        "viewPath": "Framework/Dock Main Nav"
       }
     ],
     "top": [

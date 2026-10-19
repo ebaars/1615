@@ -33,7 +33,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Oven/Zone/Zone Setup",
@@ -54,7 +54,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Oven/Zone/Zone Setup",
@@ -75,7 +75,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Oven/Zone/Zone Setup",
@@ -96,7 +96,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/Oven/Roll Cooling Setup",

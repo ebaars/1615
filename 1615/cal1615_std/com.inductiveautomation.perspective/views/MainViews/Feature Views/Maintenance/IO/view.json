@@ -54,7 +54,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 0 1794-OE4-B",
@@ -73,7 +73,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 1 1794-IE8-B",
@@ -92,7 +92,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 2 1794-IT8-A",
@@ -111,7 +111,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 3 1794-OB16-A",
@@ -130,7 +130,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 4 1794-IB16-A",
@@ -149,7 +149,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 5 1794-IB16-A",
@@ -168,7 +168,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 6 1794-IB16-A",
@@ -187,7 +187,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Letoff Panel/Slot 7 1794-IB16-A",
@@ -227,7 +227,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Oven Panel/Slot 0 1794-OE4-B",
@@ -246,7 +246,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Oven Panel/Slot 1 1794-IE8-B",
@@ -265,7 +265,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Oven Panel/Slot 2 1794-IT8-A",
@@ -284,7 +284,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Oven Panel/Slot 3 1794-IB16-A",
@@ -303,7 +303,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Oven Panel/Slot 4 1794-IB16-A",
@@ -322,7 +322,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Oven Panel/Slot 5 1794-IB16-A",
@@ -362,7 +362,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 0 1794-OE4-B",
@@ -381,7 +381,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 1 1794-OE4-B",
@@ -400,7 +400,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 2 1794-IE8-B",
@@ -419,7 +419,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 3 1794-IT8-A",
@@ -438,7 +438,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 4 1794-OB16-A",
@@ -457,7 +457,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 5 1794-IB16-A",
@@ -476,7 +476,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Winder Panel/Slot 6 1794-IB16-A",
@@ -516,7 +516,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Line Drive Panel/Slot 0 1794-OE4-B",
@@ -535,7 +535,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Line Drive Panel/Slot 1 1794-OB16-A",
@@ -554,7 +554,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Line Drive Panel/Slot 2 1794-IB16-A",
@@ -573,7 +573,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Line Drive Panel/Slot 3 1794-IB16-A",
@@ -613,7 +613,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Process Drive Panel/Slot 0 1794-OB16-A",
@@ -632,7 +632,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Process Drive Panel/Slot 1 1794-IB16-A",
@@ -672,7 +672,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Local chassis/Slot 3 1756-IF16-A",
@@ -691,7 +691,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Local chassis/Slot 4 1756-IB16",
@@ -710,7 +710,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Local chassis/Slot 5 1756-IB16",
@@ -729,7 +729,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Local chassis/Slot 6 1756-IB16",
@@ -748,7 +748,7 @@
         "position": {
           "basis": "360px",
           "grow": 1,
-          "shrink": 0
+          "shrink": 1
         },
         "props": {
           "path": "Components/IO/Local chassis/Slot 7 1756-OA16I",

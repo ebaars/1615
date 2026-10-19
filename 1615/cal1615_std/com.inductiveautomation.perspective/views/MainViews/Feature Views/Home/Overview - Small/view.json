@@ -5,7 +5,7 @@
   "props": {
     "defaultSize": {
       "width": 400,
-      "height": 1400
+      "height": 2600
     }
   },
   "root": {
@@ -17,300 +17,1273 @@
     "props": {
       "direction": "column",
       "style": {
-        "gap": "8px",
         "padding": "6px",
         "overflowY": "auto"
       }
     },
     "children": [
       {
-        "type": "ia.display.view",
+        "type": "ia.container.column",
         "meta": {
-          "name": "recipeBanner"
+          "name": "grid"
         },
         "position": {
-          "basis": "40px",
+          "basis": "auto",
           "shrink": 0
         },
         "props": {
-          "path": "Components/Main/Recipe Banner",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "lineControl"
-        },
-        "position": {
-          "basis": "130px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Line Control",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "lineSpeed"
-        },
-        "position": {
-          "basis": "116px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Line Speed",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "ovenControl"
-        },
-        "position": {
-          "basis": "158px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Oven Control",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "letoff"
-        },
-        "position": {
-          "basis": "176px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Let-Off",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "letoffFootage"
-        },
-        "position": {
-          "basis": "88px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Let-Off Footage",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "splice"
-        },
-        "position": {
-          "basis": "172px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Splice Press",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "entryAcc"
-        },
-        "position": {
-          "basis": "186px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Entry Accumulator",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "ts1"
-        },
-        "position": {
-          "basis": "176px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Tension Stand 1",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "impreg"
-        },
-        "position": {
-          "basis": "224px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Impregnation",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "cooling"
-        },
-        "position": {
-          "basis": "128px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Cooling Rolls",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "ts2"
-        },
-        "position": {
-          "basis": "176px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Tension Stand 2",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "upperPoly"
-        },
-        "position": {
-          "basis": "128px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Upper Poly",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "lowerPoly"
-        },
-        "position": {
-          "basis": "128px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Lower Poly",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "winderAcc"
-        },
-        "position": {
-          "basis": "116px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Winder Accumulator",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "winder"
-        },
-        "position": {
-          "basis": "176px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Winder",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "winderFootage"
-        },
-        "position": {
-          "basis": "88px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Winder Footage",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.display.view",
-        "meta": {
-          "name": "production"
-        },
-        "position": {
-          "basis": "122px",
-          "shrink": 0
-        },
-        "props": {
-          "path": "Components/Main/Production",
-          "params": {}
-        }
-      },
-      {
-        "type": "ia.input.button",
-        "meta": {
-          "name": "faultReset"
-        },
-        "position": {
-          "basis": "56px",
-          "shrink": 0
-        },
-        "props": {
-          "text": "Fault Reset",
-          "style": {
-            "classes": "cal1615/btn-stop"
-          }
-        },
-        "propConfig": {
-          "props.enabled": {
-            "binding": {
-              "type": "expr",
-              "config": {
-                "expression": "{session.props.auth.authenticated}"
-              }
+          "breakpoints": [
+            {
+              "minWidth": 0,
+              "name": "sm"
+            },
+            {
+              "minWidth": 700,
+              "name": "md"
+            },
+            {
+              "minWidth": 1100,
+              "name": "lg"
             }
-          }
+          ]
         },
-        "events": {
-          "component": {
-            "onActionPerformed": {
-              "type": "script",
-              "scope": "G",
-              "config": {
-                "script": "\ttag = '[cal1615]p02_dint_from_hmi/global_6_/bit_0'\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag=tag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
+        "children": [
+          {
+            "meta": {
+              "name": "recipeBanner"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 0,
+                  "span": 12
+                }
+              ],
+              "height": 40
+            },
+            "props": {
+              "path": "Components/Main/Recipe Banner"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "lineState"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 198
+            },
+            "props": {
+              "path": "Components/Main/Line State"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "lineControl"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 130
+            },
+            "props": {
+              "path": "Components/Main/Line Control"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "lineSpeed"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 1,
+                  "span": 4
+                }
+              ],
+              "height": 116
+            },
+            "props": {
+              "path": "Components/Main/Line Speed"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "speedSlider"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 6
+                }
+              ],
+              "height": 52
+            },
+            "props": {
+              "path": "Components/Main/Line Speed Slider"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "jobPanel"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 2,
+                  "span": 4
+                }
+              ],
+              "height": 300
+            },
+            "props": {
+              "path": "Components/Main/Job Panel Small"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "production"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 4
+                }
+              ],
+              "height": 122
+            },
+            "props": {
+              "path": "Components/Main/Production"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\ttag = '[cal1615]p02_dint_from_hmi/global_6_/bit_0'\n\tsystem.tag.writeBlocking([tag], [True])\n\tdef release(tag=tag):\n\t\timport time\n\t\ttime.sleep(0.5)\n\t\tsystem.tag.writeBlocking([tag], [False])\n\tsystem.util.invokeAsynchronous(release)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
               }
-            }
+            },
+            "meta": {
+              "name": "faultReset"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 4
+                }
+              ],
+              "height": 56
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "{session.props.auth.authenticated}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "cal1615/btn-stop"
+              },
+              "text": "Fault Reset"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "ovenControl"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 3,
+                  "span": 4
+                }
+              ],
+              "height": 158
+            },
+            "props": {
+              "path": "Components/Main/Oven Control"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "zoneTable"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 4
+                }
+              ],
+              "height": 152
+            },
+            "props": {
+              "path": "Components/Main/Zone Table"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "rto"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 4
+                }
+              ],
+              "height": 233
+            },
+            "props": {
+              "path": "Components/Main/RTO"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "safetyPins"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 11,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 4,
+                  "span": 4
+                }
+              ],
+              "height": 60
+            },
+            "props": {
+              "path": "Components/Main/Safety Pins"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "accFullLS"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 12,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 3
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": false,
+                "offColor": "#FFFF00",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p20_di_acc_full",
+                "text": "Full LS"
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "accEmptyLS"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 6,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 12,
+                  "span": 6
+                },
+                {
+                  "colIndex": 9,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 3
+                },
+                {
+                  "colIndex": 3,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": false,
+                "offColor": "#FFFF00",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p20_di_acc_empty",
+                "text": "Empty LS"
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "feedRollNip"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 13,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 3
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": true,
+                "offColor": "#D0D0D0",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p20_do_close_nip",
+                "text": "Feed Roll Nip Open"
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "ts1Nip"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 6,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 13,
+                  "span": 6
+                },
+                {
+                  "colIndex": 3,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 3
+                },
+                {
+                  "colIndex": 9,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 5,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": true,
+                "offColor": "#D0D0D0",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p22_do_close_nip_roll",
+                "text": "TS1 Nip Open"
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "letoffTurret"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 14,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 3
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": false,
+                "offColor": "#FFFF00",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p20_di_turret_pos",
+                "text": "Let-Off Turret in Pos."
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "platenClosed"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 6,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 14,
+                  "span": 6
+                },
+                {
+                  "colIndex": 9,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 3
+                },
+                {
+                  "colIndex": 3,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": true,
+                "offColor": "#FFFF00",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p21_di_platen_not_closed",
+                "text": "Platen Closed"
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "tankUp"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 15,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 3
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": false,
+                "offColor": "#FFFF00",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]p23_di_impreg_tank_up",
+                "text": "Tank Up"
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "winderTurret"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 6,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 15,
+                  "span": 6
+                },
+                {
+                  "colIndex": 3,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 3
+                },
+                {
+                  "colIndex": 9,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 6,
+                  "span": 3
+                }
+              ],
+              "height": 32
+            },
+            "props": {
+              "params": {
+                "invert": false,
+                "offColor": "#FFFF00",
+                "onColor": "#00E000",
+                "tagPath": "[cal1615]turret_in_position",
+                "text": "Winder Turret in Pos."
+              },
+              "path": "Components/Common/Indicator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "letoff"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 16,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 4
+                }
+              ],
+              "height": 176
+            },
+            "props": {
+              "path": "Components/Main/Let-Off"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "letoffFootage"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 17,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 4
+                }
+              ],
+              "height": 88
+            },
+            "props": {
+              "path": "Components/Main/Let-Off Footage"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "splicePress"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 18,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 7,
+                  "span": 4
+                }
+              ],
+              "height": 172
+            },
+            "props": {
+              "path": "Components/Main/Splice Press"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "entryAccumulator"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 19,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 4
+                }
+              ],
+              "height": 186
+            },
+            "props": {
+              "path": "Components/Main/Entry Accumulator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "tensionStand1"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 20,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 4
+                }
+              ],
+              "height": 176
+            },
+            "props": {
+              "path": "Components/Main/Tension Stand 1"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "impregnation"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 21,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 11,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 8,
+                  "span": 4
+                }
+              ],
+              "height": 224
+            },
+            "props": {
+              "path": "Components/Main/Impregnation"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "coolingRolls"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 22,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 11,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 4
+                }
+              ],
+              "height": 128
+            },
+            "props": {
+              "path": "Components/Main/Cooling Rolls"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "tensionStand2"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 23,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 12,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 4
+                }
+              ],
+              "height": 176
+            },
+            "props": {
+              "path": "Components/Main/Tension Stand 2"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "upperPoly"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 24,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 12,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 9,
+                  "span": 4
+                }
+              ],
+              "height": 128
+            },
+            "props": {
+              "path": "Components/Main/Upper Poly"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "lowerPoly"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 25,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 13,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 4
+                }
+              ],
+              "height": 128
+            },
+            "props": {
+              "path": "Components/Main/Lower Poly"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "winderAccumulator"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 26,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 13,
+                  "span": 6
+                },
+                {
+                  "colIndex": 4,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 4
+                }
+              ],
+              "height": 181
+            },
+            "props": {
+              "path": "Components/Main/Winder Accumulator"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "winder"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 27,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 14,
+                  "span": 6
+                },
+                {
+                  "colIndex": 8,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 10,
+                  "span": 4
+                }
+              ],
+              "height": 176
+            },
+            "props": {
+              "path": "Components/Main/Winder"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "winderFootage"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 0,
+                  "rowIndex": 28,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 0,
+                  "rowIndex": 14,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 0,
+                  "rowIndex": 11,
+                  "span": 4
+                }
+              ],
+              "height": 180
+            },
+            "props": {
+              "path": "Components/Main/Winder Footage"
+            },
+            "type": "ia.display.view"
           }
-        }
+        ]
       }
     ]
   }
