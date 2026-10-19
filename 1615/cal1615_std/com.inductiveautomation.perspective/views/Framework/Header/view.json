@@ -11,7 +11,7 @@
       },
       "onChange": {
         "enabled": null,
-        "script": "\tif not self.session.custom.navPinned:\n\t\treturn\n\tpageId \u003d self.page.props.pageId\n\tsessionId \u003d self.session.props.id\n\tdef pin():\n\t\timport time\n\t\ttime.sleep(0.4)\n\t\tsystem.perspective.alterDock(\u0027Menu\u0027, {\u0027show\u0027: \u0027visible\u0027, \u0027content\u0027: \u0027push\u0027}, sessionId\u003dsessionId, pageId\u003dpageId)\n\t\tsystem.perspective.openDock(\u0027Menu\u0027, sessionId\u003dsessionId, pageId\u003dpageId)\n\t\tsystem.util.getLogger(\u0027cal1615.nav\u0027).debug(\u0027menu re-pinned for \u0027 + str(pageId))\n\tsystem.util.invokeAsynchronous(pin)"
+        "script": "\tif not self.session.custom.navPinned:\n\t\treturn\n\tpageId = self.page.props.pageId\n\tsessionId = self.session.props.id\n\tdef pin():\n\t\timport time\n\t\ttime.sleep(0.4)\n\t\tsystem.perspective.alterDock('Menu', {'show': 'visible', 'content': 'push'}, sessionId=sessionId, pageId=pageId)\n\t\tsystem.perspective.openDock('Menu', sessionId=sessionId, pageId=pageId)\n\t\tsystem.util.getLogger('cal1615.nav').debug('menu re-pinned for ' + str(pageId))\n\tsystem.util.invokeAsynchronous(pin)"
       }
     }
   },
@@ -40,7 +40,7 @@
                 "fontWeight": "500",
                 "textAlign": "center"
               },
-              "text": "View these screens within the Ignition Designer to fully understand how they\u0027re constructed. "
+              "text": "View these screens within the Ignition Designer to fully understand how they're constructed. "
             },
             "type": "ia.display.label"
           }
@@ -138,7 +138,13 @@
           "shrink": 0
         },
         "props": {
-          "machine": "cal1615"
+          "machine": "cal1615",
+          "outputHistory": {
+            "opcServer": "cal1615",
+            "base": "nsu=FTLGW_Server_Namespace;s=[PLC]T000_RCP_ISA95.OutputHistory",
+            "size": 32,
+            "lengthUnit": "ft"
+          }
         },
         "type": "pmq.mes.station"
       }

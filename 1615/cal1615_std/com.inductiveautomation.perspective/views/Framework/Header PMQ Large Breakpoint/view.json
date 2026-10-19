@@ -31,7 +31,13 @@
           "shrink": 0
         },
         "props": {
-          "machine": "cal1615"
+          "machine": "cal1615",
+          "outputHistory": {
+            "opcServer": "cal1615",
+            "base": "nsu=FTLGW_Server_Namespace;s=[PLC]T000_RCP_ISA95.OutputHistory",
+            "size": 32,
+            "lengthUnit": "ft"
+          }
         },
         "type": "pmq.mes.station"
       }
