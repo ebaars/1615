@@ -225,10 +225,10 @@
           "name": "winderFootage"
         },
         "position": {
-          "height": 174,
+          "height": 180,
           "width": 129,
           "x": 1541,
-          "y": 297
+          "y": 291
         },
         "props": {
           "path": "Components/Main/Winder Footage"
@@ -616,29 +616,6 @@
           "path": "Components/Main/Job Panel"
         },
         "type": "ia.display.view"
-      },
-      {
-        "events": {
-          "component": {
-            "onActionPerformed": {
-              "config": {
-                "script": "\turl \u003d system.pmq.getSignInUrl(self.session.props.id)\n\tsystem.perspective.navigate(url\u003durl, newTab\u003dTrue)"
-              },
-              "scope": "G",
-              "type": "script"
-            }
-          }
-        },
-        "meta": {
-          "name": "Button"
-        },
-        "position": {
-          "height": 34,
-          "width": 80,
-          "x": 682,
-          "y": 228
-        },
-        "type": "ia.input.button"
       }
     ],
     "meta": {
